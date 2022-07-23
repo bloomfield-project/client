@@ -1,10 +1,13 @@
 
-import Test from './component/Test.js'
+import logo from './logo.svg';
+import './App.css';
 
 function App() {
   return (
-    <Test></Test>
-  );
+    <div className="App">
+    
+  </div>
+);
 }
 
 export default App;
