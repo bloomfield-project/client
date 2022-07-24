@@ -1,10 +1,13 @@
-
-import Test from './component/Test.js'
+import './App.css';
+import Header from './component/Header';
 
 function App() {
   return (
-    <Test></Test>
-  );
+  <div className="App">
+    <Header>
+    </Header>
+  </div>
+);
 }
 
 export default App;
