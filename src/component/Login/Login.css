@@ -1,0 +1,127 @@
+.login-main {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  background-color: rgba(0, 146, 112, 1);
+
+  /* justify-content: space-between; */
+}
+
+.login-left {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 50%;
+  height: 100%;
+  background-color: rgba(0, 146, 112, 1);
+  margin: auto;
+}
+
+.title {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 50px;
+  line-height: 61px;
+  text-align: center;
+
+  color: #ffffff;
+}
+
+.description {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 39px;
+  text-align: center;
+
+  color: #ffffff;
+}
+
+img {
+  position: absolute;
+  width: 50%;
+  height: 70%;
+  left: 25%;
+  bottom: 2%;
+
+  /* background: url(NicePng_cricket-stump-png_2615395.png); */
+}
+
+.login-right {
+  box-sizing: border-box;
+
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  right: 0px;
+  top: 0px;
+
+  background: #ffffff;
+  border: 1px solid #ffffff;
+  /* box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); */
+  border-radius: 43px 0px 0px 43px;
+}
+
+input {
+  width: 250px;
+  border-style: none;
+  border-bottom: 1px solid #a59e9e;
+  color: #5a5858;
+}
+
+*:focus {
+  outline: none;
+}
+
+label {
+  width: 180px;
+  text-align: left;
+  color: #5a5858;
+}
+
+.btn-primary {
+  background-color: #009270 !important;
+  border: #009270 !important;
+}
+
+.form-data {
+  /* background-color: #a59e9e; */
+  height: 100px;
+  width: 90%;
+  margin: auto;
+  padding: 30px;
+}
+
+form {
+  height: 80%;
+  margin: auto;
+  margin-top: 30px;
+}
+
+.login-details {
+  /* height: 100vh; */
+  margin: auto;
+  justify-content: center;
+  margin-top: 150px;
+  /* background-color: aqua; */
+  /* padding: 50px; */
+}
+
+h2 {
+
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 44px;
+  text-align: center;
+
+  color: #5a5858;
+}
