@@ -6,7 +6,8 @@ import Header from "./component/header/Header";
 import FogotPassForm from "./component/Login/Login Forms/FogotPassForm";
 import ResetPassForm from "./component/Login/Login Forms/ResetPassForm";
 import LoginForm from "./component/Login/Login Forms/LoginForm";
-import Navbar from "./component/NavigationBar/Navbar";
+import CricketRanking from "./pages/Manager/js/CricketRanking";
+import Home from "./pages/Home"
 
 function App() {
   return (
@@ -18,8 +19,9 @@ function App() {
           <Route path="/ResetPassword" element={<ResetPassForm />} />
           <Route path="/FogotPassword" element={<FogotPassForm/>} />
           <Route path="/" element={<LoginForm/>} />
-          <Route path="/Navbar" element={<Navbar />} />
-          <Route path="/Header" element={<Header/>} />
+          <Route path="/client" element={<Home />} />
+
+          <Route path="/manager/CricketRanking" element={<CricketRanking />} />
         </Routes>
       </BrowserRouter>
     </div>
