@@ -1,0 +1,6 @@
+.tabs{
+    display: flex;
+}
+.tab{
+    width: fit-content;
+}
