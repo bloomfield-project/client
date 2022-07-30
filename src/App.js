@@ -1,18 +1,29 @@
-import './App.css';
-// import Header from './component/header/Header';
-import Home from "./pages/Home";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import "./App.css";
+import React from "react";
+import { BrowserRouter, Routes, Route, Link, Router } from "react-router-dom";
+import Header from "./component/header/Header";
+// import Login from "./component/Login/Login";
+import FogotPassForm from "./component/Login/Login Forms/FogotPassForm";
+import ResetPassForm from "./component/Login/Login Forms/ResetPassForm";
+import LoginForm from "./component/Login/Login Forms/LoginForm";
+import Navbar from "./component/NavigationBar/Navbar";
 
 function App() {
   return (
-    <Router>
-        <Switch>
-          <Route path="/">
-              <Home></Home>
-          </Route>
-        </Switch>
-    </Router>
-);
+    <div className="App">
+      <BrowserRouter>
+        {/* <FogotPassForm /> */}
+        {/* <ResetPassForm /> */}
+        <Routes>
+          <Route path="/ResetPassword" element={<ResetPassForm />} />
+          <Route path="/FogotPassword" element={<FogotPassForm/>} />
+          <Route path="/" element={<LoginForm/>} />
+          <Route path="/Navbar" element={<Navbar />} />
+          <Route path="/Header" element={<Header/>} />
+        </Routes>
+      </BrowserRouter>
+    </div>
+  );
 }
 
 export default App;
