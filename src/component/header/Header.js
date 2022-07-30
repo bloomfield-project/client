@@ -9,7 +9,7 @@ function Header(){
       <div className="container-1">
         <section className='header-left'>
           <div className="image">
-            <img src={logo}></img>
+            <img src={logo} alt=""></img>
           </div>
           <div className="bloomfield">
             <text>BLOOMFIELD</text>
@@ -23,7 +23,7 @@ function Header(){
             <text>W.D.K.G.G.S.Perera</text>
           </div>
           <div className='profilePic'>
-            <img src={profpic}></img>
+            <img src={profpic} alt=""></img>
           </div>
         </section>
       </div>

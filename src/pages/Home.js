@@ -1,16 +1,11 @@
-import Header from '../component/header/Header';
-import '../App.css';
-
+import Header from "../component/header/Header"
 
 function Home() {
     return (
-    <div className="App">
-        <p>kjnnxkjn</p>
-      <Header>
-      </Header>
-    </div>
+      <div>
+        <Header></Header>
+      </div>
   );
   }
-
-
+  
   export default Home;
