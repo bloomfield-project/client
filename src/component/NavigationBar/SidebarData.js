@@ -24,7 +24,7 @@ export const SidebarData = [
     },
     {
         title:'බිම්සර',
-        path:'/',
+        path:'/Table',
         icon:<AiIcons.AiFillHome />,
         cName:'nav-text'
     },

@@ -29,7 +29,6 @@
   font-size: 50px;
   line-height: 61px;
   text-align: center;
-
   color: #ffffff;
 }
 
@@ -74,6 +73,25 @@ input {
   border-style: none;
   border-bottom: 1px solid #a59e9e;
   color: #5a5858;
+  /* background-color: #a3d4c8; */
+}
+
+/* .password{
+
+  display: flex;
+ 
+  border-style: none;
+  border-bottom: 1px solid #a59e9e;
+  color: #5a5858; 
+  background-color: #009270;
+} */
+
+span {
+  width: 250px;
+  position: inherit;
+
+  color: red;
+  /* background-color: #d9f4ed; */
 }
 
 *:focus {
@@ -84,6 +102,7 @@ label {
   width: 180px;
   text-align: left;
   color: #5a5858;
+  /* background-color: aqua; */
 }
 
 .btn-primary {
@@ -93,6 +112,7 @@ label {
 
 .form-data {
   /* background-color: #a59e9e; */
+  /* display: flex; */
   height: 100px;
   width: 90%;
   margin: auto;
@@ -124,4 +144,8 @@ h2 {
   text-align: center;
 
   color: #5a5858;
+}
+
+.eye {
+  cursor: pointer;
 }

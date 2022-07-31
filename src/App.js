@@ -1,13 +1,23 @@
 import "./App.css";
 import React from "react";
-import { BrowserRouter, Routes, Route, Link, Router } from "react-router-dom";
-import Header from "./component/header/Header";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+// import Header from "./component/header/Header";
 // import Login from "./component/Login/Login";
 import FogotPassForm from "./component/Login/Login Forms/FogotPassForm";
 import ResetPassForm from "./component/Login/Login Forms/ResetPassForm";
 import LoginForm from "./component/Login/Login Forms/LoginForm";
-import CricketRanking from "./pages/Manager/js/CricketRanking";
-import Home from "./pages/Home"
+import Navbar from "./component/NavigationBar/Navbar";
+import Tables from "./component/Table/Table";
+import Home from "./pages/Home";
+
+
+const List = [
+  {id:1, name: "John Doe" , Age: 27},
+  {id:1, name: "John Doe" , Age: 27},
+  {id:1, name: "John Doe" , Age: 27},
+]
+
+const colNames = ['id','Name','Age']
 
 function App() {
   return (
@@ -19,9 +29,9 @@ function App() {
           <Route path="/ResetPassword" element={<ResetPassForm />} />
           <Route path="/FogotPassword" element={<FogotPassForm/>} />
           <Route path="/" element={<LoginForm/>} />
-          <Route path="/client" element={<Home />} />
-
-          <Route path="/manager/CricketRanking" element={<CricketRanking />} />
+          <Route path="/client" element={<Home/>} />
+          <Route path="/Navbar" element={<Navbar />} />
+          <Route path="/Table" element={<Tables list={List} colNames={colNames} />} />
         </Routes>
       </BrowserRouter>
     </div>
