@@ -5,7 +5,7 @@
     display: flex;
     align-items: center;
     /* border-bottom: 2px solid hsl(0, 1%, 67%); */
-    box-shadow: 2px 2px 5px #adadad;
+    /* box-shadow: 2px 2px 5px #adadad; */
     justify-content: space-between;
 }
 
