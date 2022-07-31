@@ -9,12 +9,14 @@ import LoginForm from "./component/Login/Login Forms/LoginForm";
 import Navbar from "./component/NavigationBar/Navbar";
 import Tables from "./component/Table/Table";
 import Home from "./pages/Home";
+import Button from 'react-bootstrap/Button';
+import Players from "./pages/Manager/js/Players";
 
 
 const List = [
   {id:1, name: "John Doe" , Age: 27},
   {id:1, name: "John Doe" , Age: 27},
-  {id:1, name: "John Doe" , Age: 27},
+  {id:1, name: "John Doe" , Age: <Button variant="secondary">View</Button>},
 ]
 
 const colNames = ['id','Name','Age']
@@ -32,6 +34,8 @@ function App() {
           <Route path="/client" element={<Home/>} />
           <Route path="/Navbar" element={<Navbar />} />
           <Route path="/Table" element={<Tables list={List} colNames={colNames} />} />
+          <Route path="/Players" element={<Players />} />
+          <Route path="/" />
         </Routes>
       </BrowserRouter>
     </div>

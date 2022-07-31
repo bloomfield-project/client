@@ -36,7 +36,7 @@ export const SidebarData = [
     },
     {
         title:'දෙව්මිනි',
-        path:'/Navbar',
+        path:'/Players',
         icon:<AiIcons.AiFillHome />,
         cName:'nav-text'
     },
