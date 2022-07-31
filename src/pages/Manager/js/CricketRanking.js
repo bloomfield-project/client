@@ -2,6 +2,8 @@ import Header from "../../../component/header/Header"
 import Navbar from "../../../component/NavigationBar/Navbar";
 import "../../Home.css";
 import "../css/CricketRanking.css"
+import "../css/table.css"
+import profpic from "../../../component/header/profpic.jfif"
 
 function CricketRanking() {
     return (
@@ -31,16 +33,38 @@ function CricketRanking() {
                 </div>
                 <div className="tablee">
                     <div className="table-head">
-                        <div className="col-1">Position</div>
-                        <div className="col-1">Player</div>
-                        <div className="col-1">Rating</div>
+                        <div className="col-3-1">Position</div>
+                        <div className="col-3-2">Player</div>
+                        <div className="col-3-3">Rating</div>
                     </div>
                     <div className="table-row">
-                        <div className="col-1">1</div>
-                        <div className="col-1">Sameera Madushan</div>
-                        <div className="col-1"><button>view</button></div>
-                        <hr></hr>
+                        <div className="col-3-1">1</div>
+                        <div className="col-3-2"><img className="row-image" src={profpic} alt=""></img><a href="#">Sameera Madushan</a></div>
+                        <div className="col-3-3">932</div>
+                        
                     </div>
+                    <hr></hr>
+                    <div className="table-row">
+                        <div className="col-3-1">1</div>
+                        <div className="col-3-2"><img className="row-image" src={profpic} alt=""></img><a href="#">Sameera Madushan</a></div>
+                        <div className="col-3-3">932</div>
+                        
+                    </div>
+                    <hr></hr>
+                    <div className="table-row">
+                        <div className="col-3-1">1</div>
+                        <div className="col-3-2"><img className="row-image" src={profpic} alt=""></img><a href="#">Sameera Madushan</a></div>
+                        <div className="col-3-3">932</div>
+                        
+                    </div>
+                    <hr></hr>
+                    <div className="table-row">
+                        <div className="col-3-1">1</div>
+                        <div className="col-3-2"><img className="row-image" src={profpic} alt=""></img><a href="#">Sameera Madushan</a></div>
+                        <div className="col-3-3">932</div>
+                        
+                    </div>
+                    
                 </div>
 
               </div>
