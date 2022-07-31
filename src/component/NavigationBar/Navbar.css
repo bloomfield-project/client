@@ -23,7 +23,7 @@
 }
 
 .nav-menu {
-    background-color:rgba(0, 146, 112, 1) ;
+    background-color:hsl(166, 100%, 29%) ;
     width: 250px;
     height: calc(100vh - 80px);
     display: flex;

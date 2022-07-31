@@ -17,7 +17,7 @@ function Navbar() {
       <IconContext.Provider value={{ color: "#fff" }}> 
       {/* can change all iconce color at once */}
 
-        <div className="navbar">
+        <div className="navbar"> 
           <Link to="#" className="menu-bars">
             <FaIcons.FaBars onClick={showSidebar} />
           </Link>
