@@ -9,6 +9,7 @@ import LoginForm from "./component/Login/Login Forms/LoginForm";
 import Navbar from "./component/NavigationBar/Navbar";
 import Tables from "./component/Table/Table";
 import Home from "./pages/Home";
+import CricketRanking from "./pages/Manager/js/CricketRanking";
 
 
 const List = [
@@ -32,6 +33,7 @@ function App() {
           <Route path="/client" element={<Home/>} />
           <Route path="/Navbar" element={<Navbar />} />
           <Route path="/Table" element={<Tables list={List} colNames={colNames} />} />
+          <Route path="/manager/CricketRanking" element={<CricketRanking/>} />
         </Routes>
       </BrowserRouter>
     </div>
