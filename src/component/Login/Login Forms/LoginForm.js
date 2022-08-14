@@ -44,7 +44,7 @@ function LoginForm() {
               </label>
               <br></br>
               <label> </label>
-              <span>{emailError}</span>
+              <span className="validate-msg">{emailError}</span>
             </div>
 
             <div className="form-data">

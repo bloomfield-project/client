@@ -1,3 +1,26 @@
 npm install react-router-dom
 npm install react-validation
 npm install validator
+npm i react-search-box
+npm install react-icons --save
+
+for Search function:-
+yarn add material-table
+yarn add @material-ui/core
+or
+npm install material-table --save
+npm install @material-ui/core --save
+
+yarn add @material-ui/icons
+
+
+removed
+{
+    npm install react-hook-form
+    npm install @material-ui/core
+    npm install --save @babel/runtime        remove
+}
+
+yarn add mdbootstrap //වැඩක් ගත්තෙ නෑ
+
+yarn add react-drag-drop-files

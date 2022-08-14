@@ -10,10 +10,21 @@
     /* background-color: blue; */
 }
 .tabs{
+    margin-top: 10px;
     display: flex;
+    justify-content: space-between;
     width: 90%;
     
 }
+
+.tabs-left{
+    display: flex;
+}
+
+.tabs-right{
+    padding: 5px;
+}
+
 .tab{
     width: fit-content;
     padding-left: 10px;

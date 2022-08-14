@@ -30,7 +30,7 @@ function FogotPassForm() {
               ></input>
               <br></br>
               <label> </label>
-              <span>{emailError}</span>
+              <span className="validate-msg">{emailError}</span>
             </div>
 
             <div class="d-grid gap-2 col-6 mx-auto form-data">
