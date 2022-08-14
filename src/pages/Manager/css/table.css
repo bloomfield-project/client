@@ -36,11 +36,12 @@
 }
 
 .tablee{
-    /* background-color: rgb(117, 14, 14); */
+    background-color: white;
     /* margin-left: 20px;
     margin-right: 20px; */
     margin-top: 15px;
     width: 95%;
+    /* padding: 20px; */
 }
 .tablee > hr{
     width: 100%;

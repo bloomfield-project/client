@@ -1,0 +1,21 @@
+1) Too many re-renders React limits the number of renders to prevent an infinite loop React Error fixed.
+
+error was come from using useState hook.
+
+const[tabNumber, setTabNumber]  = useState(1);
+
+  const selectTab_1 = ()=>{
+    setTabNumber(1);
+    console.log(tabNumber);
+  }
+
+<Button onClick={selectTab_1(1)}> Paid</Button>
+
+as above we directly calling the selectTab_(1) is get above error.
+
+solusion
+<Button onClick={()=>selectTab_1()}> Paid</Button>   
+
+call as a arrow function
+
+https://drive.google.com/drive/folders/1UvgdyYcZgkfgTryZ-Nurx-AHbzad_LqD?usp=sharing

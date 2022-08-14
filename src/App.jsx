@@ -1,4 +1,8 @@
-import "./App.css";
+// const App = () => {
+//   return <div>Hello world!</div>;
+// };
+
+// import "./App.css";
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import Header from "./component/header/Header";
@@ -13,10 +17,8 @@ import Button from 'react-bootstrap/Button';
 import Players from "./pages/Manager/js/Players";
 import CricketRanking from "./pages/Manager/js/CricketRanking";
 import SearchTable from "./component/Search/SearchTable";
-import Session from "./pages/Manager/js/Session";
 import Membership from "./pages/Manager/js/Membership";
-import SampleForm from "./component/Form/SampleForm";
-import FormData from "./component/Form/FormData";
+import Session from "./pages/Manager/js/Session";
 
 
 const List = [
@@ -41,13 +43,11 @@ function App() {
           <Route path="/Navbar" element={<Navbar />} />
           <Route path="/Table" element={<Tables list={List} colNames={colNames} />} />
           <Route path="/manager/Players" element={<Players />} />
-          <Route path="/manager/FormData" element={<FormData />} />
           <Route path="/manager/CricketRanking"  element={<CricketRanking/>}/>
-          <Route path="/manager/Session"  element={<Session/>}/>
           <Route path="/manager/Membership"  element={<Membership/>}/>
-          <Route path="/manager/SampleForm" element={<SampleForm />} />
+          <Route path="manager/Session"  element={<Session/>} />
 
-          {/* <Route path="/Search" element={<SearchTable/>} />/ */}
+          <Route path="/Search" element={<SearchTable/>} />
         </Routes>
       </BrowserRouter>
     </div>

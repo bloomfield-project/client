@@ -4,11 +4,12 @@ import Table from 'react-bootstrap/Table';
 //npm install react-bootstrap bootstrap
 
 
-function Tables({list, colNames, width ="auto" , height = "auto" }){
+function Tables({list, colNames, boostrap, width ="auto" , height = "auto" }){
     return(
         <>
             {list.length > 0 && (
-                <Table striped bordered hover size="sm">
+
+                <Table  boostrap >
                     <thead>
                         <tr>
                             {colNames.map((headerItem, index) => (

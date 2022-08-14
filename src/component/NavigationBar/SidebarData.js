@@ -5,38 +5,50 @@ import * as IoIcons from "react-icons/io";
 
 export const SidebarData = [
     {
-        title:'ගෙදර',
+        title:'Dashboard',
         path:'/',
         icon:<AiIcons.AiFillHome />,
         cName:'nav-text'
     },
     {
-        title:'ගිහාන්',
+        title:'Player',
         path:'/Fogotpassword',
         icon:<IoIcons.IoIosPaper />,
         cName:'nav-text'
     },
     {
         title:'අසිත',
-        path:'/ResetPassword',
+        path:'/Search',
         icon:<FaIcons.FaCartPlus />,
         cName:'nav-text'
     },
     {
-        title:'බිම්සර',
-        path:'/Table',
+        title:'SampleForm',
+        path:'/manager/SampleForm',
         icon:<AiIcons.AiFillHome />,
         cName:'nav-text'
     },
     {
-        title:'නයනහාරි',
-        path:'/Navbar',
+        title:'Ranking',
+        path:'/manager/CricketRanking',
         icon:<AiIcons.AiFillHome />,
         cName:'nav-text'
     },
     {
-        title:'දෙව්මිනි',
-        path:'/Navbar',
+        title:'Player',
+        path:'/manager/Players',
+        icon:<AiIcons.AiFillHome />,
+        cName:'nav-text'
+    },
+    {
+        title:'Payments',
+        path:'/manager/Membership',
+        icon:<AiIcons.AiFillHome />,
+        cName:'nav-text'
+    },
+    {
+        title:'Events',
+        path:'/manager/Session',
         icon:<AiIcons.AiFillHome />,
         cName:'nav-text'
     },
