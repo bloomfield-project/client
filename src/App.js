@@ -17,6 +17,7 @@ import Session from "./pages/Manager/js/Session";
 import Membership from "./pages/Manager/js/Membership";
 import SampleForm from "./component/Form/SampleForm";
 import FormData from "./component/Form/FormData";
+import PlayerRanking from "./pages/player/js/playerRanking"
 
 
 const List = [
@@ -46,6 +47,7 @@ function App() {
           <Route path="/manager/Session"  element={<Session/>}/>
           <Route path="/manager/Membership"  element={<Membership/>}/>
           <Route path="/manager/SampleForm" element={<SampleForm />} />
+          <Route path="/player/playerRanking" element={<PlayerRanking />} />
 
           {/* <Route path="/Search" element={<SearchTable/>} />/ */}
         </Routes>

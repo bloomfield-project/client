@@ -24,3 +24,11 @@ removed
 yarn add mdbootstrap //වැඩක් ගත්තෙ නෑ
 
 yarn add react-drag-drop-files
+
+
+
+
+
+
+
+yarn add antd
