@@ -18,6 +18,8 @@ import Membership from "./pages/Manager/js/Membership";
 import SampleForm from "./component/Form/SampleForm";
 import FormData from "./component/Form/FormData";
 import PlayerRanking from "./pages/player/js/playerRanking"
+import Progress from "./pages/player/js/Progress"
+import PrivateProgress from "./pages/player/js/PrivateProgress"
 
 
 const List = [
@@ -48,6 +50,8 @@ function App() {
           <Route path="/manager/Membership"  element={<Membership/>}/>
           <Route path="/manager/SampleForm" element={<SampleForm />} />
           <Route path="/player/playerRanking" element={<PlayerRanking />} />
+          <Route path="/player/Progress" element={<Progress />} />
+          <Route path="/player/PrivateProgress" element={<PrivateProgress />} />
 
           {/* <Route path="/Search" element={<SearchTable/>} />/ */}
         </Routes>

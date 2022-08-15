@@ -17,6 +17,7 @@
     "react-drag-drop-files": "^2.3.7",
     "react-hook-form": "^7.34.0",
     "react-icons": "^4.4.0",
+    "react-minimal-pie-chart": "^8.3.0",
     "react-router-dom": "^6.3.0",
     "react-script": "^2.0.5",
     "react-scripts": "^5.0.1",
