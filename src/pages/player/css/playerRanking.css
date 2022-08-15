@@ -1,0 +1,29 @@
+.title{
+    width: 95%;
+    background-color: brown;
+}
+.player-details-box{
+    padding-top: 50px;
+    display: flex;
+    width: 95%;
+    justify-content: space-around;
+}
+.playerImage{
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+}
+.playerTable{
+    width: 400px;
+    height: 300px;
+    background-color: rgb(13, 122, 59);
+}
+.playerPreformanceBody{
+    margin-top: 50px;
+    width: 95%;
+}
+.player-content{
+    width: 100%;
+    height: 100px;
+    background-color: white;
+}
