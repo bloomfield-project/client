@@ -23,6 +23,8 @@ import PrivateProgress from "./pages/player/js/PrivateProgress"
 import Matches from "./pages/player/js/Matches";
 import MatchDetails from "./pages/player/js/MatchDetails"
 import PSessionDetails from "./pages/player/js/PSessionDetails"
+import CSessionDetails from "./pages/player/js/CSessionDetails"
+import EventDetails from "./pages/player/js/EventDetails"
 
 const List = [
   {id:1, name: "John Doe" , Age: 27},
@@ -57,6 +59,8 @@ function App() {
           <Route path="/player/Matches" element={<Matches />} />
           <Route path="/player/MatchDetails" element={<MatchDetails />} />
           <Route path="/player/PSessionDetails" element={<PSessionDetails />} />
+          <Route path="/player/CSessionDetails" element={<CSessionDetails />} />
+          <Route path="/player/EventDetails" element={<EventDetails />} />
 
           {/* <Route path="/Search" element={<SearchTable/>} />/ */}
         </Routes>
