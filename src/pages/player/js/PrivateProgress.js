@@ -42,8 +42,10 @@ function PrivateProgress() {
                     <span className="gap"></span>
                     <div className="tableTopic"><h4>Feedback</h4></div>
                     <hr></hr>
-                    <p style={{textAlign:"left" , width:"95%"}}>While coaching, you might see a dozen things you want to feed back. But rather than pointing out a bunch of cricket tips,stay quiet and pick out the one thing that will help most in a session.</p>
-                    <div style={{width:"95%"}}><h5>Mr. Roshan Mahanama</h5></div>
+                    <div className="fdbck-container">
+                      <p style={{textAlign:"left" , width:"95%"}}>While coaching, you might see a dozen things you want to feed back. But rather than pointing out a bunch of cricket tips,stay quiet and pick out the one thing that will help most in a session.</p>
+                      <div style={{width:"95%"}}><h5>Mr. Roshan Mahanama</h5></div>
+                    </div>
                 </div>
                         
               </div>

@@ -1,8 +1,8 @@
-import Header from "../component/header/Header"
-import Navbar from "../component/NavigationBar/Navbar";
-import "./Home.css"
+import Header from "../../../component/header/Header"
+import Navbar from "../../../component/NavigationBar/Navbar";
+import "../../Home.css"
 
-function Home() {
+function EventDetails() {
   return (
     <div className="page-container-1">
       <div className="header-container">
@@ -22,4 +22,4 @@ function Home() {
 );
 }
 
-export default Home;
+export default EventDetails;
