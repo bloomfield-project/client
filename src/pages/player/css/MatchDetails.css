@@ -1,0 +1,52 @@
+.matchesD-container-outer-box{
+    width: 95%;
+    padding: 20px 20px;
+    background-color: white;
+    border-radius: 10px;
+    padding-top: 40px;
+}
+
+.col-MD-1{
+    width: 30%;
+    text-align: start;
+    padding-left: 20px;
+}
+
+.col-MD-2{
+    width: 20%;
+}
+
+.col-MD-3,.col-MD-4,.col-MD-5,.col-MD-6,.col-MD-7{
+    width: 10%;
+}
+
+.table-head-MD{
+    display: flex;
+    width: 100%;
+    background-color: #E3E6E3;
+    margin-bottom: 20px;
+    align-items: center;
+    padding-top: 5px;
+    font-size: 1rem;
+    
+}
+.table-row-MD{
+    display: flex;
+    width: 100%;
+    
+}
+
+.table-headMD{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #4a4a4a;
+    
+}
+
+.col-MD1 > h5,.col-MD2 > h5{
+    color: white;
+    
+}
+

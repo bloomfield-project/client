@@ -20,7 +20,9 @@ import FormData from "./component/Form/FormData";
 import PlayerRanking from "./pages/player/js/playerRanking"
 import Progress from "./pages/player/js/Progress"
 import PrivateProgress from "./pages/player/js/PrivateProgress"
-
+import Matches from "./pages/player/js/Matches";
+import MatchDetails from "./pages/player/js/MatchDetails"
+import PSessionDetails from "./pages/player/js/PSessionDetails"
 
 const List = [
   {id:1, name: "John Doe" , Age: 27},
@@ -52,6 +54,9 @@ function App() {
           <Route path="/player/playerRanking" element={<PlayerRanking />} />
           <Route path="/player/Progress" element={<Progress />} />
           <Route path="/player/PrivateProgress" element={<PrivateProgress />} />
+          <Route path="/player/Matches" element={<Matches />} />
+          <Route path="/player/MatchDetails" element={<MatchDetails />} />
+          <Route path="/player/PSessionDetails" element={<PSessionDetails />} />
 
           {/* <Route path="/Search" element={<SearchTable/>} />/ */}
         </Routes>
