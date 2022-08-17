@@ -150,7 +150,6 @@ function Session() {
             <Navbar></Navbar>
           </div>
           <div className="body-container-2">
-            {/* <div > */}
             <div className="title">
               <h1>{tabNumber === 1 ? "Counseling Sessions" : "Events"}</h1>
             </div>
@@ -196,21 +195,6 @@ function Session() {
           </div>
         </div>
       </div>
-      {/* <Container className="page-container-1">
-        <Row className="header-container">
-          <Col >
-            <Header />
-          </Col>
-        </Row>
-        <Row className="body-container-1">
-          <Col md="auto">
-            <Navbar/>
-          </Col>
-          <Col md="auto">
-            <Tables list={List} colNames={colNames} />
-          </Col>
-        </Row>
-      </Container> */}
     </>
   );
 }

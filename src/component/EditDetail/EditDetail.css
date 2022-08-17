@@ -1,0 +1,28 @@
+.edit-main-container{
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    
+    padding: 40px 20px 20px 20px;
+}
+
+.edit-sub-container{
+    width: 100%;
+    padding: 15px;
+    /* background-color: aliceblue; */
+
+
+}
+
+.edit-lable{
+    /* background-color: blue; */
+    display: flex;
+    align-items:flex-start;
+}
+
+.edit-edit-detail{
+    /* background-color: brown; */
+    padding: 8px;
+    display: flex;
+    justify-content: space-between;
+}

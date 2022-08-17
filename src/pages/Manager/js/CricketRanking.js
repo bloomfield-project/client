@@ -25,8 +25,6 @@ function CricketRanking() {
                 <h5 className="tab">All-rounders</h5>
               </div>
               <hr></hr>
-
-              {/* table begin */}
               <div className="table-box-1">
                 <div className="table-tabs">
                     <div className="table-tab">ODI</div>
@@ -70,7 +68,6 @@ function CricketRanking() {
                 </div>
 
               </div>
-              {/* table end */}
           </div>
         </div>
         
