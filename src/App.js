@@ -27,7 +27,7 @@ import CSessionDetails from "./pages/player/js/CSessionDetails"
 import EventDetails from "./pages/player/js/EventDetails"
 
 
-import AplayerRanking from "./pages/admin/js/AplayerRanking";
+import APlayerRanking from "./pages/admin/js/APlayerRanking";
 import AProgress from "./pages/admin/js/AProgress"
 import APrivateProgress from "./pages/admin/js/APrivateProgress"
 
