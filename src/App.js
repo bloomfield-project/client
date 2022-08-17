@@ -66,7 +66,8 @@ function App() {
 
 
 
-          <Route path="/admin/AplayerRanking" element={<PlayerRanking />} />
+          <Route path="/admin/AplayerRanking" element={<APlayerRanking />} />
+          <Route path="/admin/AProgress" element={<AProgress />} />
 
           {/* <Route path="/Search" element={<SearchTable/>} />/ */}
         </Routes>
