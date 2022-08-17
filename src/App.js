@@ -61,6 +61,12 @@ function App() {
           <Route path="/player/PSessionDetails" element={<PSessionDetails />} />
           <Route path="/player/CSessionDetails" element={<CSessionDetails />} />
           <Route path="/player/EventDetails" element={<EventDetails />} />
+          
+
+
+
+
+          <Route path="/admin/AplayerRanking" element={<PlayerRanking />} />
 
           {/* <Route path="/Search" element={<SearchTable/>} />/ */}
         </Routes>
