@@ -26,6 +26,12 @@ import PSessionDetails from "./pages/player/js/PSessionDetails"
 import CSessionDetails from "./pages/player/js/CSessionDetails"
 import EventDetails from "./pages/player/js/EventDetails"
 
+
+import AplayerRanking from "./pages/admin/js/AplayerRanking";
+import AProgress from "./pages/admin/js/AProgress"
+import APrivateProgress from "./pages/admin/js/APrivateProgress"
+
+
 const List = [
   {id:1, name: "John Doe" , Age: 27},
   {id:1, name: "John Doe" , Age: 27},
