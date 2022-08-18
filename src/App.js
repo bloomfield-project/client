@@ -39,6 +39,8 @@ import AddCouncellingSession from "./pages/Manager/js/AddCouncellingSession";
 import EditCouncellingSession from "./pages/Manager/js/EditCouncellingSession";
 import AddEvent from "./pages/Manager/js/AddEvent";
 import EditEvent from "./pages/Manager/js/EditEvent";
+import Achivement from "./pages/Manager/js/Achivement";
+import SampleCard from "./component/Card/SampleCard";
 
 
 const List = [
@@ -79,10 +81,12 @@ function App() {
           <Route path="/test" element={<Test />} />
           <Route path="/manager/PlayerRegistration" element={<PlayerRegistration />} />
           <Route path="/manager/EditPlayerDetails" element={<EditPlayerDetails />} />/
-          <Route path="/manager/AddCouncellingSession" element={<AddCouncellingSession />} />/
-          <Route path="/manager/EditCouncellingSession" element={<EditCouncellingSession />} />/
-          <Route path="/manager/AddEvent" element={<AddEvent />} />/
-          <Route path="/manager/EditEvent" element={<EditEvent />} />/
+          <Route path="/manager/AddCouncellingSession" element={<AddCouncellingSession />} />
+          <Route path="/manager/EditCouncellingSession" element={<EditCouncellingSession />} />
+          <Route path="/manager/AddEvent" element={<AddEvent />} />
+          <Route path="/manager/EditEvent" element={<EditEvent />} />
+          <Route path="/manager/Achivement" element = {<Achivement/>} />
+          <Route path="/card" element = {<SampleCard/>} />
 
 
 
