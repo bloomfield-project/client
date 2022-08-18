@@ -1,4 +1,5 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 import Header from "../../../component/header/Header";
 import Navbar from "../../../component/NavigationBar/Navbar";
@@ -8,39 +9,57 @@ import "../../Home.css";
 import SearchTable from "../../../component/Search/SearchTable";
 import profpic from "../../../component/header/profpic.jfif";
 
-
-
 const data = [
   {
     id: "1101",
     img: <img className="row-image" src={profpic} alt=""></img>,
     name: "lamesh iroshan",
-    btn: <Button variant="secondary">View</Button>,
+    btn: (
+      <Link to={"/manager/EditPlayerDetails"}>
+        <Button variant="secondary">View</Button>
+      </Link>
+    ),
   },
 
   {
     id: "1102",
     img: <img className="row-image" src={profpic} alt=""></img>,
     name: "Ramesh nimnath",
-    btn: <Button variant="secondary">View</Button>,
+    btn: (
+      <Link to={"/manager/EditPlayerDetails"}>
+        <Button variant="secondary">View</Button>
+      </Link>
+    ),
   },
   {
     id: "1104",
     img: <img className="row-image" src={profpic} alt=""></img>,
     name: "Nimesh dilshan",
-    btn: <Button variant="secondary">View</Button>,
+    btn: (
+      <Link to={"/manager/EditPlayerDetails"}>
+        <Button variant="secondary">View</Button>
+      </Link>
+    ),
   },
   {
     id: "1103",
     img: <img className="row-image" src={profpic} alt=""></img>,
     name: "Saaru wijesinghe",
-    btn: <Button variant="secondary">View</Button>,
+    btn: (
+      <Link to={"/manager/EditPlayerDetails"}>
+        <Button variant="secondary">View</Button>
+      </Link>
+    ),
   },
   {
     id: "1105",
     img: <img className="row-image" src={profpic} alt=""></img>,
     name: "Ashan grove",
-    btn: <Button variant="secondary">View</Button>,
+    btn: (
+      <Link to={"/manager/EditPlayerDetails"}>
+        <Button variant="secondary">View</Button>
+      </Link>
+    ),
   },
 ];
 
@@ -64,8 +83,6 @@ const columns = [
   },
 ];
 
-
-
 function Players() {
   return (
     <>
@@ -84,36 +101,38 @@ function Players() {
             </div>
 
             <div className="tabs">
-              <div className="tabs-left">
-                
-              </div>
+              <div className="tabs-left"></div>
 
               <div className="tabs-right">
-                <Button variant="outline-success">+ Add</Button>
-              </div> 
+                <Link to={"/manager/PlayerRegistration"}>
+                  <Button
+                    to={"/manager/PlayerRegistration"}
+                    variant="outline-success"
+                  >
+                    + Add
+                  </Button>
+                </Link>
+              </div>
             </div>
             <hr></hr>
             <div className="table-box-1">
-                <div className="tablee"> 
+              <div className="tablee">
                 <SearchTable
-                title={""}
-                data={data}
-                columns={columns}
-                searching={true}
-                sort={false}
-                filter={false}
-                paging={true}
-                headerC={"#4a4a4a"}
-                headerH={"40px"}
-                headerFC={'white'}
-                headerFS={'1.2rem'}
-                headerFW={'500'}
-                // height: 40px
-    //             font-size: 1.2rem;
-    // font-weight: 500;
-              />
-                </div>
-              
+                  title={""}
+                  data={data}
+                  columns={columns}
+                  searching={true}
+                  sort={false}
+                  filter={false}
+                  paging={true}
+                  headerC={"#4a4a4a"}
+                  headerH={"40px"}
+                  headerFC={"white"}
+                  headerFS={"1.2rem"}
+                  headerFW={"500"}
+                 
+                />
+              </div>
             </div>
 
             {/* </div> */}
