@@ -21,16 +21,30 @@ import PlayerRanking from "./pages/player/js/playerRanking"
 import Progress from "./pages/player/js/Progress"
 import PrivateProgress from "./pages/player/js/PrivateProgress"
 import Matches from "./pages/player/js/Matches";
-import MatchDetails from "./pages/player/js/MatchDetails"
-import PSessionDetails from "./pages/player/js/PSessionDetails"
-import CSessionDetails from "./pages/player/js/CSessionDetails"
-import EventDetails from "./pages/player/js/EventDetails"
+import MatchDetails from "./pages/player/js/MatchDetails";
+import PSessionDetails from "./pages/player/js/PSessionDetails";
+import CSessionDetails from "./pages/player/js/CSessionDetails";
+import EventDetails from "./pages/player/js/EventDetails";
+
 
 import IntroTable from "./component/IntroTable/IntroTable";
 import Calander from "./component/Calander/Calander";
 import PracticeSessions from "./pages/Coach/js/PracticeSessions";
 import Appoinments from "./pages/Coach/js/Appoinments";
 import ViewAppoinments from "./pages/Coach/js/ViewAppoinments";
+
+import Test from "./component/Table/test";
+import EditDetails from "./component/EditDetail/EditDetails";
+import PlayerRegistration from "./pages/Manager/js/PlayerRegistration";
+import EditPlayerDetails from "./pages/Manager/js/EditPlayerDetails";
+import AddCouncellingSession from "./pages/Manager/js/AddCouncellingSession";
+import EditCouncellingSession from "./pages/Manager/js/EditCouncellingSession";
+import AddEvent from "./pages/Manager/js/AddEvent";
+import EditEvent from "./pages/Manager/js/EditEvent";
+import Achivement from "./pages/Manager/js/Achivement";
+import SampleCard from "./component/Card/SampleCard";
+import AddAchivement from "./pages/Manager/js/AddAchivement";
+
 
 const List = [
   {id:1, name: "John Doe" , Age: 27},
@@ -67,6 +81,20 @@ function App() {
           <Route path="/player/PSessionDetails" element={<PSessionDetails />} />
           <Route path="/player/CSessionDetails" element={<CSessionDetails />} />
           <Route path="/player/EventDetails" element={<EventDetails />} />
+          <Route path="/test" element={<Test />} />
+          <Route path="/manager/PlayerRegistration" element={<PlayerRegistration />} />
+          <Route path="/manager/EditPlayerDetails" element={<EditPlayerDetails />} />/
+          <Route path="/manager/AddCouncellingSession" element={<AddCouncellingSession />} />
+          <Route path="/manager/EditCouncellingSession" element={<EditCouncellingSession />} />
+          <Route path="/manager/AddEvent" element={<AddEvent />} />
+          <Route path="/manager/EditEvent" element={<EditEvent />} />
+          <Route path="/manager/Achivement" element = {<Achivement/>} />
+          <Route path="/card" element = {<SampleCard/>} />
+          <Route path="/manager/AddAchivement" element={<AddAchivement/>}  />
+
+
+
+          
 
           <Route path="/player/I" element={<IntroTable />} />
           <Route path="/C" element={<Calander />} />
