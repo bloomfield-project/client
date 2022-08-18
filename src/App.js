@@ -26,6 +26,15 @@ import PSessionDetails from "./pages/player/js/PSessionDetails"
 import CSessionDetails from "./pages/player/js/CSessionDetails"
 import EventDetails from "./pages/player/js/EventDetails"
 
+import Test from "./component/Table/test";
+import EditDetails from "./component/EditDetail/EditDetails";
+import PlayerRegistration from "./pages/Manager/js/PlayerRegistration";
+import EditPlayerDetails from "./pages/Manager/js/EditPlayerDetails";
+import AddCouncellingSession from "./pages/Manager/js/AddCouncellingSession";
+import EditCouncellingSession from "./pages/Manager/js/EditCouncellingSession";
+import AddEvent from "./pages/Manager/js/AddEvent";
+import EditEvent from "./pages/Manager/js/EditEvent";
+
 const List = [
   {id:1, name: "John Doe" , Age: 27},
   {id:1, name: "John Doe" , Age: 27},
@@ -61,6 +70,17 @@ function App() {
           <Route path="/player/PSessionDetails" element={<PSessionDetails />} />
           <Route path="/player/CSessionDetails" element={<CSessionDetails />} />
           <Route path="/player/EventDetails" element={<EventDetails />} />
+          <Route path="/test" element={<Test />} />
+          <Route path="/manager/PlayerRegistration" element={<PlayerRegistration />} />
+          <Route path="/manager/EditPlayerDetails" element={<EditPlayerDetails />} />/
+          <Route path="/manager/AddCouncellingSession" element={<AddCouncellingSession />} />/
+          <Route path="/manager/EditCouncellingSession" element={<EditCouncellingSession />} />/
+          <Route path="/manager/AddEvent" element={<AddEvent />} />/
+          <Route path="/manager/EditEvent" element={<EditEvent />} />/
+
+
+
+          
 
           {/* <Route path="/Search" element={<SearchTable/>} />/ */}
         </Routes>
