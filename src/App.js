@@ -30,6 +30,8 @@ import Test from "./component/Table/test";
 import EditDetails from "./component/EditDetail/EditDetails";
 import PlayerRegistration from "./pages/Manager/js/PlayerRegistration";
 import EditPlayerDetails from "./pages/Manager/js/EditPlayerDetails";
+import AddCouncellingSession from "./pages/Manager/js/AddCouncellingSession";
+import EditCouncellingSession from "./pages/Manager/js/EditCouncellingSession";
 
 const List = [
   {id:1, name: "John Doe" , Age: 27},
@@ -68,7 +70,11 @@ function App() {
           <Route path="/player/EventDetails" element={<EventDetails />} />
           <Route path="/test" element={<Test />} />
           <Route path="/manager/PlayerRegistration" element={<PlayerRegistration />} />
-          <Route path="/manager/EditPlayerDetails" element={<EditPlayerDetails />} />
+          <Route path="/manager/EditPlayerDetails" element={<EditPlayerDetails />} />/
+          <Route path="/manager/AddCouncellingSession" element={<AddCouncellingSession />} />/
+          <Route path="/manager/EditCouncellingSession" element={<EditCouncellingSession />} />/
+
+          
 
           {/* <Route path="/Search" element={<SearchTable/>} />/ */}
         </Routes>

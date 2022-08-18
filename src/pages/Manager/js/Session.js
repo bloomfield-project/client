@@ -1,19 +1,18 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Header from "../../../component/header/Header";
 import Navbar from "../../../component/NavigationBar/Navbar";
-// import Tables from "../../../component/Table/Table";
+import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import "../../Home.css";
 import SearchTable from "../../../component/Search/SearchTable";
-
 
 const data = [
   {
     id: "1101",
     // img: <img className="row-image" src={profpic} alt=""></img>,
     event: "Crismas party",
-    date: '2022-05-11',
-    time: '09:00 am',
+    date: "2022-05-11",
+    time: "09:00 am",
     btn: <Button variant="secondary">View</Button>,
   },
 
@@ -21,34 +20,33 @@ const data = [
     id: "1101",
     // img: <img className="row-image" src={profpic} alt=""></img>,
     event: "Crismas party",
-    date: '2022-05-11',
-    time: '09:00 am',
+    date: "2022-05-11",
+    time: "09:00 am",
     btn: <Button variant="secondary">View</Button>,
   },
   {
     id: "1101",
     // img: <img className="row-image" src={profpic} alt=""></img>,
     event: "Crismas party",
-    date: '2022-05-11',
-    time: '09:00 am',
+    date: "2022-05-11",
+    time: "09:00 am",
     btn: <Button variant="secondary">View</Button>,
   },
   {
     id: "1101",
     // img: <img className="row-image" src={profpic} alt=""></img>,
     event: "Crismas party",
-    date: '2022-05-11',
-    time: '09:00 am',
+    date: "2022-05-11",
+    time: "09:00 am",
     btn: <Button variant="secondary">View</Button>,
   },
-
 ];
 
 // console.log(data[0]);
 const columns = [
   {
     title: "ID",
-    field:'id',
+    field: "id",
   },
   {
     title: "Event",
@@ -65,7 +63,7 @@ const columns = [
   {
     title: "",
     field: "btn",
-  }
+  },
 ];
 
 const data_1 = [
@@ -73,36 +71,51 @@ const data_1 = [
     // id: "1101",
     // img: <img className="row-image" src={profpic} alt=""></img>,
     mentor: "Dr.chaminda wimukthi",
-    date: '2022-05-11',
-    time: '09:00 am',
-    btn: <Button variant="secondary">View</Button>,
+    date: "2022-05-11",
+    time: "09:00 am",
+    btn: (
+      <Link to={"/manager/EditCouncellingSession"}>
+        <Button variant="secondary">View</Button>
+      </Link>
+    ),
   },
 
   {
     // id: "1101",
     // img: <img className="row-image" src={profpic} alt=""></img>,
     mentor: "Dr.chaminda wimukthi",
-    date: '2022-05-11',
-    time: '09:00 am',
-    btn: <Button variant="secondary">View</Button>,
+    date: "2022-05-11",
+    time: "09:00 am",
+    btn: (
+      <Link to={"/manager/EditCouncellingSession"}>
+        <Button variant="secondary">View</Button>
+      </Link>
+    ),
   },
   {
     // id: "1101",
     // img: <img className="row-image" src={profpic} alt=""></img>,
     mentor: "Dr.chaminda wimukthi",
-    date: '2022-05-11',
-    time: '09:00 am',
-    btn: <Button variant="secondary">View</Button>,
+    date: "2022-05-11",
+    time: "09:00 am",
+    btn: (
+      <Link to={"/manager/EditCouncellingSession"}>
+        <Button variant="secondary">View</Button>
+      </Link>
+    ),
   },
   {
     // id: "1101",
     // img: <img className="row-image" src={profpic} alt=""></img>,
     mentor: "Dr.chaminda wimukthi",
-    date: '2022-05-11',
-    time: '09:00 am',
-    btn: <Button variant="secondary">View</Button>,
+    date: "2022-05-11",
+    time: "09:00 am",
+    btn: (
+      <Link to={"/manager/EditCouncellingSession"}>
+        <Button variant="secondary">View</Button>
+      </Link>
+    ),
   },
-
 ];
 
 // console.log(data[0]);
@@ -122,22 +135,20 @@ const columns_1 = [
   {
     title: "",
     field: "btn",
-  }
+  },
 ];
 
 function Session() {
+  const [tabNumber, setTabNumber] = useState(1);
 
-  const[tabNumber, setTabNumber]  = useState(1);
-
-  const selectTab_1 = ()=>{
+  const selectTab_1 = () => {
     setTabNumber(1);
     // console.log(tabNumber + "selectTab 1");
-  }
-  const selectTab_2 = ()=>{
+  };
+  const selectTab_2 = () => {
     setTabNumber(2);
     // console.log(tabNumber + "selectTab 2");
-
-  }
+  };
 
   return (
     <>
@@ -154,41 +165,52 @@ function Session() {
               <h1>{tabNumber === 1 ? "Counseling Sessions" : "Events"}</h1>
             </div>
             <div className="tabs">
-                {/* <h5 className="tab-active">Couceling<hr></hr></h5>
+              {/* <h5 className="tab-active">Couceling<hr></hr></h5>
                 <h5 className="tab">Events</h5> */}
               <div className="tabs-left">
-                <h5 className= {tabNumber === 1 ? "tab-active" : "tab" } > <a  onClick={()=>selectTab_1(1)}>Couceling</a> {tabNumber === 1 ? <hr></hr> : ""}</h5>
-                <h5 className= {tabNumber === 2 ? "tab-active" : "tab" } ><a  onClick={()=>selectTab_2(2)} > Events</a>  {tabNumber === 2 ? <hr></hr> : ""}</h5>
+                <h5 className={tabNumber === 1 ? "tab-active" : "tab"}>
+                  {" "}
+                  <a onClick={() => selectTab_1(1)}>Couceling</a>{" "}
+                  {tabNumber === 1 ? <hr></hr> : ""}
+                </h5>
+                <h5 className={tabNumber === 2 ? "tab-active" : "tab"}>
+                  <a onClick={() => selectTab_2(2)}> Events</a>{" "}
+                  {tabNumber === 2 ? <hr></hr> : ""}
+                </h5>
               </div>
 
               <div className="tabs-right">
-                <Button variant="outline-success">+ Add</Button>
+                <Link to={"/manager/AddCouncellingSession"}>
+                  <Button
+                    variant="outline-success"
+                  >
+                    + Add
+                  </Button>
+                </Link>
               </div>
-                                
             </div>
-            
+
             <hr></hr>
             <div className="table-box-1">
-                <div className="tablee"> 
+              <div className="tablee">
                 <SearchTable
-                title={false}
-                data={tabNumber === 2 ? data : data_1}
-                columns={tabNumber === 2 ? columns : columns_1}
-                searching={true}
-                sort={false}
-                filter={false}
-                paging={true}
-                headerC={"#4a4a4a"}
-                headerH={"40px"}
-                headerFC={'white'}
-                headerFS={'1.2rem'}
-                headerFW={'500'}
-                // height: 40px
-    //             font-size: 1.2rem;
-    // font-weight: 500;
-              />
-                </div>
-              
+                  title={false}
+                  data={tabNumber === 2 ? data : data_1}
+                  columns={tabNumber === 2 ? columns : columns_1}
+                  searching={true}
+                  sort={false}
+                  filter={false}
+                  paging={true}
+                  headerC={"#4a4a4a"}
+                  headerH={"40px"}
+                  headerFC={"white"}
+                  headerFS={"1.2rem"}
+                  headerFW={"500"}
+                  // height: 40px
+                  //             font-size: 1.2rem;
+                  // font-weight: 500;
+                />
+              </div>
             </div>
 
             {/* </div> */}
