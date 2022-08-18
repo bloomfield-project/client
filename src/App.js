@@ -21,10 +21,15 @@ import PlayerRanking from "./pages/player/js/playerRanking"
 import Progress from "./pages/player/js/Progress"
 import PrivateProgress from "./pages/player/js/PrivateProgress"
 import Matches from "./pages/player/js/Matches";
-import MatchDetails from "./pages/player/js/MatchDetails"
-import PSessionDetails from "./pages/player/js/PSessionDetails"
-import CSessionDetails from "./pages/player/js/CSessionDetails"
-import EventDetails from "./pages/player/js/EventDetails"
+import MatchDetails from "./pages/player/js/MatchDetails";
+import PSessionDetails from "./pages/player/js/PSessionDetails";
+import CSessionDetails from "./pages/player/js/CSessionDetails";
+import EventDetails from "./pages/player/js/EventDetails";
+
+
+import IntroTable from "./component/IntroTable/IntroTable";
+import Calander from "./component/Calander/Calander";
+import PracticeSessions from "./pages/Coach/js/PracticeSessions";
 
 import Test from "./component/Table/test";
 import EditDetails from "./component/EditDetail/EditDetails";
@@ -34,6 +39,7 @@ import AddCouncellingSession from "./pages/Manager/js/AddCouncellingSession";
 import EditCouncellingSession from "./pages/Manager/js/EditCouncellingSession";
 import AddEvent from "./pages/Manager/js/AddEvent";
 import EditEvent from "./pages/Manager/js/EditEvent";
+
 
 const List = [
   {id:1, name: "John Doe" , Age: 27},
@@ -81,6 +87,11 @@ function App() {
 
 
           
+
+          <Route path="/player/I" element={<IntroTable />} />
+          <Route path="/C" element={<Calander />} />
+          <Route path="/couch/PSessions" element={<PracticeSessions />} />
+
 
           {/* <Route path="/Search" element={<SearchTable/>} />/ */}
         </Routes>
