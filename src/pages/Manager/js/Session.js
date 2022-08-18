@@ -13,7 +13,11 @@ const data = [
     event: "Crismas party",
     date: "2022-05-11",
     time: "09:00 am",
-    btn: <Button variant="secondary">View</Button>,
+    btn: (
+      <Link to={"/manager/EditEvent"}>
+        <Button variant="secondary">View</Button>
+      </Link>
+    ),
   },
 
   {
@@ -22,7 +26,11 @@ const data = [
     event: "Crismas party",
     date: "2022-05-11",
     time: "09:00 am",
-    btn: <Button variant="secondary">View</Button>,
+    btn: (
+      <Link to={"/manager/EditEvent"}>
+        <Button variant="secondary">View</Button>
+      </Link>
+    ),
   },
   {
     id: "1101",
@@ -30,7 +38,11 @@ const data = [
     event: "Crismas party",
     date: "2022-05-11",
     time: "09:00 am",
-    btn: <Button variant="secondary">View</Button>,
+    btn: (
+      <Link to={"/manager/EditEvent"}>
+        <Button variant="secondary">View</Button>
+      </Link>
+    ),
   },
   {
     id: "1101",
@@ -38,7 +50,11 @@ const data = [
     event: "Crismas party",
     date: "2022-05-11",
     time: "09:00 am",
-    btn: <Button variant="secondary">View</Button>,
+    btn: (
+      <Link to={"/manager/EditEvent"}>
+        <Button variant="secondary">View</Button>
+      </Link>
+    ),
   },
 ];
 
@@ -180,7 +196,7 @@ function Session() {
               </div>
 
               <div className="tabs-right">
-                <Link to={"/manager/AddCouncellingSession"}>
+                <Link to={tabNumber === 1  ? "/manager/AddCouncellingSession" : "/manager/AddEvent"}>
                   <Button
                     variant="outline-success"
                   >

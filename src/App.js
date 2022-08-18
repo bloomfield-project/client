@@ -32,6 +32,8 @@ import PlayerRegistration from "./pages/Manager/js/PlayerRegistration";
 import EditPlayerDetails from "./pages/Manager/js/EditPlayerDetails";
 import AddCouncellingSession from "./pages/Manager/js/AddCouncellingSession";
 import EditCouncellingSession from "./pages/Manager/js/EditCouncellingSession";
+import AddEvent from "./pages/Manager/js/AddEvent";
+import EditEvent from "./pages/Manager/js/EditEvent";
 
 const List = [
   {id:1, name: "John Doe" , Age: 27},
@@ -73,6 +75,10 @@ function App() {
           <Route path="/manager/EditPlayerDetails" element={<EditPlayerDetails />} />/
           <Route path="/manager/AddCouncellingSession" element={<AddCouncellingSession />} />/
           <Route path="/manager/EditCouncellingSession" element={<EditCouncellingSession />} />/
+          <Route path="/manager/AddEvent" element={<AddEvent />} />/
+          <Route path="/manager/EditEvent" element={<EditEvent />} />/
+
+
 
           
 
