@@ -26,6 +26,10 @@ import PSessionDetails from "./pages/player/js/PSessionDetails"
 import CSessionDetails from "./pages/player/js/CSessionDetails"
 import EventDetails from "./pages/player/js/EventDetails"
 
+import IntroTable from "./component/IntroTable/IntroTable";
+import Calander from "./component/Calander/Calander";
+import PracticeSessions from "./pages/Coach/js/PracticeSessions";
+
 const List = [
   {id:1, name: "John Doe" , Age: 27},
   {id:1, name: "John Doe" , Age: 27},
@@ -61,6 +65,11 @@ function App() {
           <Route path="/player/PSessionDetails" element={<PSessionDetails />} />
           <Route path="/player/CSessionDetails" element={<CSessionDetails />} />
           <Route path="/player/EventDetails" element={<EventDetails />} />
+
+          <Route path="/player/I" element={<IntroTable />} />
+          <Route path="/C" element={<Calander />} />
+          <Route path="/couch/PSessions" element={<PracticeSessions />} />
+
 
           {/* <Route path="/Search" element={<SearchTable/>} />/ */}
         </Routes>
