@@ -167,8 +167,8 @@ function Achivement() {
                 <Link
                   to={
                     tabNumber === 1
-                      ? "/manager/AddCouncellingSession"
-                      : "/manager/AddEvent"
+                      ? "/manager/AddAchivement"
+                      : "#"
                   }
                 >
                   <Button variant="outline-success">+ Add</Button>
