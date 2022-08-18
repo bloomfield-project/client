@@ -67,9 +67,9 @@
     margin: 0;
 }
 
-@media screen and (max-width: 680px) {
+@media screen and (max-width: 900px) {
   .card-sub-container {
-    background-color: rgb(75, 69, 62);
+    /* background-color: rgb(75, 69, 62); */
     display:block;
   }
 
@@ -79,6 +79,6 @@
   .card-detail-right {
     width: 100%;
     height: 300px;
-    background-color: rgb(247, 204, 204);
+    /* background-color: rgb(247, 204, 204); */
   }
 }

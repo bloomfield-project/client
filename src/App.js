@@ -41,6 +41,7 @@ import AddEvent from "./pages/Manager/js/AddEvent";
 import EditEvent from "./pages/Manager/js/EditEvent";
 import Achivement from "./pages/Manager/js/Achivement";
 import SampleCard from "./component/Card/SampleCard";
+import AddAchivement from "./pages/Manager/js/AddAchivement";
 
 
 const List = [
@@ -87,6 +88,7 @@ function App() {
           <Route path="/manager/EditEvent" element={<EditEvent />} />
           <Route path="/manager/Achivement" element = {<Achivement/>} />
           <Route path="/card" element = {<SampleCard/>} />
+          <Route path="/manager/AddAchivement" element={<AddAchivement/>}  />
 
 
 
