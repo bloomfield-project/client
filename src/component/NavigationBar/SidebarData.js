@@ -53,3 +53,56 @@ export const SidebarData = [
         cName:'nav-text'
     },
 ]
+
+export const SidebarData1 = [
+    {
+        title:'Dashboard',
+        path:'/',
+        icon:<AiIcons.AiFillHome />,
+        cName:'nav-text'
+    },
+    {
+        title:'Player',
+        path:'/manager/Players',
+        icon:<IoIcons.IoIosPaper />,
+        cName:'nav-text'
+    },
+    {
+        title:'Session',
+        path:'/manager/Session',
+        icon:<FaIcons.FaCartPlus />,
+        cName:'nav-text'
+    },
+    {
+        title:'Achivements',
+        path:'/manager/Achivement',
+        icon:<AiIcons.AiFillHome />,
+        cName:'nav-text'
+    },
+    {
+        title:'Ranking',
+        path:'/manager/CricketRanking',
+        icon:<AiIcons.AiFillHome />,
+        cName:'nav-text'
+    },
+    {
+        title:'Payments',
+        path:'/manager/Membership',
+        icon:<AiIcons.AiFillHome />,
+        cName:'nav-text'
+    },
+    {
+        title:'Events',
+        path:'/manager/Session',
+        icon:<AiIcons.AiFillHome />,
+        cName:'nav-text'
+    },
+    {
+        title:'Matches',
+        path:'/manager/MatchDetail',
+        icon:<AiIcons.AiFillHome />,
+        cName:'nav-text'
+    },
+    
+]
+

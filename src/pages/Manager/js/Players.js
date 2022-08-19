@@ -19,6 +19,11 @@ const data = [
         <Button variant="secondary">View</Button>
       </Link>
     ),
+    progress: (
+      <Link to={"/player/Progress"} style={{color:"green"}}>
+        Progress
+      </Link>
+    ),
   },
 
   {
@@ -28,6 +33,11 @@ const data = [
     btn: (
       <Link to={"/manager/EditPlayerDetails"}>
         <Button variant="secondary">View</Button>
+      </Link>
+    ),
+    progress: (
+      <Link to={"/player/Progress"} style={{color:"green"}}>
+        Progress
       </Link>
     ),
   },
@@ -40,6 +50,11 @@ const data = [
         <Button variant="secondary">View</Button>
       </Link>
     ),
+    progress: (
+      <Link to={"/player/Progress"} style={{color:"green"}}>
+        Progress
+      </Link>
+    ),
   },
   {
     id: "1103",
@@ -50,6 +65,11 @@ const data = [
         <Button variant="secondary">View</Button>
       </Link>
     ),
+    progress: (
+      <Link to={"/player/Progress"} style={{color:"green"}}>
+        Progress
+      </Link>
+    ),
   },
   {
     id: "1105",
@@ -58,6 +78,11 @@ const data = [
     btn: (
       <Link to={"/manager/EditPlayerDetails"}>
         <Button variant="secondary">View</Button>
+      </Link>
+    ),
+    progress: (
+      <Link to={"/player/Progress"} style={{color:"green"}}>
+        Progress
       </Link>
     ),
   },
@@ -81,6 +106,13 @@ const columns = [
     title: "Age",
     field: "btn",
   },
+  {
+    title:"",
+    field : "progress",
+    cellStyle: {
+      color: 'rgba(149, 41, 41, 1)'
+    },
+  }
 ];
 
 function Players() {
@@ -130,7 +162,6 @@ function Players() {
                   headerFC={"white"}
                   headerFS={"1.2rem"}
                   headerFW={"500"}
-                 
                 />
               </div>
             </div>
