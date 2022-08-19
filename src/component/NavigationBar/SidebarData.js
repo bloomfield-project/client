@@ -54,7 +54,8 @@ export const SidebarData = [
     },
 ]
 
-export const SidebarData1 = [
+
+export const SidebarDataPlayer = [
     {
         title:'Dashboard',
         path:'/',
@@ -62,20 +63,20 @@ export const SidebarData1 = [
         cName:'nav-text'
     },
     {
-        title:'Player',
-        path:'/manager/Players',
+        title:'Sessions',
+        path:'/Fogotpassword',
         icon:<IoIcons.IoIosPaper />,
         cName:'nav-text'
     },
     {
-        title:'Session',
-        path:'/manager/Session',
+        title:'Matches',
+        path:'/Search',
         icon:<FaIcons.FaCartPlus />,
         cName:'nav-text'
     },
     {
-        title:'Achivements',
-        path:'/manager/Achivement',
+        title:'Events',
+        path:'/manager/SampleForm',
         icon:<AiIcons.AiFillHome />,
         cName:'nav-text'
     },
@@ -86,23 +87,27 @@ export const SidebarData1 = [
         cName:'nav-text'
     },
     {
+        title:'Players',
+        path:'/manager/Players',
+        icon:<AiIcons.AiFillHome />,
+        cName:'nav-text'
+    },
+    {
         title:'Payments',
         path:'/manager/Membership',
         icon:<AiIcons.AiFillHome />,
         cName:'nav-text'
     },
     {
-        title:'Events',
+        title:'Achivements',
         path:'/manager/Session',
         icon:<AiIcons.AiFillHome />,
         cName:'nav-text'
     },
     {
-        title:'Matches',
-        path:'/manager/MatchDetail',
+        title:'Logout',
+        path:'/manager/Session',
         icon:<AiIcons.AiFillHome />,
         cName:'nav-text'
     },
-    
 ]
-
