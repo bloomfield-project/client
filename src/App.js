@@ -44,6 +44,8 @@ import EditEvent from "./pages/Manager/js/EditEvent";
 import Achivement from "./pages/Manager/js/Achivement";
 import SampleCard from "./component/Card/SampleCard";
 import AddAchivement from "./pages/Manager/js/AddAchivement";
+import Players1 from "./pages/Coach/js/Players";
+import PlayerDetails from "./pages/Coach/js/PlayerDetails";
 
 
 const List = [
@@ -101,7 +103,8 @@ function App() {
           <Route path="/couch/PSessions" element={<PracticeSessions />} />
           <Route path="/couch/A" element={<Appoinments />} />
           <Route path="/couch/Ap" element={<ViewAppoinments/>} />
-
+          <Route path="/couch/Players1" element={<Players1 />} />
+          <Route path="/couch/PlayerD" element={<PlayerDetails />} />
 
           {/* <Route path="/Search" element={<SearchTable/>} />/ */}
         </Routes>
