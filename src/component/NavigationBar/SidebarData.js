@@ -11,20 +11,14 @@ export const SidebarData = [
         cName:'nav-text'
     },
     {
-        title:'Player',
-        path:'/Fogotpassword',
-        icon:<IoIcons.IoIosPaper />,
-        cName:'nav-text'
-    },
-    {
-        title:'අසිත',
-        path:'/Search',
+        title:'Match',
+        path:'/manager/MatchDetail',
         icon:<FaIcons.FaCartPlus />,
         cName:'nav-text'
     },
     {
-        title:'SampleForm',
-        path:'/manager/SampleForm',
+        title:'Achivement',
+        path:'/manager/Achivement',
         icon:<AiIcons.AiFillHome />,
         cName:'nav-text'
     },
@@ -110,9 +104,7 @@ export const SidebarDataPlayer = [
         icon:<AiIcons.AiFillHome />,
         cName:'nav-text'
     },
-<<<<<<< HEAD
+
     
 ]
-=======
-]
->>>>>>> 60c97dd4718aae01f7783c8d27714f1dd61b9789
+

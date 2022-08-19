@@ -61,7 +61,7 @@ function AddCouncellingSession() {
           </div>
 
           <div className="form-container">
-            <SampleForm arr={array1} upload = {true} />
+            <SampleForm arr={array1} upload = {false} border={true} file1={""} />
           </div>
         </div>
       </div>
