@@ -4,6 +4,7 @@ import "./EditDetail.css";
 // import Button from "react-bootstrap/Button";
 
 function EditDetails({ arr, backLink }) {
+  
   return (
     <div className="edit-main-container rounded">
       <div className="edit-sub-container border border-secondary rounded">
