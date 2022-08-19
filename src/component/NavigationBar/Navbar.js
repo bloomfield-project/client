@@ -26,7 +26,7 @@ function Navbar() {
 
         
         <nav className="nav-menu active">
-          <ul className="nav-menu-items" onClick={showSidebar}>
+          <ul className="nav-menu-items" >
             
             {SidebarDataPlayer.map((item, index) => {
 

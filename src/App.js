@@ -25,6 +25,7 @@ import MatchDetails from "./pages/player/js/MatchDetails";
 import PSessionDetails from "./pages/player/js/PSessionDetails";
 import CSessionDetails from "./pages/player/js/CSessionDetails";
 import EventDetails from "./pages/player/js/EventDetails";
+
 import IntroTable from "./component/IntroTable/IntroTable";
 import Calander from "./component/Calander/Calander";
 import PracticeSessions from "./pages/Coach/js/PracticeSessions";
@@ -49,6 +50,11 @@ import MatchDetail from "./pages/Manager/js/MatchDetail";
 import Players1 from "./pages/Coach/js/Players";
 import PlayerDetails from "./pages/Coach/js/PlayerDetails";
 
+
+import Psession from "./pages/player/js/Psessions";
+import PEvents from "./pages/player/js/PEvents";
+import PlayerRankingList from "./pages/player/js/PlayerRankingList";
+import Payments from "./pages/player/js/Payments";
 
 
 const List = [
@@ -107,6 +113,13 @@ function App() {
           <Route path="/couch/Ap" element={<ViewAppoinments/>} />
           <Route path="/couch/Players1" element={<Players1 />} />
           <Route path="/couch/PlayerD" element={<PlayerDetails />} />
+
+
+
+          <Route path="/player/Psession" element={<Psession />} />
+          <Route path="/player/PEvents" element={<PEvents />} />
+          <Route path="/player/PlayerRankingList" element={<PlayerRankingList />} />
+          <Route path="/player/Payments" element={<Payments />} />
 
 
           {/* <Route path="/Search" element={<SearchTable/>} />/ */}
