@@ -39,7 +39,7 @@ function PlayerRankingList() {
               </div> */}
                 <div className="PplayerPreformanceBody">
                 <Tabs defaultActiveKey="1" onChange={onChange}>
-                    <TabPane tab="Tab 1" key="1">
+                    <TabPane tab="Batting" key="1">
                     <div className="table-box-11">
                         <div className="table-tabs">
                             <div className="table-tab">ODI</div>
@@ -84,7 +84,7 @@ function PlayerRankingList() {
 
                     </div>
                     </TabPane>
-                    <TabPane tab="Tab 2" key="2">
+                    <TabPane tab="Bowling" key="2">
                     <div className="table-box-11">
                         <div className="table-tabs">
                             <div className="table-tab">ODI</div>
@@ -129,7 +129,7 @@ function PlayerRankingList() {
 
                     </div>
                     </TabPane>
-                    <TabPane tab="Tab 3" key="3">
+                    <TabPane tab="All-rounders" key="3">
                     <div className="table-box-11">
                         <div className="table-tabs">
                             <div className="table-tab">ODI</div>

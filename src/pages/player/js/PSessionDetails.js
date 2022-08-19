@@ -25,24 +25,20 @@ function PSessionDetails() {
             
                 <div className="SessionDetails-inn-box">
                     <div className="SessionDetails-row">
-                      <div className="SessionDetails-row-up">Full name</div>
-                      <div className="SessionDetails-row-down">Gihan Weerasinghe</div>
+                      <div className="SessionDetails-row-up">Title</div>
+                      <div className="SessionDetails-row-down">Session-01</div>
                     </div>
                     <div className="SessionDetails-row">
-                      <div className="SessionDetails-row-up">Full name</div>
-                      <div className="SessionDetails-row-down">Gihan Weerasinghe</div>
+                      <div className="SessionDetails-row-up">Date</div>
+                      <div className="SessionDetails-row-down">2022-Oct-21</div>
                     </div>
                     <div className="SessionDetails-row">
-                      <div className="SessionDetails-row-up">Full name</div>
-                      <div className="SessionDetails-row-down">Gihan Weerasinghe</div>
+                      <div className="SessionDetails-row-up">Time</div>
+                      <div className="SessionDetails-row-down">09.00 AM</div>
                     </div>
                     <div className="SessionDetails-row">
-                      <div className="SessionDetails-row-up">Full name</div>
-                      <div className="SessionDetails-row-down">Gihan Weerasinghe</div>
-                    </div>
-                    <div className="SessionDetails-row">
-                      <div className="SessionDetails-row-up">Full name</div>
-                      <div className="SessionDetails-row-down">Gihan Weerasinghe</div>
+                      <div className="SessionDetails-row-up">Player category</div>
+                      <div className="SessionDetails-row-down">Under 19</div>
                     </div>
 
                     <span className="gap"></span>

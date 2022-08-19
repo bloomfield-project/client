@@ -5,6 +5,26 @@ import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import "../../Home.css";
 import SearchTable from "../../../component/Search/SearchTable";
+import { Tabs } from 'antd';
+import 'antd/dist/antd.css';
+
+
+
+
+
+
+
+
+
+
+
+
+const { TabPane } = Tabs;
+
+
+
+
+
 
 const data = [
   {
@@ -157,14 +177,11 @@ const columns_1 = [
 function PEvents() {
   const [tabNumber, setTabNumber] = useState(1);
 
-  const selectTab_1 = () => {
-    setTabNumber(1);
-    // console.log(tabNumber + "selectTab 1");
-  };
-  const selectTab_2 = () => {
-    setTabNumber(2);
-    // console.log(tabNumber + "selectTab 2");
-  };
+
+  const onChange = (key) => {
+    console.log(key);
+    setTabNumber(key)
+};
 
   return (
     <>
@@ -178,11 +195,10 @@ function PEvents() {
           </div>
           <div className="body-container-2">
             <div className="title">
-              <h1>{tabNumber === 1 ? "Counseling Sessions" : "Events"}</h1>
+              <h1>{tabNumber == 1 ? "Counseling Sessions" : "Events"}</h1>
             </div>
-            <div className="tabs">
-              {/* <h5 className="tab-active">Couceling<hr></hr></h5>
-                <h5 className="tab">Events</h5> */}
+            {/* <div className="tabs">
+              
               <div className="tabs-left">
                 <h5 className={tabNumber === 1 ? "tab-active" : "tab"}>
                   {" "}
@@ -198,30 +214,69 @@ function PEvents() {
               <div className="tabs-right">
                 
               </div>
-            </div>
-
-            <hr></hr>
-            <div className="table-box-1">
-              <div className="tablee">
-                <SearchTable
-                  title={false}
-                  data={tabNumber === 2 ? data : data_1}
-                  columns={tabNumber === 2 ? columns : columns_1}
-                  searching={true}
-                  sort={false}
-                  filter={false}
-                  paging={true}
-                  headerC={"#4a4a4a"}
-                  headerH={"40px"}
-                  headerFC={"white"}
-                  headerFS={"1.2rem"}
-                  headerFW={"500"}
-                  // height: 40px
-                  //             font-size: 1.2rem;
-                  // font-weight: 500;
-                />
+            </div> */}
+            <div className="playerPreformanceBody">
+                <Tabs defaultActiveKey="1" onChange={onChange}>
+                    
+                    <TabPane tab="All" key="1">
+                      <div className="table-box-11">
+                        <div className="tablee">
+                          <SearchTable
+                            title={false}
+                            data={data_1}
+                            columns={columns_1}
+                            searching={true}
+                            sort={false}
+                            filter={false}
+                            paging={true}
+                            headerC={"#4a4a4a"}
+                            headerH={"40px"}
+                            headerFC={"white"}
+                            headerFS={"1.2rem"}
+                            headerFW={"500"}
+                            // height: 40px
+                            //             font-size: 1.2rem;
+                            // font-weight: 500;
+                          />
+                        </div>
+                      </div>
+                        
+                    </TabPane>
+                    <TabPane tab="Today" key="2">
+                      <div className="table-box-11">
+                        <div className="tablee">
+                          <SearchTable
+                            title={false}
+                            data={data}
+                            columns={columns}
+                            searching={true}
+                            sort={false}
+                            filter={false}
+                            paging={true}
+                            headerC={"#4a4a4a"}
+                            headerH={"40px"}
+                            headerFC={"white"}
+                            headerFS={"1.2rem"}
+                            headerFW={"500"}
+                            // height: 40px
+                            //             font-size: 1.2rem;
+                            // font-weight: 500;
+                          />
+                        </div>
+                      </div>
+                    </TabPane>
+                
+                </Tabs>
               </div>
-            </div>
+
+
+
+
+
+
+
+            
+              
 
             {/* </div> */}
           </div>

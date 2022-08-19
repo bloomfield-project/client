@@ -114,7 +114,7 @@ function playerRanking() {
                                     <div className="table-tab">TEST</div>
                                 </div>
                                 
-                                <span className="gap-2"></span> 
+                                <span className="gp-21"></span> 
 
                                 {/*begin*/}
                                 <div className="tablee-14">
