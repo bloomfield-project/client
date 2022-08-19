@@ -54,6 +54,7 @@ import PEvents from "./pages/player/js/PEvents";
 import PlayerRankingList from "./pages/player/js/PlayerRankingList";
 import Payments from "./pages/player/js/Payments";
 import AddTournamentMatch from "./pages/Manager/js/AddTournamentMatch";
+import AddTournamentDetail from "./pages/Manager/js/AddTournamentDetail";
 
 
 const List = [
@@ -115,6 +116,10 @@ function App() {
           <Route path="/player/PEvents" element={<PEvents />} />
           <Route path="/player/PlayerRankingList" element={<PlayerRankingList />} />
           <Route path="/player/Payments" element={<Payments />} />
+          
+          <Route path="/couch/m_1" element={<Matches_1 />} />
+          <Route path="/manager/AddTournamentDetail" element={<AddTournamentDetail />} />
+
 
 
 
