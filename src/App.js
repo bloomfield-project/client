@@ -48,6 +48,7 @@ import MatchDetail from "./pages/Manager/js/MatchDetail";
 
 import Players1 from "./pages/Coach/js/Players";
 import PlayerDetails from "./pages/Coach/js/PlayerDetails";
+import AddMatch from "./pages/Manager/js/AddMatch";
 
 
 
@@ -101,7 +102,8 @@ function App() {
           <Route path="/couch/PSessions" element={<PracticeSessions />} />
 
           <Route path="/manager/MatchDetail" element={<MatchDetail />} />
-        
+          <Route path="/manager/AddMatch" element={<AddMatch />} />
+     
 
           <Route path="/couch/A" element={<Appoinments />} />
           <Route path="/couch/Ap" element={<ViewAppoinments/>} />

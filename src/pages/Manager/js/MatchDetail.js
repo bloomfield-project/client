@@ -30,9 +30,9 @@ function MatchDetail() {
               <div className="tabs-left"></div>
 
               <div className="tabs-right">
-                <Link to={"/manager/PlayerRegistration"}>
+                <Link to={"/manager/AddMatch"}>
                   <Button
-                    to={"/manager/PlayerRegistration"}
+                    to={"/manager/AddMatch"}
                     variant="outline-success"
                   >
                     + Add
