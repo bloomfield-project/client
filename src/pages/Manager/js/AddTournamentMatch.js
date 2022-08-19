@@ -10,6 +10,7 @@ import Button from "react-bootstrap/Button";
 import "antd/dist/antd.css";
 import Team from "../../player/Team.png";
 import opTeam from "../../player/player.jpg";
+import MatchesTeams from "../../../component/MatchesTeams/MatchesTeams";
 
 function AddTournamentMatch() {
   let array1 = [
@@ -69,7 +70,6 @@ function AddTournamentMatch() {
           <div className="form-container">
             <div className="table-box-1">
               <div className="tablee">
-               
                 <div className="matche-container-outer-box">
                   <div className="match-box-up">
                     <div className="go-out">
@@ -89,7 +89,24 @@ function AddTournamentMatch() {
                     style={{ height: "auto", minWidth: "100%" }}
                   >
                     <SampleForm arr={array1} upload={true} file1={file} />
+                    
+                    </div>
                   </div>
+                  <div className="tablee">
+                      <MatchesTeams
+                        btns=""
+                        wonornot="BLOOMFIELD won by 7 wkts"
+                        left="Starts at 09.30"
+                        middle="R.Premadasa Stadium"
+                        right="2022 Oct 16"
+                      />
+                      <MatchesTeams
+                        btns=""
+                        wonornot="BLOOMFIELD won by 7 wkts"
+                        left="Starts at 09.30"
+                        middle="R.Premadasa Stadium"
+                        right="2022 Oct 16"
+                      />
                 </div>
               </div>
             </div>
