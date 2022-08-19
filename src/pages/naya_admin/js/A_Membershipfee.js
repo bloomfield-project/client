@@ -51,11 +51,11 @@ const data = [
 
 const columns = [
     {
-        title: "ID",
+        title: "payment ID",
         field: "id",
     },
     {
-        title: "player",
+        title: "Player",
         field: "img",
     },
     {
@@ -67,12 +67,12 @@ const columns = [
         field: "amount",
     },
     {
-        title: "Age",
+        title: "",
         field: "btn",
     },
 ];
 
-function players() 
+function Membershipfee() 
 {
     return (
         <>
@@ -143,4 +143,4 @@ function players()
     );
 }
 
-export default players;
+export default Membershipfee;
