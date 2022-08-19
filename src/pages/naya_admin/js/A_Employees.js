@@ -62,7 +62,44 @@ function AEmployees()
     return (
 <>
 <div className="page-container-1">
-    <div className="header-container"></div>
+    <div className="header-container">
+        <Header></Header>
+    </div>
+    <div className="body-container-1">
+        <div className="navbar-container">
+            <Navbar></Navbar>
+        </div>
+        <div className="body-container-2">
+            <div className="title">
+                <h1>BLOOMFIELD Employees</h1>
+            </div>
+            <div className="tabs">
+            <div className="tabs-left">
+            </div>
+            <div className="tabs-right">
+                <Button varient="outline-success">+ Add</Button>
+            </div>
+            </div>
+            <hr></hr>
+            <div className="table-box-1">
+                <div className="tablee">
+                    <SearchTable title={""}
+                    data={data}
+                    columns={columns}
+                    searching={true}
+                    sort={false}
+                    filter={false}
+                    paging={true}
+                    headerC={"#4a4a4a"}
+                    headerH={"40px"}
+                    headerFC={"white"}
+                    headerFS={"1.2rem"}
+                    headerFW={"500"}
+                    />
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 </>
