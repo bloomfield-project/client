@@ -8,7 +8,6 @@ import Header from "../../../component/header/Header";
 import Button from "react-bootstrap/Button";
 import "../../Home.css";
 import SearchTable from "../../../component/Search/SearchTable";
-import profpic from "../../../component/header/profpic.jfif";
 import { IoChevronBackCircleOutline } from "react-icons/io5";
 import { BiChevronRightCircle } from "react-icons/bi";
 
@@ -151,9 +150,9 @@ function AddMatch() {
                 <div className="tabs-left"></div>
 
                 <div className="tabs-right">
-                  <Link to={"/manager/PlayerRegistration"}>
+                  <Link to={"/manager/AddTournamentMatch"}>
                     <Button
-                      to={"/manager/PlayerRegistration"}
+                      
                       variant="outline-success"
                     >
                       + Add
