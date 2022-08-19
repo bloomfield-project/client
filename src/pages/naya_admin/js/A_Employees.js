@@ -26,7 +26,7 @@ const data = [
         btn: <Button varient="secondary">View</Button>,
     },
     {
-        id: 0018,
+        id: 0011,
         img: <img className="row-image" src={profpic} alt=""></img>,
         name: "Gayan Mahanama",
         btn: <Button varient="secondary">View</Button>,
@@ -37,4 +37,34 @@ const data = [
         name: "Akila Perera",
         btn: <Button varient="secondary">View</Button>,
     },
-]
+];
+
+const columns = [
+    {
+        title: "Employee ID",
+        field: "id",
+    },
+    {
+        title: "Employee",
+        field: "img",
+    },
+    {
+        title: "",
+        field: "name",
+    },
+    {
+        title: "",
+        field: "btn",
+    },
+];
+function AEmployees()
+{
+    return (
+<>
+<div className="page-container-1">
+    <div className="header-container"></div>
+</div>
+
+</>
+    );
+}

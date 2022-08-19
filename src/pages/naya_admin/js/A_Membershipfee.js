@@ -72,7 +72,7 @@ const columns = [
     },
 ];
 
-function Membershipfee() 
+function AMembershipfee() 
 {
     return (
         <>
@@ -143,4 +143,4 @@ function Membershipfee()
     );
 }
 
-export default Membershipfee;
+export default AMembershipfee;
