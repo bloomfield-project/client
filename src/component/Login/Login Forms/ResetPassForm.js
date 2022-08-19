@@ -3,14 +3,12 @@ import React, { useState } from "react";
 
 import Login from "../Login";
 import { BsFillEyeFill, BsFillEyeSlashFill } from "react-icons/bs";
-
+import { Link } from "react-router-dom";
 
 function ResetPassForm() {
-
   const [show, setShow] = useState(false);
   const handleShow = () => {
     setShow(!show);
-  
   };
   return (
     <div className="login-main">
@@ -20,32 +18,28 @@ function ResetPassForm() {
         <div className="login-details">
           <h2>Reset Password</h2>
           <form>
-          <div className="form-data">
+            <div className="form-data">
               <label>Password</label>
 
               {/* <div className="password"> */}
-              <input type={show ? "text" : "password"} required>
-              </input>
+              <input type={show ? "text" : "password"} required></input>
 
               <label onClick={handleShow} className="eye">
                 {show ? <BsFillEyeFill /> : <BsFillEyeSlashFill />}
               </label>
 
-              
               {/* <AiOutlineEyeInvisible></AiOutlineEyeInvisible>/ */}
             </div>
             <div className="form-data">
               <label>Password</label>
 
               {/* <div className="password"> */}
-              <input type={show ? "text" : "password"} required>
-              </input>
+              <input type={show ? "text" : "password"} required></input>
 
               <label onClick={handleShow} className="eye">
                 {show ? <BsFillEyeFill /> : <BsFillEyeSlashFill />}
               </label>
 
-              
               {/* <AiOutlineEyeInvisible></AiOutlineEyeInvisible>/ */}
             </div>
             {/* <div className="form-data">
@@ -59,9 +53,11 @@ function ResetPassForm() {
             </div> */}
 
             <div class="d-grid gap-2 col-6 mx-auto form-data">
-              <button class="btn btn-primary" type="button">
-                Log in
-              </button>
+              <Link to={"/manager/Session"}>
+                <button class="btn btn-primary" type="button">
+                  Log in
+                </button>
+              </Link>
             </div>
           </form>
         </div>
