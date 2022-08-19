@@ -46,6 +46,10 @@ import SampleCard from "./component/Card/SampleCard";
 import AddAchivement from "./pages/Manager/js/AddAchivement";
 import Players1 from "./pages/Coach/js/Players";
 import PlayerDetails from "./pages/Coach/js/PlayerDetails";
+import Matches_1 from "./pages/Coach/js/Matches_1";
+import MatchesTeams from "./component/MatchesTeams/MatchesTeams";
+import Macthes_2 from "./pages/Coach/js/Matches_2";
+import Macthes_3 from "./pages/Coach/js/Matches_3";
 
 
 const List = [
@@ -105,6 +109,12 @@ function App() {
           <Route path="/couch/Ap" element={<ViewAppoinments/>} />
           <Route path="/couch/Players1" element={<Players1 />} />
           <Route path="/couch/PlayerD" element={<PlayerDetails />} />
+
+          <Route path="/couch/M1" element={<Matches_1 />} />
+          <Route path="/couch/T" element={<MatchesTeams />} />
+          <Route path="/couch/M2" element={<Macthes_2 />} />
+          <Route path="/couch/M3" element={<Macthes_3 />} />
+
 
           {/* <Route path="/Search" element={<SearchTable/>} />/ */}
         </Routes>

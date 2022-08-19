@@ -1,0 +1,166 @@
+.tabs-contain-box {
+    width: 95%;
+}
+
+.matches-container-outer-box {
+    width: 100%;
+    padding: 20px 20px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.matche-container-outer-box {
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid #E3E6E3;
+    padding: 0 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.match-box-up {
+    width: 100%;
+    height: 51px;
+    display: flex;
+    justify-content: left;
+    padding-left: 30px;
+}
+
+.match-box-mid {
+    display: flex;
+    width: 100%;
+    height: 238px;
+}
+
+.match-box-mid-left {
+    height: 100%;
+    width: 37%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.gap-3 {
+    width: 100%;
+    height: 50px;
+}
+
+.match-box-down {
+    width: 100%;
+    height: 51px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    padding: 15px 10px;
+}
+
+
+.go-out {
+    width: fit-content;
+    height: fit-content;
+    padding: 0 10px;
+    background-color: white;
+    margin-top: -21px;
+}
+
+.match-box-mid-mid {
+    height: 100%;
+    width: 26%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.match-box-mid-right {
+    height: 100%;
+    width: 37%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.box-mid-left-up,
+.box-mid-mid-up,
+.box-mid-right-up {
+    height: 30px;
+    width: 250px;
+    color: #a5a5a5;
+}
+
+.box-mid-left-mid,
+.box-mid-right-mid {
+    height: 180px;
+    width: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box-mid-left-mid>img,
+.box-mid-right-mid>img {
+    height: 130px;
+    width: 130px;
+}
+
+.box-mid-mid-mid {
+    height: 100px;
+    width: 100px;
+    font-size: 4rem;
+    color: #009270;
+}
+
+.box-mid-left-down,
+.box-mid-mid-down,
+.box-mid-right-down {
+    height: 30px;
+    width: 250px;
+}
+
+
+
+.match-box-down-1 {
+    width: 90%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.match-box-down-1-left {
+    width: 30%;
+    text-align: start;
+}
+
+.match-box-down-1-right {
+    width: 30%;
+    text-align: end;
+}
+
+.match-box-down-1 {
+    display: flex;
+    justify-content: flex-start;
+    font-size: larger;
+    font-weight: bold;
+    color: #009270;
+}
+
+.match-box-down-2 {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.match-box-down-2 Button {
+    font-size: medium;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.match-box-down-2 h4 {
+    font-weight: bold;
+    padding-top: 10px;
+    color: #009270;
+}
