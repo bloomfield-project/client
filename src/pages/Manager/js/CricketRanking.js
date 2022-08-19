@@ -39,28 +39,28 @@ function CricketRanking() {
                     </div>
                     <div className="table-row">
                         <div className="col-3-1">1</div>
-                        <div className="col-3-2"><img className="row-image" src={profpic} alt=""></img><a href="#">Sameera Madushan</a></div>
+                        <div className="col-3-2"><img className="row-image" src={profpic} alt=""></img><a href="/player/playerRanking">Sameera Madushan</a></div>
                         <div className="col-3-3">932</div>
                         
                     </div>
                     <hr></hr>
                     <div className="table-row">
                         <div className="col-3-1">1</div>
-                        <div className="col-3-2"><img className="row-image" src={profpic} alt=""></img><a href="#">Sameera Madushan</a></div>
+                        <div className="col-3-2"><img className="row-image" src={profpic} alt=""></img><a href="/player/playerRanking">Sameera Madushan</a></div>
                         <div className="col-3-3">932</div>
                         
                     </div>
                     <hr></hr>
                     <div className="table-row">
                         <div className="col-3-1">1</div>
-                        <div className="col-3-2"><img className="row-image" src={profpic} alt=""></img><a href="#">Sameera Madushan</a></div>
+                        <div className="col-3-2"><img className="row-image" src={profpic} alt=""></img><a href="/player/playerRanking">Sameera Madushan</a></div>
                         <div className="col-3-3">932</div>
                         
                     </div>
                     <hr></hr>
                     <div className="table-row">
                         <div className="col-3-1">1</div>
-                        <div className="col-3-2"><img className="row-image" src={profpic} alt=""></img><a href="#">Sameera Madushan</a></div>
+                        <div className="col-3-2"><img className="row-image" src={profpic} alt=""></img><a href="/player/playerRanking">Sameera Madushan</a></div>
                         <div className="col-3-3">932</div>
                         
                     </div>

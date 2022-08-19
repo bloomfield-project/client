@@ -26,10 +26,10 @@ import PSessionDetails from "./pages/player/js/PSessionDetails";
 import CSessionDetails from "./pages/player/js/CSessionDetails";
 import EventDetails from "./pages/player/js/EventDetails";
 
-
 import IntroTable from "./component/IntroTable/IntroTable";
 import Calander from "./component/Calander/Calander";
 import PracticeSessions from "./pages/Coach/js/PracticeSessions";
+
 import Appoinments from "./pages/Coach/js/Appoinments";
 import ViewAppoinments from "./pages/Coach/js/ViewAppoinments";
 
@@ -44,12 +44,21 @@ import EditEvent from "./pages/Manager/js/EditEvent";
 import Achivement from "./pages/Manager/js/Achivement";
 import SampleCard from "./component/Card/SampleCard";
 import AddAchivement from "./pages/Manager/js/AddAchivement";
+
+import MatchDetail from "./pages/Manager/js/MatchDetail";
+
 import Players1 from "./pages/Coach/js/Players";
 import PlayerDetails from "./pages/Coach/js/PlayerDetails";
 import Matches_1 from "./pages/Coach/js/Matches_1";
 import MatchesTeams from "./component/MatchesTeams/MatchesTeams";
 import Macthes_2 from "./pages/Coach/js/Matches_2";
 import Macthes_3 from "./pages/Coach/js/Matches_3";
+
+
+import Psession from "./pages/player/js/Psessions";
+import PEvents from "./pages/player/js/PEvents";
+import PlayerRankingList from "./pages/player/js/PlayerRankingList";
+import Payments from "./pages/player/js/Payments";
 
 
 const List = [
@@ -97,23 +106,26 @@ function App() {
           <Route path="/manager/Achivement" element = {<Achivement/>} />
           <Route path="/card" element = {<SampleCard/>} />
           <Route path="/manager/AddAchivement" element={<AddAchivement/>}  />
-
-
-
-          
-
           <Route path="/player/I" element={<IntroTable />} />
           <Route path="/C" element={<Calander />} />
           <Route path="/couch/PSessions" element={<PracticeSessions />} />
+
+          <Route path="/manager/MatchDetail" element={<MatchDetail />} />
+        
+
           <Route path="/couch/A" element={<Appoinments />} />
           <Route path="/couch/Ap" element={<ViewAppoinments/>} />
           <Route path="/couch/Players1" element={<Players1 />} />
           <Route path="/couch/PlayerD" element={<PlayerDetails />} />
 
-          <Route path="/couch/M1" element={<Matches_1 />} />
-          <Route path="/couch/T" element={<MatchesTeams />} />
-          <Route path="/couch/M2" element={<Macthes_2 />} />
-          <Route path="/couch/M3" element={<Macthes_3 />} />
+
+
+
+          <Route path="/player/Psession" element={<Psession />} />
+          <Route path="/player/PEvents" element={<PEvents />} />
+          <Route path="/player/PlayerRankingList" element={<PlayerRankingList />} />
+          <Route path="/player/Payments" element={<Payments />} />
+
 
 
           {/* <Route path="/Search" element={<SearchTable/>} />/ */}

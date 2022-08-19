@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import validator from "validator";
 import Login from "../Login";
+import { Link } from "react-router-dom";
+
 
 function FogotPassForm() {
   const [emailError, setEmailError] = useState("");
@@ -34,9 +36,12 @@ function FogotPassForm() {
             </div>
 
             <div class="d-grid gap-2 col-6 mx-auto form-data">
-              <button class="btn btn-primary" type="button">
-                Submit
-              </button>
+              <Link to={"/ResetPassword"}>
+                {" "}
+                <button class="btn btn-primary" type="button">
+                  Submit
+                </button>
+              </Link>
             </div>
           </form>
         </div>
