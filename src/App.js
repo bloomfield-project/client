@@ -25,12 +25,9 @@ import MatchDetails from "./pages/player/js/MatchDetails";
 import PSessionDetails from "./pages/player/js/PSessionDetails";
 import CSessionDetails from "./pages/player/js/CSessionDetails";
 import EventDetails from "./pages/player/js/EventDetails";
-
-
 import IntroTable from "./component/IntroTable/IntroTable";
 import Calander from "./component/Calander/Calander";
 import PracticeSessions from "./pages/Coach/js/PracticeSessions";
-
 import Test from "./component/Table/test";
 import EditDetails from "./component/EditDetail/EditDetails";
 import PlayerRegistration from "./pages/Manager/js/PlayerRegistration";
@@ -42,6 +39,7 @@ import EditEvent from "./pages/Manager/js/EditEvent";
 import Achivement from "./pages/Manager/js/Achivement";
 import SampleCard from "./component/Card/SampleCard";
 import AddAchivement from "./pages/Manager/js/AddAchivement";
+import MatchDetail from "./pages/Manager/js/MatchDetail";
 
 
 const List = [
@@ -89,15 +87,11 @@ function App() {
           <Route path="/manager/Achivement" element = {<Achivement/>} />
           <Route path="/card" element = {<SampleCard/>} />
           <Route path="/manager/AddAchivement" element={<AddAchivement/>}  />
-
-
-
-          
-
           <Route path="/player/I" element={<IntroTable />} />
           <Route path="/C" element={<Calander />} />
           <Route path="/couch/PSessions" element={<PracticeSessions />} />
-
+          <Route path="/manager/MatchDetail" element={<MatchDetail />} />
+        
 
           {/* <Route path="/Search" element={<SearchTable/>} />/ */}
         </Routes>
