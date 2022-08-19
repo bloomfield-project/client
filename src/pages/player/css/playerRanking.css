@@ -23,6 +23,9 @@
     margin-top: 50px;
     width: 95%;
 }
+.PplayerPreformanceBody{
+    width: 95%;
+}
 .player-content{
     width: 100%;
     height: fit-content;
@@ -81,9 +84,7 @@
 .gap{
     height: 40px;
 }
-.gap-2{
-    height: 20px;
-}
+
 
 .fielding{
     width: 100%;

@@ -14,7 +14,7 @@ const data = [
     date: "2022-05-11",
     time: "09:00 am",
     btn: (
-      <Link to={"/manager/EditEvent"}>
+      <Link to={"/player/EventDetails"}>
         <Button variant="secondary">View</Button>
       </Link>
     ),
@@ -27,7 +27,7 @@ const data = [
     date: "2022-05-11",
     time: "09:00 am",
     btn: (
-      <Link to={"/manager/EditEvent"}>
+      <Link to={"/player/EventDetails"}>
         <Button variant="secondary">View</Button>
       </Link>
     ),
@@ -39,7 +39,7 @@ const data = [
     date: "2022-05-11",
     time: "09:00 am",
     btn: (
-      <Link to={"/manager/EditEvent"}>
+      <Link to={"/player/EventDetails"}>
         <Button variant="secondary">View</Button>
       </Link>
     ),
@@ -51,7 +51,7 @@ const data = [
     date: "2022-05-11",
     time: "09:00 am",
     btn: (
-      <Link to={"/manager/EditEvent"}>
+      <Link to={"/player/EventDetails"}>
         <Button variant="secondary">View</Button>
       </Link>
     ),
@@ -90,7 +90,7 @@ const data_1 = [
     date: "2022-05-11",
     time: "09:00 am",
     btn: (
-      <Link to={"/manager/EditCouncellingSession"}>
+      <Link to={"/player/CSessionDetails"}>
         <Button variant="secondary">View</Button>
       </Link>
     ),
@@ -103,7 +103,19 @@ const data_1 = [
     date: "2022-05-11",
     time: "09:00 am",
     btn: (
-      <Link to={"/manager/EditCouncellingSession"}>
+      <Link to={"/player/CSessionDetails"}>
+      <Button variant="secondary">View</Button>
+    </Link>
+    ),
+  },
+  {
+    // id: "1101",
+    // img: <img className="row-image" src={profpic} alt=""></img>,
+    mentor: "Dr.chaminda wimukthi",
+    date: "2022-05-11",
+    time: "09:00 am",
+    btn: (
+      <Link to={"/player/CSessionDetails"}>
         <Button variant="secondary">View</Button>
       </Link>
     ),
@@ -115,19 +127,7 @@ const data_1 = [
     date: "2022-05-11",
     time: "09:00 am",
     btn: (
-      <Link to={"/manager/EditCouncellingSession"}>
-        <Button variant="secondary">View</Button>
-      </Link>
-    ),
-  },
-  {
-    // id: "1101",
-    // img: <img className="row-image" src={profpic} alt=""></img>,
-    mentor: "Dr.chaminda wimukthi",
-    date: "2022-05-11",
-    time: "09:00 am",
-    btn: (
-      <Link to={"/manager/EditCouncellingSession"}>
+      <Link to={"/player/CSessionDetails"}>
         <Button variant="secondary">View</Button>
       </Link>
     ),
@@ -154,7 +154,7 @@ const columns_1 = [
   },
 ];
 
-function Session() {
+function PEvents() {
   const [tabNumber, setTabNumber] = useState(1);
 
   const selectTab_1 = () => {
@@ -196,13 +196,7 @@ function Session() {
               </div>
 
               <div className="tabs-right">
-                <Link to={tabNumber === 1  ? "/manager/AddCouncellingSession" : "/manager/AddEvent"}>
-                  <Button
-                    variant="outline-success"
-                  >
-                    + Add
-                  </Button>
-                </Link>
+                
               </div>
             </div>
 
@@ -237,4 +231,4 @@ function Session() {
   );
 }
 
-export default Session;
+export default PEvents;

@@ -28,7 +28,27 @@
 .table-box-1{
     background-color: white;
     padding-bottom: 15px;
-    width:90%;
+    width:95%;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.table-box-11{
+    background-color: white;
+    padding-bottom: 15px;
+    width:100%;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.Payments-table-box-1{
+    background-color: white;
+    padding-bottom: 15px;
+    width:95%;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
@@ -73,13 +93,20 @@
     align-items: center;
     /* background-color: chocolate; */
 }
-
-.table-head > .col-3-2{
-    margin-left: 15%;
-}
 .col-3-3{
     width: 20%;
     /* background-color: rgb(51, 210, 30); */
+}
+
+
+.coll-4-1{
+    width: 25%;
+}
+
+.coll-4-11{
+    width: 25%;
+    display: flex;
+    margin-left: 25px;
 }
 
 .table-row{

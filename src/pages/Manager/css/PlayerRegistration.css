@@ -1,0 +1,27 @@
+.page-container-gray{
+    background-color: #E3E6E3;
+    max-width: 100vw;
+    padding:0px 5px 5px 5px;
+    /* height: auto; */
+}
+
+.l-back-r-title{
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    margin:  0 5px 0 5px;
+}
+
+.l-back-r-title-icon{
+    cursor: pointer;
+    padding-top: 4px;
+    height: max-content;
+}
+
+.form-container{
+    /* background-color: aqua; */
+    width: 80%;
+    margin: auto;
+    margin-bottom: 10px;
+    
+}
