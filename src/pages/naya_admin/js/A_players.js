@@ -93,3 +93,4 @@ function Players() {
         </>
     );
 }
+export default Players;
