@@ -3,6 +3,7 @@ import Navbar from "../../../component/NavigationBar/Navbar";
 import "../../Home.css"
 import "../../player/css/PSessionDetails.css"
 import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
 
 function PSessionDetails() {
   return (
@@ -63,7 +64,12 @@ function PSessionDetails() {
                       <div className="SessionDetails-row-down"><div className="s-r-d-left">BF-002</div><div className="s-r-d-right">Gihan Weerasinghe</div></div>
                       <div className="SessionDetails-row-down"><div className="s-r-d-left">BF-003</div><div className="s-r-d-right">Amal perera</div></div>
                     </div>
-                    <div className="match-box-down"><Button variant="secondary"> Back </Button></div>
+                    <div className="match-box-down">
+                      <Link to={"/player/PSession"}>
+                        <Button variant="secondary"> Back </Button>
+                      </Link>
+                
+                  </div>
                 </div>
 
             </div>

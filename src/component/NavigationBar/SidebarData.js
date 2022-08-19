@@ -54,54 +54,65 @@ export const SidebarData = [
     },
 ]
 
-export const SidebarData1 = [
+
+export const SidebarDataPlayer = [
     {
-        title:'Dashboard',
-        path:'/',
+        title:'Performance',
+        path:'/player/playerRanking',
         icon:<AiIcons.AiFillHome />,
         cName:'nav-text'
     },
     {
-        title:'Player',
-        path:'/manager/Players',
+        title:'Sessions',
+        path:'/player/Psession',
         icon:<IoIcons.IoIosPaper />,
         cName:'nav-text'
     },
     {
-        title:'Session',
-        path:'/manager/Session',
+        title:'Matches',
+        path:'/player/Matches',
         icon:<FaIcons.FaCartPlus />,
         cName:'nav-text'
     },
     {
-        title:'Achivements',
-        path:'/manager/Achivement',
+        title:'Events',
+        path:'/player/PEvents',
         icon:<AiIcons.AiFillHome />,
         cName:'nav-text'
     },
     {
         title:'Ranking',
-        path:'/manager/CricketRanking',
+        path:'/player/PlayerRankingList',
+        icon:<AiIcons.AiFillHome />,
+        cName:'nav-text'
+    },
+    {
+        title:'Attendance',
+        path:'/player/Progress',
         icon:<AiIcons.AiFillHome />,
         cName:'nav-text'
     },
     {
         title:'Payments',
-        path:'/manager/Membership',
+        path:'/player/Payments',
         icon:<AiIcons.AiFillHome />,
         cName:'nav-text'
     },
     {
-        title:'Events',
+        title:'Achivements',
         path:'/manager/Session',
         icon:<AiIcons.AiFillHome />,
         cName:'nav-text'
     },
     {
-        title:'Matches',
-        path:'/manager/MatchDetail',
+        title:'Logout',
+        path:'/manager/Session',
         icon:<AiIcons.AiFillHome />,
         cName:'nav-text'
     },
+<<<<<<< HEAD
     
 ]
+=======
+]
+>>>>>>> 60c97dd4718aae01f7783c8d27714f1dd61b9789

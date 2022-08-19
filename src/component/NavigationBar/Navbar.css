@@ -43,9 +43,9 @@
     display: flex;
     justify-content: start;
     align-items: center;
-    padding: 8px 0px 8px 16px;
+    /* padding: 8px 0px 8px 16px; */
     list-style: none;
-    height: 60px;
+    height: 50px;
 }
 
 .nav-text a{
@@ -61,11 +61,15 @@
 }
 
 .nav-text a:hover {
-    background-color: rgba(0, 105, 80, 1);
+    background-color: #006950;
+    color: #ffffff;
+    font-weight: 500;
 }
+
 
 .nav-menu-items {
     width: 100%;
+    padding-top: 20px;
 }
 
 .navbar-toggle {
