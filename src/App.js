@@ -49,6 +49,10 @@ import MatchDetail from "./pages/Manager/js/MatchDetail";
 
 import Players1 from "./pages/Coach/js/Players";
 import PlayerDetails from "./pages/Coach/js/PlayerDetails";
+import Matches_1 from "./pages/Coach/js/Matches_1";
+import MatchesTeams from "./component/MatchesTeams/MatchesTeams";
+import Macthes_2 from "./pages/Coach/js/Matches_2";
+import Macthes_3 from "./pages/Coach/js/Matches_3";
 
 
 import Psession from "./pages/player/js/Psessions";
@@ -116,10 +120,12 @@ function App() {
 
 
 
+
           <Route path="/player/Psession" element={<Psession />} />
           <Route path="/player/PEvents" element={<PEvents />} />
           <Route path="/player/PlayerRankingList" element={<PlayerRankingList />} />
           <Route path="/player/Payments" element={<Payments />} />
+
 
 
           {/* <Route path="/Search" element={<SearchTable/>} />/ */}
