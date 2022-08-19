@@ -54,6 +54,7 @@ export const SidebarData = [
     },
 ]
 
+
 export const SidebarDataPlayer = [
     {
         title:'Dashboard',

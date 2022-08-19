@@ -73,10 +73,6 @@
     align-items: center;
     /* background-color: chocolate; */
 }
-
-.table-head > .col-3-2{
-    margin-left: 15%;
-}
 .col-3-3{
     width: 20%;
     /* background-color: rgb(51, 210, 30); */
