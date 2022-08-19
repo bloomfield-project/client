@@ -35,7 +35,7 @@ function Matches() {
             <div className="tabs-contain-box">
                 <Tabs defaultActiveKey="1" onChange={onChange}>
                     
-                    <TabPane tab="Career" key="1">
+                    <TabPane tab="Pending" key="1">
                         
                     <div className="matches-container-outer-box">
                         {/* match card */}
@@ -159,7 +159,7 @@ function Matches() {
                         
                         
                     </TabPane>
-                    <TabPane tab="Practice" key="2">
+                    <TabPane tab="Past" key="2">
 
                         <div className="matches-container-outer-box">
                             {/* match card */}

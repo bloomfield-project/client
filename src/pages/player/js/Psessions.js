@@ -6,7 +6,26 @@ import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import "../../Home.css";
 import SearchTable from "../../../component/Search/SearchTable";
+import player from "../player.jpg"
+import { Tabs } from 'antd';
+import 'antd/dist/antd.css';
 
+
+
+
+
+
+
+
+
+
+
+
+const { TabPane } = Tabs;
+
+const onChange = (key) => {
+    console.log(key);
+};
 
 const data = [
  
@@ -174,10 +193,10 @@ function Session() {
             <div className="title">
               <h1>Practice Sessions</h1>
             </div>
-            <div className="tabs">
+            {/* <div className="tabs"> */}
                 {/* <h5 className="tab-active">Couceling<hr></hr></h5>
                 <h5 className="tab">Events</h5> */}
-              <div className="tabs-left">
+              {/* <div className="tabs-left">
                 <h5 className= {tabNumber === 1 ? "tab-active" : "tab" } > <a  onClick={()=>selectTab_1(1)}>All</a> {tabNumber === 1 ? <hr></hr> : ""}</h5>
                 <h5 className= {tabNumber === 2 ? "tab-active" : "tab" } ><a  onClick={()=>selectTab_2(1)} >Today</a>  {tabNumber === 2 ? <hr></hr> : ""}</h5>
               </div>
@@ -186,28 +205,62 @@ function Session() {
                                 
             </div>
             
-            <hr></hr>
-            <div className="table-box-1">
-                <div className="tablee"> 
-                <SearchTable
-                title={false}
-                data={tabNumber === 2 ? data : data}
-                columns={tabNumber === 2 ? columns : columns}
-                searching={true}
-                sort={false}
-                filter={false}
-                paging={true}
-                headerC={"#4a4a4a"}
-                headerH={"40px"}
-                headerFC={'white'}
-                headerFS={'1.2rem'}
-                headerFW={'500'}
-                // height: 40px
-    //             font-size: 1.2rem;
-    // font-weight: 500;
-              />
-                </div>
-              
+            <hr></hr> */}
+            <div className="playerPreformanceBody">
+                <Tabs defaultActiveKey="1" onChange={onChange}>
+                    
+                    <TabPane tab="All" key="1">
+                      <div className="table-box-11">
+                        <div className="tablee"> 
+                          <SearchTable
+                          title={false}
+                          data={tabNumber === 2 ? data : data}
+                          columns={tabNumber === 2 ? columns : columns}
+                          searching={true}
+                          sort={false}
+                          filter={false}
+                          paging={true}
+                          headerC={"#4a4a4a"}
+                          headerH={"40px"}
+                          headerFC={'white'}
+                          headerFS={'1.2rem'}
+                          headerFW={'500'}
+                          
+                          />
+                        </div>
+                      
+                      </div>
+                        
+                    </TabPane>
+                    <TabPane tab="Today" key="2">
+                      <div className="table-box-11">
+                        <div className="tablee"> 
+                          <SearchTable
+                          title={false}
+                          data={tabNumber === 2 ? data : data}
+                          columns={tabNumber === 2 ? columns : columns}
+                          searching={true}
+                          sort={false}
+                          filter={false}
+                          paging={true}
+                          headerC={"#4a4a4a"}
+                          headerH={"40px"}
+                          headerFC={'white'}
+                          headerFS={'1.2rem'}
+                          headerFW={'500'}
+                          
+                          />
+                        </div>
+                      
+                      </div>
+                    </TabPane>
+                
+                </Tabs>
+
+
+
+
+
             </div>
 
             {/* </div> */}
