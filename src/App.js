@@ -28,8 +28,8 @@ import EventDetails from "./pages/player/js/EventDetails"
 
 
 import APlayerRanking from "./pages/admin/js/APlayerRanking";
-import AProgress from "./pages/admin/js/AProgress"
-import APrivateProgress from "./pages/admin/js/APrivateProgress"
+// import AProgress from "./pages/admin/js/AProgress"
+// import APrivateProgress from "./pages/admin/js/APrivateProgress"
 
 
 const List = [
@@ -73,8 +73,8 @@ function App() {
 
 
           <Route path="/admin/AplayerRanking" element={<APlayerRanking />} />
-          <Route path="/admin/AProgress" element={<AProgress />} />
-          <Route path="/admin/APrivateProgress" element={<APrivateProgress />} />
+          {/* <Route path="/admin/AProgress" element={<AProgress />} /> */}
+          {/* <Route path="/admin/APrivateProgress" element={<APrivateProgress />} /> */}
 
           {/* <Route path="/Search" element={<SearchTable/>} />/ */}
         </Routes>
