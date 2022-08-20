@@ -55,6 +55,9 @@ import PlayerRankingList from "./pages/player/js/PlayerRankingList";
 import Payments from "./pages/player/js/Payments";
 import AddTournamentMatch from "./pages/Manager/js/AddTournamentMatch";
 import AddTournamentDetail from "./pages/Manager/js/AddTournamentDetail";
+import Membershipfee from "./pages/naya_admin/js/Membershipfee";
+import Employees from "./pages/naya_admin/js/Employees";
+import AddEmployee from "./pages/naya_admin/js/AddEmployee";
 
 
 const List = [
@@ -119,6 +122,11 @@ function App() {
           
           <Route path="/couch/m_1" element={<Matches_1 />} />
           <Route path="/manager/AddTournamentDetail" element={<AddTournamentDetail />} />
+          <Route path="/admin/Membershipfee" element={<Membershipfee/>}  />
+          <Route path="/admin/Employees" element={<Employees/>}  />
+          <Route path="/admin/AddEmployee" element={<AddEmployee/>}  />
+
+
 
 
 
