@@ -57,6 +57,12 @@ import AddTournamentMatch from "./pages/Manager/js/AddTournamentMatch";
 import AddTournamentDetail from "./pages/Manager/js/AddTournamentDetail";
 
 
+
+import APlayerRanking from "./pages/admin/js/APlayerRanking";
+// import AProgress from "./pages/admin/js/AProgress"
+// import APrivateProgress from "./pages/admin/js/APrivateProgress"
+
+
 const List = [
   {id:1, name: "John Doe" , Age: 27},
   {id:1, name: "John Doe" , Age: 27},
@@ -92,6 +98,16 @@ function App() {
           <Route path="/player/PSessionDetails" element={<PSessionDetails />} />
           <Route path="/player/CSessionDetails" element={<CSessionDetails />} />
           <Route path="/player/EventDetails" element={<EventDetails />} />
+
+          
+
+
+
+
+          <Route path="/admin/AplayerRanking" element={<APlayerRanking />} />
+          {/* <Route path="/admin/AProgress" element={<AProgress />} /> */}
+          {/* <Route path="/admin/APrivateProgress" element={<APrivateProgress />} /> */}
+
           <Route path="/test" element={<Test />} />
           <Route path="/manager/PlayerRegistration" element={<PlayerRegistration />} />
           <Route path="/manager/EditPlayerDetails" element={<EditPlayerDetails />} />/
