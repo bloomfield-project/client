@@ -62,6 +62,7 @@ import AddEmployee from "./pages/naya_admin/js/AddEmployee";
 
 
 import APlayerRanking from "./pages/admin/js/APlayerRanking";
+import EditEmployee from "./pages/naya_admin/js/EditEmployee";
 // import AProgress from "./pages/admin/js/AProgress"
 // import APrivateProgress from "./pages/admin/js/APrivateProgress"
 
@@ -141,6 +142,8 @@ function App() {
           <Route path="/admin/Membershipfee" element={<Membershipfee/>}  />
           <Route path="/admin/Employees" element={<Employees/>}  />
           <Route path="/admin/AddEmployee" element={<AddEmployee/>}  />
+          <Route path="/admin/EditEmployee" element={<EditEmployee />}  />
+
 
 
 
