@@ -152,9 +152,9 @@ function Membership() {
                 <h5 className= {tabNumber === 2 ? "tab-active" : "tab" } ><a  onClick={()=>selectTab_2(2)} > Unpaied</a> {tabNumber === 2 ? <hr></hr> : ""} </h5>
               </div>
 
-              <div className="tabs-right">
+              {/* <div className="tabs-right">
                 <Button variant="outline-success">+ Add</Button>
-              </div>            
+              </div>             */}
             </div>
 
             <hr></hr>

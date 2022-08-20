@@ -4,6 +4,8 @@ import "../../Home.css"
 import "../css/MatchDetails.css"
 import Team from "../Team.png"
 import opTeam from "../opTeam.jpg"
+import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
 
 function MatchDetails() {
     return (
@@ -244,6 +246,12 @@ function MatchDetails() {
                     
                 </div>
                 {/*end*/}
+
+                <div className="match-box-down">
+                    <Link to={"/player/Matches"}>
+                        <Button variant="secondary">Back</Button>
+                    </Link>
+                </div>
 
             </div>
             

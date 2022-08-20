@@ -4,7 +4,7 @@ import IntroTable from "../../../component/IntroTable/IntroTable"
 import React from "react";
 import player from "../player.jpg"
 import "../../Home.css"
-import "../css/Progress.css"
+import "../css/Progress.css" 
 import { PieChart } from 'react-minimal-pie-chart';
 
 function Progress() {
@@ -75,7 +75,7 @@ function Progress() {
                     
                 </div> 
 
-                <span className="gap-2"></span> 
+                <span className="gp-21"></span> 
 
                 {/*begin*/}
                 <div className="tablee-14">
@@ -90,7 +90,7 @@ function Progress() {
                         <div className="col-4-1">S-001</div>
                         <div className="col-4-2">Batting Practice</div>
                         <div className="col-4-3">Present</div>
-                        <div className="col-4-4"><a href="#">Details</a></div>
+                        <div className="col-4-4"><a href="/player/PrivateProgress">Details</a></div>
                         
                     </div>
                     <hr></hr>
@@ -98,7 +98,7 @@ function Progress() {
                         <div className="col-4-1">S-001</div>
                         <div className="col-4-2">Batting Practice</div>
                         <div className="col-4-3">Present</div>
-                        <div className="col-4-4"><a href="#">Details</a></div>
+                        <div className="col-4-4"><a href="/player/PrivateProgress">Details</a></div>
                         
                     </div>
                     <hr></hr>
@@ -106,7 +106,7 @@ function Progress() {
                         <div className="col-4-1">S-001</div>
                         <div className="col-4-2">Batting Practice</div>
                         <div className="col-4-3">Present</div>
-                        <div className="col-4-4"><a href="#">Details</a></div>
+                        <div className="col-4-4"><a href="/player/PrivateProgress">Details</a></div>
                         
                     </div>
                     <hr></hr>
@@ -114,7 +114,7 @@ function Progress() {
                         <div className="col-4-1">S-001</div>
                         <div className="col-4-2">Batting Practice</div>
                         <div className="col-4-3">Present</div>
-                        <div className="col-4-4"><a href="#">Details</a></div>
+                        <div className="col-4-4"><a href="/player/PrivateProgress">Details</a></div>
                         
                     </div>
                     <hr></hr>
@@ -122,7 +122,7 @@ function Progress() {
                         <div className="col-4-1">S-001</div>
                         <div className="col-4-2">Batting Practice</div>
                         <div className="col-4-3">Present</div>
-                        <div className="col-4-4"><a href="#">Details</a></div>
+                        <div className="col-4-4"><a href="/player/PrivateProgress">Details</a></div>
                         
                     </div>
                     <hr></hr>
