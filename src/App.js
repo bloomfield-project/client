@@ -63,6 +63,9 @@ import AddEmployee from "./pages/naya_admin/js/AddEmployee";
 
 import APlayerRanking from "./pages/admin/js/APlayerRanking";
 import EditEmployee from "./pages/naya_admin/js/EditEmployee";
+import UserView from "./component/UserView/UserView";
+import UpdateDeleteUser from "./pages/naya_admin/js/UpdateDeleteUser";
+import Popup from "./component/Popup/Popup";
 // import AProgress from "./pages/admin/js/AProgress"
 // import APrivateProgress from "./pages/admin/js/APrivateProgress"
 
@@ -103,11 +106,6 @@ function App() {
           <Route path="/player/CSessionDetails" element={<CSessionDetails />} />
           <Route path="/player/EventDetails" element={<EventDetails />} />
 
-          
-
-
-
-
           <Route path="/admin/AplayerRanking" element={<APlayerRanking />} />
           {/* <Route path="/admin/AProgress" element={<AProgress />} /> */}
           {/* <Route path="/admin/APrivateProgress" element={<APrivateProgress />} /> */}
@@ -143,12 +141,8 @@ function App() {
           <Route path="/admin/Employees" element={<Employees/>}  />
           <Route path="/admin/AddEmployee" element={<AddEmployee/>}  />
           <Route path="/admin/EditEmployee" element={<EditEmployee />}  />
-
-
-
-
-
-
+          <Route path="/admin/UserView" element={< UpdateDeleteUser/>} />
+          
 
           {/* <Route path="/Search" element={<SearchTable/>} />/ */}
         </Routes>
