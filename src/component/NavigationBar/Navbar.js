@@ -28,11 +28,11 @@ function Navbar() {
         <nav className="nav-menu active">
           <ul className="nav-menu-items" >
             
-<<<<<<< HEAD
-            {SidebarDataPlayer.map((item, index) => {
-=======
+
+            
+
             {SidebarDataAdmin.map((item, index) => {
->>>>>>> c2d27f60463d6d293113ecb628eeb1c771a9faf3
+
 
               return (
                 <li key={index} className={item.cName}>
