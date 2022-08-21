@@ -6,74 +6,75 @@ import "../../Home.css";
 import SearchTable from "../../../component/Search/SearchTable";
 import profpic from "../../../component/header/profpic.jfif";
 
-const data = [
-    {
-        id: "1101",
-        img: <img className="row-image" src={profpic} alt=""></img>,
-        name: "Lamesh Iroshan",
-        amount: "3000",
-        btn: <Button varient="secondary">View</Button>,
-    },
 
-    {
-        id: "1102",
-        img: <img className="row-image" src={profpic} alt=""></img>,
-        name: "Ramesh Nimantha",
-        amount: "3000",
-        btn: <Button varient="secondary">View</Button>,
-    },
 
-    {
-        id: "1104",
-        img: <img className="row-image" src={profpic} alt=""></img>,
-        name: "Nimesh Dilshan",
-        amount: "3000",
-        btn: <Button varient="secondary">View</Button>,
-    },
-
-    {
-        id: "1103",
-        img: <img className="row-image" src={profpic} alt=""></img>,
-        name: "Saaru Wijesinghe",
-        amount: "3000",
-        btn: <Button varient="secondary">View</Button>,
-    },
-
-    {
-        id: "1105",
-        img: <img className="row-image" src={profpic} alt=""></img>,
-        name: "Ashan grove",
-        amount: "3000",
-        btn: <Button varient="secondary">View</Button>,
-    },
-
-];
-
-const columns = [
-    {
-        title: "payment ID",
-        field: "id",
-    },
-    {
-        title: "Player",
-        field: "img",
-    },
-    {
-        title: "",
-        field: "name",
-    },
-    {
-        title: "Amount",
-        field: "amount",
-    },
-    {
-        title: "",
-        field: "btn",
-    },
-];
-
-function AMembershipfee() 
+function Membershipfee() 
 {
+    const data = [
+        {
+            id: "1101",
+            img: <img className="row-image" src={profpic} alt=""></img>,
+            name: "Lamesh Iroshan",
+            amount: "3000",
+            btn: <Button varient="secondary">View</Button>,
+        },
+    
+        {
+            id: "1102",
+            img: <img className="row-image" src={profpic} alt=""></img>,
+            name: "Ramesh Nimantha",
+            amount: "3000",
+            btn: <Button varient="secondary">View</Button>,
+        },
+    
+        {
+            id: "1104",
+            img: <img className="row-image" src={profpic} alt=""></img>,
+            name: "Nimesh Dilshan",
+            amount: "3000",
+            btn: <Button varient="secondary">View</Button>,
+        },
+    
+        {
+            id: "1103",
+            img: <img className="row-image" src={profpic} alt=""></img>,
+            name: "Saaru Wijesinghe",
+            amount: "3000",
+            btn: <Button varient="secondary">View</Button>,
+        },
+    
+        {
+            id: "1105",
+            img: <img className="row-image" src={profpic} alt=""></img>,
+            name: "Ashan grove",
+            amount: "3000",
+            btn: <Button varient="secondary">View</Button>,
+        },
+    
+    ];
+    
+    const columns = [
+        {
+            title: "payment ID",
+            field: "id",
+        },
+        {
+            title: "Player",
+            field: "img",
+        },
+        {
+            title: "",
+            field: "name",
+        },
+        {
+            title: "Amount",
+            field: "amount",
+        },
+        {
+            title: "",
+            field: "btn",
+        },
+    ];
     return (
         <>
         <div className="page-container-1">
@@ -143,4 +144,4 @@ function AMembershipfee()
     );
 }
 
-export default AMembershipfee;
+export default Membershipfee;
