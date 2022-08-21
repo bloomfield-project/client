@@ -54,7 +54,7 @@ import PEvents from "./pages/player/js/PEvents";
 import PlayerRankingList from "./pages/player/js/PlayerRankingList";
 import Payments from "./pages/player/js/Payments";
 import AddTournamentMatch from "./pages/Manager/js/AddTournamentMatch";
-import Tests from "./pages/player/test";
+
 import AddTournamentDetail from "./pages/Manager/js/AddTournamentDetail";
 import Membershipfee from "./pages/naya_admin/js/Membershipfee";
 import Employees from "./pages/naya_admin/js/Employees";
@@ -66,7 +66,7 @@ import APlayerRanking from "./pages/admin/js/APlayerRanking";
 import EditEmployee from "./pages/naya_admin/js/EditEmployee";
 import UserView from "./component/UserView/UserView";
 import UpdateDeleteUser from "./pages/naya_admin/js/UpdateDeleteUser";
-import signinn from "./pages/login/js/signin";
+import signin from "./pages/login/js/signin";
 import Achivements from "./pages/naya_admin/js/Achivements";
 import Accounts from "./pages/naya_admin/js/Accounts";
 import PlayerDetail from "./pages/naya_admin/js/PlayerDetail";
@@ -177,7 +177,7 @@ function App() {
           
           
           
-          <Route path="/login" element={<signinn />} />
+          
 
 
 
