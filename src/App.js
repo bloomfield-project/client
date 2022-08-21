@@ -54,7 +54,27 @@ import PEvents from "./pages/player/js/PEvents";
 import PlayerRankingList from "./pages/player/js/PlayerRankingList";
 import Payments from "./pages/player/js/Payments";
 import AddTournamentMatch from "./pages/Manager/js/AddTournamentMatch";
+<<<<<<< HEAD
 import Tests from "./pages/player/test";
+=======
+import AddTournamentDetail from "./pages/Manager/js/AddTournamentDetail";
+import Membershipfee from "./pages/naya_admin/js/Membershipfee";
+import Employees from "./pages/naya_admin/js/Employees";
+import AddEmployee from "./pages/naya_admin/js/AddEmployee";
+
+
+
+import APlayerRanking from "./pages/admin/js/APlayerRanking";
+import EditEmployee from "./pages/naya_admin/js/EditEmployee";
+import UserView from "./component/UserView/UserView";
+import UpdateDeleteUser from "./pages/naya_admin/js/UpdateDeleteUser";
+
+import Achivements from "./pages/naya_admin/js/Achivements";
+import Accounts from "./pages/naya_admin/js/Accounts";
+import PlayerDetail from "./pages/naya_admin/js/PlayerDetail";
+// import AProgress from "./pages/admin/js/AProgress"
+// import APrivateProgress from "./pages/admin/js/APrivateProgress"
+>>>>>>> c2d27f60463d6d293113ecb628eeb1c771a9faf3
 
 
 const List = [
@@ -92,6 +112,11 @@ function App() {
           <Route path="/player/PSessionDetails" element={<PSessionDetails />} />
           <Route path="/player/CSessionDetails" element={<CSessionDetails />} />
           <Route path="/player/EventDetails" element={<EventDetails />} />
+
+          <Route path="/admin/AplayerRanking" element={<APlayerRanking />} />
+          {/* <Route path="/admin/AProgress" element={<AProgress />} /> */}
+          {/* <Route path="/admin/APrivateProgress" element={<APrivateProgress />} /> */}
+
           <Route path="/test" element={<Test />} />
           <Route path="/manager/PlayerRegistration" element={<PlayerRegistration />} />
           <Route path="/manager/EditPlayerDetails" element={<EditPlayerDetails />} />/
@@ -117,6 +142,7 @@ function App() {
           <Route path="/player/PlayerRankingList" element={<PlayerRankingList />} />
           <Route path="/player/Payments" element={<Payments />} />
           
+<<<<<<< HEAD
           
           
           
@@ -128,8 +154,21 @@ function App() {
           
           
           <Route path="/player/test" element={<Tests />} />
+=======
+          <Route path="/couch/m_1" element={<Matches_1 />} />
+          <Route path="/manager/AddTournamentDetail" element={<AddTournamentDetail />} />
+          <Route path="/admin/Membershipfee" element={<Membershipfee/>}  />
+          <Route path="/admin/Employees" element={<Employees/>}  />
+          <Route path="/admin/AddEmployee" element={<AddEmployee/>}  />
+          <Route path="/admin/EditEmployee" element={<EditEmployee />}  />
+          <Route path="/admin/UserView" element={< UpdateDeleteUser/>} />
+          <Route path="/admin/Achivements" element={< Achivements />} />
+          <Route path="/admin/Accounts" element={< Accounts />} />
+          <Route path="/admin/PlayerDetail" element={<PlayerDetail />} />
+>>>>>>> c2d27f60463d6d293113ecb628eeb1c771a9faf3
 
 
+          
 
           {/* <Route path="/Search" element={<SearchTable/>} />/ */}
         </Routes>
