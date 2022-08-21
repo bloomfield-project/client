@@ -112,14 +112,7 @@ function Accounts() {
               <div className="tabs-left"></div>
 
               <div className="tabs-right">
-                <Link to={"/manager/PlayerRegistration"}>
-                  <Button
-                    to={"/manager/PlayerRegistration"}
-                    variant="outline-success"
-                  >
-                    + Add
-                  </Button>
-                </Link>
+                
               </div>
             </div>
             <hr></hr>

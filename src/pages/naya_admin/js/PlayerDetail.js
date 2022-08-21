@@ -55,7 +55,7 @@ function PlayerDetail() {
           <div className="page-container-gray" style={{width:"100%"}}>
           <div className="l-back-r-title" style={{display:"flex" , justifyContent:"space-between !important", width:"100% "}}>
             <div className="l-back-r-title-icon">
-              <Link to={"/admin/Employees"}>
+              <Link to={"/admin/Accounts"}>
                 <IoChevronBackCircleOutline
                   style={{ color: "rgba(0, 146, 112, 1)", fontSize: " 40px" }}
                 />

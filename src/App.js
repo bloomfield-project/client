@@ -70,6 +70,7 @@ import UpdateDeleteUser from "./pages/naya_admin/js/UpdateDeleteUser";
 import Achivements from "./pages/naya_admin/js/Achivements";
 import Accounts from "./pages/naya_admin/js/Accounts";
 import PlayerDetail from "./pages/naya_admin/js/PlayerDetail";
+import AnnualMembership from "./pages/naya_admin/js/AnnualMembership";
 // import AProgress from "./pages/admin/js/AProgress"
 // import APrivateProgress from "./pages/admin/js/APrivateProgress"
 
@@ -163,6 +164,7 @@ function App() {
           <Route path="/admin/Achivements" element={< Achivements />} />
           <Route path="/admin/Accounts" element={< Accounts />} />
           <Route path="/admin/PlayerDetail" element={<PlayerDetail />} />
+          <Route path="/admin/AnnualMembership" element={<AnnualMembership />} />
 
 
 
