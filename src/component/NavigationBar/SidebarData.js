@@ -108,3 +108,51 @@ export const SidebarDataPlayer = [
     
 ]
 
+export const SidebarDataAdmin = [
+    {
+        title:'Dashboard',
+        path:'/player/playerRanking',
+        icon:<AiIcons.AiFillHome />,
+        cName:'nav-text'
+    },
+    {
+        title:'Employees',
+        path:'/admin/Employees',
+        icon:<IoIcons.IoIosPaper />,
+        cName:'nav-text'
+    },
+    {
+        title:'Accounts',
+        path:'/admin/Accounts',
+        icon:<FaIcons.FaCartPlus />,
+        cName:'nav-text'
+    },
+    {
+        title:'Payments',
+        path:'/player/PEvents',
+        icon:<AiIcons.AiFillHome />,
+        cName:'nav-text'
+    },
+    {
+        title:'Feedbacks',
+        path:'/player/PlayerRankingList',
+        icon:<AiIcons.AiFillHome />,
+        cName:'nav-text'
+    },
+    {
+        title:'Achivements',
+        path:'/Admin/Achivements',
+        icon:<AiIcons.AiFillHome />,
+        cName:'nav-text'
+    },
+    {
+        title:'Ranking',
+        path:'/player/Payments',
+        icon:<AiIcons.AiFillHome />,
+        cName:'nav-text'
+    },
+        
+]
+
+
+
