@@ -66,12 +66,18 @@ import APlayerRanking from "./pages/admin/js/APlayerRanking";
 import EditEmployee from "./pages/naya_admin/js/EditEmployee";
 import UserView from "./component/UserView/UserView";
 import UpdateDeleteUser from "./pages/naya_admin/js/UpdateDeleteUser";
-
+import signinn from "./pages/login/js/signin";
 import Achivements from "./pages/naya_admin/js/Achivements";
 import Accounts from "./pages/naya_admin/js/Accounts";
 import PlayerDetail from "./pages/naya_admin/js/PlayerDetail";
 // import AProgress from "./pages/admin/js/AProgress"
 // import APrivateProgress from "./pages/admin/js/APrivateProgress"
+
+
+
+
+
+
 
 
 
@@ -151,7 +157,7 @@ function App() {
           
           
           
-          <Route path="/player/test" element={<Tests />} />
+          
 
           <Route path="/couch/m_1" element={<Matches_1 />} />
           <Route path="/manager/AddTournamentDetail" element={<AddTournamentDetail />} />
@@ -163,6 +169,15 @@ function App() {
           <Route path="/admin/Achivements" element={< Achivements />} />
           <Route path="/admin/Accounts" element={< Accounts />} />
           <Route path="/admin/PlayerDetail" element={<PlayerDetail />} />
+          
+          
+          
+          
+          
+          
+          
+          
+          <Route path="/login" element={<signinn />} />
 
 
 
