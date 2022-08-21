@@ -3,11 +3,16 @@ import { Link } from "react-router-dom";
 import "./EditDetail.css";
 // import Button from "react-bootstrap/Button";
 
-function EditDetails({ arr, backLink="#" , border=true }) {
-  
+function EditDetails({ arr, backLink = "#", border = true, btn = true }) {
   return (
     <div className="edit-main-container rounded">
-      <div className=  { border ?  "edit-sub-container border border-secondary rounded border-opacity-10" : "edit-sub-container border-opacity-10"}  >
+      <div
+        className={
+          border
+            ? "edit-sub-container border border-secondary rounded border-opacity-10"
+            : "edit-sub-container border-opacity-10"
+        }
+      >
         {/* repeats */}
         {arr.map((item) => {
           return (
@@ -17,9 +22,13 @@ function EditDetails({ arr, backLink="#" , border=true }) {
               </div>
               <div className="edit-edit-detail">
                 <h6>{item.data} </h6>
-                <button type="submit" class="btn btn-success">
-                  Edit
-                </button>
+                {btn ? (
+                  <button type="submit" class="btn btn-success">
+                    Edit
+                  </button>
+                ) : (
+                  ""
+                )}
               </div>
             </>
           );
