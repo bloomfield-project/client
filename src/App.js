@@ -54,6 +54,7 @@ import PEvents from "./pages/player/js/PEvents";
 import PlayerRankingList from "./pages/player/js/PlayerRankingList";
 import Payments from "./pages/player/js/Payments";
 import AddTournamentMatch from "./pages/Manager/js/AddTournamentMatch";
+import Tests from "./pages/player/test";
 import AddTournamentDetail from "./pages/Manager/js/AddTournamentDetail";
 import Membershipfee from "./pages/naya_admin/js/Membershipfee";
 import Employees from "./pages/naya_admin/js/Employees";
@@ -71,6 +72,7 @@ import Accounts from "./pages/naya_admin/js/Accounts";
 import PlayerDetail from "./pages/naya_admin/js/PlayerDetail";
 // import AProgress from "./pages/admin/js/AProgress"
 // import APrivateProgress from "./pages/admin/js/APrivateProgress"
+
 
 
 const List = [
@@ -138,6 +140,19 @@ function App() {
           <Route path="/player/PlayerRankingList" element={<PlayerRankingList />} />
           <Route path="/player/Payments" element={<Payments />} />
           
+
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <Route path="/player/test" element={<Tests />} />
+
           <Route path="/couch/m_1" element={<Matches_1 />} />
           <Route path="/manager/AddTournamentDetail" element={<AddTournamentDetail />} />
           <Route path="/admin/Membershipfee" element={<Membershipfee/>}  />
@@ -148,6 +163,7 @@ function App() {
           <Route path="/admin/Achivements" element={< Achivements />} />
           <Route path="/admin/Accounts" element={< Accounts />} />
           <Route path="/admin/PlayerDetail" element={<PlayerDetail />} />
+
 
 
           
