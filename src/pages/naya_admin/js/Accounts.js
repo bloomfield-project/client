@@ -13,7 +13,7 @@ const data = [
   {
     id: "1101",
     img: <img className="row-image" src={profpic} alt=""></img>,
-    name: "lamesh iroshan",
+    name: ( <Link to={"/admin/PlayerDetail"}>Nimesh dilshan</Link> ) ,
     
     progress: (
       <Link to={"/player/Progress"} style={{color:"green"}}>
@@ -25,7 +25,7 @@ const data = [
   {
     id: "1102",
     img: <img className="row-image" src={profpic} alt=""></img>,
-    name: "Ramesh nimnath",
+    name: ( <Link to={"/admin/PlayerDetail"}>Nimesh dilshan</Link> ) ,
     
     progress: (
       <Link to={"/player/Progress"} style={{color:"green"}}>
@@ -36,7 +36,7 @@ const data = [
   {
     id: "1104",
     img: <img className="row-image" src={profpic} alt=""></img>,
-    name: "Nimesh dilshan",
+    name:( <Link to={"/admin/PlayerDetail"}>Nimesh dilshan</Link> ) ,
     
     progress: (
       <Link to={"/player/Progress"} style={{color:"green"}}>
@@ -47,7 +47,7 @@ const data = [
   {
     id: "1103",
     img: <img className="row-image" src={profpic} alt=""></img>,
-    name: "Saaru wijesinghe",
+    name: ( <Link to={"/admin/PlayerDetail"}>Nimesh dilshan</Link> ) ,
     
     progress: (
       <Link to={"/player/Progress"} style={{color:"green"}}>
@@ -58,7 +58,7 @@ const data = [
   {
     id: "1105",
     img: <img className="row-image" src={profpic} alt=""></img>,
-    name: "Ashan grove",
+    name: ( <Link to={"/admin/PlayerDetail"}>Nimesh dilshan</Link> ) ,
    
     progress: (
       <Link to={"/player/Progress"} style={{color:"green"}}>
