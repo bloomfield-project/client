@@ -15,7 +15,7 @@ const data = [
     img: <img className="row-image" src={profpic} alt=""></img>,
     name: "lamesh iroshan",
     btn: (
-      <Link to={"/manager/EditPlayerDetails"}>
+      <Link to={"/admin/UserView"}>
         <Button variant="secondary">View</Button>
       </Link>
     ),
@@ -27,7 +27,7 @@ const data = [
     img: <img className="row-image" src={profpic} alt=""></img>,
     name: "Ramesh nimnath",
     btn: (
-      <Link to={"/manager/EditPlayerDetails"}>
+      <Link to={"/admin/UserView"}>
         <Button variant="secondary">View</Button>
       </Link>
     ),
@@ -38,7 +38,7 @@ const data = [
     img: <img className="row-image" src={profpic} alt=""></img>,
     name: "Nimesh dilshan",
     btn: (
-      <Link to={"/manager/EditPlayerDetails"}>
+      <Link to={"/admin/UserView"}>
         <Button variant="secondary">View</Button>
       </Link>
     ),
@@ -49,7 +49,7 @@ const data = [
     img: <img className="row-image" src={profpic} alt=""></img>,
     name: "Saaru wijesinghe",
     btn: (
-      <Link to={"/manager/EditPlayerDetails"}>
+      <Link to={"/admin/UserView"}>
         <Button variant="secondary">View</Button>
       </Link>
     ),
@@ -60,7 +60,7 @@ const data = [
     img: <img className="row-image" src={profpic} alt=""></img>,
     name: "Ashan grove",
     btn: (
-      <Link to={"/manager/EditPlayerDetails"}>
+      <Link to={"/admin/UserView"}>
         <Button variant="secondary">View</Button>
       </Link>
     ),
