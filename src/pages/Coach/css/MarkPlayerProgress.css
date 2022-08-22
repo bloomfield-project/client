@@ -1,0 +1,76 @@
+.MPP-main-container {
+    width: 80%;
+    margin-left: 10%;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+.MPP-main-container-1 {
+    width: 100%;
+    display: flex;
+    padding: 10px;
+}
+
+.MPP-main-container-1-1 {
+    width: 20%;
+    height: max-content;
+}
+
+.MPP-main-container-1-2 {
+    width: 80%;
+    height: max-content;
+}
+
+.MPP-main-container-2 {
+    width: 100%;
+    /* background-color: blue; */
+    height: max-content;
+}
+
+.MPP-main-container-2 hr {
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.MPP-main-container-3 hr {
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.MPP-main-container-2-heading h5 {
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 20px;
+}
+
+.MPP-main-container-2-data {
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 25px;
+    font-weight: bold;
+}
+
+.MPP-main-container-3 {
+    width: 100%;
+    height: max-content;
+    padding-bottom: 10px;
+    /* background-color: bisque; */
+}
+
+.MPP-main-container-3 h5 {
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 30px;
+}
+
+.MPP-main-container-3-1-1 {
+
+    width: 90%;
+    margin-left: 5%;
+    margin-bottom: 20px;
+}
+
+.MPP-main-container-3-1-2 {
+    display: flex;
+    justify-content: space-around;
+}
