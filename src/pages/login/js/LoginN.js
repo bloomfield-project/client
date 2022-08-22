@@ -22,6 +22,7 @@ function LoginN(){
     const [emailError, setEmailError] = useState("");
     const [Email, setEmail] = useState("");
     const [Password, setPw] = useState("");
+    const [invalid, setInvalid] = useState("err-G");
     
     const validateEmail = (e) => {
         var Email = e.target.value;
@@ -42,15 +43,21 @@ function LoginN(){
 
     const submitForm = async(e) =>{
         e.preventDefault();
-        // console.log(Email+Password)
+        console.log(Email+Password)
 
 
-        let payload = { email: 'giham@gmail.com', password: '970210324v' };
+        let payload = { email: Email, password: Password };
 
         let res = await axios.post('/api/user/login', payload);
 
         let data = res.data;
         console.log(data);
+        if(data.data=="Invalid username or password"){
+            setInvalid("err-G-active")
+        }
+        else{
+            console.log("hey john")
+        }
 
     }
     
@@ -79,11 +86,11 @@ function LoginN(){
                     <div className="login-topic-G">
                         Log in
                     </div>
-                    <div className="err-G">
+                    <div className={invalid}>
                         Invalid login or password. Please try again.
                     </div>
                         <span className="validate-msg">{emailError}</span>
-                        <form onSubmit={submitForm}>
+                        <form className="form-g-g-G" onSubmit={submitForm}>
                         <div className="log-in-G">
                          
                             <label>
