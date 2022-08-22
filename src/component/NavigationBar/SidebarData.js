@@ -32,6 +32,7 @@ export const SidebarDataManager = [
         title:'Player',
         path:'/manager/Players',
         icon:<AiIcons.AiFillHome />,
+        // BsPerson
         cName:'nav-text'
     },
     {
@@ -65,12 +66,14 @@ export const SidebarDataPlayer = [
     {
         title:'Matches',
         path:'/player/Matches',
+        // MdSportsCricket
         icon:<FaIcons.FaCartPlus />,
         cName:'nav-text'
     },
     {
         title:'Events',
         path:'/player/PEvents',
+        // MdEventAvailable
         icon:<AiIcons.AiFillHome />,
         cName:'nav-text'
     },
@@ -89,6 +92,7 @@ export const SidebarDataPlayer = [
     {
         title:'Payments',
         path:'/player/Payments',
+        // FaMoneyBillAlt
         icon:<AiIcons.AiFillHome />,
         cName:'nav-text'
     },
@@ -142,6 +146,7 @@ export const SidebarDataAdmin = [
     {
         title:'Achivements',
         path:'/Admin/Achivements',
+        // GiTrophyCup
         icon:<AiIcons.AiFillHome />,
         cName:'nav-text'
     },
@@ -149,6 +154,7 @@ export const SidebarDataAdmin = [
         title:'Ranking',
         path:'/admin/Raking',
         icon:<AiIcons.AiFillHome />,
+        // GiAchievement
         cName:'nav-text'
     },
         
