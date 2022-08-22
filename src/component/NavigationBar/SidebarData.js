@@ -129,13 +129,13 @@ export const SidebarDataAdmin = [
     },
     {
         title:'Payments',
-        path:'/player/PEvents',
+        path:'/admin/AnnualMembership',
         icon:<AiIcons.AiFillHome />,
         cName:'nav-text'
     },
     {
         title:'Feedbacks',
-        path:'/player/PlayerRankingList',
+        path:'/admin/Feedback',
         icon:<AiIcons.AiFillHome />,
         cName:'nav-text'
     },
