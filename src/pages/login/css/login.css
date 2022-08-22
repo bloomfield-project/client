@@ -1,0 +1,139 @@
+.login-main-box-G{
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #009270;
+    display: flex;
+}
+
+.login-left-G{
+    background-color: #009270;
+    width: 50%;
+    height: 100%;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-right-G{
+    width: 50%;
+    height: 100%;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    background-color: rgb(247, 247, 247);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.right-box-G{
+    width: 400px;
+    height: fit-content;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 6px 16px 0 rgb(0 0 0 / 20%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-topic-G{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #009270;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    /* background-color: #009270; */
+}
+
+.err-G{
+    width: 90%;
+    height: 50px;
+    border: 1px solid #d11534;
+    background: #fad1d8;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+    
+}
+
+
+.log-in-G{
+    background-color: #f3f7f7;
+    width: 90%;
+    height: 50px;
+    box-shadow: inset 0 1px 4px rgb(0 0 0 / 10%), 0 0 0 transparent;
+    margin: 15px 0;
+}
+
+.log-btn-G{
+    width: 90%;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+    margin-bottom: 40px;
+}
+
+.log-G-btn-G{
+    height: 40px;
+    width: 75px;
+    background-color: #009270;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 1rem;
+    font-weight: 500;
+
+}
+.log-in-G > label{
+    width: 100%;
+    height: 100%;
+}
+
+.in-G-G{
+    background-color: transparent;
+    border: none;
+    width: 100%;
+    height: 100%;
+    padding-left: 20px;
+}
+
+
+
+
+.left-1-G{
+    margin-top: 5%;
+    width: 90%;
+    height: fit-content;
+    font-size: 3rem;
+    color: white;
+}
+.left-2-G{
+    width: 90%;
+    height: 5%;
+    font-size: 1.5rem;
+    color: white;
+}
+.left-3-G{
+    width: 90%;
+    height: 3%;
+    font-size: 1.2rem;
+    color: white;
+}
+
+.left-4-G{
+    width: 70%;
+    height: 70%;
+    margin-top: 3%;
+}
