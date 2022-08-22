@@ -135,7 +135,7 @@ export const SidebarDataAdmin = [
     },
     {
         title:'Feedbacks',
-        path:'/player/PlayerRankingList',
+        path:'/admin/Feedback',
         icon:<AiIcons.AiFillHome />,
         cName:'nav-text'
     },
