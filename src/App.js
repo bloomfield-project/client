@@ -46,15 +46,12 @@ import AddMatch from "./pages/Manager/js/AddMatch";
 import Matches_1 from "./pages/Coach/js/Matches_1";
 import Matches_2 from "./pages/Coach/js/Matches_2";
 import Macthes_3 from "./pages/Coach/js/Matches_3";
-<<<<<<< HEAD
 
-=======
->>>>>>> afcf61d4b040a28e218947b5e5593d900bd4445a
 import Psession from "./pages/player/js/Psessions";
 import PEvents from "./pages/player/js/PEvents";
 import PlayerRankingList from "./pages/player/js/PlayerRankingList";
 import Payments from "./pages/player/js/Payments";
-<<<<<<< HEAD
+
 import PlayerPerformance from "./pages/Coach/js/PlayerPerformance";
 import Matches_4 from "./pages/Coach/js/Matches_4";
 import MatchesTeams from "./component/MatchesTeams/MatchesTeams";
@@ -64,7 +61,7 @@ import AddPracticeSession from "./pages/Coach/js/AddPracticeSession";
 import CheckBox from "./component/CheckBox/CheckBox";
 import MarkPlayerProgress from "./pages/Coach/js/MarkPlayerProgress";
 import AddMultipleSelections from "./component/AddMultipleSelections/AddMultipleSelections";
-=======
+
 import AddTournamentMatch from "./pages/Manager/js/AddTournamentMatch";
 
 import AddTournamentDetail from "./pages/Manager/js/AddTournamentDetail";
@@ -83,6 +80,9 @@ import Accounts from "./pages/naya_admin/js/Accounts";
 import PlayerDetail from "./pages/naya_admin/js/PlayerDetail";
 import AnnualMembership from "./pages/naya_admin/js/AnnualMembership";
 import Feedback from "./pages/naya_admin/js/Feedback";
+import Ranking from "./pages/naya_admin/js/Ranking";
+import PlayerRankings from "./pages/naya_admin/js/PlayerRankings";
+import Profile from "./pages/Profile/Profile";
 // import AProgress from "./pages/admin/js/AProgress"
 // import APrivateProgress from "./pages/admin/js/APrivateProgress"
 
@@ -92,7 +92,7 @@ import LoginN from "./pages/login/js/LoginN";
 
 
 
->>>>>>> afcf61d4b040a28e218947b5e5593d900bd4445a
+
 
 
 const List = [
@@ -155,7 +155,7 @@ function App() {
           <Route path="/couch/Ap" element={<ViewAppoinments/>} />
           <Route path="/couch/Players1" element={<Players1 />} />
           <Route path="/couch/PlayerD" element={<PlayerDetails />} />
-<<<<<<< HEAD
+
           <Route path="/couch/M1" element={<Matches_1 />} />
           <Route path="/couch/M2" element={<Matches_2 />} />
           <Route path="/couch/M3" element={<Macthes_3 />} />
@@ -172,16 +172,12 @@ function App() {
 
 
 
-=======
->>>>>>> afcf61d4b040a28e218947b5e5593d900bd4445a
+
           <Route path="/player/Psession" element={<Psession />} />
           <Route path="/player/PEvents" element={<PEvents />} />
           <Route path="/player/PlayerRankingList" element={<PlayerRankingList />} />
           <Route path="/player/Payments" element={<Payments />} />
-<<<<<<< HEAD
-          
 
-=======
     
           
           
@@ -197,28 +193,16 @@ function App() {
           <Route path="/admin/Accounts" element={< Accounts />} />
           <Route path="/admin/PlayerDetail" element={<PlayerDetail />} />
 
-          
-          
-          
-          
-          
-          
-          
-          
-          
           <Route path="/LoginN" element={<LoginN />} />
 
           <Route path="/admin/AnnualMembership" element={<AnnualMembership />} />
           <Route path="/admin/Feedback" element={<Feedback />} />
->>>>>>> afcf61d4b040a28e218947b5e5593d900bd4445a
+
+          <Route path="/admin/Raking" element={<Ranking />} />
+          <Route path="/admin/PlayerRankings" element={<PlayerRankings />} />
+          <Route path="/profile" element={<Profile />} />
 
 
-
-
-
-          
-
-          {/* <Route path="/Search" element={<SearchTable/>} />/ */}
         </Routes>
       </BrowserRouter>
     </div>

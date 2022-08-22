@@ -13,11 +13,8 @@
     "antd": "^4.22.4",
     "axios": "^0.27.2",
     "bootstrap": "^5.2.0",
-<<<<<<< HEAD
     "bootstrap-icons": "^1.9.1",
-=======
     "http-proxy-middleware": "^2.0.6",
->>>>>>> afcf61d4b040a28e218947b5e5593d900bd4445a
     "material-table": "^1.69.3",
     "mdb-react-ui-kit": "^4.1.0",
     "mdbootstrap": "^4.20.0",

@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 
-import { SidebarData } from "./SidebarData";
+import {  SidebarDataPlayer } from "./SidebarData";
 import { SidebarDataAdmin } from "./SidebarData";
+import { SidebarDataManager } from "./SidebarData";
+
 
 
 
@@ -16,7 +18,7 @@ import { IconContext } from "react-icons";
 
 function Navbar() {
   // const [sidebar, setSidebar] = useState(false);
-
+  
   // const showSidebar = () => setSidebar(!sidebar);
   return (
     <>
@@ -31,7 +33,7 @@ function Navbar() {
 
             
 
-            {SidebarDataAdmin.map((item, index) => {
+            { SidebarDataManager.map((item, index) => {
 
 
               return (

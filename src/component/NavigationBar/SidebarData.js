@@ -3,7 +3,7 @@ import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import * as IoIcons from "react-icons/io";
 
-export const SidebarData = [
+export const SidebarDataManager = [
     {
         title:'Dashboard',
         path:'/',
@@ -111,7 +111,7 @@ export const SidebarDataPlayer = [
 export const SidebarDataAdmin = [
     {
         title:'Dashboard',
-        path:'/player/playerRanking',
+        path:'/profile',
         icon:<AiIcons.AiFillHome />,
         cName:'nav-text'
     },
@@ -147,7 +147,7 @@ export const SidebarDataAdmin = [
     },
     {
         title:'Ranking',
-        path:'/player/Payments',
+        path:'/admin/Raking',
         icon:<AiIcons.AiFillHome />,
         cName:'nav-text'
     },

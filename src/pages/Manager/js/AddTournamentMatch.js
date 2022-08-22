@@ -54,45 +54,53 @@ function AddTournamentMatch() {
         <div className="header-container">
           <Header></Header>
         </div>
-        <div className="page-container-gray">
-          <div className="l-back-r-title">
-            <div className="l-back-r-title-icon">
-              <Link to={"/manager/AddMatch"}>
-                <IoChevronBackCircleOutline
-                  style={{ color: "rgba(0, 146, 112, 1)", fontSize: " 40px" }}
-                />
-              </Link>
-            </div>
 
-            <h1>Add Tournament Match</h1>
+        <div className="body-container-1">
+          <div className="navbar-container">
+            <Navbar></Navbar>
           </div>
+          <div className="body-container-2">
+            <div className="page-container-gray" style={{ width: "100%" }}>
+              <div className="l-back-r-title">
+                <div className="l-back-r-title-icon">
+                  <Link to={"/manager/AddMatch"}>
+                    <IoChevronBackCircleOutline
+                      style={{
+                        color: "rgba(0, 146, 112, 1)",
+                        fontSize: " 40px",
+                      }}
+                    />
+                  </Link>
+                </div>
 
-          <div className="form-container">
-            <div className="table-box-1">
-              <div className="tablee">
-                <div className="matche-container-outer-box">
-                  <div className="match-box-up">
-                    <div className="go-out">
-                      <h4
-                        style={{
-                          color: "#009270",
-                          fontSize: "2rem",
-                          fontWeight: "bolder",
-                        }}
-                      >
-                        Hero Cup
-                      </h4>
-                    </div>
-                  </div>
-                  <div
-                    className="match-box-mid"
-                    style={{ height: "auto", minWidth: "100%" }}
-                  >
-                    <SampleForm arr={array1} upload={true} file1={file} />
-                    
-                    </div>
-                  </div>
+                <h1>Add Tournament Match</h1>
+              </div>
+
+              <div className="form-container">
+                <div className="table-box-1">
                   <div className="tablee">
+                    <div className="matche-container-outer-box">
+                      <div className="match-box-up">
+                        <div className="go-out">
+                          <h4
+                            style={{
+                              color: "#009270",
+                              fontSize: "2rem",
+                              fontWeight: "bolder",
+                            }}
+                          >
+                            Hero Cup
+                          </h4>
+                        </div>
+                      </div>
+                      <div
+                        className="match-box-mid"
+                        style={{ height: "auto", minWidth: "100%" }}
+                      >
+                        <SampleForm arr={array1} upload={true} file1={file} />
+                      </div>
+                    </div>
+                    <div className="tablee">
                       <MatchesTeams
                         btns=""
                         wonornot="BLOOMFIELD won by 7 wkts"
@@ -107,6 +115,8 @@ function AddTournamentMatch() {
                         middle="R.Premadasa Stadium"
                         right="2022 Oct 16"
                       />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
