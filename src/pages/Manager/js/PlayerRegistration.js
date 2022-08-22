@@ -9,6 +9,7 @@ import FileUpload from "../../../component/Form/FileUpload";
 import AddMultipleSelections from "../../../component/AddMultipleSelections/AddMultipleSelections";
 import ResetSubmit from "../../../component/Form/ResetSubmit";
 import * as yup from "yup";
+import SelectOption from "../../../component/Form/SelectOption";
 
   
 const userSchema = yup.object().shape({
@@ -70,7 +71,20 @@ function PlayerRegistration() {
     },
   ];
 
-
+const option = [
+  {
+    value:"bawling",
+    title:"Bawling"
+  },
+  {
+    value:"batting",
+    title:"Batting"
+  },
+  {
+    value:"allrounder",
+    title:"Allrounder"
+  }
+]
 
   const file = {
     filefor: "for",
@@ -123,6 +137,8 @@ function PlayerRegistration() {
                 <form onSubmit={createUser}>
                   <SampleForm arr={array1} />
                   <AddMultipleSelections />
+                  
+                  <SelectOption label={"Player Role"} option={option} />
                   <FileUpload filetitle={"Profile Image"} filefor={"for"} />
                   <ResetSubmit />
                 </form>
