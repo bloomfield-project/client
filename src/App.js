@@ -24,14 +24,11 @@ import MatchDetails from "./pages/player/js/MatchDetails";
 import PSessionDetails from "./pages/player/js/PSessionDetails";
 import CSessionDetails from "./pages/player/js/CSessionDetails";
 import EventDetails from "./pages/player/js/EventDetails";
-
 import IntroTable from "./component/IntroTable/IntroTable";
 import Calander from "./component/Calander/Calander";
 import PracticeSessions from "./pages/Coach/js/PracticeSessions";
-
 import Appoinments from "./pages/Coach/js/Appoinments";
 import ViewAppoinments from "./pages/Coach/js/ViewAppoinments";
-
 import Test from "./component/Table/test";
 import PlayerRegistration from "./pages/Manager/js/PlayerRegistration";
 import EditPlayerDetails from "./pages/Manager/js/EditPlayerDetails";
@@ -42,19 +39,22 @@ import EditEvent from "./pages/Manager/js/EditEvent";
 import Achivement from "./pages/Manager/js/Achivement";
 import SampleCard from "./component/Card/SampleCard";
 import AddAchivement from "./pages/Manager/js/AddAchivement";
-
 import MatchDetail from "./pages/Manager/js/MatchDetail";
-
 import Players1 from "./pages/Coach/js/Players";
 import PlayerDetails from "./pages/Coach/js/PlayerDetails";
+import AddMatch from "./pages/Manager/js/AddMatch";
 import Matches_1 from "./pages/Coach/js/Matches_1";
 import Matches_2 from "./pages/Coach/js/Matches_2";
 import Macthes_3 from "./pages/Coach/js/Matches_3";
+<<<<<<< HEAD
 
+=======
+>>>>>>> afcf61d4b040a28e218947b5e5593d900bd4445a
 import Psession from "./pages/player/js/Psessions";
 import PEvents from "./pages/player/js/PEvents";
 import PlayerRankingList from "./pages/player/js/PlayerRankingList";
 import Payments from "./pages/player/js/Payments";
+<<<<<<< HEAD
 import PlayerPerformance from "./pages/Coach/js/PlayerPerformance";
 import Matches_4 from "./pages/Coach/js/Matches_4";
 import MatchesTeams from "./component/MatchesTeams/MatchesTeams";
@@ -64,6 +64,35 @@ import AddPracticeSession from "./pages/Coach/js/AddPracticeSession";
 import CheckBox from "./component/CheckBox/CheckBox";
 import MarkPlayerProgress from "./pages/Coach/js/MarkPlayerProgress";
 import AddMultipleSelections from "./component/AddMultipleSelections/AddMultipleSelections";
+=======
+import AddTournamentMatch from "./pages/Manager/js/AddTournamentMatch";
+
+import AddTournamentDetail from "./pages/Manager/js/AddTournamentDetail";
+import Membershipfee from "./pages/naya_admin/js/Membershipfee";
+import Employees from "./pages/naya_admin/js/Employees";
+import AddEmployee from "./pages/naya_admin/js/AddEmployee";
+
+
+
+import APlayerRanking from "./pages/admin/js/APlayerRanking";
+import EditEmployee from "./pages/naya_admin/js/EditEmployee";
+import UserView from "./component/UserView/UserView";
+import UpdateDeleteUser from "./pages/naya_admin/js/UpdateDeleteUser";
+import Achivements from "./pages/naya_admin/js/Achivements";
+import Accounts from "./pages/naya_admin/js/Accounts";
+import PlayerDetail from "./pages/naya_admin/js/PlayerDetail";
+import AnnualMembership from "./pages/naya_admin/js/AnnualMembership";
+import Feedback from "./pages/naya_admin/js/Feedback";
+// import AProgress from "./pages/admin/js/AProgress"
+// import APrivateProgress from "./pages/admin/js/APrivateProgress"
+
+
+import LoginN from "./pages/login/js/LoginN";
+
+
+
+
+>>>>>>> afcf61d4b040a28e218947b5e5593d900bd4445a
 
 
 const List = [
@@ -101,6 +130,11 @@ function App() {
           <Route path="/player/PSessionDetails" element={<PSessionDetails />} />
           <Route path="/player/CSessionDetails" element={<CSessionDetails />} />
           <Route path="/player/EventDetails" element={<EventDetails />} />
+
+          <Route path="/admin/AplayerRanking" element={<APlayerRanking />} />
+          {/* <Route path="/admin/AProgress" element={<AProgress />} /> */}
+          {/* <Route path="/admin/APrivateProgress" element={<APrivateProgress />} /> */}
+
           <Route path="/test" element={<Test />} />
           <Route path="/manager/PlayerRegistration" element={<PlayerRegistration />} />
           <Route path="/manager/EditPlayerDetails" element={<EditPlayerDetails />} />/
@@ -114,14 +148,14 @@ function App() {
           <Route path="/player/I" element={<IntroTable />} />
           <Route path="/C" element={<Calander />} />
           <Route path="/couch/PSessions" element={<PracticeSessions />} />
-
           <Route path="/manager/MatchDetail" element={<MatchDetail />} />
-        
-
+          <Route path="/manager/AddMatch" element={<AddMatch />} />
+          <Route path="/manager/AddTournamentMatch" element={<AddTournamentMatch />} />
           <Route path="/couch/A" element={<Appoinments />} />
           <Route path="/couch/Ap" element={<ViewAppoinments/>} />
           <Route path="/couch/Players1" element={<Players1 />} />
           <Route path="/couch/PlayerD" element={<PlayerDetails />} />
+<<<<<<< HEAD
           <Route path="/couch/M1" element={<Matches_1 />} />
           <Route path="/couch/M2" element={<Matches_2 />} />
           <Route path="/couch/M3" element={<Macthes_3 />} />
@@ -138,14 +172,51 @@ function App() {
 
 
 
+=======
+>>>>>>> afcf61d4b040a28e218947b5e5593d900bd4445a
           <Route path="/player/Psession" element={<Psession />} />
           <Route path="/player/PEvents" element={<PEvents />} />
           <Route path="/player/PlayerRankingList" element={<PlayerRankingList />} />
           <Route path="/player/Payments" element={<Payments />} />
+<<<<<<< HEAD
           
 
+=======
+    
+          
+          
+
+          <Route path="/couch/m_1" element={<Matches_1 />} />
+          <Route path="/manager/AddTournamentDetail" element={<AddTournamentDetail />} />
+          <Route path="/admin/Membershipfee" element={<Membershipfee/>}  />
+          <Route path="/admin/Employees" element={<Employees/>}  />
+          <Route path="/admin/AddEmployee" element={<AddEmployee/>}  />
+          <Route path="/admin/EditEmployee" element={<EditEmployee />}  />
+          <Route path="/admin/UserView" element={< UpdateDeleteUser/>} />
+          <Route path="/admin/Achivements" element={< Achivements />} />
+          <Route path="/admin/Accounts" element={< Accounts />} />
+          <Route path="/admin/PlayerDetail" element={<PlayerDetail />} />
+
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <Route path="/LoginN" element={<LoginN />} />
+
+          <Route path="/admin/AnnualMembership" element={<AnnualMembership />} />
+          <Route path="/admin/Feedback" element={<Feedback />} />
+>>>>>>> afcf61d4b040a28e218947b5e5593d900bd4445a
 
 
+
+
+
+          
 
           {/* <Route path="/Search" element={<SearchTable/>} />/ */}
         </Routes>

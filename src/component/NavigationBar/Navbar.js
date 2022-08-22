@@ -4,7 +4,7 @@ import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 
 import { SidebarData } from "./SidebarData";
-import { SidebarDataPlayer } from "./SidebarData";
+import { SidebarDataAdmin } from "./SidebarData";
 
 
 
@@ -28,7 +28,11 @@ function Navbar() {
         <nav className="nav-menu active">
           <ul className="nav-menu-items" >
             
-            {SidebarDataPlayer.map((item, index) => {
+
+            
+
+            {SidebarDataAdmin.map((item, index) => {
+
 
               return (
                 <li key={index} className={item.cName}>

@@ -4,7 +4,7 @@ import { FileUploader } from "react-drag-drop-files";
 
 const fileTypes = ["JPG", "PNG", "GIF"];
 
-function SampleForm({ arr, upload }) {
+function SampleForm({ arr, upload ,border="true", file1={filetitle:"title" , filefor:"for"} }) {
   const [file, setFile] = useState(null);
   const handleChange = (file) => {
     setFile(file);
@@ -12,8 +12,8 @@ function SampleForm({ arr, upload }) {
   arr.map((item) => console.log(item));
 
   return (
-    <div class="p-3 mb-2 bg-white text-dark rounded">
-      <form class="w-100 p-3 border border-secondary rounded">
+    <div class="w-100 p-3 mb-2 bg-white text-dark rounded">
+      <form class= {border ? "w-100 p-3 border border-secondary rounded" : "w-100 p-3 "}>
         {arr.map((item, index) => {
           return (
             <>
@@ -35,7 +35,9 @@ function SampleForm({ arr, upload }) {
         })}
 
         <br></br>
-
+        <label for={file1.filefor} className="d-flex justify-content-start">
+                  {file1.filetitle}
+                </label>
         {upload ? (
           <div class="form-group file-upload-wrapper">
             <FileUploader

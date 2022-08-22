@@ -2,8 +2,8 @@ import Header from "../../../component/header/Header"
 import Navbar from "../../../component/NavigationBar/Navbar";
 import React from "react";
 import "../../Home.css"
-import "../css/playerRanking.css"
-import player from "../player.jpg"
+// import "../css/playerRanking.css"
+import player from "../../../pages/player/player.jpg"
 import { Tabs } from 'antd';
 import 'antd/dist/antd.css';
 import Tablee from "../../../component/ScoreTable/ScoreTable";
@@ -37,7 +37,7 @@ const LIST_M = [
 ];
 
 
-function playerRanking() {
+function AplayerRanking() {
     return (
       <div className="page-container-1">
         <div className="header-container">
@@ -114,7 +114,7 @@ function playerRanking() {
                                     <div className="table-tab">TEST</div>
                                 </div>
                                 
-                                <span className="gp-21"></span> 
+                                <span className="gap-2"></span> 
 
                                 {/*begin*/}
                                 <div className="tablee-14">
@@ -262,4 +262,4 @@ function playerRanking() {
   );
   }
   
-  export default playerRanking;
+  export default AplayerRanking;

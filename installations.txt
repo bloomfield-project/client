@@ -33,3 +33,10 @@ yarn add react-drag-drop-files
 
 yarn add antd
 yarn add react-minimal-pie-chart
+
+
+
+axios
+
+yarn add http-proxy-middleware
+

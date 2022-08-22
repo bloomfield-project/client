@@ -37,6 +37,7 @@ function PlayerRankingList() {
                 <h5 className="tab">Balling</h5>
                 <h5 className="tab">All-rounders</h5>
               </div> */}
+<<<<<<< HEAD
                     <div className="PplayerPreformanceBody">
                         <Tabs defaultActiveKey="1" onChange={onChange}>
                             <TabPane tab="Tab 1" key="1">
@@ -70,6 +71,142 @@ function PlayerRankingList() {
                                             <div className="col-3-1">1</div>
                                             <div className="col-3-2"><img className="row-image" src={profpic} alt=""></img><a href="/player/playerRanking">Sameera Madushan</a></div>
                                             <div className="col-3-3">932</div>
+=======
+                <div className="PplayerPreformanceBody">
+                <Tabs defaultActiveKey="1" onChange={onChange}>
+                    <TabPane tab="Batting" key="1">
+                    <div className="table-box-11">
+                        <div className="table-tabs">
+                            <div className="table-tab">ODI</div>
+                            <div className="table-tab-active">T20</div>
+                            <div className="table-tab">TEST</div>
+                        </div>
+                        <div className="tablee">
+                            <div className="table-head">
+                                <div className="col-3-1">Position</div>
+                                <div className="col-3-2">Player</div>
+                                <div className="col-3-3">Rating</div>
+                            </div>
+                            <div className="table-row">
+                                <div className="col-3-1">1</div>
+                                <div className="col-3-2"><img className="row-image" src={profpic} alt=""></img><a href="/player/playerRanking">Sameera Madushan</a></div>
+                                <div className="col-3-3">932</div>
+                                
+                            </div>
+                            <hr></hr>
+                            <div className="table-row">
+                                <div className="col-3-1">1</div>
+                                <div className="col-3-2"><img className="row-image" src={profpic} alt=""></img><a href="/player/playerRanking">Sameera Madushan</a></div>
+                                <div className="col-3-3">932</div>
+                                
+                            </div>
+                            <hr></hr>
+                            <div className="table-row">
+                                <div className="col-3-1">1</div>
+                                <div className="col-3-2"><img className="row-image" src={profpic} alt=""></img><a href="/player/playerRanking">Sameera Madushan</a></div>
+                                <div className="col-3-3">932</div>
+                                
+                            </div>
+                            <hr></hr>
+                            <div className="table-row">
+                                <div className="col-3-1">1</div>
+                                <div className="col-3-2"><img className="row-image" src={profpic} alt=""></img><a href="/player/playerRanking">Sameera Madushan</a></div>
+                                <div className="col-3-3">932</div>
+                                
+                            </div>
+                            
+                        </div>
+
+                    </div>
+                    </TabPane>
+                    <TabPane tab="Bowling" key="2">
+                    <div className="table-box-11">
+                        <div className="table-tabs">
+                            <div className="table-tab">ODI</div>
+                            <div className="table-tab-active">T20</div>
+                            <div className="table-tab">TEST</div>
+                        </div>
+                        <div className="tablee">
+                            <div className="table-head">
+                                <div className="col-3-1">Position</div>
+                                <div className="col-3-2">Player</div>
+                                <div className="col-3-3">Rating</div>
+                            </div>
+                            <div className="table-row">
+                                <div className="col-3-1">1</div>
+                                <div className="col-3-2"><img className="row-image" src={profpic} alt=""></img><a href="/player/playerRanking">Sameera Madushan</a></div>
+                                <div className="col-3-3">932</div>
+                                
+                            </div>
+                            <hr></hr>
+                            <div className="table-row">
+                                <div className="col-3-1">1</div>
+                                <div className="col-3-2"><img className="row-image" src={profpic} alt=""></img><a href="/player/playerRanking">Sameera Madushan</a></div>
+                                <div className="col-3-3">932</div>
+                                
+                            </div>
+                            <hr></hr>
+                            <div className="table-row">
+                                <div className="col-3-1">1</div>
+                                <div className="col-3-2"><img className="row-image" src={profpic} alt=""></img><a href="/player/playerRanking">Sameera Madushan</a></div>
+                                <div className="col-3-3">932</div>
+                                
+                            </div>
+                            <hr></hr>
+                            <div className="table-row">
+                                <div className="col-3-1">1</div>
+                                <div className="col-3-2"><img className="row-image" src={profpic} alt=""></img><a href="/player/playerRanking">Sameera Madushan</a></div>
+                                <div className="col-3-3">932</div>
+                                
+                            </div>
+                            
+                        </div>
+
+                    </div>
+                    </TabPane>
+                    <TabPane tab="All-rounders" key="3">
+                    <div className="table-box-11">
+                        <div className="table-tabs">
+                            <div className="table-tab">ODI</div>
+                            <div className="table-tab-active">T20</div>
+                            <div className="table-tab">TEST</div>
+                        </div>
+                        <div className="tablee">
+                            <div className="table-head">
+                                <div className="col-3-1">Position</div>
+                                <div className="col-3-2">Player</div>
+                                <div className="col-3-3">Rating</div>
+                            </div>
+                            <div className="table-row">
+                                <div className="col-3-1">1</div>
+                                <div className="col-3-2"><img className="row-image" src={profpic} alt=""></img><a href="/player/playerRanking">Sameera Madushan</a></div>
+                                <div className="col-3-3">932</div>
+                                
+                            </div>
+                            <hr></hr>
+                            <div className="table-row">
+                                <div className="col-3-1">1</div>
+                                <div className="col-3-2"><img className="row-image" src={profpic} alt=""></img><a href="/player/playerRanking">Sameera Madushan</a></div>
+                                <div className="col-3-3">932</div>
+                                
+                            </div>
+                            <hr></hr>
+                            <div className="table-row">
+                                <div className="col-3-1">1</div>
+                                <div className="col-3-2"><img className="row-image" src={profpic} alt=""></img><a href="/player/playerRanking">Sameera Madushan</a></div>
+                                <div className="col-3-3">932</div>
+                                
+                            </div>
+                            <hr></hr>
+                            <div className="table-row">
+                                <div className="col-3-1">1</div>
+                                <div className="col-3-2"><img className="row-image" src={profpic} alt=""></img><a href="/player/playerRanking">Sameera Madushan</a></div>
+                                <div className="col-3-3">932</div>
+                                
+                            </div>
+                            
+                        </div>
+>>>>>>> afcf61d4b040a28e218947b5e5593d900bd4445a
 
                                         </div>
                                         <hr></hr>

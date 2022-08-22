@@ -4,19 +4,21 @@ import IntroTable from "../../../component/IntroTable/IntroTable"
 import React from "react";
 import player from "../player.jpg"
 import "../../Home.css"
-import "../css/Progress.css" 
+import "../css/Progress.css"
 import { PieChart } from 'react-minimal-pie-chart';
+
+
 
 function Progress() {
     return (
-      <div className="page-container-1">
+        <div className="page-container-1">
         <div className="header-container">
           <Header></Header>
         </div>
         <div className="body-container-1">
           <div className="navbar-container">
             <Navbar></Navbar>
-          </div>
+            </div>
           <div className="body-container-2">
           <div className="title">
                 <h1>Player Progress</h1>
@@ -56,7 +58,7 @@ function Progress() {
                             <div className="mapPie-col-1">
                                 <div className="color-box-2"></div>
                                 <h5>Present</h5>
-                            </div>
+                                </div>
                             <div className="mapPie-col-2"><h5>-</h5></div>
                             <div className="mapPie-col-3"><h5>33 (75%)</h5></div>
                         </div>
@@ -75,8 +77,7 @@ function Progress() {
                     
                 </div> 
 
-                <span className="gp-21"></span> 
-
+                <span className="gap-2"></span> 
                 {/*begin*/}
                 <div className="tablee-14">
                     <div className="table-head-14">
@@ -84,13 +85,31 @@ function Progress() {
                         <div className="col-4-2"><h5>Session</h5></div>
                         <div className="col-4-3"><h5>Attendance</h5></div>
                         <div className="col-4-4"><h5></h5></div>
-                        
-                    </div>
+
+                        </div>
                     <div className="table-row-14">
                         <div className="col-4-1">S-001</div>
                         <div className="col-4-2">Batting Practice</div>
                         <div className="col-4-3">Present</div>
-                        <div className="col-4-4"><a href="/player/PrivateProgress">Details</a></div>
+                        <div className="col-4-4"><a href="#">Details</a></div>
+                        
+                    </div>
+                    <hr></hr>
+
+                    <div className="table-row-14">
+                        <div className="col-4-1">S-001</div>
+                        <div className="col-4-2">Batting Practice</div>
+                        <div className="col-4-3">Present</div>
+                        <div className="col-4-4"><a href="#">Details</a></div>
+                        
+                    </div>
+                    <hr></hr>
+                    <div className="table-row-14">
+
+                    <div className="col-4-1">S-001</div>
+                        <div className="col-4-2">Batting Practice</div>
+                        <div className="col-4-3">Present</div>
+                        <div className="col-4-4"><a href="#">Details</a></div>
                         
                     </div>
                     <hr></hr>
@@ -98,37 +117,18 @@ function Progress() {
                         <div className="col-4-1">S-001</div>
                         <div className="col-4-2">Batting Practice</div>
                         <div className="col-4-3">Present</div>
-                        <div className="col-4-4"><a href="/player/PrivateProgress">Details</a></div>
+                        <div className="col-4-4"><a href="#">Details</a></div>
                         
-                    </div>
-                    <hr></hr>
+                    </div><hr></hr>
                     <div className="table-row-14">
                         <div className="col-4-1">S-001</div>
                         <div className="col-4-2">Batting Practice</div>
                         <div className="col-4-3">Present</div>
-                        <div className="col-4-4"><a href="/player/PrivateProgress">Details</a></div>
+                        <div className="col-4-4"><a href="#">Details</a></div>
                         
                     </div>
                     <hr></hr>
-                    <div className="table-row-14">
-                        <div className="col-4-1">S-001</div>
-                        <div className="col-4-2">Batting Practice</div>
-                        <div className="col-4-3">Present</div>
-                        <div className="col-4-4"><a href="/player/PrivateProgress">Details</a></div>
-                        
                     </div>
-                    <hr></hr>
-                    <div className="table-row-14">
-                        <div className="col-4-1">S-001</div>
-                        <div className="col-4-2">Batting Practice</div>
-                        <div className="col-4-3">Present</div>
-                        <div className="col-4-4"><a href="/player/PrivateProgress">Details</a></div>
-                        
-                    </div>
-                    <hr></hr>
-                    
-                    
-                </div>
                 {/*end*/}  
                 
               </div>
@@ -141,3 +141,4 @@ function Progress() {
   }
   
   export default Progress;
+                   

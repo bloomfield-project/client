@@ -38,6 +38,10 @@ function AddAchivement() {
           id: "contact",
         },
       ];
+      let file = {
+        filefor: "for",
+        filetitle: "Logo"
+      };
       
   return (
     <>
@@ -61,7 +65,7 @@ function AddAchivement() {
           </div>
 
           <div className="form-container">
-            <SampleForm arr={array1} upload = {true} />
+            <SampleForm arr={array1} upload = {true} border={true} file1={file}/>
           </div>
         </div>
       </div>

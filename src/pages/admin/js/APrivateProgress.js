@@ -44,7 +44,7 @@ function PrivateProgress() {
                     <hr></hr>
                     <div className="fdbck-container">
                       <p style={{textAlign:"left" , width:"95%"}}>While coaching, you might see a dozen things you want to feed back. But rather than pointing out a bunch of cricket tips,stay quiet and pick out the one thing that will help most in a session.</p>
-                      <div style={{width:"95%" , display:"flex" , justifyContent:"space-between"}}><h5>2022-Jul-21</h5><h5>Mr. Roshan Mahanama</h5></div>
+                      <div style={{width:"95%"}}><h5>Mr. Roshan Mahanama</h5></div>
                     </div>
                 </div>
                         

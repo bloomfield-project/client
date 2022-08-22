@@ -1,11 +1,11 @@
 import React from "react";
 import Header from "../../../component/header/Header";
-import "../css/PlayerRegistration.css";
+// import "../css/PlayerRegistration.css";
 import { IoChevronBackCircleOutline } from "react-icons/io5";
 import SampleForm from "../../../component/Form/SampleForm";
 import { Link } from "react-router-dom";
 
-function PlayerRegistration() {
+function AddEmployee() {
   let array1 = [
     {
       title: "First Name",
@@ -51,14 +51,14 @@ function PlayerRegistration() {
         <div className="page-container-gray">
           <div className="l-back-r-title">
             <div className="l-back-r-title-icon">
-              <Link to={"/manager/Players"}>
+              <Link to={"/admin/Employees"}>
                 <IoChevronBackCircleOutline
                   style={{ color: "rgba(0, 146, 112, 1)", fontSize: " 40px" }}
                 />
               </Link>
             </div>
 
-            <h1>Player Registration</h1>
+            <h1>Employee Registration</h1>
           </div>
 
           <div className="form-container">
@@ -70,4 +70,4 @@ function PlayerRegistration() {
   );
 }
 
-export default PlayerRegistration;
+export default AddEmployee;

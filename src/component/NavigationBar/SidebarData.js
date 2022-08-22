@@ -11,20 +11,14 @@ export const SidebarData = [
         cName:'nav-text'
     },
     {
-        title:'Player',
-        path:'/Fogotpassword',
-        icon:<IoIcons.IoIosPaper />,
-        cName:'nav-text'
-    },
-    {
-        title:'අසිත',
-        path:'/Search',
+        title:'Match',
+        path:'/manager/MatchDetail',
         icon:<FaIcons.FaCartPlus />,
         cName:'nav-text'
     },
     {
-        title:'SampleForm',
-        path:'/manager/SampleForm',
+        title:'Achivement',
+        path:'/manager/Achivement',
         icon:<AiIcons.AiFillHome />,
         cName:'nav-text'
     },
@@ -110,4 +104,55 @@ export const SidebarDataPlayer = [
         icon:<AiIcons.AiFillHome />,
         cName:'nav-text'
     },
+
+    
 ]
+
+export const SidebarDataAdmin = [
+    {
+        title:'Dashboard',
+        path:'/player/playerRanking',
+        icon:<AiIcons.AiFillHome />,
+        cName:'nav-text'
+    },
+    {
+        title:'Employees',
+        path:'/admin/Employees',
+        icon:<IoIcons.IoIosPaper />,
+        cName:'nav-text'
+    },
+    {
+        title:'Accounts',
+        path:'/admin/Accounts',
+        icon:<FaIcons.FaCartPlus />,
+        cName:'nav-text'
+    },
+    {
+        title:'Payments',
+        path:'/admin/AnnualMembership',
+        icon:<AiIcons.AiFillHome />,
+        cName:'nav-text'
+    },
+    {
+        title:'Feedbacks',
+        path:'/admin/Feedback',
+        icon:<AiIcons.AiFillHome />,
+        cName:'nav-text'
+    },
+    {
+        title:'Achivements',
+        path:'/Admin/Achivements',
+        icon:<AiIcons.AiFillHome />,
+        cName:'nav-text'
+    },
+    {
+        title:'Ranking',
+        path:'/player/Payments',
+        icon:<AiIcons.AiFillHome />,
+        cName:'nav-text'
+    },
+        
+]
+
+
+
