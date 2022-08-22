@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 
-import { SidebarData } from "./SidebarData";
+import {  SidebarDataPlayer } from "./SidebarData";
 import { SidebarDataAdmin } from "./SidebarData";
 
 
@@ -31,7 +31,7 @@ function Navbar() {
 
             
 
-            {SidebarDataAdmin.map((item, index) => {
+            { SidebarDataPlayer.map((item, index) => {
 
 
               return (
