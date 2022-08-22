@@ -4,6 +4,7 @@ import "../css/PlayerRegistration.css";
 import { IoChevronBackCircleOutline } from "react-icons/io5";
 import SampleForm from "../../../component/Form/SampleForm";
 import { Link } from "react-router-dom";
+import Navbar from "../../../component/NavigationBar/Navbar";
 
 
 function AddCouncellingSession() {
@@ -45,8 +46,13 @@ function AddCouncellingSession() {
         <div className="header-container">
           <Header></Header>
         </div>
-        <div className="page-container-gray">
-          <div className="l-back-r-title">
+        <div className="body-container-1">
+          <div className="navbar-container">
+            <Navbar></Navbar>
+          </div>
+          <div className="body-container-2">
+            <div className="page-container-gray" style={{ width: "100%" }}>
+            <div className="l-back-r-title">
             <div className="l-back-r-title-icon">
             
             <Link to={"/manager/Session"}>
@@ -63,7 +69,12 @@ function AddCouncellingSession() {
           <div className="form-container">
             <SampleForm arr={array1} upload = {false} border={true} file1={""} />
           </div>
+            </div>
+          </div>
         </div>
+
+
+        
       </div>
       
     </>

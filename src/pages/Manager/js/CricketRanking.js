@@ -156,7 +156,7 @@ const columns_1 = [
 
 function CricketRanking() {
   const [tabNumber, setTabNumber] = useState(1);
-
+  
   const selectTab_1 = () => {
     setTabNumber(1);
     // console.log(tabNumber + "selectTab 1");
@@ -182,7 +182,7 @@ function CricketRanking() {
           </div>
           <div className="body-container-2">
             <div className="title">
-              <h1>{tabNumber === 1 ? "Counseling Sessions" : "Events"}</h1>
+              <h1>BLOOMFIELD Cricket Rankings</h1>
             </div>
             <div className="tabs">
               {/* <h5 className="tab-active">Couceling<hr></hr></h5>
@@ -204,15 +204,7 @@ function CricketRanking() {
               </div>
 
               <div className="tabs-right">
-                <Link
-                  to={
-                    tabNumber === 1
-                      ? "/manager/AddCouncellingSession"
-                      : "/manager/AddEvent"
-                  }
-                >
-                  <Button variant="outline-success">+ Add</Button>
-                </Link>
+                
               </div>
             </div>
 
