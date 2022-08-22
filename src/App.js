@@ -15,7 +15,7 @@ import CricketRanking from "./pages/Manager/js/CricketRanking";
 import Session from "./pages/Manager/js/Session";
 import Membership from "./pages/Manager/js/Membership";
 import SampleForm from "./component/Form/SampleForm";
-import FormData from "./component/Form/FormData";
+import FormData from "./component/Form/ResetSubmit";
 import PlayerRanking from "./pages/player/js/playerRanking"/* */
 import Progress from "./pages/player/js/Progress"
 import PrivateProgress from "./pages/player/js/PrivateProgress"
@@ -88,6 +88,7 @@ import Profile from "./pages/Profile/Profile";
 
 
 import LoginN from "./pages/login/js/LoginN";
+import FileUpload from "./component/Form/FileUpload";
 
 
 
@@ -201,6 +202,8 @@ function App() {
           <Route path="/admin/Raking" element={<Ranking />} />
           <Route path="/admin/PlayerRankings" element={<PlayerRankings />} />
           <Route path="/profile" element={<Profile />} />
+
+          <Route path="/file" element={<FileUpload />}  />
 
 
         </Routes>
