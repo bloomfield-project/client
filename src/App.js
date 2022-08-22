@@ -71,6 +71,7 @@ import Achivements from "./pages/naya_admin/js/Achivements";
 import Accounts from "./pages/naya_admin/js/Accounts";
 import PlayerDetail from "./pages/naya_admin/js/PlayerDetail";
 import AnnualMembership from "./pages/naya_admin/js/AnnualMembership";
+import Feedback from "./pages/naya_admin/js/Feedback";
 // import AProgress from "./pages/admin/js/AProgress"
 // import APrivateProgress from "./pages/admin/js/APrivateProgress"
 
@@ -140,17 +141,7 @@ function App() {
           <Route path="/player/PEvents" element={<PEvents />} />
           <Route path="/player/PlayerRankingList" element={<PlayerRankingList />} />
           <Route path="/player/Payments" element={<Payments />} />
-          
-
-          
-          
-          
-          
-          
-          
-          
-          
-          
+    
           
           <Route path="/player/test" element={<Tests />} />
 
@@ -165,6 +156,8 @@ function App() {
           <Route path="/admin/Accounts" element={< Accounts />} />
           <Route path="/admin/PlayerDetail" element={<PlayerDetail />} />
           <Route path="/admin/AnnualMembership" element={<AnnualMembership />} />
+          <Route path="/admin/Feedback" element={<Feedback />} />
+
 
 
 
