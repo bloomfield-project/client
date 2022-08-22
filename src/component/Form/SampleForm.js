@@ -6,11 +6,12 @@ function SampleForm({ arr  }) {
   arr.map((item) => console.log(item));
 
   return (
-    <div class="w-100 p-3 mb-2 bg-white text-dark rounded">
+    <div class="w-100 p-3 bg-white text-dark rounded">
       {/* <form class= { "w-100 p-3 border border-secondary rounded  w-100 p-3 "}> */}
         {arr.map((item, index) => {
           return (
             <>
+             <br></br>
               <div key={index} class="form-group">
                 <label for={item.for} className="d-flex justify-content-start">
                   {item.title}
@@ -24,7 +25,7 @@ function SampleForm({ arr  }) {
                   placeholder={item.placeholder}
                 />
               </div>
-              <br></br>
+             
             </>
           );
         })}
