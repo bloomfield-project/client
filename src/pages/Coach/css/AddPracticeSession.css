@@ -1,0 +1,71 @@
+.APS-Form {
+    width: 90%;
+    margin-left: 5%;
+    border-radius: 5px;
+    background-color: #fff;
+    /* padding: 5px; */
+}
+
+.APS-Form-1-1 {
+
+    width: 90%;
+    margin-left: 5%;
+    padding: 20px;
+
+}
+
+.APS-Form-1-1 h5 {
+    font-weight: bold;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.APS-Form-2-1 {
+    
+    margin-left: 5%;
+}
+
+.APS-Form-2-2 {
+    margin-left: 5%;
+}
+
+.APS-Form-3 {
+    width: 90%;
+    margin-left: 5%;
+    display: flex;
+    height: 40vh;
+    /* background-color: blue; */
+}
+
+.APS-Form-3-1 {
+
+    width: 50%;
+    display: flex;
+    justify-content: center;
+
+}
+
+.APS-Form-3-2 {
+
+    width: 50%;
+    display: flex;
+    justify-content: center;
+
+}
+
+.APS-Form-4 {
+    width: 90%;
+    margin-left: 5%;
+    height: max-content;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.APS-Form-4-1 {
+    font-weight: bold;
+}
+
+.APS-Form-4-2 {
+    font-weight: bold;
+}

@@ -1,0 +1,17 @@
+.ipm-row {
+    display: flex;
+    flex-direction: row;
+    max-width: 100%;
+}
+
+.ipm-1 {
+    font-size: larger;
+    font-weight: bold;
+    /* margin-right: 2px; */
+    max-width: 100px;
+}
+
+.ipm-2 {
+    width: 300px;
+    height: 30px;
+}

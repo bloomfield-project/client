@@ -164,15 +164,7 @@ function Achivements() {
               </div>
 
               <div className="tabs-right">
-                <Link
-                  to={
-                    tabNumber === 1
-                      ? "/manager/AddAchivement"
-                      : "#"
-                  }
-                >
-                  <Button variant="outline-success">+ Add</Button>
-                </Link>
+                
               </div>
             </div>
 

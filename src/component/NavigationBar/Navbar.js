@@ -3,9 +3,16 @@ import { Link } from "react-router-dom";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 
-import { SidebarData } from "./SidebarData";
+import {  SidebarDataPlayer } from "./SidebarData";
 import { SidebarDataAdmin } from "./SidebarData";
-import { SidebarDataPlayer } from "./SidebarData";
+
+
+
+import { SidebarDataManager } from "./SidebarData";
+
+
+
+
 
 
 import "./Navbar.css";
@@ -17,6 +24,7 @@ import { useLocation } from "react-router-dom";
 // https://www.youtube.com/watch?v=CXa0f4-dWi4
 
 function Navbar() {
+
   const location = useLocation();
   const user = location.pathname.split('/')[1]
   console.log(user,"hjgdsv",location)
@@ -33,6 +41,7 @@ function Navbar() {
   else if(user=="admin"){
     data=SidebarDataAdmin
   }
+
   // const showSidebar = () => setSidebar(!sidebar);
   return (
     <>
@@ -47,7 +56,9 @@ function Navbar() {
 
             
 
+
             {data.map((item, index) => {
+
 
 
               return (

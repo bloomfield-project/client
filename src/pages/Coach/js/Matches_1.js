@@ -6,7 +6,9 @@ import "../../Home.css";
 import "../css/Matches_1.css";
 import MatchesTeams from "../../../component/MatchesTeams/MatchesTeams";
 
+
 function Matches_1() {
+
 
     return (
         <>
@@ -38,6 +40,8 @@ function Matches_1() {
 
                             <div className="tabs-right">
 
+                                
+
                             </div>
 
                         </div>
@@ -47,8 +51,8 @@ function Matches_1() {
                         <div className="table-box-1">
 
                             <div className="tablee">
-                                <MatchesTeams btns = "" wonornot = "BLOOMFIELD won by 7 wkts" left = "Starts at 09.30" middle = "R.Premadasa Stadium" right = "2022 Oct 16" />
-                                <MatchesTeams btns = "" wonornot = "BLOOMFIELD won by 7 wkts" left = "Starts at 09.30" middle = "R.Premadasa Stadium" right = "2022 Oct 16" />
+                                <MatchesTeams btns="" wonornot="BLOOMFIELD won by 7 wkts" left="Starts at 09.30" middle="R.Premadasa Stadium" right="2022 Oct 16" />
+                                <MatchesTeams btns="" wonornot="BLOOMFIELD won by 7 wkts" left="Starts at 09.30" middle="R.Premadasa Stadium" right="2022 Oct 16" />
                             </div>
 
                         </div>
