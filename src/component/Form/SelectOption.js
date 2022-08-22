@@ -9,7 +9,7 @@ function SelectOption({label = "label", option}) {
           return (
             <>
               {/* <div key={index} class="form-group"> */}
-                <option value={item.value}>{item.title}</option>
+                <option value={item.value} className="text-dark">{item.title}</option>
               {/* </div> */}
             </>
           );
