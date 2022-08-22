@@ -104,7 +104,7 @@ export const SidebarDataPlayer = [
     },
     {
         title:'Achivements',
-        path:'/manager/Session',
+        path:'/player/Achivements',
         icon:<AiIcons.AiFillHome />,
         cName:'nav-text'
     },

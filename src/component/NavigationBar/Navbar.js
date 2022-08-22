@@ -30,10 +30,10 @@ function Navbar() {
   console.log(user,"hjgdsv",location)
   let data 
   if(user=="manager"){
-    data=SidebarData
+    data=SidebarDataManager
   }
   else if(user=="coach"){
-    data=SidebarData
+    data=SidebarDataManager
   }
   else if(user=="player"){
     data=SidebarDataPlayer

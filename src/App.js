@@ -89,6 +89,7 @@ import Profile from "./pages/Profile/Profile";
 
 import LoginN from "./pages/login/js/LoginN";
 import FileUpload from "./component/Form/FileUpload";
+import Achivementss from "./pages/player/js/Achivements"
 
 
 
@@ -159,8 +160,8 @@ function App() {
           <Route path="/player/PSessionDetails" element={<PSessionDetails />} />
           <Route path="/player/CSessionDetails" element={<CSessionDetails />} />
           <Route path="/player/EventDetails" element={<EventDetails />} />
-
-          <Route path="/admin/AplayerRanking" element={<APlayerRanking />} />
+          <Route path="/player/EventDetails" element={<EventDetails />} />
+          <Route path="/player/Achivements" element={<Achivementss />} />
           {/* <Route path="/admin/AProgress" element={<AProgress />} /> */}
           {/* <Route path="/admin/APrivateProgress" element={<APrivateProgress />} /> */}
 
