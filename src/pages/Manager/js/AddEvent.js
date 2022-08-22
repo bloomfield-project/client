@@ -4,6 +4,8 @@ import "../css/PlayerRegistration.css";
 import { IoChevronBackCircleOutline } from "react-icons/io5";
 import SampleForm from "../../../component/Form/SampleForm";
 import { Link } from "react-router-dom";
+import ResetSubmit from "../../../component/Form/ResetSubmit";
+import Navbar from "../../../component/NavigationBar/Navbar";
 
 
 function AddEvent() {
@@ -45,7 +47,14 @@ function AddEvent() {
         <div className="header-container">
           <Header></Header>
         </div>
-        <div className="page-container-gray">
+
+
+        <div className="body-container-1">
+        <div className="navbar-container">
+          <Navbar></Navbar>
+        </div>
+        <div className="body-container-2" >
+          <div className="page-container-gray" style={{width:"100%"}}>
           <div className="l-back-r-title">
             <div className="l-back-r-title-icon">
             
@@ -61,9 +70,15 @@ function AddEvent() {
           </div>
 
           <div className="form-container">
-            <SampleForm arr={array1} upload = {true} border={true} file1={""}/>
+            <SampleForm arr={array1}/>
+            <ResetSubmit></ResetSubmit>
+          </div>
           </div>
         </div>
+      </div>
+
+
+       
       </div>
       
     </>

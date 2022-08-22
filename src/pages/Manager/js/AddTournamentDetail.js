@@ -5,7 +5,8 @@ import { IoChevronBackCircleOutline } from "react-icons/io5";
 import SampleForm from "../../../component/Form/SampleForm";
 import { Link } from "react-router-dom";
 import EditDetails from "../../../component/EditDetail/EditDetails";
-import opTeam from "../../player/player.jpg";
+import opTeam from "../../player/opTeam.jpg";
+
 import Button from "react-bootstrap/Button";
 import Team from "../../player/Team.png";
 import Navbar from "../../../component/NavigationBar/Navbar";
