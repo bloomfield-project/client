@@ -9,6 +9,7 @@ import FileUpload from "../../../component/Form/FileUpload";
 import AddMultipleSelections from "../../../component/AddMultipleSelections/AddMultipleSelections";
 import ResetSubmit from "../../../component/Form/ResetSubmit";
 import * as yup from "yup";
+import SelectOption from "../../../component/Form/SelectOption";
 
   
 const userSchema = yup.object().shape({
@@ -20,21 +21,14 @@ const userSchema = yup.object().shape({
 
 function PlayerRegistration() {
   let array1 = [
+   
     {
-      title: "First Name",
-      for: "first-name",
-      type: "text",
-      name: "first-name",
-      placeholder: "First Name",
-      id: "first-name",
-    },
-    {
-      title: "Last Name",
+      title: "Name",
       for: "last-name",
       type: "text",
-      name: "last-name",
-      placeholder: "Last Name",
-      id: "last-name",
+      name: "name",
+      placeholder: "Name",
+      id: "name",
     },
     {
       title: "E-mail",
@@ -70,7 +64,20 @@ function PlayerRegistration() {
     },
   ];
 
-
+const option = [
+  {
+    value:"bawling",
+    title:"Bawling"
+  },
+  {
+    value:"batting",
+    title:"Batting"
+  },
+  {
+    value:"allrounder",
+    title:"Allrounder"
+  }
+]
 
   const file = {
     filefor: "for",
@@ -82,8 +89,13 @@ function PlayerRegistration() {
     console.log(event);
 
     let userData = {
-      first_name: event.target[0].value,
-      last_name:event.target[1].value,  
+      name: event.target[0].value,
+      e_mail:event.target[1].value,
+      address:event.target[2].value,
+      nic:event.target[3].value,
+      contact:event.target[4].value,
+      role:event.target[5].value,
+      
     };
     const isValid = await userSchema.isValid(userData);
 
@@ -122,7 +134,9 @@ function PlayerRegistration() {
               <div className="form-container">
                 <form onSubmit={createUser}>
                   <SampleForm arr={array1} />
-                  <AddMultipleSelections />
+                  {/* <AddMultipleSelections /> */}
+                  
+                  <SelectOption label={"Player Role"} option={option} />
                   <FileUpload filetitle={"Profile Image"} filefor={"for"} />
                   <ResetSubmit />
                 </form>
