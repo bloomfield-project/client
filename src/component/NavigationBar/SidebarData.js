@@ -46,6 +46,12 @@ export const SidebarData = [
         icon:<AiIcons.AiFillHome />,
         cName:'nav-text'
     },
+    {
+        title:'Logout',
+        path:'/',
+        icon:<AiIcons.AiFillHome />,
+        cName:'nav-text'
+    },
 ]
 
 
@@ -100,7 +106,7 @@ export const SidebarDataPlayer = [
     },
     {
         title:'Logout',
-        path:'/manager/Session',
+        path:'/',
         icon:<AiIcons.AiFillHome />,
         cName:'nav-text'
     },
@@ -148,6 +154,12 @@ export const SidebarDataAdmin = [
     {
         title:'Ranking',
         path:'/player/Payments',
+        icon:<AiIcons.AiFillHome />,
+        cName:'nav-text'
+    },
+    {
+        title:'Logout',
+        path:'/',
         icon:<AiIcons.AiFillHome />,
         cName:'nav-text'
     },
