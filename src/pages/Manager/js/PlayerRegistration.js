@@ -11,6 +11,8 @@ import ResetSubmit from "../../../component/Form/ResetSubmit";
 import * as yup from "yup";
 import SelectOption from "../../../component/Form/SelectOption";
 
+const axios = require('axios').default;
+
   
 const userSchema = yup.object().shape({
   first_name: yup.string().required('Required!') ,
@@ -94,13 +96,27 @@ const option = [
       address:event.target[2].value,
       nic:event.target[3].value,
       contact:event.target[4].value,
-      role:event.target[5].value,
+      role:event.target[5].value
       
     };
-    const isValid = await userSchema.isValid(userData);
+    // const isValid = await userSchema.isValid(userData);
 
-    console.log(userData);
-    console.log(isValid);
+    console.log(userData.name);
+
+    let res = await axios.post('/api/user/', userData);
+
+    let data = res.data;
+    console.log(data);
+    // if(data.data=="Invalid username or password"){
+    //     setInvalid("err-G-active")//val
+    // }
+    // else{
+    //     console.log("hey john")
+    //     // setLogin(data.data)
+        
+        
+    // }
+    // console.log(isValid);
   }
 
   return (
