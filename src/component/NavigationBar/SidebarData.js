@@ -2,11 +2,13 @@ import React from "react";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import * as IoIcons from "react-icons/io";
+import { MdSportsCricket , MdEventAvailable} from "react-icons/md";
+import { GiTrophyCup , GiAchievement} from "react-icons/gi";
 
 export const SidebarDataManager = [
     {
         title:'Dashboard',
-        path:'/',
+        path:'/Profile',
         icon:<AiIcons.AiFillHome />,
         cName:'nav-text'
     },
@@ -73,14 +75,14 @@ export const SidebarDataPlayer = [
         title:'Matches',
         path:'/player/Matches',
         // MdSportsCricket
-        icon:<FaIcons.FaCartPlus />,
+        icon:<MdSportsCricket/>,
         cName:'nav-text'
     },
     {
         title:'Events',
         path:'/player/PEvents',
         // MdEventAvailable
-        icon:<AiIcons.AiFillHome />,
+        icon:<MdEventAvailable />,
         cName:'nav-text'
     },
     {
@@ -99,7 +101,7 @@ export const SidebarDataPlayer = [
         title:'Payments',
         path:'/player/Payments',
         // FaMoneyBillAlt
-        icon:<AiIcons.AiFillHome />,
+        icon:<FaIcons.FaMoneyBillAlt />,
         cName:'nav-text'
     },
     {
@@ -153,13 +155,13 @@ export const SidebarDataAdmin = [
         title:'Achivements',
         path:'/Admin/Achivements',
         // GiTrophyCup
-        icon:<AiIcons.AiFillHome />,
+        icon:<GiTrophyCup />,
         cName:'nav-text'
     },
     {
         title:'Ranking',
         path:'/admin/Raking',
-        icon:<AiIcons.AiFillHome />,
+        icon:<GiAchievement />,
         // GiAchievement
         cName:'nav-text'
     },
