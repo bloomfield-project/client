@@ -9,6 +9,15 @@ import "../../Home.css";
 import SearchTable from "../../../component/Search/SearchTable";
 import profpic from "../../../component/header/profpic.jfif";
 
+async function getData(){
+  const axios = require('axios').default;
+  let res = await axios.get('/api/user/players');
+  let result = res.data.data;
+  console.log(result[1].email)
+}
+
+getData()
+
 const data = [
   {
     id: "P-51",
