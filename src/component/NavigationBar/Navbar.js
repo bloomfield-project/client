@@ -58,7 +58,7 @@ function Navbar() {
 
 
 
-            {SidebarDataCouch.map((item, index) => {
+            
 
               {
                 data.map((item, index) => {

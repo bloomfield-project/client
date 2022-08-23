@@ -14,10 +14,9 @@
     "axios": "^0.27.2",
     "bootstrap": "^5.2.0",
     "bootstrap-icons": "^1.9.1",
-<<<<<<< HEAD
-=======
+
     "formik": "^2.2.9",
->>>>>>> 869febfdb76cc27ff5e3d0312dac99de9f55f650
+
     "http-proxy-middleware": "^2.0.6",
     "material-table": "^1.69.3",
     "mdb-react-ui-kit": "^4.1.0",
