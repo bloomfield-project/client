@@ -57,8 +57,10 @@
 }
 
 .card-detail-right-img{
-    width: auto;
-    height: 100%;
+    /* width: auto;
+    height: 100%; */
+    max-width: 100%;
+    height: auto;
 }
 
 .card-detail-main-title{

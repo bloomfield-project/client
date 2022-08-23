@@ -1,5 +1,5 @@
 import "./App.css";
-import React from "react";
+import React ,{useState } from 'react'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import Header from "./component/header/Header";
 // import Login from "./component/Login/Login";
@@ -15,7 +15,7 @@ import CricketRanking from "./pages/Manager/js/CricketRanking";
 import Session from "./pages/Manager/js/Session";
 import Membership from "./pages/Manager/js/Membership";
 import SampleForm from "./component/Form/SampleForm";
-import FormData from "./component/Form/FormData";
+import FormData from "./component/Form/ResetSubmit";
 import PlayerRanking from "./pages/player/js/playerRanking"/* */
 import Progress from "./pages/player/js/Progress"
 import PrivateProgress from "./pages/player/js/PrivateProgress"
@@ -82,16 +82,31 @@ import Accounts from "./pages/naya_admin/js/Accounts";
 import PlayerDetail from "./pages/naya_admin/js/PlayerDetail";
 import AnnualMembership from "./pages/naya_admin/js/AnnualMembership";
 import Feedback from "./pages/naya_admin/js/Feedback";
+import Ranking from "./pages/naya_admin/js/Ranking";
+import PlayerRankings from "./pages/naya_admin/js/PlayerRankings";
+import Profile from "./pages/Profile/Profile";
 // import AProgress from "./pages/admin/js/AProgress"
 // import APrivateProgress from "./pages/admin/js/APrivateProgress"
 
 
 import LoginN from "./pages/login/js/LoginN";
+<<<<<<< HEAD
 import EditPracticeSessions from "./pages/Coach/js/EditPracticeSessions";
 import EditRowDetailsWithButton from "./component/EditRowDetailsWithButton/EditRowDetailsWithButton";
 import PlayerDetails_1 from "./pages/Coach/js/PlayerDetails_1";
 import PlayerProgress_1 from "./pages/Coach/js/PlayerProgress_1";
 import PlayerFeedback from "./pages/Coach/js/PlayerFeedback";
+=======
+import FileUpload from "./component/Form/FileUpload";
+import Achivementss from "./pages/player/js/Achivements"
+
+
+
+
+
+
+
+>>>>>>> 869febfdb76cc27ff5e3d0312dac99de9f55f650
 
 
 const List = [
@@ -102,7 +117,33 @@ const List = [
 
 const colNames = ['id','Name','Age']
 
+
+
 function App() {
+
+ let sidebar 
+
+
+  const [login, setLogin] = useState("");
+  console.log(login.role)
+  // if(login.role=="manager"){
+  //   sidebar=SidebarData
+  //   // console.log(sidebar)
+  //   localStorage.setItem('sidebar',sidebar)
+  //   window.location.assign("/manager/Players")
+  // }
+  // else if(login.role=="Player"){
+  //   sidebar=SidebarDataPlayer
+  //   console.log(sidebar)
+  // }
+  // else if(login.role=="coach"){
+  //   sidebar=SidebarDataPlayer
+  //   console.log(sidebar)
+  // }
+  // else if(login.role=="Admin"){
+  //   sidebar=SidebarDataAdmin
+  //   console.log(sidebar)
+  // }
   return (
     <div className="App">
       <BrowserRouter>
@@ -111,9 +152,9 @@ function App() {
         <Routes>
           <Route path="/ResetPassword" element={<ResetPassForm />} />
           <Route path="/FogotPassword" element={<FogotPassForm/>} />
-          <Route path="/" element={<LoginForm/>} />
+          <Route path="/" element={<LoginN/>} />
           <Route path="/client" element={<Home/>} />
-          <Route path="/Navbar" element={<Navbar />} />
+          <Route path="/Navbar" element={<Navbar user={sidebar}/>} />
           <Route path="/Table" element={<Tables list={List} colNames={colNames} />} />
           <Route path="/manager/Players" element={<Players />} />
           <Route path="/manager/FormData" element={<FormData />} />
@@ -129,8 +170,8 @@ function App() {
           <Route path="/player/PSessionDetails" element={<PSessionDetails />} />
           <Route path="/player/CSessionDetails" element={<CSessionDetails />} />
           <Route path="/player/EventDetails" element={<EventDetails />} />
-
-          <Route path="/admin/AplayerRanking" element={<APlayerRanking />} />
+          <Route path="/player/EventDetails" element={<EventDetails />} />
+          <Route path="/player/Achivements" element={<Achivementss />} />
           {/* <Route path="/admin/AProgress" element={<AProgress />} /> */}
           {/* <Route path="/admin/APrivateProgress" element={<APrivateProgress />} /> */}
 
@@ -180,6 +221,10 @@ function App() {
 
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 869febfdb76cc27ff5e3d0312dac99de9f55f650
           <Route path="/player/Psession" element={<Psession />} />
           <Route path="/player/PEvents" element={<PEvents />} />
           <Route path="/player/PlayerRankingList" element={<PlayerRankingList />} />
@@ -200,32 +245,33 @@ function App() {
           <Route path="/admin/Accounts" element={< Accounts />} />
           <Route path="/admin/PlayerDetail" element={<PlayerDetail />} />
 
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          <Route path="/LoginN" element={<LoginN />} />
+
 
           <Route path="/admin/AnnualMembership" element={<AnnualMembership />} />
           <Route path="/admin/Feedback" element={<Feedback />} />
 
+<<<<<<< HEAD
+=======
+          <Route path="/admin/Raking" element={<Ranking />} />
+          <Route path="/admin/PlayerRankings" element={<PlayerRankings />} />
+          <Route path="/manager/profile" element={<Profile />} />
+          <Route path="/admin/profile" element={<Profile />} />
+          <Route path="/couch/profile" element={<Profile />} />
+          <Route path="/player/profile" element={<Profile />} />
+>>>>>>> 869febfdb76cc27ff5e3d0312dac99de9f55f650
 
 
+          <Route path="/file" element={<FileUpload />}  />
 
 
-
-          
-
-          {/* <Route path="/Search" element={<SearchTable/>} />/ */}
         </Routes>
       </BrowserRouter>
     </div>
+    
   );
+
+  
+
 }
 
 export default App;

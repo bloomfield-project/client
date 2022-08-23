@@ -10,7 +10,7 @@ import Tablee from "../../../component/ScoreTable/ScoreTable";
 import IntroTable from "../../../component/IntroTable/IntroTable"
 
 
-
+import { useLocation } from "react-router-dom";
 
 
 
@@ -38,6 +38,11 @@ const LIST_M = [
 
 
 function PlayerRanking() {
+<<<<<<< HEAD
+=======
+    const location = useLocation();
+    console.log(location.state)
+>>>>>>> 869febfdb76cc27ff5e3d0312dac99de9f55f650
     return (
       <div className="page-container-1">
         <div className="header-container">
@@ -45,7 +50,7 @@ function PlayerRanking() {
         </div>
         <div className="body-container-1">
           <div className="navbar-container">
-            <Navbar></Navbar>
+            <Navbar ></Navbar>
           </div>
           <div className="body-container-2">
               <div className="title">

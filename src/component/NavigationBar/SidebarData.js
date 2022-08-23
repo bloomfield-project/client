@@ -2,11 +2,13 @@ import React from "react";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import * as IoIcons from "react-icons/io";
+import { MdSportsCricket , MdEventAvailable} from "react-icons/md";
+import { GiTrophyCup , GiAchievement} from "react-icons/gi";
 
-export const SidebarData = [
+export const SidebarDataManager = [
     {
         title:'Dashboard',
-        path:'/',
+        path:'/manager/Profile',
         icon:<AiIcons.AiFillHome />,
         cName:'nav-text'
     },
@@ -32,6 +34,7 @@ export const SidebarData = [
         title:'Player',
         path:'/manager/Players',
         icon:<AiIcons.AiFillHome />,
+        // BsPerson
         cName:'nav-text'
     },
     {
@@ -46,10 +49,22 @@ export const SidebarData = [
         icon:<AiIcons.AiFillHome />,
         cName:'nav-text'
     },
+    {
+        title:'Logout',
+        path:'/',
+        icon:<AiIcons.AiFillHome />,
+        cName:'nav-text'
+    },
 ]
 
 
 export const SidebarDataPlayer = [
+    {
+        title:'Performance',
+        path:'/player/Profile',
+        icon:<AiIcons.AiFillHome />,
+        cName:'nav-text'
+    },
     {
         title:'Performance',
         path:'/player/playerRanking',
@@ -65,13 +80,15 @@ export const SidebarDataPlayer = [
     {
         title:'Matches',
         path:'/player/Matches',
-        icon:<FaIcons.FaCartPlus />,
+        // MdSportsCricket
+        icon:<MdSportsCricket/>,
         cName:'nav-text'
     },
     {
         title:'Events',
         path:'/player/PEvents',
-        icon:<AiIcons.AiFillHome />,
+        // MdEventAvailable
+        icon:<MdEventAvailable />,
         cName:'nav-text'
     },
     {
@@ -89,18 +106,19 @@ export const SidebarDataPlayer = [
     {
         title:'Payments',
         path:'/player/Payments',
-        icon:<AiIcons.AiFillHome />,
+        // FaMoneyBillAlt
+        icon:<FaIcons.FaMoneyBillAlt />,
         cName:'nav-text'
     },
     {
         title:'Achivements',
-        path:'/manager/Session',
+        path:'/player/Achivements',
         icon:<AiIcons.AiFillHome />,
         cName:'nav-text'
     },
     {
         title:'Logout',
-        path:'/manager/Session',
+        path:'/',
         icon:<AiIcons.AiFillHome />,
         cName:'nav-text'
     },
@@ -111,7 +129,7 @@ export const SidebarDataPlayer = [
 export const SidebarDataAdmin = [
     {
         title:'Dashboard',
-        path:'/player/playerRanking',
+        path:'/admin/profile',
         icon:<AiIcons.AiFillHome />,
         cName:'nav-text'
     },
@@ -141,13 +159,21 @@ export const SidebarDataAdmin = [
     },
     {
         title:'Achivements',
-        path:'/Admin/Achivements',
-        icon:<AiIcons.AiFillHome />,
+        path:'/admin/Achivements',
+        // GiTrophyCup
+        icon:<GiTrophyCup />,
         cName:'nav-text'
     },
     {
         title:'Ranking',
-        path:'/player/Payments',
+        path:'/admin/Raking',
+        icon:<GiAchievement />,
+        // GiAchievement
+        cName:'nav-text'
+    },
+    {
+        title:'Logout',
+        path:'/',
         icon:<AiIcons.AiFillHome />,
         cName:'nav-text'
     },
