@@ -11,80 +11,85 @@ import profpic from "../../../component/header/profpic.jfif";
 
 const data = [
   {
-    id: "1101",
-    img: <img className="row-image" src={profpic} alt=""></img>,
+    id: "P-51",
     name: "lamesh iroshan",
+    contact:"0712564236",
+    email:"lamesh@gmail.com",
     btn: (
       <Link to={"/manager/EditPlayerDetails"}>
         <Button variant="secondary">View</Button>
       </Link>
     ),
-    progress: (
-      <Link to={"/player/Progress"} style={{color:"green"}}>
-        Progress
-      </Link>
-    ),
+    // progress: (
+    //   <Link to={"/player/Progress"} style={{color:"green"}}>
+    //     Progress
+    //   </Link>
+    // ),
   },
 
   {
-    id: "1102",
-    img: <img className="row-image" src={profpic} alt=""></img>,
-    name: "Ramesh nimnath",
+    id: "P-55",
+    name: "lamesh iroshan",
+    contact:"0712876512",
+    email:"lamesh@gmail.com",
     btn: (
       <Link to={"/manager/EditPlayerDetails"}>
         <Button variant="secondary">View</Button>
       </Link>
     ),
-    progress: (
-      <Link to={"/player/Progress"} style={{color:"green"}}>
-        Progress
-      </Link>
-    ),
+    // progress: (
+    //   <Link to={"/player/Progress"} style={{color:"green"}}>
+    //     Progress
+    //   </Link>
+    // ),
   },
   {
-    id: "1104",
-    img: <img className="row-image" src={profpic} alt=""></img>,
-    name: "Nimesh dilshan",
+    id: "P-102",
+    name: "lamesh iroshan",
+    contact:"072564236",
+    email:"lamesh@gmail.com",
     btn: (
       <Link to={"/manager/EditPlayerDetails"}>
         <Button variant="secondary">View</Button>
       </Link>
     ),
-    progress: (
-      <Link to={"/player/Progress"} style={{color:"green"}}>
-        Progress
-      </Link>
-    ),
+    // progress: (
+    //   <Link to={"/player/Progress"} style={{color:"green"}}>
+    //     Progress
+    //   </Link>
+    // ),
   },
   {
-    id: "1103",
-    img: <img className="row-image" src={profpic} alt=""></img>,
-    name: "Saaru wijesinghe",
+    id: "P-62",
+    name: "Asitha Muthumala",
+    contact:"0765264236",
+    email:"asikavinda@gmail.com",
     btn: (
       <Link to={"/manager/EditPlayerDetails"}>
         <Button variant="secondary">View</Button>
       </Link>
     ),
-    progress: (
-      <Link to={"/player/Progress"} style={{color:"green"}}>
-        Progress
-      </Link>
-    ),
+    // progress: (
+    //   <Link to={"/player/Progress"} style={{color:"green"}}>
+    //     Progress
+    //   </Link>
+    // ),
   },
   {
-    id: "1105",
-    img: <img className="row-image" src={profpic} alt=""></img>,
-    name: "Ashan grove",
+    id: "P-70",
+    name: "Gihan Trellow",
+    contact:"0712564236",
+    email:"lamesh@gmail.com",
     btn: (
       <Link to={"/manager/EditPlayerDetails"}>
         <Button variant="secondary">View</Button>
       </Link>
     ),
-    progress: (
-      <Link to={"/player/Progress"} style={{color:"green"}}>
-        Progress
-      </Link>
-    ),
+    // progress: (
+    //   <Link to={"/player/Progress"} style={{color:"green"}}>
+    //     Progress
+    //   </Link>
+    // ),
   },
 ];
 
@@ -96,23 +101,27 @@ const columns = [
   },
   {
     title: "Player",
-    field: "img",
-  },
-  {
-    title: "",
     field: "name",
   },
   {
-    title: "Age",
-    field: "btn",
+    title: "Contact",
+    field: "contact",
   },
   {
-    title:"",
-    field : "progress",
-    cellStyle: {
-      color: 'rgba(149, 41, 41, 1)'
-    },
-  }
+    title: "Email",
+    field: "email",
+  },
+  {
+    title: "",
+    field: "btn",
+  },
+  // {
+  //   title:"",
+  //   field : "progress",
+  //   cellStyle: {
+  //     color: 'rgba(149, 41, 41, 1)'
+  //   },
+  // }
 ];
 
 function Players() {

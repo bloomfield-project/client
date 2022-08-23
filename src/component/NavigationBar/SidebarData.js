@@ -8,7 +8,7 @@ import { GiTrophyCup , GiAchievement} from "react-icons/gi";
 export const SidebarDataManager = [
     {
         title:'Dashboard',
-        path:'/Profile',
+        path:'/manager/Profile',
         icon:<AiIcons.AiFillHome />,
         cName:'nav-text'
     },
@@ -59,6 +59,12 @@ export const SidebarDataManager = [
 
 
 export const SidebarDataPlayer = [
+    {
+        title:'Performance',
+        path:'/player/Profile',
+        icon:<AiIcons.AiFillHome />,
+        cName:'nav-text'
+    },
     {
         title:'Performance',
         path:'/player/playerRanking',
@@ -123,7 +129,7 @@ export const SidebarDataPlayer = [
 export const SidebarDataAdmin = [
     {
         title:'Dashboard',
-        path:'/profile',
+        path:'/admin/profile',
         icon:<AiIcons.AiFillHome />,
         cName:'nav-text'
     },
@@ -153,7 +159,7 @@ export const SidebarDataAdmin = [
     },
     {
         title:'Achivements',
-        path:'/Admin/Achivements',
+        path:'/admin/Achivements',
         // GiTrophyCup
         icon:<GiTrophyCup />,
         cName:'nav-text'
