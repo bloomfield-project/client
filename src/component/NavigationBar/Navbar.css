@@ -86,3 +86,33 @@
 span{
     margin-left: 16px;
 }
+
+.new-g-g-g{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    /* padding: 8px 0px 8px 16px; */
+    list-style: none;
+    height: 50px;
+    /* background-color: #aaaaaa; */
+}
+
+
+.new-g-g-g a{
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    width: 95%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    border-radius: 4px;
+    background-color: #006950;
+}
+
+.new-g-g-g a:hover {
+    background-color: #006950;
+    color: #ffffff;
+    font-weight: 500;
+}

@@ -5,7 +5,11 @@ import * as AiIcons from "react-icons/ai";
 
 import {  SidebarDataPlayer } from "./SidebarData";
 import { SidebarDataAdmin } from "./SidebarData";
+
+
+
 import { SidebarDataManager } from "./SidebarData";
+
 
 
 
@@ -13,12 +17,31 @@ import { SidebarDataManager } from "./SidebarData";
 
 import "./Navbar.css";
 import { IconContext } from "react-icons";
+import { useLocation } from "react-router-dom";
+
+
 
 // https://www.youtube.com/watch?v=CXa0f4-dWi4
 
 function Navbar() {
-  // const [sidebar, setSidebar] = useState(false);
-  
+
+  const location = useLocation();
+  const user = location.pathname.split('/')[1]
+  console.log(user,"hjgdsv",location)
+  let data 
+  if(user=="manager"){
+    data=SidebarDataManager
+  }
+  else if(user=="coach"){
+    data=SidebarDataManager
+  }
+  else if(user=="player"){
+    data=SidebarDataPlayer
+  }
+  else if(user=="admin"){
+    data=SidebarDataAdmin
+  }
+
   // const showSidebar = () => setSidebar(!sidebar);
   return (
     <>
@@ -33,11 +56,13 @@ function Navbar() {
 
             
 
-            { SidebarDataManager.map((item, index) => {
+
+            {data.map((item, index) => {
+
 
 
               return (
-                <li key={index} className={item.cName}>
+                <li key={index} className={location.pathname==item.path?"new-g-g-g":item.cName}>
                   <Link to={item.path}>
                     {item.icon}
                     <span>{item.title}</span>

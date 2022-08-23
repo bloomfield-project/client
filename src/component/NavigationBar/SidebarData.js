@@ -49,6 +49,12 @@ export const SidebarDataManager = [
         icon:<AiIcons.AiFillHome />,
         cName:'nav-text'
     },
+    {
+        title:'Logout',
+        path:'/',
+        icon:<AiIcons.AiFillHome />,
+        cName:'nav-text'
+    },
 ]
 
 
@@ -100,13 +106,13 @@ export const SidebarDataPlayer = [
     },
     {
         title:'Achivements',
-        path:'/manager/Session',
+        path:'/player/Achivements',
         icon:<AiIcons.AiFillHome />,
         cName:'nav-text'
     },
     {
         title:'Logout',
-        path:'/manager/Session',
+        path:'/',
         icon:<AiIcons.AiFillHome />,
         cName:'nav-text'
     },
@@ -157,6 +163,12 @@ export const SidebarDataAdmin = [
         path:'/admin/Raking',
         icon:<GiAchievement />,
         // GiAchievement
+        cName:'nav-text'
+    },
+    {
+        title:'Logout',
+        path:'/',
+        icon:<AiIcons.AiFillHome />,
         cName:'nav-text'
     },
         
