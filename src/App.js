@@ -1,5 +1,5 @@
 import "./App.css";
-import React from "react";
+import React ,{useState } from 'react'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import Header from "./component/header/Header";
 // import Login from "./component/Login/Login";
@@ -89,6 +89,9 @@ import Profile from "./pages/Profile/Profile";
 
 import LoginN from "./pages/login/js/LoginN";
 import FileUpload from "./component/Form/FileUpload";
+import Achivementss from "./pages/player/js/Achivements"
+
+
 
 
 
@@ -104,7 +107,33 @@ const List = [
 
 const colNames = ['id','Name','Age']
 
+
+
 function App() {
+
+ let sidebar 
+
+
+  const [login, setLogin] = useState("");
+  console.log(login.role)
+  // if(login.role=="manager"){
+  //   sidebar=SidebarData
+  //   // console.log(sidebar)
+  //   localStorage.setItem('sidebar',sidebar)
+  //   window.location.assign("/manager/Players")
+  // }
+  // else if(login.role=="Player"){
+  //   sidebar=SidebarDataPlayer
+  //   console.log(sidebar)
+  // }
+  // else if(login.role=="coach"){
+  //   sidebar=SidebarDataPlayer
+  //   console.log(sidebar)
+  // }
+  // else if(login.role=="Admin"){
+  //   sidebar=SidebarDataAdmin
+  //   console.log(sidebar)
+  // }
   return (
     <div className="App">
       <BrowserRouter>
@@ -113,9 +142,9 @@ function App() {
         <Routes>
           <Route path="/ResetPassword" element={<ResetPassForm />} />
           <Route path="/FogotPassword" element={<FogotPassForm/>} />
-          <Route path="/" element={<LoginForm/>} />
+          <Route path="/" element={<LoginN/>} />
           <Route path="/client" element={<Home/>} />
-          <Route path="/Navbar" element={<Navbar />} />
+          <Route path="/Navbar" element={<Navbar user={sidebar}/>} />
           <Route path="/Table" element={<Tables list={List} colNames={colNames} />} />
           <Route path="/manager/Players" element={<Players />} />
           <Route path="/manager/FormData" element={<FormData />} />
@@ -131,8 +160,8 @@ function App() {
           <Route path="/player/PSessionDetails" element={<PSessionDetails />} />
           <Route path="/player/CSessionDetails" element={<CSessionDetails />} />
           <Route path="/player/EventDetails" element={<EventDetails />} />
-
-          <Route path="/admin/AplayerRanking" element={<APlayerRanking />} />
+          <Route path="/player/EventDetails" element={<EventDetails />} />
+          <Route path="/player/Achivements" element={<Achivementss />} />
           {/* <Route path="/admin/AProgress" element={<AProgress />} /> */}
           {/* <Route path="/admin/APrivateProgress" element={<APrivateProgress />} /> */}
 
@@ -194,7 +223,7 @@ function App() {
           <Route path="/admin/Accounts" element={< Accounts />} />
           <Route path="/admin/PlayerDetail" element={<PlayerDetail />} />
 
-          <Route path="/LoginN" element={<LoginN />} />
+
 
           <Route path="/admin/AnnualMembership" element={<AnnualMembership />} />
           <Route path="/admin/Feedback" element={<Feedback />} />
@@ -209,7 +238,11 @@ function App() {
         </Routes>
       </BrowserRouter>
     </div>
+    
   );
+
+  
+
 }
 
 export default App;

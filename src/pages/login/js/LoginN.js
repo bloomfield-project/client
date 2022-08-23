@@ -3,12 +3,16 @@ import cricket from "../../../component/Login/cricket.png"
 import validator from "validator";
 import React ,{useState } from 'react'
 
+import {useNavigate} from "react-router-dom"
+
 const axios = require('axios').default;
 
 
 
 
-function LoginN(){
+function LoginN({ setLogin }){
+
+    const history = useNavigate()
     const [show, setShow] = useState(false);
     const handleShow = () => {
         setShow(!show);
@@ -23,7 +27,7 @@ function LoginN(){
     const [Email, setEmail] = useState("");
     const [Password, setPw] = useState("");
     const [invalid, setInvalid] = useState("err-G");
-    
+    //vall
     const validateEmail = (e) => {
         var Email = e.target.value;
         if (!validator.isEmail(Email)) {
@@ -38,6 +42,7 @@ function LoginN(){
     const handlepw = (e) => {
         var Password = e.target.value;
             setPw(Password)
+            //setEmail(Email)
         
     };
 
@@ -53,10 +58,17 @@ function LoginN(){
         let data = res.data;
         console.log(data);
         if(data.data=="Invalid username or password"){
-            setInvalid("err-G-active")
+            setInvalid("err-G-active")//val
         }
         else{
             console.log("hey john")
+            // setLogin(data.data)
+            console.log(data.data.role)
+            if(data.data.role=='manager'){
+                history('/manager/Players',{state: data.data})
+            }
+            // history('/player/playerRanking',{state: data.data})
+            
         }
 
     }
