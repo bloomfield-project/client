@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 import "../../Home.css";
 import SearchTable from "../../../component/Search/SearchTable";
 import profpic from "../Player.png";
-
+import { Link } from "react-router-dom";
 
 
 const data = [
@@ -13,30 +13,30 @@ const data = [
     {
         playerid: "BF-001",
         img: <img className="row-image" src={profpic} alt=""></img>,
-        player: <a href="#">Asitha Muthumala</a>,
+        player: <Link to="/couch/PlayerD"><a href="#">Asitha Muthumala</a></Link>,
         
-        btn: <Button variant="secondary">Progress</Button>,
+        btn: <Link to={"/couch/PPr1"}><Button variant="secondary">Progress</Button></Link>,
     },
     {
         playerid: "BF-001",
         img: <img className="row-image" src={profpic} alt=""></img>,
-        player: <a href="#">Asitha Muthumala</a>,
+        player: <Link to="/couch/PlayerD"><a href="#">Asitha Muthumala</a></Link>,
         
-        btn: <Button variant="secondary">Progress</Button>,
+        btn: <Link to={"/couch/PPr1"}><Button variant="secondary">Progress</Button></Link>,
     },
     {
         playerid: "BF-001",
         img: <img className="row-image" src={profpic} alt=""></img>,
-        player: <a href="#">Asitha Muthumala</a>,
+        player: <Link to="/couch/PlayerD"><a href="#">Asitha Muthumala</a></Link>,
         
-        btn: <Button variant="secondary">Progress</Button>,
+        btn: <Link to={"/couch/PPr1"}><Button variant="secondary">Progress</Button></Link>,
     },
     {
         playerid: "BF-001",
         img: <img className="row-image" src={profpic} alt=""></img>,
-        player: <a href="#">Asitha Muthumala</a>,
+        player: <Link to="/couch/PlayerD"><a href="#">Asitha Muthumala</a></Link>,
         
-        btn: <Button variant="secondary">Progress</Button>,
+        btn: <Link to={"/couch/PPr1"}><Button variant="secondary">Progress</Button></Link>,
     },
 
 ];

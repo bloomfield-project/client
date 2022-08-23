@@ -1,0 +1,39 @@
+.ERDWB-main {
+    width: 100%;
+    height: 12vh;
+    /* background-color: brown; */
+    display: flex;
+}
+
+.ERDWB-main-1 {
+    width: 50%;
+    height: 12vh;
+    /* background-color: yellow; */
+    padding: 2vh;
+}
+
+.ERDWB-main-1 label {
+    font-size: medium;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.ERDWB-main-1 h6 {
+    font-size: large;
+    font-weight: bold;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.ERDWB-main-2 {
+    width: 50%;
+    height: 12vh;
+    /* background-color: blue; */
+    padding: 3vh;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.ERDWB-main-2 button {
+    font-weight: bold;
+}

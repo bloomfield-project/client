@@ -5,6 +5,8 @@ import Button from "react-bootstrap/Button";
 import "../../Home.css";
 import SearchTable from "../../../component/Search/SearchTable";
 import "../css/Matches_2.css"
+import { Link } from "react-router-dom";
+
 
 
 const data = [
@@ -14,28 +16,61 @@ const data = [
         space: " ",
         title: "Hero Cup",
         date: '2022-05-11',
-        btn: <Button variant="secondary">View</Button>,
+        btn: <Link to={"/couch/M3"}><Button variant="secondary">View</Button></Link>,
     },
     {
         match: "vs SCC",
         space: " ",
         title: "Hero Cup",
         date: '2022-05-11',
-        btn: <Button variant="secondary">View</Button>,
+        btn: <Link to={"/couch/M3"}><Button variant="secondary">View</Button></Link>,
     },
     {
         match: "vs SCC",
         space: " ",
         title: "Hero Cup",
         date: '2022-05-11',
-        btn: <Button variant="secondary">View</Button>,
+        btn: <Link to={"/couch/M3"}><Button variant="secondary">View</Button></Link>,
     },
     {
         match: "vs SCC",
         space: " ",
         title: "Hero Cup",
         date: '2022-05-11',
-        btn: <Button variant="secondary">View</Button>,
+        btn: <Link to={"/couch/M3"}><Button variant="secondary">View</Button></Link>,
+    },
+
+];
+
+const data_1 = [
+
+    {
+        match: "vs SCC",
+        space: " ",
+        title: "Hero Cup",
+        date: '2022-05-11',
+        btn: <Link to={"/couch/M4"}><Button variant="secondary">View</Button></Link>,
+    },
+    {
+        match: "vs SCC",
+        space: " ",
+        title: "Hero Cup",
+        date: '2022-05-11',
+        btn: <Link to={"/couch/M4"}><Button variant="secondary">View</Button></Link>,
+    },
+    {
+        match: "vs SCC",
+        space: " ",
+        title: "Hero Cup",
+        date: '2022-05-11',
+        btn: <Link to={"/couch/M4"}><Button variant="secondary">View</Button></Link>,
+    },
+    {
+        match: "vs SCC",
+        space: " ",
+        title: "Hero Cup",
+        date: '2022-05-11',
+        btn: <Link to={"/couch/M4"}><Button variant="secondary">View</Button></Link>,
     },
 
 ];
@@ -114,7 +149,7 @@ function Session() {
                             <div className="tablee">
                                 <SearchTable
                                     title={false}
-                                    data={tabNumber === 2 ? data : data}
+                                    data={tabNumber === 2 ? data_1 : data}
                                     columns={tabNumber === 2 ? columns : columns}
                                     searching={true}
                                     sort={false}

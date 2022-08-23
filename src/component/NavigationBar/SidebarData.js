@@ -180,5 +180,57 @@ export const SidebarDataAdmin = [
         
 ]
 
+export const SidebarDataCouch = [
+
+    {
+        title:'Dashboard',
+        path:'',
+        icon:<AiIcons.AiFillHome />,
+        cName:'nav-text'
+    },
+    {
+        title:'Sessions',
+        path:'/couch/PSessions',
+        icon:<IoIcons.IoIosPaper />,
+        cName:'nav-text'
+    },
+    {
+        title:'Matches',
+        path:'/couch/M2',
+        icon:<FaIcons.FaCartPlus />,
+        cName:'nav-text'
+    },
+    {
+        title:'Appoinments',
+        path:'/couch/A',
+        icon:<AiIcons.AiFillHome />,
+        cName:'nav-text'
+    },
+    {
+        title:'Players',
+        path:'/couch/Players1',
+        icon:<AiIcons.AiFillHome />,
+        cName:'nav-text'
+    },
+    {
+        title:'Ranking',
+        path:'/couch/BCR',
+        icon:<AiIcons.AiFillHome />,
+        cName:'nav-text'
+    },
+    {
+        title:'Achievements',
+        path:'',
+        icon:<AiIcons.AiFillHome />,
+        cName:'nav-text'
+    },
+    {
+        title:'Calender',
+        path:'',
+        icon:<AiIcons.AiFillHome />,
+        cName:'nav-text'
+    },
+     
+]
 
 

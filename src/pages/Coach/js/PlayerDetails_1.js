@@ -8,9 +8,7 @@ import { Tabs } from 'antd';
 import 'antd/dist/antd.css';
 import Tablee from "../../../component/ScoreTable/ScoreTable";
 import IntroTable from "../../../component/IntroTable/IntroTable"
-
-
-import { useLocation } from "react-router-dom";
+import Button from 'react-bootstrap/Button';
 
 
 
@@ -37,12 +35,7 @@ const LIST_M = [
 ];
 
 
-function PlayerRanking() {
-<<<<<<< HEAD
-=======
-    const location = useLocation();
-    console.log(location.state)
->>>>>>> 869febfdb76cc27ff5e3d0312dac99de9f55f650
+function PlayerDetails_1() {
     return (
       <div className="page-container-1">
         <div className="header-container">
@@ -50,7 +43,7 @@ function PlayerRanking() {
         </div>
         <div className="body-container-1">
           <div className="navbar-container">
-            <Navbar ></Navbar>
+            <Navbar></Navbar>
           </div>
           <div className="body-container-2">
               <div className="title">
@@ -60,6 +53,9 @@ function PlayerRanking() {
                 <img className="playerImage" src={player} alt="Italian Trulli" />
                 <IntroTable/>
               </div>
+
+              {/* <Link to={""} style={{display:'flex',justify-content:'flex-end'}}><Button variant="success">Performance</Button>{' '}</Link> */}
+
               <div className="playerPreformanceBody">
                 <Tabs defaultActiveKey="1" onChange={onChange}>
                     
@@ -267,4 +263,4 @@ function PlayerRanking() {
   );
   }
   
-  export default PlayerRanking;
+  export default PlayerDetails_1;

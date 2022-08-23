@@ -5,10 +5,11 @@ import Button from "react-bootstrap/Button";
 import "../../Home.css";
 import SearchTable from "../../../component/Search/SearchTable";
 import profpic from "../Player.png";
+import { Link } from "react-router-dom";
 
 
 
-const data = [
+const data_1 = [
 
     {
         nameAndPhoto: "Asitha Muthumala",
@@ -48,6 +49,50 @@ const data = [
         date: '2022-05-11',
         time: '09:00 am',
         btn: <Button variant="secondary">View</Button>,
+    },
+
+];
+
+const data_2 = [
+
+    {
+        nameAndPhoto: "Asitha Muthumala",
+        img: <img className="row-image" src={profpic} alt=""></img>,
+        subject: "Batting",
+        date: '2022-05-11',
+        time: '09:00 am',
+        btn: <Link to="/couch/Ap"><Button variant="secondary">View</Button></Link>,
+    },
+    {
+        nameAndPhoto: "Asitha Muthumala",
+        img: <img className="row-image" src={profpic} alt=""></img>,
+        subject: "Batting",
+        date: '2022-05-11',
+        time: '09:00 am',
+        btn: <Link to="/couch/Ap"><Button variant="secondary">View</Button></Link>,
+    },
+    {
+        nameAndPhoto: "Asitha Muthumala",
+        img: <img className="row-image" src={profpic} alt=""></img>,
+        subject: "Batting",
+        date: '2022-05-11',
+        time: '09:00 am',
+        btn: <Link to="/couch/Ap"><Button variant="secondary">View</Button></Link>,
+    },
+    {
+        nameAndPhoto: "Asitha Muthumala",
+        img: <img className="row-image" src={profpic} alt=""></img>,
+        subject: "Batting",
+        date: '2022-05-11',
+        time: '09:00 am',
+        btn: <Link to="/couch/Ap"><Button variant="secondary">View</Button></Link>,
+    },{
+        nameAndPhoto: "Asitha Muthumala",
+        img: <img className="row-image" src={profpic} alt=""></img>,
+        subject: "Batting",
+        date: '2022-05-11',
+        time: '09:00 am',
+        btn: <Link to="/couch/Ap"><Button variant="secondary">View</Button></Link>,
     },
 
 ];
@@ -124,7 +169,7 @@ function Appoinments() {
                             <div className="tablee">
                                 <SearchTable
                                     title={false}
-                                    data={tabNumber === 2 ? data : data}
+                                    data={tabNumber === 2 ? data_2 : data_1}
                                     columns={tabNumber === 2 ? columns : columns}
                                     searching={true}
                                     sort={false}
