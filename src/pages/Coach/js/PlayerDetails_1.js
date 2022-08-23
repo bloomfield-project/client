@@ -8,9 +8,7 @@ import { Tabs } from 'antd';
 import 'antd/dist/antd.css';
 import Tablee from "../../../component/ScoreTable/ScoreTable";
 import IntroTable from "../../../component/IntroTable/IntroTable"
-
-
-
+import Button from 'react-bootstrap/Button';
 
 
 
@@ -37,7 +35,7 @@ const LIST_M = [
 ];
 
 
-function PlayerRanking() {
+function PlayerDetails_1() {
     return (
       <div className="page-container-1">
         <div className="header-container">
@@ -55,6 +53,9 @@ function PlayerRanking() {
                 <img className="playerImage" src={player} alt="Italian Trulli" />
                 <IntroTable/>
               </div>
+
+              {/* <Link to={""} style={{display:'flex',justify-content:'flex-end'}}><Button variant="success">Performance</Button>{' '}</Link> */}
+
               <div className="playerPreformanceBody">
                 <Tabs defaultActiveKey="1" onChange={onChange}>
                     
@@ -262,4 +263,4 @@ function PlayerRanking() {
   );
   }
   
-  export default PlayerRanking;
+  export default PlayerDetails_1;

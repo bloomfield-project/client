@@ -1,0 +1,132 @@
+.title{
+    width: 95%;
+    /* background-color: brown; */
+}
+.player-details-box{
+    /* padding-top: 50px; */
+    display: flex;
+    width: 95%;
+    justify-content: start;
+}
+.playerImage{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+.playerTable{
+    margin-left: 50px;
+    width: 300px;
+    height: 200px;
+    background-color: rgb(13, 122, 59);
+}
+.playerPreformanceBody{
+    margin-top: 50px;
+    width: 95%;
+}
+.PplayerPreformanceBody{
+    width: 95%;
+}
+.player-content{
+    width: 100%;
+    height: fit-content;
+    background-color: white;
+    padding: 20px 20px;
+    border-radius: 10px;
+}
+
+.player-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.tableTopic{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding-right: 30%;
+}
+.sesNameNo{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding-right: 30%;
+}
+
+.sesNameNo > h4{
+    font-size: 1rem;
+    font-weight: 600;
+}
+.Noses > h5{
+    font-size: 1rem;
+    font-weight: normal;
+}
+
+.Noses{
+    width:102.33px;
+    text-align: center;
+}
+.tableTopic > h4{
+    font-size: 1.2rem;
+    font-weight: bolder;
+}
+.tableTopic > h5{
+    font-size: 1rem;
+    font-weight: normal;
+    margin-top: 5px;
+}
+.player-content > hr {
+    width: 100%;
+    border: 1px solid rgb(95, 95, 95);
+    margin-bottom: 25px;
+    margin-top: 0;
+}
+
+.gap{
+    height: 40px;
+}
+.gp-21{
+    height: 30px;
+}
+
+
+.fielding{
+    width: 100%;
+}
+.fielding-row{
+    display: flex;
+}
+.fielding-row > .coll-1{
+    width: 200px;
+    /* background-color: blue; */
+}
+
+.fielding-row > .coll-2{
+    width: 100px;
+    /* background-color: blue; */
+}
+
+.tablee-14{
+    width: 100%;
+}
+
+
+.table-head-14{
+    display: flex;
+    background-color: #E3E6E3;
+    padding: 10px 0;
+}
+
+.table-row-14{
+    display: flex;
+    padding-top: 15px;
+}
+
+.col-14-1{
+    width: 22%;
+    text-align: start;
+    padding-left: 20px;
+}
+.col-14-2 , .col-14-3 ,.col-14-4 ,.col-14-5, .col-14-6, .col-14-7, .col-14-8, .col-14-9,.col-14-10,.col-14-11,.col-14-12,.col-14-13,.col-14-14{
+    padding-top: 7px;
+    width: 6%;
+}

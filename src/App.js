@@ -46,15 +46,12 @@ import AddMatch from "./pages/Manager/js/AddMatch";
 import Matches_1 from "./pages/Coach/js/Matches_1";
 import Matches_2 from "./pages/Coach/js/Matches_2";
 import Macthes_3 from "./pages/Coach/js/Matches_3";
-<<<<<<< HEAD
 
-=======
->>>>>>> afcf61d4b040a28e218947b5e5593d900bd4445a
 import Psession from "./pages/player/js/Psessions";
 import PEvents from "./pages/player/js/PEvents";
 import PlayerRankingList from "./pages/player/js/PlayerRankingList";
 import Payments from "./pages/player/js/Payments";
-<<<<<<< HEAD
+
 import PlayerPerformance from "./pages/Coach/js/PlayerPerformance";
 import Matches_4 from "./pages/Coach/js/Matches_4";
 import MatchesTeams from "./component/MatchesTeams/MatchesTeams";
@@ -64,13 +61,15 @@ import AddPracticeSession from "./pages/Coach/js/AddPracticeSession";
 import CheckBox from "./component/CheckBox/CheckBox";
 import MarkPlayerProgress from "./pages/Coach/js/MarkPlayerProgress";
 import AddMultipleSelections from "./component/AddMultipleSelections/AddMultipleSelections";
-=======
+
 import AddTournamentMatch from "./pages/Manager/js/AddTournamentMatch";
 
 import AddTournamentDetail from "./pages/Manager/js/AddTournamentDetail";
 import Membershipfee from "./pages/naya_admin/js/Membershipfee";
 import Employees from "./pages/naya_admin/js/Employees";
 import AddEmployee from "./pages/naya_admin/js/AddEmployee";
+import ViewPracticeSessions from "./pages/Coach/js/ViewPracticeSessions";
+import BloomFieldCricketRanking from "./pages/Coach/js/BloomFieldCricketRanking";
 
 
 
@@ -88,11 +87,11 @@ import Feedback from "./pages/naya_admin/js/Feedback";
 
 
 import LoginN from "./pages/login/js/LoginN";
-
-
-
-
->>>>>>> afcf61d4b040a28e218947b5e5593d900bd4445a
+import EditPracticeSessions from "./pages/Coach/js/EditPracticeSessions";
+import EditRowDetailsWithButton from "./component/EditRowDetailsWithButton/EditRowDetailsWithButton";
+import PlayerDetails_1 from "./pages/Coach/js/PlayerDetails_1";
+import PlayerProgress_1 from "./pages/Coach/js/PlayerProgress_1";
+import PlayerFeedback from "./pages/Coach/js/PlayerFeedback";
 
 
 const List = [
@@ -155,7 +154,7 @@ function App() {
           <Route path="/couch/Ap" element={<ViewAppoinments/>} />
           <Route path="/couch/Players1" element={<Players1 />} />
           <Route path="/couch/PlayerD" element={<PlayerDetails />} />
-<<<<<<< HEAD
+
           <Route path="/couch/M1" element={<Matches_1 />} />
           <Route path="/couch/M2" element={<Matches_2 />} />
           <Route path="/couch/M3" element={<Macthes_3 />} />
@@ -168,20 +167,24 @@ function App() {
           <Route path="/couch/CB" element={<CheckBox />} />
           <Route path="/couch/MPP" element={<MarkPlayerProgress />} />
           <Route path="/couch/MC" element={<AddMultipleSelections />} />
+          <Route path="/couch/EPS" element={<EditPracticeSessions />} />
+          <Route path="/couch/VPS" element={<ViewPracticeSessions />} />
+          <Route path="/couch/BCR" element={<BloomFieldCricketRanking />} />
+          <Route path="/couch/PD1" element={<PlayerDetails_1 />} />
+          <Route path="/couch/PPr1" element={<PlayerProgress_1 />} />
+          <Route path="/couch/PFeedback" element={<PlayerFeedback />} />
 
 
 
 
-=======
->>>>>>> afcf61d4b040a28e218947b5e5593d900bd4445a
+
+
+
           <Route path="/player/Psession" element={<Psession />} />
           <Route path="/player/PEvents" element={<PEvents />} />
           <Route path="/player/PlayerRankingList" element={<PlayerRankingList />} />
           <Route path="/player/Payments" element={<Payments />} />
-<<<<<<< HEAD
-          
 
-=======
     
           
           
@@ -210,7 +213,7 @@ function App() {
 
           <Route path="/admin/AnnualMembership" element={<AnnualMembership />} />
           <Route path="/admin/Feedback" element={<Feedback />} />
->>>>>>> afcf61d4b040a28e218947b5e5593d900bd4445a
+
 
 
 

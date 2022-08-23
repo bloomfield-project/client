@@ -1,0 +1,88 @@
+.EPS-main {
+    width: 90%;
+    /* height: max-content; */
+    background-color: #fff;
+    /* margin-left: 5%; */
+    border-radius: 5px;
+    /* padding: 5px; */
+}
+
+.EPS-main-1 {
+    width: 100%;
+    height: auto;
+    /* background-color: brown; */
+    padding: 0px;
+}
+
+.EPS-main-2 {
+    width: 100%;
+    height: auto;
+    /* background-color: brown; */
+    padding: 5px;
+}
+
+.EPS-main-2 h6 {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.EPS-main-2-1 {
+    font-weight: bold;
+    margin-bottom: 1vh;
+}
+
+.EPS-main-2-2 {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 2vh;
+}
+
+.EPS-main-3 {
+    width: 100%;
+    height: auto;
+    /* background-color: brown; */
+    padding: 5px;
+}
+
+.EPS-main-3 h6 {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.EPS-main-3-1 {
+    font-weight: bold;
+    margin-bottom: 1vh;
+}
+
+.EPS-main-3-1 {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.EPS-main-3-2 {
+    margin-top: 2vh;
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+
+/*check box styling*/
+
+.Attendance-head {
+    font-weight: bold;
+    margin-left: 5vw;
+}
+
+.Attendance-head-1 {
+    margin-left: 18vw;
+}
+
+.EPS-main-4 {
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+

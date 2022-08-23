@@ -5,6 +5,7 @@ import * as AiIcons from "react-icons/ai";
 
 import { SidebarData } from "./SidebarData";
 import { SidebarDataAdmin } from "./SidebarData";
+import {SidebarDataCouch} from "./SidebarData";
 
 
 
@@ -31,7 +32,7 @@ function Navbar() {
 
             
 
-            {SidebarDataAdmin.map((item, index) => {
+            {SidebarDataCouch.map((item, index) => {
 
 
               return (

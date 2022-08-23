@@ -8,6 +8,8 @@ import "../../Home.css";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Navbar from "../../../component/NavigationBar/Navbar";
+
 
 function Macthes_3() {
 
@@ -20,113 +22,123 @@ function Macthes_3() {
                     <Header></Header>
                 </div>
 
-                <div className="page-container-gray">
+                <div className="body-container-1">
 
-                    <div className="l-back-r-title">
+                <div className="navbar-container">
+                    <Navbar></Navbar>
+                </div>
 
-                        <div className="l-back-r-title-icon">
-                            <Link to={"#"}>
-                                <IoChevronBackCircleOutline
-                                    style={{ color: "rgba(0, 146, 112, 1)", fontSize: " 40px" }}
-                                />
-                            </Link>
-                        </div>
+                    <div className="body-container-2">
 
-                        <h1>Matches</h1>
+                        <div className="l-back-r-title">
 
-                    </div>
+                            <div className="l-back-r-title-icon">
+                                <Link to={"/couch/M2"}>
+                                    <IoChevronBackCircleOutline
+                                        style={{ color: "rgba(0, 146, 112, 1)", fontSize: " 40px" }}
+                                    />
+                                </Link>
+                            </div>
 
-                    <div className="M3-main-container">
-
-                        <div className="M3-main-container-1">
-
-                            <MatchesTeams btns="" wonornot="BLOOMFIELD won by 7 wkts" left="Starts at 09.30" middle="R.Premadasa Stadium" right="2022 Oct 16" />
+                            <h1>Matches</h1>
 
                         </div>
 
-                        <div className="M3-main-container-2">
+                        <div className="M3-main-container">
 
-                            <h4>Players</h4>
+                            <div className="M3-main-container-1">
+
+                                <MatchesTeams btns="" wonornot="BLOOMFIELD won by 7 wkts" left="Starts at 09.30" middle="R.Premadasa Stadium" right="2022 Oct 16" />
+
+                            </div>
+
+                            <div className="M3-main-container-2">
+
+                                <h4>Players</h4>
+
+                            </div>
+
+                            <div className="M3-main-container-3">
+
+                                <hr></hr>
+
+                                <Container>
+
+                                    <Row>
+                                        <Col className="M3-main-container-3-1" sm={4}> <h6> <a href="/couch/PF">Asitha Muthumala</a> </h6> </Col>
+                                        <Col className="M3-main-container-3-2" sm={4}> <h6>BF-0099</h6> </Col>
+                                        <Col className="M3-main-container-3-3" sm={4}></Col>
+                                    </Row>
+                                    <br></br>
+
+                                    <Row>
+                                        <Col className="M3-main-container-3-1" sm={4}> <h6> <a href="/couch/PF">Asitha Muthumala</a> </h6> </Col>
+                                        <Col className="M3-main-container-3-2" sm={4}> <h6>BF-0099</h6> </Col>
+                                        <Col className="M3-main-container-3-3" sm={4}></Col>
+                                    </Row>
+                                    <br></br>
+
+                                    <Row>
+                                        <Col className="M3-main-container-3-1" sm={4}> <h6> <a href="/couch/PF">Asitha Muthumala</a> </h6> </Col>
+                                        <Col className="M3-main-container-3-2" sm={4}> <h6>BF-0099</h6> </Col>
+                                        <Col className="M3-main-container-3-3" sm={4}></Col>
+                                    </Row>
+                                    <br></br>
+
+                                    <Row>
+                                        <Col className="M3-main-container-3-1" sm={4}> <h6> <a href="/couch/PF">Asitha Muthumala</a> </h6> </Col>
+                                        <Col className="M3-main-container-3-2" sm={4}> <h6>BF-0099</h6> </Col>
+                                        <Col className="M3-main-container-3-3" sm={4}></Col>
+                                    </Row>
+                                    <br></br>
+
+                                    <Row>
+                                        <Col className="M3-main-container-3-1" sm={4}> <h6> <a href="/couch/PF">Asitha Muthumala</a> </h6> </Col>
+                                        <Col className="M3-main-container-3-2" sm={4}> <h6>BF-0099</h6> </Col>
+                                        <Col className="M3-main-container-3-3" sm={4}></Col>
+                                    </Row>
+                                    <br></br>
+
+                                    <Row>
+                                        <Col className="M3-main-container-3-1" sm={4}> <h6> <a href="/couch/PF">Asitha Muthumala</a> </h6> </Col>
+                                        <Col className="M3-main-container-3-2" sm={4}> <h6>BF-0099</h6> </Col>
+                                        <Col className="M3-main-container-3-3" sm={4}></Col>
+                                    </Row>
+                                    <br></br>
+
+                                    <Row>
+                                        <Col className="M3-main-container-3-1" sm={4}> <h6> <a href="/couch/PF">Asitha Muthumala</a> </h6> </Col>
+                                        <Col className="M3-main-container-3-2" sm={4}> <h6>BF-0099</h6> </Col>
+                                        <Col className="M3-main-container-3-3" sm={4}></Col>
+                                    </Row>
+                                    <br></br>
+
+                                    <Row>
+                                        <Col className="M3-main-container-3-1" sm={4}> <h6> <a href="/couch/PF">Asitha Muthumala</a> </h6> </Col>
+                                        <Col className="M3-main-container-3-2" sm={4}> <h6>BF-0099</h6> </Col>
+                                        <Col className="M3-main-container-3-3" sm={4}></Col>
+                                    </Row>
+                                    <br></br>
+
+                                    <Row>
+                                        <Col className="M3-main-container-3-1" sm={4}> <h6> <a href="/couch/PF">Asitha Muthumala</a> </h6> </Col>
+                                        <Col className="M3-main-container-3-2" sm={4}> <h6>BF-0099</h6> </Col>
+                                        <Col className="M3-main-container-3-3" sm={4}></Col>
+                                    </Row>
+                                    <br></br>
+
+                                </Container>
+
+                            </div>
+
 
                         </div>
-
-                        <div className="M3-main-container-3">
-
-                            <hr></hr>
-
-                            <Container>
-
-                                <Row>
-                                    <Col className="M3-main-container-3-1" sm={4}> <h6> <a href="#">Asitha Muthumala</a> </h6> </Col>
-                                    <Col className="M3-main-container-3-2" sm={4}> <h6>BF-0099</h6> </Col>
-                                    <Col className="M3-main-container-3-3" sm={4}></Col>
-                                </Row>
-                                <br></br>
-
-                                <Row>
-                                    <Col className="M3-main-container-3-1" sm={4}> <h6> <a href="#">Asitha Muthumala</a> </h6> </Col>
-                                    <Col className="M3-main-container-3-2" sm={4}> <h6>BF-0099</h6> </Col>
-                                    <Col className="M3-main-container-3-3" sm={4}></Col>
-                                </Row>
-                                <br></br>
-
-                                <Row>
-                                    <Col className="M3-main-container-3-1" sm={4}> <h6> <a href="#">Asitha Muthumala</a> </h6> </Col>
-                                    <Col className="M3-main-container-3-2" sm={4}> <h6>BF-0099</h6> </Col>
-                                    <Col className="M3-main-container-3-3" sm={4}></Col>
-                                </Row>
-                                <br></br>
-
-                                <Row>
-                                    <Col className="M3-main-container-3-1" sm={4}> <h6> <a href="#">Asitha Muthumala</a> </h6> </Col>
-                                    <Col className="M3-main-container-3-2" sm={4}> <h6>BF-0099</h6> </Col>
-                                    <Col className="M3-main-container-3-3" sm={4}></Col>
-                                </Row>
-                                <br></br>
-
-                                <Row>
-                                    <Col className="M3-main-container-3-1" sm={4}> <h6> <a href="#">Asitha Muthumala</a> </h6> </Col>
-                                    <Col className="M3-main-container-3-2" sm={4}> <h6>BF-0099</h6> </Col>
-                                    <Col className="M3-main-container-3-3" sm={4}></Col>
-                                </Row>
-                                <br></br>
-
-                                <Row>
-                                    <Col className="M3-main-container-3-1" sm={4}> <h6> <a href="#">Asitha Muthumala</a> </h6> </Col>
-                                    <Col className="M3-main-container-3-2" sm={4}> <h6>BF-0099</h6> </Col>
-                                    <Col className="M3-main-container-3-3" sm={4}></Col>
-                                </Row>
-                                <br></br>
-
-                                <Row>
-                                    <Col className="M3-main-container-3-1" sm={4}> <h6> <a href="#">Asitha Muthumala</a> </h6> </Col>
-                                    <Col className="M3-main-container-3-2" sm={4}> <h6>BF-0099</h6> </Col>
-                                    <Col className="M3-main-container-3-3" sm={4}></Col>
-                                </Row>
-                                <br></br>
-
-                                <Row>
-                                    <Col className="M3-main-container-3-1" sm={4}> <h6> <a href="#">Asitha Muthumala</a> </h6> </Col>
-                                    <Col className="M3-main-container-3-2" sm={4}> <h6>BF-0099</h6> </Col>
-                                    <Col className="M3-main-container-3-3" sm={4}></Col>
-                                </Row>
-                                <br></br>
-
-                                <Row>
-                                    <Col className="M3-main-container-3-1" sm={4}> <h6> <a href="#">Asitha Muthumala</a> </h6> </Col>
-                                    <Col className="M3-main-container-3-2" sm={4}> <h6>BF-0099</h6> </Col>
-                                    <Col className="M3-main-container-3-3" sm={4}></Col>
-                                </Row>
-                                <br></br>
-
-                            </Container>
-
-                        </div>
-
 
                     </div>
 
                 </div>
+
+
 
             </div>
 
