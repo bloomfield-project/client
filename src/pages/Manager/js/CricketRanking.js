@@ -5,152 +5,114 @@ import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import "../../Home.css";
 import SearchTable from "../../../component/Search/SearchTable";
+import profpic from "../../player/player.jpg";
 
 const data = [
   {
-    id: "1101",
-    // img: <img className="row-image" src={profpic} alt=""></img>,
-    event: "Crismas party",
-    date: "2022-05-11",
-    time: "09:00 am",
-    btn: (
-      <Link to={"/manager/EditEvent"}>
-        <Button variant="secondary">View</Button>
-      </Link>
-    ),
+    pos: "01",
+    img: <img className="row-image" src={profpic} alt=""></img>,
+    name: "Gihan Trellow",
+    rating: "320",
+    // time: "09:00 am",
+    // btn: (
+    //   <Link to={"/manager/EditEvent"}>
+    //     <Button variant="secondary">View</Button>
+    //   </Link>
+    // ),
   },
 
   {
-    id: "1101",
-    // img: <img className="row-image" src={profpic} alt=""></img>,
-    event: "Crismas party",
-    date: "2022-05-11",
-    time: "09:00 am",
-    btn: (
-      <Link to={"/manager/EditEvent"}>
-        <Button variant="secondary">View</Button>
-      </Link>
-    ),
+    pos: "02",
+    img: <img className="row-image" src={profpic} alt=""></img>,
+    name: "Asitha Muthumala",
+    rating: "900",
   },
   {
-    id: "1101",
-    // img: <img className="row-image" src={profpic} alt=""></img>,
-    event: "Crismas party",
-    date: "2022-05-11",
-    time: "09:00 am",
-    btn: (
-      <Link to={"/manager/EditEvent"}>
-        <Button variant="secondary">View</Button>
-      </Link>
-    ),
+    pos: "03",
+    img: <img className="row-image" src={profpic} alt=""></img>,
+    name: "Dilukshan Bimsara",
+    rating: "215",
   },
   {
-    id: "1101",
-    // img: <img className="row-image" src={profpic} alt=""></img>,
-    event: "Crismas party",
-    date: "2022-05-11",
-    time: "09:00 am",
-    btn: (
-      <Link to={"/manager/EditEvent"}>
-        <Button variant="secondary">View</Button>
-      </Link>
-    ),
+    pos: "05",
+    img: <img className="row-image" src={profpic} alt=""></img>,
+    name: "Nuwan Chamara",
+    rating: "900",
   },
 ];
 
 // console.log(data[0]);
 const columns = [
   {
-    title: "ID",
-    field: "id",
+    title: "Position",
+    field: "pos",
   },
   {
-    title: "Event",
-    field: "event",
-  },
-  {
-    title: "Date",
-    field: "date",
-  },
-  {
-    title: "Time",
-    field: "time",
+    title: "Player",
+    field: "img",
   },
   {
     title: "",
-    field: "btn",
+    field: "name",
   },
+  {
+    title: "Rating",
+    field: "rating",
+  },
+  
 ];
 
 const data_1 = [
   {
-    // id: "1101",
-    // img: <img className="row-image" src={profpic} alt=""></img>,
-    mentor: "Dr.chaminda wimukthi",
-    date: "2022-05-11",
-    time: "09:00 am",
-    btn: (
-      <Link to={"/manager/EditCouncellingSession"}>
-        <Button variant="secondary">View</Button>
-      </Link>
-    ),
+    pos: "01",
+    img: <img className="row-image" src={profpic} alt=""></img>,
+    name: "Nimesh Amitha",
+    rating: "920",
+    // time: "09:00 am",
+    // btn: (
+    //   <Link to={"/manager/EditEvent"}>
+    //     <Button variant="secondary">View</Button>
+    //   </Link>
+    // ),
   },
 
   {
-    // id: "1101",
-    // img: <img className="row-image" src={profpic} alt=""></img>,
-    mentor: "Dr.chaminda wimukthi",
-    date: "2022-05-11",
-    time: "09:00 am",
-    btn: (
-      <Link to={"/manager/EditCouncellingSession"}>
-        <Button variant="secondary">View</Button>
-      </Link>
-    ),
+    pos: "02",
+    img: <img className="row-image" src={profpic} alt=""></img>,
+    name: "Muthumala Kavinda",
+    rating: "900",
   },
   {
-    // id: "1101",
-    // img: <img className="row-image" src={profpic} alt=""></img>,
-    mentor: "Dr.chaminda wimukthi",
-    date: "2022-05-11",
-    time: "09:00 am",
-    btn: (
-      <Link to={"/manager/EditCouncellingSession"}>
-        <Button variant="secondary">View</Button>
-      </Link>
-    ),
+    pos: "03",
+    img: <img className="row-image" src={profpic} alt=""></img>,
+    name: "Dilukshan Bimsara",
+    rating: "215",
   },
   {
-    // id: "1101",
-    // img: <img className="row-image" src={profpic} alt=""></img>,
-    mentor: "Dr.chaminda wimukthi",
-    date: "2022-05-11",
-    time: "09:00 am",
-    btn: (
-      <Link to={"/manager/EditCouncellingSession"}>
-        <Button variant="secondary">View</Button>
-      </Link>
-    ),
+    pos: "05",
+    img: <img className="row-image" src={profpic} alt=""></img>,
+    name: "Nuwan Chamara",
+    rating: "900",
   },
 ];
 
 // console.log(data[0]);
 const columns_1 = [
   {
-    title: "Mentor",
-    field: "mentor",
+    title: "Position",
+    field: "pos",
   },
   {
-    title: "Date",
-    field: "date",
-  },
-  {
-    title: "Time",
-    field: "time",
+    title: "Player",
+    field: "img",
   },
   {
     title: "",
-    field: "btn",
+    field: "name",
+  },
+  {
+    title: "Rating",
+    field: "rating",
   },
 ];
 

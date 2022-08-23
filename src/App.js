@@ -230,7 +230,11 @@ function App() {
 
           <Route path="/admin/Raking" element={<Ranking />} />
           <Route path="/admin/PlayerRankings" element={<PlayerRankings />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/manager/profile" element={<Profile />} />
+          <Route path="/admin/profile" element={<Profile />} />
+          <Route path="/couch/profile" element={<Profile />} />
+          <Route path="/player/profile" element={<Profile />} />
+
 
           <Route path="/file" element={<FileUpload />}  />
 
