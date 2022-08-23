@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import Calander from "../../component/Calander/Calander";
+import LineChart from "../../component/Chart/LineChart";
 import Header from "../../component/header/Header";
 import Navbar from "../../component/NavigationBar/Navbar";
 import "../Profile/Profile.css";
+import  userimg  from "../Profile/user.jpg"
 
 function Profile() {
   return (
@@ -18,10 +20,11 @@ function Profile() {
           <div className="body-container-2">
             <div className="p-main-cotainer">
               <div className="p-upper">
-                <div className="p-upper-left">
+                <div className="p-upper-left ">
                   {/* img ekata class eka "p-res-img"  denna   */}
+                  <img className="p-res-img  round "  src={userimg} alt="cricket"></img>
                 </div>
-                <div className="p-upper-right ">
+                <div className="p-upper-right t-padding">
                   <table className="p-table rounded ">
                     <tr>
                       <td className="p-table-td">
@@ -66,7 +69,8 @@ function Profile() {
               </div>
               <div className="p-upper">
                 <div className="p-upper-left">
-                    
+                    <LineChart />
+                    <p >Progress</p>
                 </div>
                 <div className="p-upper-right">
                   <Calander />
