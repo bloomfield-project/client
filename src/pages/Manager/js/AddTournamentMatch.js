@@ -11,35 +11,37 @@ import "antd/dist/antd.css";
 import Team from "../../player/Team.png";
 import opTeam from "../../player/player.jpg";
 import MatchesTeams from "../../../component/MatchesTeams/MatchesTeams";
+import ResetSubmit from "../../../component/Form/ResetSubmit";
+import FileUpload from "../../../component/Form/FileUpload";
 
 function AddTournamentMatch() {
   let array1 = [
     {
-      title: "First Name",
+      title: "Date",
       for: "exampleInputEmail1",
-      type: "text",
-      placeholder: "First Name",
+      type: "date",
+      placeholder: "",
       id: "f-name",
     },
     {
-      title: "Last Name",
+      title: "Time",
       for: "exampleInputEmail1",
       type: "text",
-      placeholder: "Last Name",
+      placeholder: "",
       id: "l-name",
     },
     {
-      title: "e-mail",
+      title: "Oppesite Team",
       for: "exampleInputEmail1",
-      type: "email",
-      placeholder: "Email",
+      type: "text",
+      placeholder: "",
       id: "email",
     },
     {
-      title: "Contact",
+      title: "Ground",
       for: "exampleInputEmail1",
-      type: "number",
-      placeholder: "Contact Number",
+      type: "text",
+      placeholder: "",
       id: "contact",
     },
   ];
@@ -97,20 +99,26 @@ function AddTournamentMatch() {
                         className="match-box-mid"
                         style={{ height: "auto", minWidth: "100%" }}
                       >
-                        <SampleForm arr={array1} upload={true} file1={file} />
+                        <div className="form-container">
+                          <form >
+                            <SampleForm arr={array1} />
+                            <FileUpload filefor="logo" filetitle="Logo" />
+                            <ResetSubmit />
+                          </form>
+                        </div>
                       </div>
                     </div>
                     <div className="tablee">
                       <MatchesTeams
                         btns=""
-                        wonornot="BLOOMFIELD won by 7 wkts"
+                        wonornot=""
                         left="Starts at 09.30"
                         middle="R.Premadasa Stadium"
                         right="2022 Oct 16"
                       />
                       <MatchesTeams
                         btns=""
-                        wonornot="BLOOMFIELD won by 7 wkts"
+                        wonornot=""
                         left="Starts at 09.30"
                         middle="R.Premadasa Stadium"
                         right="2022 Oct 16"

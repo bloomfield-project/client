@@ -2,7 +2,7 @@ import Header from "../../../component/header/Header"
 import Navbar from "../../../component/NavigationBar/Navbar";
 import React from "react";
 import "../../Home.css"
-import "../css/playerRanking.css"
+// import "../css/playerRanking.css"
 import player from "../player.jpg"
 import { Tabs } from 'antd';
 import 'antd/dist/antd.css';

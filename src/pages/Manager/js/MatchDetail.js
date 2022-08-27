@@ -69,7 +69,7 @@ function MatchDetail() {
                         <img src={Team}></img>
                       </div>
                       <div className="box-mid-left-down">
-                        <h5>176-6 (18.3)</h5>
+                        {/* <h5>176-6 (18.3)</h5> */}
                       </div>
                     </div>
                     <div className="match-box-mid-mid">
@@ -91,14 +91,14 @@ function MatchDetail() {
                         <img src={opTeam}></img>
                       </div>
                       <div className="box-mid-right-down">
-                        <h5>175-7 (20)</h5>
+                        {/* <h5>175-7 (20)</h5> */}
                       </div>
                     </div>
                   </div>
                   <div className="match-box-down-1">
                     <div className="match-box-down-1-left">
                       <h5 style={{ color: "#009270" }}>
-                        BLOOMFIELD won by 4 wkts
+                        {/* BLOOMFIELD won by 4 wkts */}
                       </h5>
                     </div>
                     <div className="match-box-down-1-right">
@@ -136,7 +136,7 @@ function MatchDetail() {
                         <img src={Team}></img>
                       </div>
                       <div className="box-mid-left-down">
-                        <h5>176-6 (18.3)</h5>
+                        {/* <h5>176-6 (18.3)</h5> */}
                       </div>
                     </div>
                     <div className="match-box-mid-mid">
@@ -158,14 +158,14 @@ function MatchDetail() {
                         <img src={opTeam}></img>
                       </div>
                       <div className="box-mid-right-down">
-                        <h5>175-7 (20)</h5>
+                        {/* <h5>175-7 (20)</h5> */}
                       </div>
                     </div>
                   </div>
                   <div className="match-box-down-1">
                     <div className="match-box-down-1-left">
                       <h5 style={{ color: "#009270" }}>
-                        BLOOMFIELD won by 4 wkts
+                        {/* BLOOMFIELD won by 4 wkts */}
                       </h5>
                     </div>
                     <div className="match-box-down-1-right">

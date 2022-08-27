@@ -21,29 +21,29 @@ const data_1 = [
   },
 
   {
-    sessionname: "PS-001",
+    sessionname: "PS-002",
     // img: <img className="row-image" src={profpic} alt=""></img>,
-    session: "Batting",
-    date: '2022-05-11',
-    time: '09:00 am',
+    session: "Bowling",
+    date: '2022-05-21',
+    time: '10:00 am',
     btn: <Link to="/couch/EPS"><Button variant="secondary">View</Button></Link>,
   },
 
   {
-    sessionname: "PS-001",
+    sessionname: "PS-003",
     // img: <img className="row-image" src={profpic} alt=""></img>,
-    session: "Batting",
-    date: '2022-05-11',
-    time: '09:00 am',
+    session: "Fielding",
+    date: '2022-06-11',
+    time: '10:00 am',
     btn: <Link to="/couch/EPS"><Button variant="secondary">View</Button></Link>,
   },
 
   {
-    sessionname: "PS-001",
+    sessionname: "PS-004",
     // img: <img className="row-image" src={profpic} alt=""></img>,
-    session: "Batting",
-    date: '2022-05-11',
-    time: '09:00 am',
+    session: "Bowling",
+    date: '2022-05-13',
+    time: '11:00 am',
     btn: <Link to="/couch/EPS"><Button variant="secondary">View</Button></Link>,
   },
 
@@ -52,38 +52,38 @@ const data_1 = [
 const data_2 = [
  
   {
-    sessionname: "PS-001",
+    sessionname: "PS-010",
     // img: <img className="row-image" src={profpic} alt=""></img>,
     session: "Batting",
-    date: '2022-05-11',
+    date: '2022-05-05',
     time: '09:00 am',
     btn: <Link to="/couch/VPS"><Button variant="secondary">View</Button></Link>,
   },
 
   {
-    sessionname: "PS-001",
+    sessionname: "PS-011",
     // img: <img className="row-image" src={profpic} alt=""></img>,
-    session: "Batting",
-    date: '2022-05-11',
-    time: '09:00 am',
+    session: "Bowling",
+    date: '2022-05-05',
+    time: '11:00 am',
     btn: <Link to="/couch/VPS"><Button variant="secondary">View</Button></Link>,
   },
 
   {
-    sessionname: "PS-001",
+    sessionname: "PS-012",
     // img: <img className="row-image" src={profpic} alt=""></img>,
-    session: "Batting",
-    date: '2022-05-11',
-    time: '09:00 am',
+    session: "Fielding",
+    date: '2022-05-05',
+    time: '1:00 pm',
     btn: <Link to="/couch/VPS"><Button variant="secondary">View</Button></Link>,
   },
 
   {
-    sessionname: "PS-001",
+    sessionname: "PS-013",
     // img: <img className="row-image" src={profpic} alt=""></img>,
     session: "Batting",
-    date: '2022-05-11',
-    time: '09:00 am',
+    date: '2022-05-05',
+    time: '3:00 pm',
     btn: <Link to="/couch/VPS"><Button variant="secondary">View</Button></Link>,
   },
 

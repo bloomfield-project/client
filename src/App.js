@@ -90,13 +90,13 @@ import Profile from "./pages/Profile/Profile";
 
 
 import LoginN from "./pages/login/js/LoginN";
-<<<<<<< HEAD
+
 import EditPracticeSessions from "./pages/Coach/js/EditPracticeSessions";
 import EditRowDetailsWithButton from "./component/EditRowDetailsWithButton/EditRowDetailsWithButton";
 import PlayerDetails_1 from "./pages/Coach/js/PlayerDetails_1";
 import PlayerProgress_1 from "./pages/Coach/js/PlayerProgress_1";
 import PlayerFeedback from "./pages/Coach/js/PlayerFeedback";
-=======
+
 import FileUpload from "./component/Form/FileUpload";
 import Achivementss from "./pages/player/js/Achivements"
 
@@ -106,7 +106,7 @@ import Achivementss from "./pages/player/js/Achivements"
 
 
 
->>>>>>> 869febfdb76cc27ff5e3d0312dac99de9f55f650
+
 
 
 const List = [
@@ -221,10 +221,8 @@ function App() {
 
 
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 869febfdb76cc27ff5e3d0312dac99de9f55f650
+
           <Route path="/player/Psession" element={<Psession />} />
           <Route path="/player/PEvents" element={<PEvents />} />
           <Route path="/player/PlayerRankingList" element={<PlayerRankingList />} />
@@ -250,15 +248,14 @@ function App() {
           <Route path="/admin/AnnualMembership" element={<AnnualMembership />} />
           <Route path="/admin/Feedback" element={<Feedback />} />
 
-<<<<<<< HEAD
-=======
+
           <Route path="/admin/Raking" element={<Ranking />} />
           <Route path="/admin/PlayerRankings" element={<PlayerRankings />} />
           <Route path="/manager/profile" element={<Profile />} />
           <Route path="/admin/profile" element={<Profile />} />
           <Route path="/couch/profile" element={<Profile />} />
           <Route path="/player/profile" element={<Profile />} />
->>>>>>> 869febfdb76cc27ff5e3d0312dac99de9f55f650
+
 
 
           <Route path="/file" element={<FileUpload />}  />

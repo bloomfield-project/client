@@ -5,6 +5,8 @@
     display: flex;
     padding-left: 5px;
     width: 95%;
+    /* background-color: #009270; */
+    height: fit-content;
 }
 
 .table-tab{
