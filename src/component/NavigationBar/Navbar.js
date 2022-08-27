@@ -29,12 +29,13 @@ function Navbar() {
   const location = useLocation();
   const user = location.pathname.split('/')[1]
   console.log(user, "hjgdsv", location)
-  let data
+  let data =SidebarDataCouch
   if (user == "manager") {
     data = SidebarDataManager
   }
-  else if (user == "coach") {
-    data = SidebarDataManager
+  else if (user == "couch") {
+    data = SidebarDataCouch
+    console.log('hjsad')
   }
   else if (user == "player") {
     data = SidebarDataPlayer

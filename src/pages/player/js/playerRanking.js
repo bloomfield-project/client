@@ -38,11 +38,10 @@ const LIST_M = [
 
 
 function PlayerRanking() {
-<<<<<<< HEAD
-=======
+
     const location = useLocation();
     console.log(location.state)
->>>>>>> 869febfdb76cc27ff5e3d0312dac99de9f55f650
+
     return (
       <div className="page-container-1">
         <div className="header-container">
@@ -113,11 +112,18 @@ function PlayerRanking() {
                                 <hr></hr>
 
 
-                                <div className="table-tabs">
-                                    <div className="table-tab">ODI</div>
-                                    <div className="table-tab-active">T20</div>
-                                    <div className="table-tab">TEST</div>
+                                <div className="filter-by-date-tabs">
+                                    <div className="table-tabs">
+                                        <div className="table-tab">ODI</div>
+                                        <div className="table-tab-active">T20</div>
+                                        <div className="table-tab">TEST</div>
+                                    </div>
+                                    <div className="filter-by-date">
+                                        <label>Select month:</label>
+                                        <input type="month" className="filter-by-date-month"></input>
+                                    </div>
                                 </div>
+                                <div className="dadt-dis">2022 October</div>
                                 
                                 <span className="gp-21"></span> 
 

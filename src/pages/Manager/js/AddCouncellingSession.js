@@ -8,39 +8,54 @@ import Navbar from "../../../component/NavigationBar/Navbar";
 import AddMultipleSelections from "../../../component/AddMultipleSelections/AddMultipleSelections";
 import FileUpload from "../../../component/Form/FileUpload";
 import ResetSubmit from "../../../component/Form/ResetSubmit";
+import SelectOption from "../../../component/Form/SelectOption";
 
 function AddCouncellingSession() {
   let array1 = [
     {
-      title: "First Name",
+      title: "Councelling Session Title",
       for: "exampleInputEmail1",
       type: "text",
-      placeholder: "First Name",
+      placeholder: "",
       id: "f-name",
     },
     {
-      title: "Last Name",
+      title: "Date",
       for: "exampleInputEmail1",
-      type: "text",
-      placeholder: "Last Name",
+      type: "date",
+      placeholder: "",
       id: "l-name",
     },
     {
-      title: "e-mail",
+      title: "Place",
       for: "exampleInputEmail1",
-      type: "email",
-      placeholder: "Email",
+      type: "text",
+      placeholder: "",
       id: "email",
     },
     {
-      title: "Contact",
+      title: "Mentor",
       for: "exampleInputEmail1",
       type: "number",
-      placeholder: "Contact Number",
+      placeholder: "",
       id: "contact",
     },
   ];
 
+  const option = [
+    {
+      value:"bawling",
+      title:"Mr.SamaraNayaka"
+    },
+    {
+      value:"batting",
+      title:"Mr.Jayasooriya"
+    },
+    {
+      value:"allrounder",
+      title:"Mr.Athapaththus"
+    }
+  ]
 
   const createUser = (event) =>{
     event.preventDefault();
@@ -79,8 +94,9 @@ function AddCouncellingSession() {
               <div className="form-container">
                 <form onSubmit={createUser}>
                   <SampleForm arr={array1} />
-                  <AddMultipleSelections />
-                  <FileUpload />
+                  
+                  {/* <SelectOption label={"Mentor "} option={option} /> */}
+                  {/* <FileUpload /> */}
                   <ResetSubmit />
                 </form>
               </div>

@@ -109,24 +109,74 @@
     width: 100%;
 }
 
+.tablee-14 > hr{
+    margin: 0;
+}
+
 
 .table-head-14{
     display: flex;
     background-color: #E3E6E3;
-    padding: 10px 0;
+    padding: 2px 0;
+
 }
 
 .table-row-14{
     display: flex;
-    padding-top: 15px;
+    padding-top: 5px; 
 }
 
 .col-14-1{
     width: 22%;
     text-align: start;
     padding-left: 20px;
+    
 }
+
+.table-head-14 > .col-14-1{
+    padding-top: 7px;
+}
+
+
+
 .col-14-2 , .col-14-3 ,.col-14-4 ,.col-14-5, .col-14-6, .col-14-7, .col-14-8, .col-14-9,.col-14-10,.col-14-11,.col-14-12,.col-14-13,.col-14-14{
     padding-top: 7px;
     width: 6%;
+}
+
+.col-14-1 > h5 , .col-14-2 > h5 , .col-14-3 > h5 ,.col-14-4 > h5 ,.col-14-5 > h5, .col-14-6 > h5, .col-14-7 > h5, .col-14-8 > h5, .col-14-9 > h5,.col-14-10 > h5,.col-14-11 > h5,.col-14-12 > h5,.col-14-13 > h5,.col-14-14 > h5{
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.filter-by-date-tabs{
+    display: flex;
+    align-items: center;
+    /* background-color: aqua; */
+    height: fit-content;
+    width: 100%;
+
+}
+
+.filter-by-date{
+    margin-top: 15px;
+    display: flex;
+    width: 250px;
+}
+
+.filter-by-date-month{
+    border-radius: 5px;
+    border: none;
+    height: 25px;
+    background-color: #f3f7f7;
+    box-shadow: inset 0 1px 4px rgb(0 0 0 / 10%), 0 0 0 transparent;
+    padding: 0 10px;
+}
+
+.dadt-dis{
+    width: 100%;
+    /* background-color: antiquewhite; */
+    margin-top: 15px;
+    display: flex;
+    justify-content: end;
 }

@@ -60,7 +60,7 @@ export const SidebarDataManager = [
 
 export const SidebarDataPlayer = [
     {
-        title:'Performance',
+        title:'Dashboard',
         path:'/player/Profile',
         icon:<AiIcons.AiFillHome />,
         cName:'nav-text'
@@ -184,7 +184,7 @@ export const SidebarDataCouch = [
 
     {
         title:'Dashboard',
-        path:'',
+        path:'/couch/profile',
         icon:<AiIcons.AiFillHome />,
         cName:'nav-text'
     },
@@ -227,6 +227,12 @@ export const SidebarDataCouch = [
     {
         title:'Calender',
         path:'',
+        icon:<AiIcons.AiFillHome />,
+        cName:'nav-text'
+    },
+    {
+        title:'Logout',
+        path:'/',
         icon:<AiIcons.AiFillHome />,
         cName:'nav-text'
     },
