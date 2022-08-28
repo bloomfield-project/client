@@ -65,7 +65,16 @@ function LoginN({ setLogin }){
             // setLogin(data.data)
             console.log(data.data.role)
             if(data.data.role=='manager'){
-                history('/manager/Players',{state: data.data})
+                history('/manager/profile',{state: data.data})
+            }
+            else if(data.data.role=='player'){
+                history('/player/profile',{state: data.data})
+            }
+            else if(data.data.role=='couch'){
+                history('/couch/profile',{state: data.data})
+            }
+            else if(data.data.role=='admin'){
+                history('/admin/profile',{state: data.data})
             }
             // history('/player/playerRanking',{state: data.data})
             

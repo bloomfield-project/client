@@ -14,24 +14,16 @@ function EditPlayerDetails() {
       data: "kasun kalhara",
     },
     {
-      lable: "Age",
-      data: "25",
-    },
-    {
       lable: "Role",
-      data: "supervisore",
+      data: "Bowler",
     },
     {
-      lable: "Name",
-      data: "kasun kalhara",
+      lable: "E-mail",
+      data: "kasun@gmail.com",
     },
     {
-      lable: "Age",
-      data: "25",
-    },
-    {
-      lable: "Role",
-      data: "supervisore",
+      lable: "Contact",
+      data: "0715486236",
     },
   ];
   return (

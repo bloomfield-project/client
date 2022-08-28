@@ -8,6 +8,7 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { Link } from "react-router-dom";
 
 
 
@@ -70,7 +71,7 @@ function ViewAppoinments() {
 
                                 <Button variant="secondary" className="VP-Details-box-2-1">Accept</Button>{' '} <br></br>
                                 <Button variant="secondary" className="VP-Details-box-2-2">Reject with Leaving Message</Button>{' '} <br></br>
-                                <Button variant="secondary" className="VP-Details-box-2-3">BACK</Button>{' '}
+                                <Link to="/couch/A"><Button variant="secondary" className="VP-Details-box-2-3">BACK</Button>{' '}</Link>
 
                             </div>
 

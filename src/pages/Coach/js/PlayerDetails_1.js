@@ -2,15 +2,13 @@ import Header from "../../../component/header/Header"
 import Navbar from "../../../component/NavigationBar/Navbar";
 import React from "react";
 import "../../Home.css"
-import "../css/playerRanking.css"
+// import "../css/playerRanking.css"
 import player from "../player.jpg"
 import { Tabs } from 'antd';
 import 'antd/dist/antd.css';
 import Tablee from "../../../component/ScoreTable/ScoreTable";
 import IntroTable from "../../../component/IntroTable/IntroTable"
-
-
-import { useLocation } from "react-router-dom";
+import Button from 'react-bootstrap/Button';
 
 
 
@@ -37,11 +35,7 @@ const LIST_M = [
 ];
 
 
-function PlayerRanking() {
-
-    const location = useLocation();
-    console.log(location.state)
-
+function PlayerDetails_1() {
     return (
       <div className="page-container-1">
         <div className="header-container">
@@ -49,7 +43,7 @@ function PlayerRanking() {
         </div>
         <div className="body-container-1">
           <div className="navbar-container">
-            <Navbar ></Navbar>
+            <Navbar></Navbar>
           </div>
           <div className="body-container-2">
               <div className="title">
@@ -59,6 +53,9 @@ function PlayerRanking() {
                 <img className="playerImage" src={player} alt="Italian Trulli" />
                 <IntroTable/>
               </div>
+
+              {/* <Link to={""} style={{display:'flex',justify-content:'flex-end'}}><Button variant="success">Performance</Button>{' '}</Link> */}
+
               <div className="playerPreformanceBody">
                 <Tabs defaultActiveKey="1" onChange={onChange}>
                     
@@ -112,18 +109,11 @@ function PlayerRanking() {
                                 <hr></hr>
 
 
-                                <div className="filter-by-date-tabs">
-                                    <div className="table-tabs">
-                                        <div className="table-tab">ODI</div>
-                                        <div className="table-tab-active">T20</div>
-                                        <div className="table-tab">TEST</div>
-                                    </div>
-                                    <div className="filter-by-date">
-                                        <label>Select month:</label>
-                                        <input type="month" className="filter-by-date-month"></input>
-                                    </div>
+                                <div className="table-tabs">
+                                    <div className="table-tab">ODI</div>
+                                    <div className="table-tab-active">T20</div>
+                                    <div className="table-tab">TEST</div>
                                 </div>
-                                <div className="dadt-dis">2022 October</div>
                                 
                                 <span className="gp-21"></span> 
 
@@ -273,4 +263,4 @@ function PlayerRanking() {
   );
   }
   
-  export default PlayerRanking;
+  export default PlayerDetails_1;

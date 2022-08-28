@@ -15,7 +15,7 @@ import Navbar from "../../../component/NavigationBar/Navbar";
 const data = [
   {
     id: "1101",
-    title: "lamesh iroshan",
+    title: "Hero cup",
     btn: (
       <Link to={"/manager/AddTournamentDetail"}>
         <BiChevronRightCircle
@@ -27,7 +27,7 @@ const data = [
 
   {
     id: "1102",
-    title: "Ramesh nimnath",
+    title: "Champion leage",
     btn: (
       <Link to={"/manager/AddTournamentDetail"}>
         <BiChevronRightCircle
@@ -38,7 +38,7 @@ const data = [
   },
   {
     id: "1104",
-    title: "Nimesh dilshan",
+    title: "LPL",
     btn: (
       <Link to={"/manager/AddTournamentDetail"}>
         <BiChevronRightCircle
@@ -47,28 +47,28 @@ const data = [
       </Link>
     ),
   },
-  {
-    id: "1103",
-    title: "Saaru wijesinghe",
-    btn: (
-      <Link to={"/manager/AddTournamentDetail"}>
-        <BiChevronRightCircle
-          style={{ color: "rgba(0, 146, 112, 1)", fontSize: " 35px" }}
-        />
-      </Link>
-    ),
-  },
-  {
-    id: "1105",
-    title: "Ashan grove",
-    btn: (
-      <Link to={"/manager/AddTournamentDetail"}>
-        <BiChevronRightCircle
-          style={{ color: "rgba(0, 146, 112, 1)", fontSize: "35px" }}
-        />
-      </Link>
-    ),
-  },
+  // {
+  //   id: "1103",
+  //   title: "Saaru wijesinghe",
+  //   btn: (
+  //     <Link to={"/manager/AddTournamentDetail"}>
+  //       <BiChevronRightCircle
+  //         style={{ color: "rgba(0, 146, 112, 1)", fontSize: " 35px" }}
+  //       />
+  //     </Link>
+  //   ),
+  // },
+  // {
+  //   id: "1105",
+  //   title: "Ashan grove",
+  //   btn: (
+  //     <Link to={"/manager/AddTournamentDetail"}>
+  //       <BiChevronRightCircle
+  //         style={{ color: "rgba(0, 146, 112, 1)", fontSize: "35px" }}
+  //       />
+  //     </Link>
+  //   ),
+  // },
 ];
 
 // console.log(data[0]);

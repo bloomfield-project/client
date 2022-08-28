@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 
-import {  SidebarDataPlayer } from "./SidebarData";
+import { SidebarDataPlayer } from "./SidebarData";
 import { SidebarDataAdmin } from "./SidebarData";
+import { SidebarDataCouch } from "./SidebarData";
 
 
 
@@ -27,49 +28,55 @@ function Navbar() {
 
   const location = useLocation();
   const user = location.pathname.split('/')[1]
-  console.log(user,"hjgdsv",location)
-  let data 
-  if(user=="manager"){
-    data=SidebarDataManager
+  console.log(user, "hjgdsv", location)
+  let data =SidebarDataCouch
+  if (user == "manager") {
+    data = SidebarDataManager
   }
-  else if(user=="coach"){
-    data=SidebarDataManager
+  else if (user == "couch") {
+    data = SidebarDataCouch
+    console.log('hjsad')
   }
-  else if(user=="player"){
-    data=SidebarDataPlayer
+  else if (user == "player") {
+    data = SidebarDataPlayer
   }
-  else if(user=="admin"){
-    data=SidebarDataAdmin
+  else if (user == "admin") {
+    data = SidebarDataAdmin
   }
 
   // const showSidebar = () => setSidebar(!sidebar);
   return (
     <>
-      <IconContext.Provider value={{ color: "#fff" }}> 
-      {/* can change all iconce color at once */}
+      <IconContext.Provider value={{ color: "#fff" }}>
+        {/* can change all iconce color at once */}
 
 
-        
+
         <nav className="nav-menu active">
           <ul className="nav-menu-items" >
+
+
+
+
+
             
 
-            
+              {
+                data.map((item, index) => {
 
 
-            {data.map((item, index) => {
 
 
-
-              return (
-                <li key={index} className={location.pathname==item.path?"new-g-g-g":item.cName}>
-                  <Link to={item.path}>
-                    {item.icon}
-                    <span>{item.title}</span>
-                  </Link>
-                </li>
-              );
-            })}
+                  return (
+                    <li key={index} className={location.pathname == item.path ? "new-g-g-g" : item.cName}>
+                      <Link to={item.path}>
+                        {item.icon}
+                        <span>{item.title}</span>
+                      </Link>
+                    </li>
+                  );
+                })
+              }
           </ul>
         </nav>
       </IconContext.Provider>

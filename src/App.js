@@ -68,6 +68,8 @@ import AddTournamentDetail from "./pages/Manager/js/AddTournamentDetail";
 import Membershipfee from "./pages/naya_admin/js/Membershipfee";
 import Employees from "./pages/naya_admin/js/Employees";
 import AddEmployee from "./pages/naya_admin/js/AddEmployee";
+import ViewPracticeSessions from "./pages/Coach/js/ViewPracticeSessions";
+import BloomFieldCricketRanking from "./pages/Coach/js/BloomFieldCricketRanking";
 
 
 
@@ -88,8 +90,16 @@ import Profile from "./pages/Profile/Profile";
 
 
 import LoginN from "./pages/login/js/LoginN";
+
+import EditPracticeSessions from "./pages/Coach/js/EditPracticeSessions";
+import EditRowDetailsWithButton from "./component/EditRowDetailsWithButton/EditRowDetailsWithButton";
+import PlayerDetails_1 from "./pages/Coach/js/PlayerDetails_1";
+import PlayerProgress_1 from "./pages/Coach/js/PlayerProgress_1";
+import PlayerFeedback from "./pages/Coach/js/PlayerFeedback";
+
 import FileUpload from "./component/Form/FileUpload";
 import Achivementss from "./pages/player/js/Achivements"
+
 
 
 
@@ -198,6 +208,16 @@ function App() {
           <Route path="/couch/CB" element={<CheckBox />} />
           <Route path="/couch/MPP" element={<MarkPlayerProgress />} />
           <Route path="/couch/MC" element={<AddMultipleSelections />} />
+          <Route path="/couch/EPS" element={<EditPracticeSessions />} />
+          <Route path="/couch/VPS" element={<ViewPracticeSessions />} />
+          <Route path="/couch/BCR" element={<BloomFieldCricketRanking />} />
+          <Route path="/couch/PD1" element={<PlayerDetails_1 />} />
+          <Route path="/couch/PPr1" element={<PlayerProgress_1 />} />
+          <Route path="/couch/PFeedback" element={<PlayerFeedback />} />
+
+
+
+
 
 
 
@@ -228,12 +248,14 @@ function App() {
           <Route path="/admin/AnnualMembership" element={<AnnualMembership />} />
           <Route path="/admin/Feedback" element={<Feedback />} />
 
+
           <Route path="/admin/Raking" element={<Ranking />} />
           <Route path="/admin/PlayerRankings" element={<PlayerRankings />} />
           <Route path="/manager/profile" element={<Profile />} />
           <Route path="/admin/profile" element={<Profile />} />
           <Route path="/couch/profile" element={<Profile />} />
           <Route path="/player/profile" element={<Profile />} />
+
 
 
           <Route path="/file" element={<FileUpload />}  />

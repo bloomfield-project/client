@@ -4,7 +4,7 @@ import "./PlayerDetailsPerformance.css";
 import Button from 'react-bootstrap/Button';
 
 
-function PlayerDetailsPerformance({ arr, backLink }) {
+function PlayerDetailsPerformance({ arr, backLink_1, backLink_2 }) {
 
     return (
 
@@ -42,10 +42,10 @@ function PlayerDetailsPerformance({ arr, backLink }) {
 
                 <div className="edit-edit-detail-1">
 
-                    <Button variant="success">Performance</Button>{' '}
+                    <Link to={backLink_1}><Button variant="success">Performance</Button>{' '}</Link>
 
-                    {backLink ? (
-                        <Link to={backLink} class="btn btn-secondary">
+                    {backLink_2 ? (
+                        <Link to={backLink_2} class="btn btn-secondary">
                             Back
                         </Link>
                     ) : (
