@@ -5,10 +5,11 @@ import Button from "react-bootstrap/Button";
 import "../../Home.css";
 import SearchTable from "../../../component/Search/SearchTable";
 import profpic from "../Player.png";
+import { Link } from "react-router-dom";
 
 
 
-const data = [
+const data_1 = [
 
     {
         nameAndPhoto: "Asitha Muthumala",
@@ -19,29 +20,42 @@ const data = [
         btn: <Button variant="secondary">View</Button>,
     },
     {
-        nameAndPhoto: "Asitha Muthumala",
+        nameAndPhoto: "Bimsara Perera",
         img: <img className="row-image" src={profpic} alt=""></img>,
-        subject: "Batting",
-        date: '2022-05-11',
-        time: '09:00 am',
+        subject: "Bowling",
+        date: '2022-05-15',
+        time: '10:00 am',
         btn: <Button variant="secondary">View</Button>,
     },
     {
-        nameAndPhoto: "Asitha Muthumala",
+        nameAndPhoto: "Gihan Prasanna",
         img: <img className="row-image" src={profpic} alt=""></img>,
         subject: "Batting",
-        date: '2022-05-11',
-        time: '09:00 am',
+        date: '2022-05-14',
+        time: '12:00 am',
         btn: <Button variant="secondary">View</Button>,
     },
     {
-        nameAndPhoto: "Asitha Muthumala",
+        nameAndPhoto: "Dev Peris",
         img: <img className="row-image" src={profpic} alt=""></img>,
-        subject: "Batting",
-        date: '2022-05-11',
-        time: '09:00 am',
+        subject: "Fielding",
+        date: '2022-05-16',
+        time: '1:00 am',
         btn: <Button variant="secondary">View</Button>,
     },{
+        nameAndPhoto: "Nuwan Kulasekara",
+        img: <img className="row-image" src={profpic} alt=""></img>,
+        subject: "Bowling",
+        date: '2022-05-20',
+        time: '10:00 am',
+        btn: <Button variant="secondary">View</Button>,
+    },
+
+];
+
+const data_2 = [
+
+    {
         nameAndPhoto: "Asitha Muthumala",
         img: <img className="row-image" src={profpic} alt=""></img>,
         subject: "Batting",
@@ -49,7 +63,38 @@ const data = [
         time: '09:00 am',
         btn: <Button variant="secondary">View</Button>,
     },
-
+    {
+        nameAndPhoto: "Bimsara Perera",
+        img: <img className="row-image" src={profpic} alt=""></img>,
+        subject: "Bowling",
+        date: '2022-05-15',
+        time: '10:00 am',
+        btn: <Button variant="secondary">View</Button>,
+    },
+    {
+        nameAndPhoto: "Gihan Prasanna",
+        img: <img className="row-image" src={profpic} alt=""></img>,
+        subject: "Batting",
+        date: '2022-05-14',
+        time: '12:00 am',
+        btn: <Button variant="secondary">View</Button>,
+    },
+    {
+        nameAndPhoto: "Dev Peris",
+        img: <img className="row-image" src={profpic} alt=""></img>,
+        subject: "Fielding",
+        date: '2022-05-16',
+        time: '1:00 am',
+        btn: <Button variant="secondary">View</Button>,
+    },{
+        nameAndPhoto: "Nuwan Kulasekara",
+        img: <img className="row-image" src={profpic} alt=""></img>,
+        subject: "Bowling",
+        date: '2022-05-20',
+        time: '10:00 am',
+        btn: <Button variant="secondary">View</Button>,
+    },
+    
 ];
 
 const columns = [
@@ -124,7 +169,7 @@ function Appoinments() {
                             <div className="tablee">
                                 <SearchTable
                                     title={false}
-                                    data={tabNumber === 2 ? data : data}
+                                    data={tabNumber === 2 ? data_2 : data_1}
                                     columns={tabNumber === 2 ? columns : columns}
                                     searching={true}
                                     sort={false}

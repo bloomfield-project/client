@@ -5,9 +5,11 @@ import Navbar from "../../../component/NavigationBar/Navbar";
 import Button from "react-bootstrap/Button";
 import "../../Home.css";
 import SearchTable from "../../../component/Search/SearchTable";
+import { Link } from "react-router-dom";
+// import Button from "react-bootstrap/Button";
 
 
-const data = [
+const data_1 = [
  
   {
     sessionname: "PS-001",
@@ -15,34 +17,74 @@ const data = [
     session: "Batting",
     date: '2022-05-11',
     time: '09:00 am',
-    btn: <Button variant="secondary">View</Button>,
+    btn: <Link to="/couch/EPS"><Button variant="secondary">View</Button></Link>,
   },
 
   {
-    sessionname: "PS-001",
+    sessionname: "PS-002",
     // img: <img className="row-image" src={profpic} alt=""></img>,
-    session: "Batting",
-    date: '2022-05-11',
-    time: '09:00 am',
-    btn: <Button variant="secondary">View</Button>,
+    session: "Bowling",
+    date: '2022-05-21',
+    time: '10:00 am',
+    btn: <Link to="/couch/EPS"><Button variant="secondary">View</Button></Link>,
   },
 
   {
-    sessionname: "PS-001",
+    sessionname: "PS-003",
     // img: <img className="row-image" src={profpic} alt=""></img>,
-    session: "Batting",
-    date: '2022-05-11',
-    time: '09:00 am',
-    btn: <Button variant="secondary">View</Button>,
+    session: "Fielding",
+    date: '2022-06-11',
+    time: '10:00 am',
+    btn: <Link to="/couch/EPS"><Button variant="secondary">View</Button></Link>,
   },
 
   {
-    sessionname: "PS-001",
+    sessionname: "PS-004",
+    // img: <img className="row-image" src={profpic} alt=""></img>,
+    session: "Bowling",
+    date: '2022-05-13',
+    time: '11:00 am',
+    btn: <Link to="/couch/EPS"><Button variant="secondary">View</Button></Link>,
+  },
+
+];
+
+const data_2 = [
+ 
+  {
+    sessionname: "PS-010",
     // img: <img className="row-image" src={profpic} alt=""></img>,
     session: "Batting",
-    date: '2022-05-11',
+    date: '2022-05-05',
     time: '09:00 am',
-    btn: <Button variant="secondary">View</Button>,
+    btn: <Link to="/couch/VPS"><Button variant="secondary">View</Button></Link>,
+  },
+
+  {
+    sessionname: "PS-011",
+    // img: <img className="row-image" src={profpic} alt=""></img>,
+    session: "Bowling",
+    date: '2022-05-05',
+    time: '11:00 am',
+    btn: <Link to="/couch/VPS"><Button variant="secondary">View</Button></Link>,
+  },
+
+  {
+    sessionname: "PS-012",
+    // img: <img className="row-image" src={profpic} alt=""></img>,
+    session: "Fielding",
+    date: '2022-05-05',
+    time: '1:00 pm',
+    btn: <Link to="/couch/VPS"><Button variant="secondary">View</Button></Link>,
+  },
+
+  {
+    sessionname: "PS-013",
+    // img: <img className="row-image" src={profpic} alt=""></img>,
+    session: "Batting",
+    date: '2022-05-05',
+    time: '3:00 pm',
+    btn: <Link to="/couch/VPS"><Button variant="secondary">View</Button></Link>,
   },
 
 ];
@@ -166,7 +208,7 @@ function Session() {
               </div>
 
               <div className="tabs-right">
-                <Button variant="outline-success">+ Add</Button>
+                <Link to="/couch/APS"><Button variant="outline-success">+ Add</Button></Link>
               </div>
                                 
             </div>
@@ -176,7 +218,7 @@ function Session() {
                 <div className="tablee"> 
                 <SearchTable
                 title={false}
-                data={tabNumber === 2 ? data : data}
+                data={tabNumber === 2 ? data_2 : data_1}
                 columns={tabNumber === 2 ? columns : columns}
                 searching={true}
                 sort={false}
