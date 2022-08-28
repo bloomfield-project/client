@@ -124,7 +124,7 @@ function Employees() {
             <div className="table-box-1">
               <div className="tablee">
                 <SearchTable
-                  title={""}
+                  t_title={""}
                   data={data}
                   columns={columns}
                   searching={true}
