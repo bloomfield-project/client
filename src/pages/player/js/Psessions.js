@@ -236,7 +236,7 @@ function Session() {
                       <div className="table-box-11">
                         <div className="tablee"> 
                           <SearchTable
-                          title={false}
+                          t_title={false}
                           data={tabNumber === 2 ? data : data}
                           columns={tabNumber === 2 ? columns : columns}
                           searching={true}

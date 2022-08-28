@@ -27,7 +27,7 @@ function Navbar() {
 
   const location = useLocation();
   const user = location.pathname.split('/')[1]
-  console.log(user,"hjgdsv",location)
+  // console.log(user,"hjgdsv",location)
   let data 
   if(user=="manager"){
     data=SidebarDataManager
