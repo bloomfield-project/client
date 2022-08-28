@@ -4,7 +4,7 @@ import MaterialTable from "material-table";
 // import { TableBody } from "@material-ui/core";
 // import { AddBox, ArrowDownward } from "@material-ui/icons";
 
-function SearchTable({title, data , columns , searching , sort , filter , paging,headerH,headerC , headerFC ,headerFS , headerFW}) {
+function SearchTable({t_title = "", data , columns , searching , sort , filter , paging,headerH,headerC , headerFC ,headerFS , headerFW}) {
 
   // const data=[
   //   {name:'Ramesh', age:12},
@@ -25,7 +25,7 @@ function SearchTable({title, data , columns , searching , sort , filter , paging
   return (
     <div>
       <MaterialTable 
-      title={title}
+      title={t_title}
       columns={columns}
       data={data}        
       options={{
