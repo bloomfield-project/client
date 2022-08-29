@@ -158,7 +158,7 @@ function AddMatch() {
                     <div className="tabs-left"></div>
 
                     <div className="tabs-right">
-                      <Link to={"/manager/AddTournamentMatch"}>
+                      <Link to={tabNumber ===1 ? "/manager/AddTournamentMatch" : "/manager/AddPracticeMatch"}>
                         <Button variant="outline-success">+ Add</Button>
                       </Link>
                     </div>
