@@ -28,6 +28,7 @@ function Navbar() {
 
   const location = useLocation();
   const user = location.pathname.split('/')[1]
+  const page =location.pathname.split('/')[2]
   console.log(user, "hjgdsv", location)
   let data =SidebarDataCouch
   if (user == "manager") {
@@ -63,12 +64,12 @@ function Navbar() {
 
               {
                 data.map((item, index) => {
+ 
 
-
-
+                  // console.log(item.path.split('/')[2])
 
                   return (
-                    <li key={index} className={location.pathname == item.path ? "new-g-g-g" : item.cName}>
+                    <li key={index} className={page == item.path.split('/')[2] ? "new-g-g-g" : item.cName}>
                       <Link to={item.path}>
                         {item.icon}
                         <span>{item.title}</span>
