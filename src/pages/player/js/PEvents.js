@@ -222,7 +222,7 @@ function PEvents() {
                       <div className="table-box-11">
                         <div className="tablee">
                           <SearchTable
-                            title={false}
+                            t_title={false}
                             data={data_1}
                             columns={columns_1}
                             searching={false}

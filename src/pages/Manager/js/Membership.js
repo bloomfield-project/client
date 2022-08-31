@@ -161,7 +161,7 @@ function Membership() {
             <div className="table-box-1">
                 <div className="tablee"> 
                 <SearchTable
-                title={""}
+                t_title={""}
                 data={tabNumber === 1 ? data : data_1}
                 columns={tabNumber === 1 ? columns : columns_1}
                 searching={true}

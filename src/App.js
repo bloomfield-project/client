@@ -99,7 +99,11 @@ import PlayerFeedback from "./pages/Coach/js/PlayerFeedback";
 
 import FileUpload from "./component/Form/FileUpload";
 import Achivementss from "./pages/player/js/Achivements"
+
 import PendingMatches from "./pages/player/js/PendingMatches"
+
+import AddPracticeMatch from "./pages/Manager/js/AddPracticeMatch";
+
 
 
 
@@ -192,6 +196,7 @@ function App() {
           <Route path="/manager/MatchDetail" element={<MatchDetail />} />
           <Route path="/manager/AddMatch" element={<AddMatch />} />
           <Route path="/manager/AddTournamentMatch" element={<AddTournamentMatch />} />
+          <Route path="manager/AddPracticeMatch" element={< AddPracticeMatch/>} />
           <Route path="/couch/A" element={<Appoinments />} />
           <Route path="/couch/Ap" element={<ViewAppoinments/>} />
           <Route path="/couch/Players1" element={<Players1 />} />
@@ -215,11 +220,6 @@ function App() {
           <Route path="/couch/PD1" element={<PlayerDetails_1 />} />
           <Route path="/couch/PPr1" element={<PlayerProgress_1 />} />
           <Route path="/couch/PFeedback" element={<PlayerFeedback />} />
-
-
-
-
-
 
 
 
@@ -262,6 +262,7 @@ function App() {
 
 
           <Route path="/file" element={<FileUpload />}  />
+          
 
 
         </Routes>

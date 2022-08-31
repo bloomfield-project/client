@@ -206,7 +206,7 @@ function Ranking() {
             <div className="table-box-1">
               <div className="tablee">
                 <SearchTable
-                  title={
+                  t_title={
                     <>
                       <div className="table-tabs">
                         <div className="table-tab">ODI</div>
