@@ -104,7 +104,7 @@ import PendingMatches from "./pages/player/js/PendingMatches"
 
 import AddPracticeMatch from "./pages/Manager/js/AddPracticeMatch";
 
-
+import DashboardP from "./pages/player/js/DashboardP";
 
 
 
@@ -255,7 +255,7 @@ function App() {
           <Route path="/manager/profile" element={<Profile />} />
           <Route path="/admin/profile" element={<Profile />} />
           <Route path="/couch/profile" element={<Profile />} />
-          <Route path="/player/profile" element={<Profile />} />
+          <Route path="/player/Dashboard" element={<DashboardP />} />
           <Route path="/player/Matches/PendingMatches" element={<PendingMatches />} />
 
 

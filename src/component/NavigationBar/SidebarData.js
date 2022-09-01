@@ -122,6 +122,7 @@ export const SidebarDataPlayer = [
         icon:<AiIcons.AiFillHome />,
         cName:'nav-text'
     },
+    
 
     
 ]
