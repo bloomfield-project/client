@@ -36,6 +36,12 @@ function Matches() {
                 <Tabs defaultActiveKey="1" onChange={onChange}>
                     
                     <TabPane tab="Pending" key="1">
+
+
+                     <div className="filter-by-date-G">
+                        <label>Select month:</label>
+                        <input type="month" className="filter-by-date-month"></input>
+                      </div>
                         
                     <div className="matches-container-outer-box">
                         {/* match card */}
@@ -59,7 +65,7 @@ function Matches() {
                                 </div>
                             </div>
                             <div className="match-box-down">
-                                <Link to={"/player/MatchDetails"}>
+                                <Link to={"/player/Matches/PendingMatches"}>
                                     <Button variant="secondary">View</Button>
                                 </Link></div>
                             </div>
@@ -87,7 +93,7 @@ function Matches() {
                                 </div>
                             </div>
                             <div className="match-box-down">
-                                <Link to={"/player/MatchDetails"}>
+                                <Link to={"/player/Matches/PendingMatches"}>
                                     <Button variant="secondary">View</Button>
                                 </Link>
                             </div>
@@ -117,7 +123,7 @@ function Matches() {
                                 </div>
                             </div>
                             <div className="match-box-down">
-                                <Link to={"/player/MatchDetails"}>
+                                <Link to={"/player/PendingMatches"}>
                                     <Button variant="secondary">View</Button>
                                 </Link>
                             </div>
@@ -147,7 +153,7 @@ function Matches() {
                                 </div>
                             </div>
                             <div className="match-box-down">
-                                <Link to={"/player/MatchDetails"}>
+                                <Link to={"/player/Matches/PendingMatches"}>
                                     <Button variant="secondary">View</Button>
                                 </Link>
                             </div>

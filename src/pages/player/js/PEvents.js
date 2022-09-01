@@ -218,14 +218,14 @@ function PEvents() {
             <div className="playerPreformanceBody">
                 <Tabs defaultActiveKey="1" onChange={onChange}>
                     
-                    <TabPane tab="All" key="1">
+                    <TabPane tab="Counseling Sessions" key="1">
                       <div className="table-box-11">
                         <div className="tablee">
                           <SearchTable
                             t_title={false}
                             data={data_1}
                             columns={columns_1}
-                            searching={true}
+                            searching={false}
                             sort={false}
                             filter={false}
                             paging={true}
@@ -242,14 +242,14 @@ function PEvents() {
                       </div>
                         
                     </TabPane>
-                    <TabPane tab="Today" key="2">
+                    <TabPane tab="Events" key="2">
                       <div className="table-box-11">
                         <div className="tablee">
                           <SearchTable
                             title={false}
                             data={data}
                             columns={columns}
-                            searching={true}
+                            searching={false}
                             sort={false}
                             filter={false}
                             paging={true}
