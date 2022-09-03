@@ -3,7 +3,7 @@ import Form from "react-bootstrap/Form";
 function SelectOption({label = "label", option}) {
   return (
     <div class="w-100 p-3 mb-2 bg-white text-dark rounded">
-      <label className="d-flex justify-content-start">Player Role</label>
+      <label className="d-flex justify-content-start">{label}</label>
       <Form.Select aria-label="Default select example">
         {option.map((item, index) => {
           return (

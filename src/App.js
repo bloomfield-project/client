@@ -191,7 +191,7 @@ function App() {
           <Route path="/couch/PSessions" element={<PracticeSessions />} />
           <Route path="/manager/MatchDetail" element={<MatchDetail />} />
           <Route path="/manager/AddMatch" element={<AddMatch />} />
-          <Route path="/manager/AddTournamentMatch" element={<AddTournamentMatch />} />
+          <Route path="/manager/AddTournamentMatch/:type" element={<AddTournamentMatch />} />
           <Route path="manager/AddPracticeMatch" element={< AddPracticeMatch/>} />
           <Route path="/couch/A" element={<Appoinments />} />
           <Route path="/couch/Ap" element={<ViewAppoinments/>} />

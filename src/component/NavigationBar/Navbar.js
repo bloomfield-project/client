@@ -28,17 +28,17 @@ function Navbar() {
 
   const location = useLocation();
   const user = location.pathname.split('/')[1]
-<<<<<<< HEAD
+
   // console.log(user,"hjgdsv",location)
-  let data 
-  if(user=="manager"){
-    data=SidebarDataManager
-=======
-  console.log(user, "hjgdsv", location)
+ 
+  // if(user=="manager"){
+  //   data=SidebarDataManager
+
+  // console.log(user, "hjgdsv", location)
   let data =SidebarDataCouch
   if (user == "manager") {
     data = SidebarDataManager
->>>>>>> 8d1f1f408b6090a292164e164372338d1080cf34
+
   }
   else if (user == "couch") {
     data = SidebarDataCouch
@@ -90,5 +90,6 @@ function Navbar() {
     </>
   );
 }
+
 
 export default Navbar;
