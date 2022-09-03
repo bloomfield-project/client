@@ -10,35 +10,70 @@ import FileUpload from "../../../component/Form/FileUpload";
 import ResetSubmit from "../../../component/Form/ResetSubmit";
 import SelectOption from "../../../component/Form/SelectOption";
 
+import axios from "axios";
+
+const AddSession  = (event) =>{
+  // event.preventDefault();
+  console.log(event);
+
+  let formData = {
+    title: event.target[0].value,
+    date: event.target[1].value,
+    time: event.target[2].value,
+    place: event.target[3].value,
+    mentor: event.target[4].value,
+    mentor_details: event.target[5].value,
+
+  };
+
+  axios.post("http://localhost:3001/api/manager/AddCouncellingSession", formData)
+    .then((res) => console.log("Posting data", res))
+    .catch((err) => console.log("error is arized", err));
+}
+
 function AddCouncellingSession() {
   let array1 = [
     {
       title: "Councelling Session Title",
-      for: "exampleInputEmail1",
+      for: "title",
       type: "text",
       placeholder: "",
-      id: "f-name",
+      id: "c-session",
     },
     {
       title: "Date",
-      for: "exampleInputEmail1",
+      for: "date",
       type: "date",
       placeholder: "",
-      id: "l-name",
+      id: "date",
+    },
+    {
+      title: "Time",
+      for: "time",
+      type: "time",
+      placeholder: "",
+      id: "time",
     },
     {
       title: "Place",
-      for: "exampleInputEmail1",
+      for: "place",
       type: "text",
       placeholder: "",
-      id: "email",
+      id: "place",
     },
     {
       title: "Mentor",
-      for: "exampleInputEmail1",
-      type: "number",
+      for: "mentor",
+      type: "mentor",
       placeholder: "",
       id: "contact",
+    },
+    {
+      title: "Mentor Details",
+      for: "mentor-details",
+      type: "text",
+      placeholder: "",
+      id: "mentor-details",
     },
   ];
 
@@ -92,11 +127,12 @@ function AddCouncellingSession() {
               </div>
 
               <div className="form-container">
-                <form onSubmit={createUser}>
+                <form onSubmit={AddSession}>
                   <SampleForm arr={array1} />
                   
                   {/* <SelectOption label={"Mentor "} option={option} /> */}
                   {/* <FileUpload /> */}
+                  {/* <textarea></textarea> */}
                   <ResetSubmit />
                 </form>
               </div>

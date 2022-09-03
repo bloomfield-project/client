@@ -12,12 +12,17 @@ import { IoChevronBackCircleOutline } from "react-icons/io5";
 import { BiChevronRightCircle } from "react-icons/bi";
 import Navbar from "../../../component/NavigationBar/Navbar";
 
-const data = [
+const tournment_data = [
   {
     id: "1101",
     title: "Hero cup",
     btn: (
-      <Link to={"/manager/AddTournamentDetail"}>
+      <Link
+        to={{
+          pathname: "/manager/AddTournamentMatch/"+"Hero Cup",
+          state: { stateParam: true },
+        }}
+      >
         <BiChevronRightCircle
           style={{ color: "rgba(0, 146, 112, 1)", fontSize: " 35px" }}
         />
@@ -29,7 +34,12 @@ const data = [
     id: "1102",
     title: "Champion leage",
     btn: (
-      <Link to={"/manager/AddTournamentDetail"}>
+      <Link
+        to={{
+          pathname: "/manager/AddTournamentMatch/"+"Champion leage",
+          state: { stateParam: true },
+        }}
+      >
         <BiChevronRightCircle
           style={{ color: "rgba(0, 146, 112, 1)", fontSize: " 35px" }}
         />
@@ -40,7 +50,12 @@ const data = [
     id: "1104",
     title: "LPL",
     btn: (
-      <Link to={"/manager/AddTournamentDetail"}>
+      <Link
+        to={{
+          pathname: "/manager/AddTournamentMatch/"+"LPL",
+          state: { stateParam: true },
+        }}
+      >
         <BiChevronRightCircle
           style={{ color: "rgba(0, 146, 112, 1)", fontSize: " 35px" }}
         />
@@ -158,7 +173,13 @@ function AddMatch() {
                     <div className="tabs-left"></div>
 
                     <div className="tabs-right">
-                      <Link to={tabNumber ===1 ? "/manager/AddTournamentMatch" : "/manager/AddPracticeMatch"}>
+                      <Link
+                        to={
+                          tabNumber === 1
+                            ? "/manager/AddTournamentMatch"
+                            : "/manager/AddPracticeMatch"
+                        }
+                      >
                         <Button variant="outline-success">+ Add</Button>
                       </Link>
                     </div>
@@ -184,7 +205,7 @@ function AddMatch() {
                   <div className="tablee">
                     <SearchTable
                       title={""}
-                      data={data}
+                      data={tournment_data}
                       columns={columns}
                       searching={true}
                       sort={false}
@@ -200,7 +221,6 @@ function AddMatch() {
                 </div>
                 {/* <SampleForm arr={array1} upload = {true} /> */}
               </div>
-              
             </div>
           </div>
         </div>

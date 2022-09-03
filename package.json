@@ -16,6 +16,7 @@
     "bootstrap": "^5.2.0",
     "bootstrap-icons": "^1.9.1",
     "canvasjs-react-charts": "^1.0.5",
+
     "formik": "^2.2.9",
     "http-proxy-middleware": "^2.0.6",
     "material-table": "^1.69.3",
