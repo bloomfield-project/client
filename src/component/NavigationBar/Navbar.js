@@ -28,6 +28,7 @@ function Navbar() {
 
   const location = useLocation();
   const user = location.pathname.split('/')[1]
+<<<<<<< HEAD
 
   // console.log(user,"hjgdsv",location)
  
@@ -39,6 +40,13 @@ function Navbar() {
   if (user == "manager") {
     data = SidebarDataManager
 
+=======
+  const page =location.pathname.split('/')[2]
+  console.log(user, "hjgdsv", location)
+  let data =SidebarDataCouch
+  if (user == "manager") {
+    data = SidebarDataManager
+>>>>>>> ea2d714601c19df8886db67cb50d144b60a1cdbf
   }
   else if (user == "couch") {
     data = SidebarDataCouch
@@ -70,12 +78,12 @@ function Navbar() {
 
               {
                 data.map((item, index) => {
+ 
 
-
-
+                  // console.log(item.path.split('/')[2])
 
                   return (
-                    <li key={index} className={location.pathname == item.path ? "new-g-g-g" : item.cName}>
+                    <li key={index} className={page == item.path.split('/')[2] ? "new-g-g-g" : item.cName}>
                       <Link to={item.path}>
                         {item.icon}
                         <span>{item.title}</span>

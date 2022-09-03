@@ -12,7 +12,7 @@ function Header(){
             <img src={logo} alt=""></img>
           </div>
           <div className="bloomfield">
-            <text>BLOOMFIELD</text>
+            <div>BLOOMFIELD</div>
           </div>
         </section>
         <section className='header-right'>
@@ -20,7 +20,7 @@ function Header(){
             <BsBell className='bell'></BsBell>
           </div>
           <div className='username'>
-            <text>W.D.K.G.G.S.Perera</text>
+            <div>W.D.K.G.G.S.Perera</div>
           </div>
           <div className='profilePic'>
             <img src={profpic} alt=""></img>

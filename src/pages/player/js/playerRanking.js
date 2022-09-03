@@ -29,11 +29,11 @@ const LIST = [
   { format: "TEST", M:"10" , Inn:"10" , NO:"10" , Runs:"10" ,HS:"10" , Avg:"10" , Ducks:"10" , SR:"10" , fifty:"10" , hunderd :"10", doubleH:"10" ,fours:"10" ,sixes:"10" },
 ];
 
-const COL_NAMES_M = [" ","M", "Inn", "NO", "Runs" , "HS", "Avg", "Ducks", "SR","50","100","200" ,"4s", "6s"];
+const COL_NAMES_M = ["","M", "Inn", "Overs", "Runs" , "Wkts", "BBI", "Econ", "Avg","5W","10W","Hatricks" ,"maiden" ,"WB" ,"NB"];
 const LIST_M = [
-  { format: "ODI", M:"10" , Inn:"10" , NO:"10" , Runs:"10" ,HS:"10" , Avg:"10" , Ducks:"10" , SR:"87.65" , fifty:"10" , hunderd :"10", doubleH:"10" ,fours:"10" ,sixes:"10"},
-  { format: "T20", M:"10" , Inn:"10" , NO:"10" , Runs:"10" ,HS:"10" , Avg:"10" , Ducks:"10" , SR:"121.23" , fifty:"10" , hunderd :"10", doubleH:"10" ,fours:"10" ,sixes:"10" },
-  { format: "TEST", M:"10" , Inn:"10" , NO:"10" , Runs:"10" ,HS:"10" , Avg:"10" , Ducks:"10" , SR:"10" , fifty:"10" , hunderd :"10", doubleH:"10" ,fours:"10" ,sixes:"10" },
+  { format: "ODI", M:"10" , Inn:"10" , NO:"10" , Runs:"10" ,HS:"10" , Avg:"10" , Ducks:"10" , SR:"87.65" , fifty:"10" , hunderd :"10", doubleH:"10" ,fours:"10", gg:"10" ,hh:"10" },
+  { format: "T20", M:"10" , Inn:"10" , NO:"10" , Runs:"10" ,HS:"10" , Avg:"10" , Ducks:"10" , SR:"121.23" , fifty:"10" , hunderd :"10", doubleH:"10" ,fours:"10", gg:"10" ,ff:"10"  },
+  { format: "TEST", M:"10" , Inn:"10" , NO:"10" , Runs:"10" ,HS:"10" , Avg:"10" , Ducks:"10" , SR:"10" , fifty:"10" , hunderd :"10", doubleH:"10" ,fours:"10", gg:"10" ,ff:"10"  },
 ];
 
 
@@ -60,9 +60,9 @@ function PlayerRanking() {
                 <IntroTable/>
               </div>
               <div className="playerPreformanceBody">
-                <Tabs defaultActiveKey="1" onChange={onChange}>
+                {/* <Tabs defaultActiveKey="1" onChange={onChange}> */}
                     
-                        <TabPane tab="Career" key="1">
+                        {/* <TabPane tab="Career" key="1"> */}
                             <div className="player-content">
                                 <div className="tableTopic"><h4>Bating Career Summary</h4></div>
                                 <hr></hr>
@@ -76,8 +76,8 @@ function PlayerRanking() {
                                 <div className="tableTopic"><h4>Bowling Career Summary</h4></div>
                                 <hr></hr>
                                 <Tablee
-                                    list={LIST}
-                                    colNames={COL_NAMES}
+                                    list={LIST_M}
+                                    colNames={COL_NAMES_M}
                                     width="100%"
                                 />
                                 <span className="gap"></span>   
@@ -239,8 +239,8 @@ function PlayerRanking() {
 
                             
                             
-                        </TabPane>
-                        <TabPane tab="Practice" key="2">
+                        {/* </TabPane> */}
+                        {/* <TabPane tab="Practice" key="2">
                             <div className="player-content">
                                 <div className="tableTopic"><h4>Batting</h4><h5>No of sessions</h5></div>
                                 <hr></hr>
@@ -261,9 +261,9 @@ function PlayerRanking() {
                                 <div className="sesNameNo"><h4>Batting</h4><div className="Noses"><h5>11</h5></div></div>
                                 <div className="sesNameNo"><h4>Batting</h4><div className="Noses"><h5>11</h5></div></div>
                             </div>
-                        </TabPane>
+                        </TabPane> */}
                     
-                </Tabs>
+                {/* </Tabs> */}
               </div>
           </div>
         </div>

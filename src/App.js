@@ -99,7 +99,11 @@ import PlayerFeedback from "./pages/Coach/js/PlayerFeedback";
 
 import FileUpload from "./component/Form/FileUpload";
 import Achivementss from "./pages/player/js/Achivements"
+
+import PendingMatches from "./pages/player/js/PendingMatches"
+
 import AddPracticeMatch from "./pages/Manager/js/AddPracticeMatch";
+
 
 
 
@@ -252,6 +256,8 @@ function App() {
           <Route path="/admin/profile" element={<Profile />} />
           <Route path="/couch/profile" element={<Profile />} />
           <Route path="/player/profile" element={<Profile />} />
+          <Route path="/player/Matches/PendingMatches" element={<PendingMatches />} />
+
 
 
 

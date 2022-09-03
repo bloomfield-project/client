@@ -107,6 +107,8 @@ const columns = [
   }
 ];
 
+
+
 // const data_1 = [
 //   {
 //     // id: "1101",
@@ -207,9 +209,14 @@ function Session() {
             
             <hr></hr> */}
             <div className="playerPreformanceBody">
+                
                 <Tabs defaultActiveKey="1" onChange={onChange}>
                     
-                    <TabPane tab="All" key="1">
+                    <TabPane tab="Upcomming" key="1">
+                      <div className="filter-by-date-G">
+                        <label>Select month:</label>
+                        <input type="month" className="filter-by-date-month"></input>
+                      </div>
                       <div className="table-box-11">
                         <div className="tablee"> 
                           <SearchTable
@@ -232,7 +239,7 @@ function Session() {
                       </div>
                         
                     </TabPane>
-                    <TabPane tab="Today" key="2">
+                    <TabPane tab="Past" key="2">
                       <div className="table-box-11">
                         <div className="tablee"> 
                           <SearchTable
@@ -248,6 +255,8 @@ function Session() {
                           headerFC={'white'}
                           headerFS={'1.2rem'}
                           headerFW={'500'}
+
+                          
                           
                           />
                         </div>

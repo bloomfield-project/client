@@ -4,9 +4,14 @@
     /* background-color: blueviolet; */
     display: flex;
     align-items: center;
-    /* border-bottom: 2px solid hsl(0, 1%, 67%); */
-    /* box-shadow: 2px 2px 5px #adadad; */
+    border-bottom: 1px solid hsl(0, 1%, 67%);
+    box-shadow: 5px 10px #888888;
     justify-content: space-between;
+    z-index: 100;
+}
+
+.header-container{
+    box-shadow: 5px 10px #888888;
 }
 
 .header-left, .header-right{

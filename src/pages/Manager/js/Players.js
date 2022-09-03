@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import Header from "../../../component/header/Header";
@@ -9,12 +9,13 @@ import "../../Home.css";
 import SearchTable from "../../../component/Search/SearchTable";
 import profpic from "../../../component/header/profpic.jfif";
 
-// async function getData(){
-//   const axios = require('axios').default;
-//   let res = await axios.get('/api/user/players');
-//   let result = res.data.data;
-//   console.log(result[1].email)
-// }
+async function getData(){
+  const axios = require('axios').default;
+  let res = await axios.get('/api/user/players');
+  let result = res.data.data;
+  console.log(result[1].email)
+}
+
 
 
 
@@ -143,7 +144,11 @@ function Players() {
   //   // console.log(result[1].email)
   //   console.log("yatin")
   // }
-  // // getData()
+  useEffect(() => {
+    getData()
+  }, [])
+  
+  
   // getData(result)
   // console.log("eliyen")
   return (
