@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useParams, useLocation } from "react-router-dom";
 
 import Header from "../../../component/header/Header";
@@ -18,69 +18,15 @@ import { object } from "prop-types";
 
 const Axios = require("axios").default;
 
-const formValidate = async (event) => {
-  event.preventDefault();
-
-  console.log("inside formValidate");
-
-  Axios.get(`http://localhost:3001/api/manager/AddTournamentMatch/date`, {
-    headers: {
-      id: 5,
-    },
-  })
-    .then(function (response) {
-      console.log(response.data);
-      const r_data = Object.values(Object.values(response.data));
-
-      console.log("responce ", r_data);
-      if (r_data == 0) {
-        console.log("valied date");
-      } else {
-        alert("Plese Enter Valied date! Date is already booked");
-        console.log("invalied date");
-      }
-    })
-    .catch(function (error) {
-      // handle error
-      console.log("error catch ", error);
-    })
-    .then(function () {
-      // always executed
-      // date = event.target[0].value,
-      // time = event.target[1].value,
-      // ground = event.target[2].value,
-      // match_format = event.target[4].value,
-      // op_team_name = event.target[3].value,
-    });
-
-  // Axios.get("http://localhost:3001/api/manager/AddTournamentMatch")
-  //   .then(function (response) {
-  //     // handle success
-  //     const data = response.data;
-  //     console.log(" responce : ", data);
-  //   })
-  //   .catch(function (error) {
-  //     // handle error
-  //     console.log("error catch " , error);
-  //   })
-  //   .then(function () {
-  //     // always executed
-  //     // date = event.target[0].value,
-  //     // time = event.target[1].value,
-  //     // ground = event.target[2].value,
-  //     // match_format = event.target[4].value,
-  //     // op_team_name = event.target[3].value,
-
-  //   });
-  //   console.log("inside formValidate after");
-};
+function SetValidation(res) {
+  const [post, setPost] = useState(null);
+  setPost(res);
+  console.log("Data set eka ", post);
+}
 
 const AddTournament = (event) => {
-
-  const [post, setPost] = React.useState(null);
-
-  
   event.preventDefault();
+
   console.log(event);
 
   let formData = {
@@ -91,17 +37,9 @@ const AddTournament = (event) => {
     op_team_name: event.target[3].value,
   };
 
-  // Axios.post("http://localhost:3001/api/manager/AddTournamentMatch", formData)
-  //   .then((res) => console.log("Posting data", res))
-  //   .catch((err) => console.log("error is arized", err));
-
-    React.useEffect(() => {
-      Axios.post("http://localhost:3001/api/manager/AddTournamentMatch", formData).then(
-        (response) => {
-          setPost(response.data);
-        }
-      ).catch((err) => console.log("error is arized", err));
-    }, []);
+  Axios.post("http://localhost:3001/api/manager/AddTournamentMatch", formData)
+    .then((res) => {return SetValidation(res)})
+    .catch((err) => console.log("error is arized", err));
 };
 
 function AddTournamentMatch(props) {
@@ -127,7 +65,7 @@ function AddTournamentMatch(props) {
   let array1 = [
     {
       title: "Date",
-      for: "exampleInputEmail1",
+
       type: "date",
       placeholder: "",
       id: "date",
@@ -135,7 +73,7 @@ function AddTournamentMatch(props) {
     },
     {
       title: "Time",
-      for: "exampleInputEmail1",
+
       type: "time",
       placeholder: "",
       id: "time",
@@ -143,7 +81,6 @@ function AddTournamentMatch(props) {
     },
     {
       title: "Ground",
-      for: "exampleInputEmail1",
       type: "text",
       placeholder: "",
       id: "ground",
@@ -151,7 +88,7 @@ function AddTournamentMatch(props) {
     },
     {
       title: "Opposite Team Name",
-      for: "op_team_name",
+
       type: "text",
       placeholder: "",
       id: "op_team_name",
@@ -163,10 +100,9 @@ function AddTournamentMatch(props) {
     filefor: "for",
     filetitle: "Logo",
   };
- 
 
-  console.log("post data function ",this. post);
-  if (!this.post) return null;
+  console.log("post data function ");
+  // if (post) return null;
 
   return (
     <>
@@ -194,7 +130,7 @@ function AddTournamentMatch(props) {
                 </div>
 
                 <h1>Add Tournament Match </h1>
-                <ul>
+                {/* <ul>
                   {this.post.data.map((item, i) => {
                     return (
                       <li key={i}>
@@ -202,7 +138,7 @@ function AddTournamentMatch(props) {
                       </li>
                     );
                   })}
-                </ul>
+                </ul> */}
               </div>
 
               <div className="form-container">

@@ -21,7 +21,7 @@ function SampleForm({ arr  }) {
                   name={item.name}
                   className="form-control"
                   id={item.id}
-                  aria-describedby="emailHelp"
+                  
                   placeholder={item.placeholder}
 
                   required = {item.required ? true : false}
