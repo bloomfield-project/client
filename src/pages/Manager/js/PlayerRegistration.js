@@ -86,7 +86,7 @@ const option = [
     filetitle: "Profile",
   };
 
-  const createUser = async (event) =>{
+  const createUser =  (event) =>{
     event.preventDefault();
     console.log(event);
 
@@ -101,12 +101,17 @@ const option = [
     };
     // const isValid = await userSchema.isValid(userData);
 
-    console.log(userData.name);
+    console.log("before post request ");
 
-    let res = await axios.post('/api/user/', userData);
+    //let res =  axios.post('/api/user/', userData);
+    axios.post('/api/user/', userData)
+    .then((results) => console.log("Player registration results :",results))
+    .catch((err) => console.log("error is arized", err));
+
+    console.log("after post request ");
 
     // let data = res.data;
-    console.log(res);
+    // console.log("post results", results);
     // if(data.data=="Invalid username or password"){
     //     setInvalid("err-G-active")//val
     // }
