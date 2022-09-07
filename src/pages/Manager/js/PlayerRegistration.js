@@ -105,8 +105,8 @@ const option = [
 
     let res = await axios.post('/api/user/', userData);
 
-    let data = res.data;
-    console.log(data);
+    // let data = res.data;
+    console.log(res);
     // if(data.data=="Invalid username or password"){
     //     setInvalid("err-G-active")//val
     // }

@@ -35,42 +35,42 @@ function AddCouncellingSession() {
   let array1 = [
     {
       title: "Councelling Session Title",
-      for: "title",
+     
       type: "text",
       placeholder: "",
       id: "c-session",
     },
     {
       title: "Date",
-      for: "date",
+      
       type: "date",
       placeholder: "",
       id: "date",
     },
     {
       title: "Time",
-      for: "time",
+      
       type: "time",
       placeholder: "",
       id: "time",
     },
     {
       title: "Place",
-      for: "place",
+     
       type: "text",
       placeholder: "",
       id: "place",
     },
     {
       title: "Mentor",
-      for: "mentor",
+      
       type: "mentor",
       placeholder: "",
       id: "contact",
     },
     {
       title: "Mentor Details",
-      for: "mentor-details",
+      
       type: "text",
       placeholder: "",
       id: "mentor-details",
