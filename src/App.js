@@ -195,7 +195,7 @@ function App() {
           <Route path="/C" element={<Calander />} />
           <Route path="/manager/MatchDetail" element={<MatchDetail />} />
           <Route path="/manager/AddMatch" element={<AddMatch />} />
-          <Route path="/manager/AddTournamentMatch" element={<AddTournamentMatch />} />
+          <Route path="/manager/AddTournamentMatch/:type" element={<AddTournamentMatch />} />
           <Route path="manager/AddPracticeMatch" element={< AddPracticeMatch/>} />
 
 

@@ -1,48 +1,98 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useParams, useLocation } from "react-router-dom";
 
 import Header from "../../../component/header/Header";
 import Navbar from "../../../component/NavigationBar/Navbar";
 import SampleForm from "../../../component/Form/SampleForm";
 import { IoChevronBackCircleOutline } from "react-icons/io5";
 
-import Button from "react-bootstrap/Button";
+// import Button from "react-bootstrap/Button";
 import "antd/dist/antd.css";
-import Team from "../../player/Team.png";
-import opTeam from "../../player/player.jpg";
+// import Team from "../../player/Team.png";
+// import opTeam from "../../player/player.jpg";
 import MatchesTeams from "../../../component/MatchesTeams/MatchesTeams";
 import ResetSubmit from "../../../component/Form/ResetSubmit";
 import FileUpload from "../../../component/Form/FileUpload";
+import SelectOption from "../../../component/Form/SelectOption";
+import { object } from "prop-types";
 
-function AddTournamentMatch() {
+const Axios = require("axios").default;
+
+function SetValidation(res) {
+  const [post, setPost] = useState(null);
+  setPost(res);
+  console.log("Data set eka ", post);
+}
+
+const AddTournament = (event) => {
+  event.preventDefault();
+
+  console.log(event);
+
+  let formData = {
+    date: event.target[0].value,
+    time: event.target[1].value,
+    ground: event.target[2].value,
+    match_format: event.target[4].value,
+    op_team_name: event.target[3].value,
+  };
+
+  Axios.post("http://localhost:3001/api/manager/AddTournamentMatch", formData)
+    .then((res) => {return SetValidation(res)})
+    .catch((err) => console.log("error is arized", err));
+};
+
+function AddTournamentMatch(props) {
+  const { type } = useParams();
+
+  console.log("type is : " + type);
+
+  const option = [
+    {
+      value: "T20",
+      title: "T20",
+    },
+    {
+      value: "Test",
+      title: "Test",
+    },
+    {
+      value: "ODI",
+      title: "ODI",
+    },
+  ];
+
   let array1 = [
     {
       title: "Date",
-      for: "exampleInputEmail1",
+
       type: "date",
       placeholder: "",
-      id: "f-name",
+      id: "date",
+      required: "true",
     },
     {
       title: "Time",
-      for: "exampleInputEmail1",
-      type: "text",
+
+      type: "time",
       placeholder: "",
-      id: "l-name",
-    },
-    {
-      title: "Oppesite Team",
-      for: "exampleInputEmail1",
-      type: "text",
-      placeholder: "",
-      id: "email",
+      id: "time",
+      required: "true",
     },
     {
       title: "Ground",
-      for: "exampleInputEmail1",
       type: "text",
       placeholder: "",
-      id: "contact",
+      id: "ground",
+      required: "true",
+    },
+    {
+      title: "Opposite Team Name",
+
+      type: "text",
+      placeholder: "",
+      id: "op_team_name",
+      required: "true",
     },
   ];
 
@@ -50,6 +100,10 @@ function AddTournamentMatch() {
     filefor: "for",
     filetitle: "Logo",
   };
+
+  console.log("post data function ");
+  // if (post) return null;
+
   return (
     <>
       <div className="page-container-1">
@@ -75,11 +129,20 @@ function AddTournamentMatch() {
                   </Link>
                 </div>
 
-                <h1>Add Tournament Match</h1>
+                <h1>Add Tournament Match </h1>
+                {/* <ul>
+                  {this.post.data.map((item, i) => {
+                    return (
+                      <li key={i}>
+                        {item.ground} - {item.date}
+                      </li>
+                    );
+                  })}
+                </ul> */}
               </div>
 
               <div className="form-container">
-                <div className="table-box-1">
+                <div className="table-box-1" style={{ margin: "auto" }}>
                   <div className="tablee">
                     <div className="matche-container-outer-box">
                       <div className="match-box-up">
@@ -91,7 +154,7 @@ function AddTournamentMatch() {
                               fontWeight: "bolder",
                             }}
                           >
-                            Hero Cup
+                            {type}
                           </h4>
                         </div>
                       </div>
@@ -99,30 +162,24 @@ function AddTournamentMatch() {
                         className="match-box-mid"
                         style={{ height: "auto", minWidth: "100%" }}
                       >
-                        <div className="form-container">
-                          <form >
+                        <div
+                          className="form-container"
+                          onSubmit={AddTournament}
+                        >
+                          <form>
                             <SampleForm arr={array1} />
-                            <FileUpload filefor="logo" filetitle="Logo" />
+                            <SelectOption
+                              label={"Match Format"}
+                              option={option}
+                            />
+                            <FileUpload
+                              filefor="opIcon"
+                              filetitle="Opposite Teame Icon"
+                            />
                             <ResetSubmit />
                           </form>
                         </div>
                       </div>
-                    </div>
-                    <div className="tablee">
-                      <MatchesTeams
-                        btns=""
-                        wonornot=""
-                        left="Starts at 09.30"
-                        middle="R.Premadasa Stadium"
-                        right="2022 Oct 16"
-                      />
-                      <MatchesTeams
-                        btns=""
-                        wonornot=""
-                        left="Starts at 09.30"
-                        middle="R.Premadasa Stadium"
-                        right="2022 Oct 16"
-                      />
                     </div>
                   </div>
                 </div>

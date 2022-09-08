@@ -79,18 +79,18 @@ const data_1 = [
     img: <img className="row-image" src={profpic} alt=""></img>,
     name: "lamesh iroshan",
     ammount: '-5000',
-    btn: <Button variant="secondary">View</Button>,
+    btn: <Button variant="secondary">Pay</Button>,
   },
 
   {
     img: <img className="row-image" src={profpic} alt=""></img>,
     name: "Ramesh nimnath",
     ammount: '-5000',
-    btn: <Button variant="secondary">View</Button>,
+    btn: <Button variant="secondary">Pay</Button>,
   },
-  { img:<img className="row-image" src={profpic} alt=""></img> ,name: "Nimesh dilshan",ammount: '-5000', btn:<Button variant="secondary">View</Button>},
-  { img:<img className="row-image" src={profpic} alt=""></img> ,name: "Saaru wijesinghe",ammount: '-5000', btn:<Button variant="secondary">View</Button>},
-  { img:<img className="row-image" src={profpic} alt=""></img> ,name: "Ashan grove", ammount: '-5000', btn:<Button variant="secondary">View</Button>},
+  { img:<img className="row-image" src={profpic} alt=""></img> ,name: "Nimesh dilshan",ammount: '-5000', btn:<Button variant="secondary">Pay</Button>},
+  { img:<img className="row-image" src={profpic} alt=""></img> ,name: "Saaru wijesinghe",ammount: '-5000', btn:<Button variant="secondary">Pay</Button>},
+  { img:<img className="row-image" src={profpic} alt=""></img> ,name: "Ashan grove", ammount: '-5000', btn:<Button variant="secondary">Pay</Button>},
 
 ];
 
