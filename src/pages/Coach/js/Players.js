@@ -13,30 +13,30 @@ const data = [
     {
         playerid: "BF-001",
         img: <img className="row-image" src={profpic} alt=""></img>,
-        player: <Link to="/couch/PlayerD"><a href="#">Asitha Muthumala</a></Link>,
+        player: <Link to="/coach/PlayerD"><a href="#">Asitha Muthumala</a></Link>,
         
-        btn: <Link to={"/couch/PPr1"}><Button variant="secondary">Progress</Button></Link>,
+        btn: <Link to={"/coach/PPr1"}><Button variant="secondary">Progress</Button></Link>,
     },
     {
         playerid: "BF-001",
         img: <img className="row-image" src={profpic} alt=""></img>,
-        player: <Link to="/couch/PlayerD"><a href="#">Asitha Muthumala</a></Link>,
+        player: <Link to="/coach/PlayerD"><a href="#">Asitha Muthumala</a></Link>,
         
-        btn: <Link to={"/couch/PPr1"}><Button variant="secondary">Progress</Button></Link>,
+        btn: <Link to={"/coach/PPr1"}><Button variant="secondary">Progress</Button></Link>,
     },
     {
         playerid: "BF-001",
         img: <img className="row-image" src={profpic} alt=""></img>,
-        player: <Link to="/couch/PlayerD"><a href="#">Asitha Muthumala</a></Link>,
+        player: <Link to="/coach/PlayerD"><a href="#">Asitha Muthumala</a></Link>,
         
-        btn: <Link to={"/couch/PPr1"}><Button variant="secondary">Progress</Button></Link>,
+        btn: <Link to={"/coach/PPr1"}><Button variant="secondary">Progress</Button></Link>,
     },
     {
         playerid: "BF-001",
         img: <img className="row-image" src={profpic} alt=""></img>,
-        player: <Link to="/couch/PlayerD"><a href="#">Asitha Muthumala</a></Link>,
+        player: <Link to="/coach/PlayerD"><a href="#">Asitha Muthumala</a></Link>,
         
-        btn: <Link to={"/couch/PPr1"}><Button variant="secondary">Progress</Button></Link>,
+        btn: <Link to={"/coach/PPr1"}><Button variant="secondary">Progress</Button></Link>,
     },
 
 ];

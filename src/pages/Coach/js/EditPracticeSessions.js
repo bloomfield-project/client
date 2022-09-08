@@ -59,7 +59,7 @@ function EditPracticeSessions() {
                         <div className="l-back-r-title">
 
                             <div className="l-back-r-title-icon">
-                                <Link to={"/couch/PSessions"}>
+                                <Link to={"/coach/practiceSessions"}>
                                     <IoChevronBackCircleOutline
                                         style={{ color: "rgba(0, 146, 112, 1)", fontSize: " 40px" }}
                                     />
@@ -107,7 +107,6 @@ function EditPracticeSessions() {
                                     <AddMultipleSelections name={"Add Couches"} />
                                 </div>
 
-
                             </div>
 
                             <div className="EPS-main-3">
@@ -150,14 +149,9 @@ function EditPracticeSessions() {
 
                         </div>
 
-                        {/* <EditDetails arr={array} backLink={"/manager/Session"} /> */}
-
                     </div>
 
-
                 </div>
-
-
 
             </div>
 

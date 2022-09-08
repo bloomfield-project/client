@@ -51,18 +51,17 @@ function ViewPracticeSessions() {
                 </div>
 
                 <div className="body-container-1">
+
                     <div className="navbar-container">
                         <Navbar></Navbar>
                     </div>
 
                     <div className="body-container-2">
 
-
-
                         <div className="l-back-r-title">
 
                             <div className="l-back-r-title-icon">
-                                <Link to={"/couch/PSessions"}>
+                                <Link to={"/coach/practiceSessions"}>
                                     <IoChevronBackCircleOutline
                                         style={{ color: "rgba(0, 146, 112, 1)", fontSize: " 40px" }}
                                     />
@@ -131,14 +130,14 @@ function ViewPracticeSessions() {
                                         <Col className="EPS-main-3-1">Asitha Muthumala</Col>
                                         <Col className="EPS-main-3-1">BF-002</Col>
                                         <Col className="Attendance-head-1"> <CheckBox /> </Col>
-                                        <Col><Link to="/couch/MPP"> <a href="#">Progress</a> </Link></Col>
+                                        <Col><Link to="/coach/MPP"> <a href="#">Progress</a> </Link></Col>
                                     </Row>
 
                                     <Row>
                                         <Col className="EPS-main-3-1">Asitha Muthumala</Col>
                                         <Col className="EPS-main-3-1">BF-002</Col>
                                         <Col className="Attendance-head-1"> <CheckBox /> </Col>
-                                        <Col><Link to="/couch/MPP"> <a href="#">Progress</a> </Link></Col>
+                                        <Col><Link to="/coach/MPP"> <a href="#">Progress</a> </Link></Col>
                                     </Row>
 
                                 </Container>
