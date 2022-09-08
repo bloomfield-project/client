@@ -1,0 +1,9 @@
+.team-box {
+    width: 90%;
+    height: 100%;
+    display: flex;
+    overflow-y: scroll;
+    border-radius: 5px;
+    justify-content: center;
+    background-color: #fff;
+}

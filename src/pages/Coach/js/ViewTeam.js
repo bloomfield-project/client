@@ -13,7 +13,7 @@ import Button from 'react-bootstrap/Button';
 import AddMultipleSelections from "../../../component/AddMultipleSelections/AddMultipleSelections";
 
 
-function AddPracticeSession() {
+function ViewTeam() {
 
     return (
 
@@ -36,7 +36,7 @@ function AddPracticeSession() {
                         <div className="l-back-r-title">
 
                             <div className="l-back-r-title-icon">
-                                <Link to={"/coach/practiceSessions"}>
+                                <Link to={"/coach/Teams"}>
                                     <IoChevronBackCircleOutline
                                         style={{ color: "rgba(0, 146, 112, 1)", fontSize: " 40px" }}
                                     />
@@ -116,4 +116,4 @@ function AddPracticeSession() {
     );
 }
 
-export default AddPracticeSession;
+export default ViewTeam;

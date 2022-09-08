@@ -37,7 +37,7 @@ function PlayerPerformance() {
                         <div className="l-back-r-title">
 
                             <div className="l-back-r-title-icon">
-                                <Link to={"/couch/M3"}>
+                                <Link to={"/coach/matches3"}>
                                     <IoChevronBackCircleOutline
                                         style={{ color: "rgba(0, 146, 112, 1)", fontSize: " 40px" }}
                                     />
@@ -137,7 +137,7 @@ function PlayerPerformance() {
 
                             <div className="form-container-5">
 
-                                <Link to={"/couch/M3"}><Button variant="success" className="form-container-5-btn">Back</Button>{' '}</Link>
+                                <Link to={"/coach/matches3"}><Button variant="success" className="form-container-5-btn">Back</Button>{' '}</Link>
 
                             </div>
 

@@ -63,7 +63,7 @@ function EditEvent() {
             <div className="l-back-r-title">
 
               <div className="l-back-r-title-icon">
-                <Link to={"/couch/Players1"}>
+                <Link to={"/coach/players"}>
                   <IoChevronBackCircleOutline
                     style={{ color: "rgba(0, 146, 112, 1)", fontSize: " 40px" }}
                   />
@@ -75,7 +75,7 @@ function EditEvent() {
             </div>
 
             <div className="form-container" style={{width: "90%"}}>
-              <PlayerDetailsPerformance arr={array} backLink_1={"/couch/PD1"} backLink_2={"/couch/Players1"} />
+              <PlayerDetailsPerformance arr={array} backLink_1={"/coach/PD1"} backLink_2={"/coach/players"} />
             </div>
 
           </div>

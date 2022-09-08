@@ -16,7 +16,7 @@ const data = [
     player: "Dr.chaminda wimukthi",
     rating: "904",
     btn: (
-        <Link to={"/couch/PD1"}>
+        <Link to={"/coach/PD1"}>
           <Button variant="secondary">Details</Button>
         </Link>
       ),
@@ -28,7 +28,7 @@ const data = [
     player: "Dr.chaminda wimukthi",
     rating: "904",
     btn: (
-        <Link to={"/couch/PD1"}>
+        <Link to={"/coach/PD1"}>
           <Button variant="secondary">Details</Button>
         </Link>
       ),
@@ -40,7 +40,7 @@ const data = [
     player: "Dr.chaminda wimukthi",
     rating: "904",
     btn: (
-        <Link to={"/couch/PD1"}>
+        <Link to={"/coach/PD1"}>
           <Button variant="secondary">Details</Button>
         </Link>
       ),
@@ -52,7 +52,7 @@ const data = [
     player: "Dr.chaminda wimukthi",
     rating: "904",
     btn: (
-        <Link to={"/couch/PD1"}>
+        <Link to={"/coach/PD1"}>
           <Button variant="secondary">Details</Button>
         </Link>
       ),

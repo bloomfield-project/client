@@ -61,7 +61,7 @@ const data_2 = [
         subject: "Batting",
         date: '2022-05-11',
         time: '09:00 am',
-        btn: <Button variant="secondary">View</Button>,
+        btn: <Link to="/coach/Ap"><Button variant="secondary">View</Button></Link>,
     },
     {
         nameAndPhoto: "Bimsara Perera",
@@ -69,7 +69,7 @@ const data_2 = [
         subject: "Bowling",
         date: '2022-05-15',
         time: '10:00 am',
-        btn: <Button variant="secondary">View</Button>,
+        btn: <Link to="/coach/Ap"><Button variant="secondary">View</Button></Link>,
     },
     {
         nameAndPhoto: "Gihan Prasanna",
@@ -77,7 +77,7 @@ const data_2 = [
         subject: "Batting",
         date: '2022-05-14',
         time: '12:00 am',
-        btn: <Button variant="secondary">View</Button>,
+        btn: <Link to="/coach/Ap"><Button variant="secondary">View</Button></Link>,
     },
     {
         nameAndPhoto: "Dev Peris",
@@ -85,14 +85,14 @@ const data_2 = [
         subject: "Fielding",
         date: '2022-05-16',
         time: '1:00 am',
-        btn: <Button variant="secondary">View</Button>,
+        btn: <Link to="/coach/Ap"><Button variant="secondary">View</Button></Link>,
     },{
         nameAndPhoto: "Nuwan Kulasekara",
         img: <img className="row-image" src={profpic} alt=""></img>,
         subject: "Bowling",
         date: '2022-05-20',
         time: '10:00 am',
-        btn: <Button variant="secondary">View</Button>,
+        btn: <Link to="/coach/Ap"><Button variant="secondary">View</Button></Link>,
     },
     
 ];

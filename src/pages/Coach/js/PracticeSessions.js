@@ -17,7 +17,7 @@ const data_1 = [
     session: "Batting",
     date: '2022-05-11',
     time: '09:00 am',
-    btn: <Link to="/couch/EPS"><Button variant="secondary">View</Button></Link>,
+    btn: <Link to="/coach/editPracticeSession"><Button variant="secondary">View</Button></Link>,
   },
 
   {
@@ -26,7 +26,7 @@ const data_1 = [
     session: "Bowling",
     date: '2022-05-21',
     time: '10:00 am',
-    btn: <Link to="/couch/EPS"><Button variant="secondary">View</Button></Link>,
+    btn: <Link to="/coach/editPracticeSession"><Button variant="secondary">View</Button></Link>,
   },
 
   {
@@ -35,7 +35,7 @@ const data_1 = [
     session: "Fielding",
     date: '2022-06-11',
     time: '10:00 am',
-    btn: <Link to="/couch/EPS"><Button variant="secondary">View</Button></Link>,
+    btn: <Link to="/coach/editPracticeSession"><Button variant="secondary">View</Button></Link>,
   },
 
   {
@@ -44,7 +44,7 @@ const data_1 = [
     session: "Bowling",
     date: '2022-05-13',
     time: '11:00 am',
-    btn: <Link to="/couch/EPS"><Button variant="secondary">View</Button></Link>,
+    btn: <Link to="/coach/editPracticeSession"><Button variant="secondary">View</Button></Link>,
   },
 
 ];
@@ -57,7 +57,7 @@ const data_2 = [
     session: "Batting",
     date: '2022-05-05',
     time: '09:00 am',
-    btn: <Link to="/couch/VPS"><Button variant="secondary">View</Button></Link>,
+    btn: <Link to="/coach/VPS"><Button variant="secondary">View</Button></Link>,
   },
 
   {
@@ -66,7 +66,7 @@ const data_2 = [
     session: "Bowling",
     date: '2022-05-05',
     time: '11:00 am',
-    btn: <Link to="/couch/VPS"><Button variant="secondary">View</Button></Link>,
+    btn: <Link to="/coach/VPS"><Button variant="secondary">View</Button></Link>,
   },
 
   {
@@ -75,7 +75,7 @@ const data_2 = [
     session: "Fielding",
     date: '2022-05-05',
     time: '1:00 pm',
-    btn: <Link to="/couch/VPS"><Button variant="secondary">View</Button></Link>,
+    btn: <Link to="/coach/VPS"><Button variant="secondary">View</Button></Link>,
   },
 
   {
@@ -84,7 +84,7 @@ const data_2 = [
     session: "Batting",
     date: '2022-05-05',
     time: '3:00 pm',
-    btn: <Link to="/couch/VPS"><Button variant="secondary">View</Button></Link>,
+    btn: <Link to="/coach/VPS"><Button variant="secondary">View</Button></Link>,
   },
 
 ];
@@ -208,7 +208,7 @@ function Session() {
               </div>
 
               <div className="tabs-right">
-                <Link to="/couch/APS"><Button variant="outline-success">+ Add</Button></Link>
+                <Link to="/coach/APS"><Button variant="outline-success">+ Add</Button></Link>
               </div>
                                 
             </div>

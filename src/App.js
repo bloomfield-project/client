@@ -70,6 +70,7 @@ import Employees from "./pages/naya_admin/js/Employees";
 import AddEmployee from "./pages/naya_admin/js/AddEmployee";
 import ViewPracticeSessions from "./pages/Coach/js/ViewPracticeSessions";
 import BloomFieldCricketRanking from "./pages/Coach/js/BloomFieldCricketRanking";
+import AchievementCV from "./pages/Coach/js/AchievementsCoachView";
 
 
 
@@ -96,6 +97,7 @@ import EditRowDetailsWithButton from "./component/EditRowDetailsWithButton/EditR
 import PlayerDetails_1 from "./pages/Coach/js/PlayerDetails_1";
 import PlayerProgress_1 from "./pages/Coach/js/PlayerProgress_1";
 import PlayerFeedback from "./pages/Coach/js/PlayerFeedback";
+import Teams from "./pages/Coach/js/Teams";
 
 import FileUpload from "./component/Form/FileUpload";
 import Achivementss from "./pages/player/js/Achivements"
@@ -103,7 +105,6 @@ import Achivementss from "./pages/player/js/Achivements"
 import PendingMatches from "./pages/player/js/PendingMatches"
 
 import AddPracticeMatch from "./pages/Manager/js/AddPracticeMatch";
-
 
 
 
@@ -192,34 +193,39 @@ function App() {
           <Route path="/manager/AddAchivement" element={<AddAchivement/>}  />
           <Route path="/player/I" element={<IntroTable />} />
           <Route path="/C" element={<Calander />} />
-          <Route path="/couch/PSessions" element={<PracticeSessions />} />
           <Route path="/manager/MatchDetail" element={<MatchDetail />} />
           <Route path="/manager/AddMatch" element={<AddMatch />} />
           <Route path="/manager/AddTournamentMatch/:type" element={<AddTournamentMatch />} />
           <Route path="manager/AddPracticeMatch" element={< AddPracticeMatch/>} />
-          <Route path="/couch/A" element={<Appoinments />} />
-          <Route path="/couch/Ap" element={<ViewAppoinments/>} />
-          <Route path="/couch/Players1" element={<Players1 />} />
-          <Route path="/couch/PlayerD" element={<PlayerDetails />} />
 
-          <Route path="/couch/M1" element={<Matches_1 />} />
-          <Route path="/couch/M2" element={<Matches_2 />} />
-          <Route path="/couch/M3" element={<Macthes_3 />} />
-          <Route path="/couch/PF" element={<PlayerPerformance />} />
-          <Route path="/couch/M4" element={<Matches_4 />} />
-          <Route path="/couch/M" element={<MatchesTeams />} />
-          <Route path="/couch/CD" element={<CalanderDetails />} />
-          {/* <Route path="/SF" element={<SampleForm />} /> */}
-          <Route path="/couch/APS" element={<AddPracticeSession />} />
-          <Route path="/couch/CB" element={<CheckBox />} />
-          <Route path="/couch/MPP" element={<MarkPlayerProgress />} />
-          <Route path="/couch/MC" element={<AddMultipleSelections />} />
-          <Route path="/couch/EPS" element={<EditPracticeSessions />} />
-          <Route path="/couch/VPS" element={<ViewPracticeSessions />} />
-          <Route path="/couch/BCR" element={<BloomFieldCricketRanking />} />
-          <Route path="/couch/PD1" element={<PlayerDetails_1 />} />
-          <Route path="/couch/PPr1" element={<PlayerProgress_1 />} />
-          <Route path="/couch/PFeedback" element={<PlayerFeedback />} />
+
+          <Route path="/coach/Ap" element={<ViewAppoinments/>} />
+          <Route path="/coach/PlayerD" element={<PlayerDetails />} />
+          <Route path="/coach/M1" element={<Matches_1 />} />
+          <Route path="/coach/M" element={<MatchesTeams />} />
+          <Route path="/coach/CD" element={<CalanderDetails />} />
+          <Route path="/coach/PSessions" element={<PracticeSessions />} />
+          <Route path="/coach/APS" element={<AddPracticeSession />} />
+          <Route path="/coach/CB" element={<CheckBox />} />
+          <Route path="/coach/MPP" element={<MarkPlayerProgress />} />
+          <Route path="/coach/MC" element={<AddMultipleSelections />} />
+          <Route path="/coach/VPS" element={<ViewPracticeSessions />} />
+          <Route path="/coach/PD1" element={<PlayerDetails_1 />} />
+          <Route path="/coach/PPr1" element={<PlayerProgress_1 />} />
+          <Route path="/coach/PFeedback" element={<PlayerFeedback />} />
+          <Route path="/coach/m_1" element={<Matches_1 />} />
+          <Route path="/coach/matches4" element={<Matches_4 />} />
+          <Route path="/coach/bloomfieldCricketRanking" element={<BloomFieldCricketRanking />} />
+          <Route path="/coach/players" element={<Players1 />} />
+          <Route path="/coach/appoinments" element={<Appoinments />} />
+          <Route path="/coach/matches" element={<Matches_2 />} />
+          <Route path="/coach/matches3" element={<Macthes_3 />} />
+          <Route path="/coach/playerPerformance" element={<PlayerPerformance />} />
+          <Route path="/coach/practiceSessions" element={<PracticeSessions />} />
+          <Route path="/coach/editPracticeSession" element={<EditPracticeSessions />} />
+          <Route path="/coach/teams" element={<Teams />} />
+          <Route path="/coach/achievement" element={<AchievementCV />} />
+          <Route path="/coach/profile" element={<Profile />} />
 
 
 
@@ -233,7 +239,6 @@ function App() {
           
           
 
-          <Route path="/couch/m_1" element={<Matches_1 />} />
           <Route path="/manager/AddTournamentDetail" element={<AddTournamentDetail />} />
           <Route path="/admin/Membershipfee" element={<Membershipfee/>}  />
           <Route path="/admin/Employees" element={<Employees/>}  />
@@ -254,7 +259,6 @@ function App() {
           <Route path="/admin/PlayerRankings" element={<PlayerRankings />} />
           <Route path="/manager/profile" element={<Profile />} />
           <Route path="/admin/profile" element={<Profile />} />
-          <Route path="/couch/profile" element={<Profile />} />
           <Route path="/player/profile" element={<Profile />} />
           <Route path="/player/Matches/PendingMatches" element={<PendingMatches />} />
 
