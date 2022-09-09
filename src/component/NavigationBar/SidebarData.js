@@ -181,47 +181,53 @@ export const SidebarDataAdmin = [
         
 ]
 
-export const SidebarDataCouch = [
+export const SidebarDataCoach = [
 
     {
         title:'Dashboard',
-        path:'/couch/profile',
+        path:'/coach/profile',
         icon:<AiIcons.AiFillHome />,
         cName:'nav-text'
     },
     {
         title:'Sessions',
-        path:'/couch/PSessions',
+        path:'/coach/practiceSessions',
         icon:<IoIcons.IoIosPaper />,
         cName:'nav-text'
     },
     {
         title:'Matches',
-        path:'/couch/M2',
+        path:'/coach/matches',
         icon:<FaIcons.FaCartPlus />,
         cName:'nav-text'
     },
     {
+        title:'Teams',
+        path:'/coach/Teams',
+        icon:<FaIcons.FaSquarespace />,
+        cName:'nav-text'
+    },
+    {
         title:'Appoinments',
-        path:'/couch/A',
+        path:'/coach/appoinments',
         icon:<AiIcons.AiFillHome />,
         cName:'nav-text'
     },
     {
         title:'Players',
-        path:'/couch/Players1',
+        path:'/coach/players',
         icon:<AiIcons.AiFillHome />,
         cName:'nav-text'
     },
     {
         title:'Ranking',
-        path:'/couch/BCR',
+        path:'/coach/bloomfieldCricketRanking',
         icon:<AiIcons.AiFillHome />,
         cName:'nav-text'
     },
     {
         title:'Achievements',
-        path:'',
+        path:'/coach/achievement',
         icon:<AiIcons.AiFillHome />,
         cName:'nav-text'
     },

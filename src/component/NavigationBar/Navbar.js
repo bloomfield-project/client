@@ -5,7 +5,7 @@ import * as AiIcons from "react-icons/ai";
 
 import { SidebarDataPlayer } from "./SidebarData";
 import { SidebarDataAdmin } from "./SidebarData";
-import { SidebarDataCouch } from "./SidebarData";
+import { SidebarDataCoach } from "./SidebarData";
 
 
 
@@ -31,13 +31,13 @@ function Navbar() {
 
   const page =location.pathname.split('/')[2]
   console.log(user, "hjgdsv", location)
-  let data =SidebarDataCouch
+  let data =SidebarDataCoach
   if (user == "manager") {
     data = SidebarDataManager
 
   }
   else if (user == "couch") {
-    data = SidebarDataCouch
+    data = SidebarDataCoach
     console.log('hjsad')
   }
   else if (user == "player") {

@@ -1,17 +1,17 @@
 .APS-Form {
-    width: 90%;
-    /* margin-left: 5%; */
+    width: 94%;
     border-radius: 5px;
     background-color: #fff;
-    /* padding: 5px; */
+}
+
+.APS-Form-1 {
+    width: 96%;
+    margin-left: 2%;
 }
 
 .APS-Form-1-1 {
-
-    width: 90%;
-    margin-left: 5%;
+    width: 100%;
     padding: 20px;
-
 }
 
 .APS-Form-1-1 h5 {
@@ -20,52 +20,62 @@
     justify-content: flex-start;
 }
 
+.APS-Form-2 {
+    width: 96%;
+    margin-left: 2%;
+}
+
 .APS-Form-2-1 {
-    
-    margin-left: 5%;
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 2%;
 }
 
 .APS-Form-2-2 {
-    margin-left: 5%;
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 2%;
 }
 
 .APS-Form-3 {
-    width: 90%;
-    margin-left: 5%;
+    width: 96%;
+    margin-left: 2%;
     display: flex;
-    height: 40vh;
-    /* background-color: blue; */
+    height: auto;
 }
 
 .APS-Form-3-1 {
-
-    width: 50%;
+    width: 100%;
     display: flex;
     justify-content: center;
-
-}
-
-.APS-Form-3-2 {
-
-    width: 50%;
-    display: flex;
-    justify-content: center;
-
 }
 
 .APS-Form-4 {
-    width: 90%;
-    margin-left: 5%;
+    width: 96%;
+    margin-left: 2%;
+    display: flex;
+    height: auto;
+}
+
+.APS-Form-4-1 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.APS-Form-5 {
+    width: 96%;
+    margin-left: 2%;
     height: max-content;
-    padding: 10px;
+    padding: 2%;
     display: flex;
     justify-content: space-between;
 }
 
-.APS-Form-4-1 {
+.APS-Form-5-1 {
     font-weight: bold;
 }
 
-.APS-Form-4-2 {
+.APS-Form-5-2 {
     font-weight: bold;
 }
