@@ -24,7 +24,7 @@ const userSchema = yup.object().shape({
 let error_email = null;
 let error_nic = null;
 let error_contact = null;
-
+let success = null;
 function PlayerRegistration() {
   const [show, setShow] = useState(false);
 
@@ -98,6 +98,7 @@ function PlayerRegistration() {
     event.preventDefault();
     console.log(event);
 
+
     let userData = {
       name: event.target[0].value,
       e_mail: event.target[1].value,
@@ -114,20 +115,41 @@ function PlayerRegistration() {
     axios
       .post("/api/user/", userData)
       .then((results) => {
+        console.log(userData);
+        error_contact = null;
+        error_email = null;
+        error_nic = null;
+        success = null;
+
+        if(results.data.validate[3] != null){
+          success = results.data.validate[3];
+          alert(success);
+        }
+
         if (results.data.validate[0] != null) {
           error_contact = results.data.validate[0];
+          console.log(error_contact);
           // alert(results.data.validate[0]);
         }
         if (results.data.validate[1] != null) {
           // alert(results.data.validate[1]);
           error_email = results.data.validate[1];
+          console.log(error_email);
         }
         if (results.data.validate[2] != null) {
           error_nic = results.data.validate[2];
           // alert(results.data.validate[2]);
+          console.log(error_email);
         }
 
+        
+
         handleShow();
+
+        error_contact = null;
+        error_email = null;
+        error_nic = null;
+        success = null;
       })
       .catch((err) => console.log("error is arized", err));
 
@@ -137,28 +159,77 @@ function PlayerRegistration() {
   return (
     <>
       {/*Before pop up model*/}
+
       <Modal
         show={show}
         onHide={handleClose}
         backdrop="static"
         keyboard={false}
-        centered 
+        centered
       >
-        <Modal.Header closeButton style={{ backgroundColor:"#f0677b" , border:"none"}}>
+        <Modal.Header
+          closeButton
+          style={{ backgroundColor: "#89f5c1", border: "none" }}
+        >
           <Modal.Title> </Modal.Title>
         </Modal.Header>
-        <Modal.Body  style={{ backgroundColor:"#f0677b" , height: "fit-content" , padding:"0"}}>
-          <p style={{ color: "#f0677b", textAlign: "center", fontSize: "large",backgroundColor:"white" , margin:"0"}}>
-            {error_contact} <br></br>  <br></br>
-            {error_email} <br></br> <br></br>
+        <Modal.Body
+          style={{
+            backgroundColor: "#03d1a1",
+            height: "fit-content",
+            padding: "0",
+          }}
+        >
+          <p
+            style={{
+              color: "#f0677b",
+              textAlign: "center",
+              fontSize: "large",
+              backgroundColor: "white",
+              margin: "0",
+            }}
+          >
+            {error_email}
+          </p>
+          <p
+            style={{
+              color: "#f0677b",
+              textAlign: "center",
+              fontSize: "large",
+              backgroundColor: "white",
+              margin: "0",
+            }}
+          >
+            {error_contact}
+          </p>
+          <p
+            style={{
+              color: "#f0677b",
+              textAlign: "center",
+              fontSize: "large",
+              backgroundColor: "white",
+              margin: "0",
+            }}
+          >
             {error_nic}
           </p>
+          <p
+            style={{
+              color: "#03d1a1",
+              textAlign: "center",
+              fontSize: "large",
+              backgroundColor: "white",
+              margin: "0",
+            }}
+          >
+            {success}
+          </p>
         </Modal.Body>
-        <Modal.Footer style={{ backgroundColor:"#f0677b" , border:"none"}}>
+        <Modal.Footer style={{ backgroundColor: "#89f5c1", border: "none" }}>
           {/*<Button variant="secondary" onClick={handleClose}>
             Cancell
   </Button>*/}
-          <button type="button" class="btn btn-danger" onClick={handleClose}>
+          <button type="button" class="btn btn-success" onClick={handleClose}>
             OK
           </button>
         </Modal.Footer>
