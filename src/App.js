@@ -183,7 +183,7 @@ function App() {
 
           <Route path="/test" element={<Test />} />
           <Route path="/manager/PlayerRegistration" element={<PlayerRegistration />} />
-          <Route path="/manager/EditPlayerDetails" element={<EditPlayerDetails />} />/
+          <Route path="/manager/EditPlayerDetails/:id" element={<EditPlayerDetails />} />/
           <Route path="/manager/AddCouncellingSession" element={<AddCouncellingSession />} />
           <Route path="/manager/EditCouncellingSession" element={<EditCouncellingSession />} />
           <Route path="/manager/AddEvent" element={<AddEvent />} />

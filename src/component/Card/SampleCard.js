@@ -3,8 +3,8 @@ import "./SampleCard.css";
 import Button from "react-bootstrap/Button";
 
 function SampleCard({ arr }) {
-  return (
-    <>
+  // return (
+  //   <>
       {arr.map((item, index) => {
         return (
           <>
@@ -41,8 +41,8 @@ function SampleCard({ arr }) {
           </>
         );
       })}
-    </>
-  );
+  //   </>
+  // );
 }
 
 export default SampleCard;

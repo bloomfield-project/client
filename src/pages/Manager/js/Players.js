@@ -11,76 +11,14 @@ import profpic from "../../../component/header/profpic.jfif";
 
 const Axios = require("axios").default;
 
-async function getData() {
+async function GetData() {
   const axios = require("axios").default;
   let res = await axios.get("/api/user/players");
   let result = res.data.data;
   console.log(result[1].email);
 }
 
-let dataArray = [
-  {
-    id: "P-51",
-    name: "lamesh iroshan",
-    contact: "0712564236",
-    email: "lamesh@gmail.com",
-    btn: (
-      <Link to={"/manager/EditPlayerDetails"}>
-        <Button variant="secondary">View</Button>
-      </Link>
-    ),
-   
-  },
-
-  {
-    id: "P-55",
-    name: "lamesh iroshan",
-    contact: "0712876512",
-    email: "lamesh@gmail.com",
-    btn: (
-      <Link to={"/manager/EditPlayerDetails"}>
-        <Button variant="secondary">View</Button>
-      </Link>
-    ),
-  
-  },
-  {
-    id: "P-102",
-    name: "lamesh iroshan",
-    contact: "072564236",
-    email: "lamesh@gmail.com",
-    btn: (
-      <Link to={"/manager/EditPlayerDetails"}>
-        <Button variant="secondary">View</Button>
-      </Link>
-    ),
-    
-  },
-  {
-    id: "P-62",
-    name: "Asitha Muthumala",
-    contact: "0765264236",
-    email: "asikavinda@gmail.com",
-    btn: (
-      <Link to={"/manager/EditPlayerDetails"}>
-        <Button variant="secondary">View</Button>
-      </Link>
-    ),
-   
-  },
-  {
-    id: "P-70",
-    name: "Gihan Trellow",
-    contact: "0712564236",
-    email: "lamesh@gmail.com",
-    btn: (
-      <Link to={"/manager/EditPlayerDetails"}>
-        <Button variant="secondary">View</Button>
-      </Link>
-    ),
-   
-  },
-];
+let dataArray = [];
 
 // console.log(data[0]);
 const columns = [
@@ -125,12 +63,12 @@ function Players() {
      dataArray[i] = 
       
         {
-          id: item.user_id,
+          id: "BP-" + item.user_id ,
           name: item.name,
           contact: item.contact,
           email: item.email,
           btn: (
-            <Link to={"/manager/EditPlayerDetails"}>
+            <Link to={"/manager/EditPlayerDetails/"+ item.user_id}>
               <Button variant="secondary">View</Button>
             </Link>
           ),
