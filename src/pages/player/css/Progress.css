@@ -5,7 +5,7 @@
 
 .mapPie{
     width:500px;
-    height: 250px;
+    height: 150px;
     display: flex;
     justify-content: space-evenly;
     flex-direction: column;
@@ -32,19 +32,19 @@
 }
 
 .color-box-1{
-    width:50px;
-    height: 50px;
+    width:25px;
+    height: 25px;
     margin-right: 15px;
 }
 .color-box-2{
-    width:50px;
-    height: 50px;
+    width:25px;
+    height: 25px;
     background-color: #009270;
     margin-right: 15px;
 }
 .color-box-3{
-    width:50px;
-    height: 50px;
+    width:25px;
+    height: 25px;
     background-color: #A1A1A1;
     margin-right: 15px;
 }
@@ -53,3 +53,5 @@
 .col-4-1,.col-4-2,.col-4-3,.col-4-4{
     width:24%;
 }
+
+

@@ -8,7 +8,12 @@ import Button from "react-bootstrap/Button";
 import "../../Home.css";
 import SearchTable from "../../../component/Search/SearchTable";
 import profpic from "../../../component/header/profpic.jfif";
+import {fetchData} from '../../AuthServer'
 
+<<<<<<< HEAD
+// console.log(resoposeData);
+const data = [
+=======
 const Axios = require("axios").default;
 
 async function getData() {
@@ -19,6 +24,7 @@ async function getData() {
 }
 
 let dataArray = [
+>>>>>>> 3dd0008e81d6068cdce29a4778b37f46be4ed133
   {
     id: "P-51",
     name: "lamesh iroshan",
@@ -104,9 +110,45 @@ const columns = [
     title: "",
     field: "btn",
   },
+<<<<<<< HEAD
+=======
  
+>>>>>>> 3dd0008e81d6068cdce29a4778b37f46be4ed133
 ];
 function Players() {
+<<<<<<< HEAD
+  const [responseData,setResponseData]=useState([]);
+  // let resoposeData=[];
+
+async function getData(){
+  // event.preventDefault();
+  // const axios = require('axios').default;
+  // let res = await axios.get('/api/user/players');
+  // let result = res.data.data;
+  // console.log(result[1].email)
+  const reqData ={
+    // "userid":'1'
+  };
+  const authRequest = {
+  "method":"get",
+  "url":"user/players",
+  "data":reqData
+}
+fetchData(authRequest).then((response)=>{
+  // resoposeData=response.data.data;
+  // console.log(resoposeData);
+  setResponseData(response.data.data)
+}).catch(function(error){
+  console.log(error);
+})
+}
+
+  useEffect(() => {
+    getData()
+  }, [])
+  
+  console.log(responseData);
+=======
   let result;
 
   const [post, setPost] = React.useState(null);
@@ -138,6 +180,7 @@ function Players() {
         
    
   })}
+>>>>>>> 3dd0008e81d6068cdce29a4778b37f46be4ed133
   // getData(result)
   // console.log("eliyen")
   return (
@@ -175,7 +218,11 @@ function Players() {
               <div className="tablee">
                 <SearchTable
                   t_title={""}
+<<<<<<< HEAD
+                  data={responseData}
+=======
                   data={dataArray}
+>>>>>>> 3dd0008e81d6068cdce29a4778b37f46be4ed133
                   columns={columns}
                   searching={true}
                   sort={false}

@@ -127,6 +127,19 @@
     align-items: center;
     font-size: 1rem;
 }
+.my-table-row-g{
+    display: flex;
+    height: 40px;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1rem; 
+    height: 70px;
+    background-color: azure;
+    margin-bottom: 10px;
+    border: solid 1px rgb(210, 231, 220);
+}
+
+
 .table-row > .col-3-2{
     font-weight: 700;
 }
@@ -153,4 +166,16 @@
     justify-content: right;
     /* background-color: #4a4a4a; */
     padding-left: calc(100% - 250px);
+}
+
+
+.col-5-1 , .col-5-3 , .col-5-4 , .col-5-5 {
+    width: 15%;
+}
+.col-5-2 {
+    width: 35%;
+}
+
+.col-7-1 , .col-7-3 , .col-7-4,.col-7-5,.col-7-6,.col-7-7{
+    width: 9%;
 }
