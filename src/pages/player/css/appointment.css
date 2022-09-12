@@ -1,0 +1,84 @@
+.SessionDetails-content{
+    width: 95%;
+    padding: 20px 20px;
+    border-radius: 10px;
+    background-color: white;
+    display: flex;
+}
+
+.app-left-G{
+    width: calc(100% - 360px);
+    /* background-color: aqua; */
+    display: flex;
+    flex-direction: column;
+}
+
+/* .app-right-G{
+    
+    
+} */
+
+.Select-a-Coach{
+    width: 100%;
+}
+
+.select-c-G{
+    width: 95%;
+    height: 45px;
+    border-radius: 5px;
+    border: 1px solid #b4b4b4;
+}
+
+.select-c-G-2{
+    width: 95%;
+    height: 90px;
+    border-radius: 5px;
+    border: 1px solid #b4b4b4;
+}
+
+.Time-slots-unselect{
+    width: 95%;
+    min-height: 192px;  
+    border-radius: 5px;
+    
+    border: 1px solid #b4b4b4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.n{
+    display: none;
+}
+
+.Time-slots-unselect-row{
+    width: 97%;
+    /* background-color: blue; */
+    display: flex;
+    height: 40px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    
+    box-shadow: 1px 1px 5px #a0a096;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.Time-slots-unselect-rows{
+    width: 100%;
+    height: 100%;
+    /* padding-top: 15px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    /* background-color: aqua; */
+}
+
+.Time-slots-unselect-button{
+    border: none;
+    color: white;
+    background-color: #009270;
+    border-radius: 5px;
+}

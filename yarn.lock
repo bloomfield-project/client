@@ -1131,6 +1131,27 @@
   resolved "https://registry.npmjs.org/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
+"@coreui/chartjs@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@coreui/chartjs/-/chartjs-3.0.0.tgz#54b55d85de0f3146237b7d1d36b1bf33bc051735"
+  integrity sha512-udbvSxanTNltv94lqTMW8bLRXTtzk9G2SrmFdM/7HH+JSaLX2wdQpZ4VIJhyOCRGLCSKHktl29BnW1/uXQecAg==
+  dependencies:
+    "@coreui/coreui" "4.0.0"
+    chart.js "^3.4.0"
+
+"@coreui/coreui@4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@coreui/coreui/-/coreui-4.0.0.tgz#52ebe0197411a829ba48057ade61923e05859eec"
+  integrity sha512-8vH6fJrmvCR/Oy5v0E+/1AL3Ygb4jhQ7NXK2fMYWJyK13BePDm9muB3y6S0IdqkpBwjY3hHVwHyt2lJqJdesmQ==
+
+"@coreui/react-chartjs@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@coreui/react-chartjs/-/react-chartjs-2.1.0.tgz#6b2dea15171575a18d35b1eed77110407fd8c0de"
+  integrity sha512-Xn8m+j59ap0Y1TwlyttpMz/Q1/b7fDlHXv21wpSNQyTF4OfkyE2ompVW4bVYIUKE/Ov/WoBlL/5NEpwToUotzw==
+  dependencies:
+    "@coreui/chartjs" "^3.0.0"
+    chart.js "^3.7.1"
+
 "@csstools/normalize.css@*":
   version "12.0.0"
   resolved "https://registry.npmjs.org/@csstools/normalize.css/-/normalize.css-12.0.0.tgz"
@@ -3465,6 +3486,11 @@ caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001370, caniuse-lite@^1.0.30001373:
   resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001373.tgz"
   integrity sha512-pJYArGHrPp3TUqQzFYRmP/lwJlj8RCbVe3Gd3eJQkAV8SAC6b19XS9BjMvRdvaS8RMkaTN8ZhoHP6S1y8zzwEQ==
 
+canvasjs-react-charts@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/canvasjs-react-charts/-/canvasjs-react-charts-1.0.5.tgz#bdcc06f7bd50a24f69cca9615dafabc0a2a7b063"
+  integrity sha512-8P3KnAvCqftmqf4O/xG6PlIDcTr0IvzuE4l6ACXIOROKtFmnmUu/xPEeq+0vI9Xvh7zXjzZvRqw0p1uxXr034g==
+
 canvg@^3.0.6:
   version "3.0.10"
   resolved "https://registry.npmjs.org/canvg/-/canvg-3.0.10.tgz"
@@ -3518,6 +3544,11 @@ char-regex@^2.0.0:
   version "2.0.1"
   resolved "https://registry.npmjs.org/char-regex/-/char-regex-2.0.1.tgz"
   integrity sha512-oSvEeo6ZUD7NepqAat3RqoucZ5SeqLJgOvVIwkafu6IP3V0pO38s/ypdVUmDDK6qIIHNlYHJAKX9E7R7HoKElw==
+
+chart.js@^3.4.0, chart.js@^3.7.1:
+  version "3.9.1"
+  resolved "https://registry.yarnpkg.com/chart.js/-/chart.js-3.9.1.tgz#3abf2c775169c4c71217a107163ac708515924b8"
+  integrity sha512-Ro2JbLmvg83gXF5F4sniaQ+lTbSv18E+TIf2cOeiH1Iqd2PGFOtem+DUufMZsCJwFE7ywPOpfXFBwRTGq7dh6w==
 
 check-types@^11.1.1:
   version "11.1.2"
@@ -9043,6 +9074,16 @@ reduce-css-calc@^2.1.8:
   dependencies:
     css-unit-converter "^1.1.1"
     postcss-value-parser "^3.3.0"
+
+redux-devtools-extension@^2.13.9:
+  version "2.13.9"
+  resolved "https://registry.yarnpkg.com/redux-devtools-extension/-/redux-devtools-extension-2.13.9.tgz#6b764e8028b507adcb75a1cae790f71e6be08ae7"
+  integrity sha512-cNJ8Q/EtjhQaZ71c8I9+BPySIBVEKssbPpskBfsXqb8HJ002A3KRVHfeRzwRo6mGPqsm7XuHTqNSNeS1Khig0A==
+
+redux-persist@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/redux-persist/-/redux-persist-6.0.0.tgz#b4d2972f9859597c130d40d4b146fecdab51b3a8"
+  integrity sha512-71LLMbUq2r02ng2We9S215LtPu3fY0KgaGE0k8WRgl6RkqxtGfl7HUozz1Dftwsb0D/5mZ8dwAaPbtnzfvbEwQ==
 
 redux@^4.0.0, redux@^4.0.4:
   version "4.2.0"

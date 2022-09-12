@@ -11,7 +11,7 @@ import profpic from "../../../component/header/profpic.jfif";
 
 const Axios = require("axios").default;
 
-async function GetData() {
+async function getData() {
   const axios = require("axios").default;
   let res = await axios.get("/api/user/players");
   let result = res.data.data;
