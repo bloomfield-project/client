@@ -38,7 +38,7 @@ function PlayerPerformance() {
                         <div className="l-back-r-title">
 
                             <div className="l-back-r-title-icon">
-                                <Link to={"/couch/VPS"}>
+                                <Link to={"/coach/VPS"}>
                                     <IoChevronBackCircleOutline
                                         style={{ color: "rgba(0, 146, 112, 1)", fontSize: " 40px" }}
                                     />

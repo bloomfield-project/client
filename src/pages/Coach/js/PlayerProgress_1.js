@@ -90,7 +90,7 @@ function PlayerProgress_1() {
                         <div className="col-4-1">S-001</div>
                         <div className="col-4-2">Batting Practice</div>
                         <div className="col-4-3">Present</div>
-                        <div className="col-4-4"><a href="/couch/PFeedback">Feedback</a></div>
+                        <div className="col-4-4"><a href="/coach/PFeedback">Feedback</a></div>
                         
                     </div>
                     <hr></hr>
@@ -98,7 +98,7 @@ function PlayerProgress_1() {
                         <div className="col-4-1">S-001</div>
                         <div className="col-4-2">Batting Practice</div>
                         <div className="col-4-3">Present</div>
-                        <div className="col-4-4"><a href="/couch/PFeedback">Feedback</a></div>
+                        <div className="col-4-4"><a href="/coach/PFeedback">Feedback</a></div>
                         
                     </div>
                     <hr></hr>
@@ -106,7 +106,7 @@ function PlayerProgress_1() {
                         <div className="col-4-1">S-001</div>
                         <div className="col-4-2">Batting Practice</div>
                         <div className="col-4-3">Present</div>
-                        <div className="col-4-4"><a href="/couch/PFeedback">Feedback</a></div>
+                        <div className="col-4-4"><a href="/coach/PFeedback">Feedback</a></div>
                         
                     </div>
                     <hr></hr>
@@ -114,7 +114,7 @@ function PlayerProgress_1() {
                         <div className="col-4-1">S-001</div>
                         <div className="col-4-2">Batting Practice</div>
                         <div className="col-4-3">Present</div>
-                        <div className="col-4-4"><a href="/couch/PFeedback">Feedback</a></div>
+                        <div className="col-4-4"><a href="/coach/PFeedback">Feedback</a></div>
                         
                     </div>
                     <hr></hr>
@@ -122,7 +122,7 @@ function PlayerProgress_1() {
                         <div className="col-4-1">S-001</div>
                         <div className="col-4-2">Batting Practice</div>
                         <div className="col-4-3">Present</div>
-                        <div className="col-4-4"><a href="/couch/PFeedback">Feedback</a></div>
+                        <div className="col-4-4"><a href="/coach/PFeedback">Feedback</a></div>
                         
                     </div>
                     <hr></hr>

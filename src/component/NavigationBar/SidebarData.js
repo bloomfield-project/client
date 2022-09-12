@@ -2,6 +2,7 @@ import React from "react";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import * as IoIcons from "react-icons/io";
+import { BsFillTrophyFill,BsFillDiagram3Fill,BsPersonLinesFill ,BsFillCreditCardFill,BsCalendar2EventFill } from "react-icons/bs";
 import { MdSportsCricket , MdEventAvailable} from "react-icons/md";
 import { GiTrophyCup , GiAchievement} from "react-icons/gi";
 
@@ -15,38 +16,38 @@ export const SidebarDataManager = [
     {
         title:'Match',
         path:'/manager/MatchDetail',
-        icon:<FaIcons.FaCartPlus />,
+        icon:<MdSportsCricket />,
         cName:'nav-text'
     },
     {
         title:'Achivement',
         path:'/manager/Achivement',
-        icon:<AiIcons.AiFillHome />,
+        icon:<BsFillTrophyFill />,
         cName:'nav-text'
     },
     {
         title:'Ranking',
         path:'/manager/CricketRanking',
-        icon:<AiIcons.AiFillHome />,
+        icon:<BsFillDiagram3Fill />,
         cName:'nav-text'
     },
     {
         title:'Player',
         path:'/manager/Players',
-        icon:<AiIcons.AiFillHome />,
+        icon:<BsPersonLinesFill />,
         // BsPerson
         cName:'nav-text'
     },
     {
         title:'Payments',
         path:'/manager/Membership',
-        icon:<AiIcons.AiFillHome />,
+        icon:<BsFillCreditCardFill />,
         cName:'nav-text'
     },
     {
         title:'Events',
         path:'/manager/Session',
-        icon:<AiIcons.AiFillHome />,
+        icon:<BsCalendar2EventFill />,
         cName:'nav-text'
     },
     {
@@ -188,47 +189,53 @@ export const SidebarDataAdmin = [
         
 ]
 
-export const SidebarDataCouch = [
+export const SidebarDataCoach = [
 
     {
         title:'Dashboard',
-        path:'/couch/profile',
+        path:'/coach/profile',
         icon:<AiIcons.AiFillHome />,
         cName:'nav-text'
     },
     {
         title:'Sessions',
-        path:'/couch/PSessions',
+        path:'/coach/practiceSessions',
         icon:<IoIcons.IoIosPaper />,
         cName:'nav-text'
     },
     {
         title:'Matches',
-        path:'/couch/M2',
+        path:'/coach/matches',
         icon:<FaIcons.FaCartPlus />,
         cName:'nav-text'
     },
     {
+        title:'Teams',
+        path:'/coach/Teams',
+        icon:<FaIcons.FaSquarespace />,
+        cName:'nav-text'
+    },
+    {
         title:'Appoinments',
-        path:'/couch/A',
+        path:'/coach/appoinments',
         icon:<AiIcons.AiFillHome />,
         cName:'nav-text'
     },
     {
         title:'Players',
-        path:'/couch/Players1',
+        path:'/coach/players',
         icon:<AiIcons.AiFillHome />,
         cName:'nav-text'
     },
     {
         title:'Ranking',
-        path:'/couch/BCR',
+        path:'/coach/bloomfieldCricketRanking',
         icon:<AiIcons.AiFillHome />,
         cName:'nav-text'
     },
     {
         title:'Achievements',
-        path:'',
+        path:'/coach/achievement',
         icon:<AiIcons.AiFillHome />,
         cName:'nav-text'
     },

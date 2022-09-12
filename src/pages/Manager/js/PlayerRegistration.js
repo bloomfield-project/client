@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../../../component/header/Header";
 import "../css/PlayerRegistration.css";
 import { IoChevronBackCircleOutline } from "react-icons/io5";
@@ -10,20 +10,28 @@ import AddMultipleSelections from "../../../component/AddMultipleSelections/AddM
 import ResetSubmit from "../../../component/Form/ResetSubmit";
 import * as yup from "yup";
 import SelectOption from "../../../component/Form/SelectOption";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 
-const axios = require('axios').default;
+const axios = require("axios").default;
 
-  
 const userSchema = yup.object().shape({
-  first_name: yup.string().required('Required!') ,
-  last_name: yup.string().required() ,
-  email:yup.string().email('plese enter correct email').required() ,
-  
+  first_name: yup.string().required("Required!"),
+  last_name: yup.string().required(),
+  email: yup.string().email("plese enter correct email").required(),
 });
 
+let error_email = null;
+let error_nic = null;
+let error_contact = null;
+let success = null;
 function PlayerRegistration() {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   let array1 = [
-   
     {
       title: "Name",
       for: "last-name",
@@ -66,61 +74,168 @@ function PlayerRegistration() {
     },
   ];
 
-const option = [
-  {
-    value:"bawling",
-    title:"Bawling"
-  },
-  {
-    value:"batting",
-    title:"Batting"
-  },
-  {
-    value:"allrounder",
-    title:"Allrounder"
-  }
-]
+  const option = [
+    {
+      value: "bawling",
+      title: "Bawling",
+    },
+    {
+      value: "batting",
+      title: "Batting",
+    },
+    {
+      value: "allrounder",
+      title: "Allrounder",
+    },
+  ];
 
   const file = {
     filefor: "for",
     filetitle: "Profile",
   };
 
-  const createUser = async (event) =>{
+  const createUser = (event) => {
     event.preventDefault();
     console.log(event);
 
+
     let userData = {
       name: event.target[0].value,
-      e_mail:event.target[1].value,
-      address:event.target[2].value,
-      nic:event.target[3].value,
-      contact:event.target[4].value,
-      role:event.target[5].value
-      
+      e_mail: event.target[1].value,
+      address: event.target[2].value,
+      nic: event.target[3].value,
+      contact: event.target[4].value,
+      role: event.target[5].value,
     };
     // const isValid = await userSchema.isValid(userData);
 
-    console.log(userData.name);
+    console.log("before post request ");
 
-    let res = await axios.post('/api/user/', userData);
+    //let res =  axios.post('/api/user/', userData);
+    axios
+      .post("/api/user/", userData)
+      .then((results) => {
+        console.log(userData);
+        error_contact = null;
+        error_email = null;
+        error_nic = null;
+        success = null;
 
-    let data = res.data;
-    console.log(data);
-    // if(data.data=="Invalid username or password"){
-    //     setInvalid("err-G-active")//val
-    // }
-    // else{
-    //     console.log("hey john")
-    //     // setLogin(data.data)
+        if(results.data.validate[3] != null){
+          success = results.data.validate[3];
+          alert(success);
+        }
+
+        if (results.data.validate[0] != null) {
+          error_contact = results.data.validate[0];
+          console.log(error_contact);
+          // alert(results.data.validate[0]);
+        }
+        if (results.data.validate[1] != null) {
+          // alert(results.data.validate[1]);
+          error_email = results.data.validate[1];
+          console.log(error_email);
+        }
+        if (results.data.validate[2] != null) {
+          error_nic = results.data.validate[2];
+          // alert(results.data.validate[2]);
+          console.log(error_email);
+        }
+
         
-        
-    // }
-    // console.log(isValid);
-  }
+
+        handleShow();
+
+        error_contact = null;
+        error_email = null;
+        error_nic = null;
+        success = null;
+      })
+      .catch((err) => console.log("error is arized", err));
+
+    console.log("after post request ");
+  };
 
   return (
     <>
+      {/*Before pop up model*/}
+
+      <Modal
+        show={show}
+        onHide={handleClose}
+        backdrop="static"
+        keyboard={false}
+        centered
+      >
+        <Modal.Header
+          closeButton
+          style={{ backgroundColor: "#89f5c1", border: "none" }}
+        >
+          <Modal.Title> </Modal.Title>
+        </Modal.Header>
+        <Modal.Body
+          style={{
+            backgroundColor: "#03d1a1",
+            height: "fit-content",
+            padding: "0",
+          }}
+        >
+          <p
+            style={{
+              color: "#f0677b",
+              textAlign: "center",
+              fontSize: "large",
+              backgroundColor: "white",
+              margin: "0",
+            }}
+          >
+            {error_email}
+          </p>
+          <p
+            style={{
+              color: "#f0677b",
+              textAlign: "center",
+              fontSize: "large",
+              backgroundColor: "white",
+              margin: "0",
+            }}
+          >
+            {error_contact}
+          </p>
+          <p
+            style={{
+              color: "#f0677b",
+              textAlign: "center",
+              fontSize: "large",
+              backgroundColor: "white",
+              margin: "0",
+            }}
+          >
+            {error_nic}
+          </p>
+          <p
+            style={{
+              color: "#03d1a1",
+              textAlign: "center",
+              fontSize: "large",
+              backgroundColor: "white",
+              margin: "0",
+            }}
+          >
+            {success}
+          </p>
+        </Modal.Body>
+        <Modal.Footer style={{ backgroundColor: "#89f5c1", border: "none" }}>
+          {/*<Button variant="secondary" onClick={handleClose}>
+            Cancell
+  </Button>*/}
+          <button type="button" class="btn btn-success" onClick={handleClose}>
+            OK
+          </button>
+        </Modal.Footer>
+      </Modal>
+
+      {/* After pop up model */}
       <div className="page-container-1">
         <div className="header-container">
           <Header></Header>
@@ -151,7 +266,7 @@ const option = [
                 <form onSubmit={createUser}>
                   <SampleForm arr={array1} />
                   {/* <AddMultipleSelections /> */}
-                  
+
                   <SelectOption label={"Player Role"} option={option} />
                   <FileUpload filetitle={"Profile Image"} filefor={"for"} />
                   <ResetSubmit />

@@ -37,7 +37,7 @@ function Matches_4() {
                         <div className="l-back-r-title" style={{width:"90%"}}>
 
                             <div className="l-back-r-title-icon">
-                                <Link to={"/couch/M2"}>
+                                <Link to={"/coach/matches"}>
                                     <IoChevronBackCircleOutline
                                         style={{ color: "rgba(0, 146, 112, 1)", fontSize: " 40px" }}
                                     />

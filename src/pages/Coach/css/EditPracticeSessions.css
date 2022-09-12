@@ -1,27 +1,23 @@
 .EPS-main {
-    width: 90%;
-    /* height: max-content; */
+    width: 94%;
     background-color: #fff;
-    /* margin-left: 5%; */
     border-radius: 5px;
-    /* padding: 5px; */
 }
 
 .EPS-main-1 {
     width: 100%;
     height: auto;
-    /* background-color: brown; */
-    padding: 0px;
+    padding: 1%;
 }
 
 .EPS-main-2 {
     width: 100%;
     height: auto;
-    /* background-color: brown; */
     padding: 5px;
 }
 
 .EPS-main-2 h6 {
+    margin-left: 1vw;
     display: flex;
     justify-content: flex-start;
 }
@@ -40,11 +36,11 @@
 .EPS-main-3 {
     width: 100%;
     height: auto;
-    /* background-color: brown; */
     padding: 5px;
 }
 
 .EPS-main-3 h6 {
+    margin-left: 1vw;
     display: flex;
     justify-content: flex-start;
 }
@@ -52,9 +48,6 @@
 .EPS-main-3-1 {
     font-weight: bold;
     margin-bottom: 1vh;
-}
-
-.EPS-main-3-1 {
     display: flex;
     justify-content: flex-end;
 }
@@ -65,9 +58,7 @@
     justify-content: flex-end;
 }
 
-
-
-/*check box styling*/
+/*check box styling start*/
 
 .Attendance-head {
     font-weight: bold;
@@ -78,10 +69,12 @@
     margin-left: 18vw;
 }
 
+/*check box styling end*/
+
 .EPS-main-4 {
     width: 100%;
     height: auto;
-    padding: 10px;
+    padding: 2%;
     display: flex;
     justify-content: space-between;
 }
