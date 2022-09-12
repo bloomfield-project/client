@@ -2,7 +2,8 @@ import "../css/login.css"
 import cricket from "../../../component/Login/cricket.png"
 import validator from "validator";
 import React ,{useState } from 'react'
-
+import {useDispatch,useSelector} from 'react-redux'
+import {logIn,logout} from "../../../redux/actions/authAction"
 import {useNavigate} from "react-router-dom"
 
 const axios = require('axios').default;
@@ -11,18 +12,18 @@ const axios = require('axios').default;
 
 
 function LoginN({ setLogin }){
+    // redux
+
+
+    const dispatch = useDispatch()
+
+
 
     const history = useNavigate()
     const [show, setShow] = useState(false);
     const handleShow = () => {
         setShow(!show);
     };
-
-
-
-    
-
-
     const [emailError, setEmailError] = useState("");
     const [Email, setEmail] = useState("");
     const [Password, setPw] = useState("");
@@ -56,19 +57,20 @@ function LoginN({ setLogin }){
         let res = await axios.post('/api/user/login', payload);
 
         let data = res.data;
+        //redux
+        dispatch(logIn(data))
+        //end
         console.log(data);
         if(data.data=="Invalid username or password"){
             setInvalid("err-G-active")//val
         }
         else{
             console.log("hey john")
-            // setLogin(data.data)
-            console.log(data.data.role)
             if(data.data.role=='manager'){
                 history('/manager/profile',{state: data.data})
             }
             else if(data.data.role=='player'){
-                history('/player/profile',{state: data.data})
+                history('/player/Dashboard',{state: data.data})
             }
             else if(data.data.role=='couch'){
                 history('/couch/profile',{state: data.data})

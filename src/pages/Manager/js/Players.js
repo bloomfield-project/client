@@ -8,17 +8,9 @@ import Button from "react-bootstrap/Button";
 import "../../Home.css";
 import SearchTable from "../../../component/Search/SearchTable";
 import profpic from "../../../component/header/profpic.jfif";
+import {fetchData} from '../../AuthServer'
 
-async function getData(){
-  const axios = require('axios').default;
-  let res = await axios.get('/api/user/players');
-  let result = res.data.data;
-  console.log(result[1].email)
-}
-
-
-
-
+// console.log(resoposeData);
 const data = [
   {
     id: "P-51",
@@ -125,30 +117,40 @@ const columns = [
     title: "",
     field: "btn",
   },
-  // {
-  //   title:"",
-  //   field : "progress",
-  //   cellStyle: {
-  //     color: 'rgba(149, 41, 41, 1)'
-  //   },
-  // }
 ];
 const axios = require('axios').default;
 function Players() {
-  let result
-  // async function getData(result){
-    
-  //   const res = await axios.get('/api/user/players');
-  //   result = res.data.data;
-  //   console.log("udin")
-  //   // console.log(result[1].email)
-  //   console.log("yatin")
-  // }
+  const [responseData,setResponseData]=useState([]);
+  // let resoposeData=[];
+
+async function getData(){
+  // event.preventDefault();
+  // const axios = require('axios').default;
+  // let res = await axios.get('/api/user/players');
+  // let result = res.data.data;
+  // console.log(result[1].email)
+  const reqData ={
+    // "userid":'1'
+  };
+  const authRequest = {
+  "method":"get",
+  "url":"user/players",
+  "data":reqData
+}
+fetchData(authRequest).then((response)=>{
+  // resoposeData=response.data.data;
+  // console.log(resoposeData);
+  setResponseData(response.data.data)
+}).catch(function(error){
+  console.log(error);
+})
+}
+
   useEffect(() => {
     getData()
   }, [])
   
-  
+  console.log(responseData);
   // getData(result)
   // console.log("eliyen")
   return (
@@ -186,7 +188,7 @@ function Players() {
               <div className="tablee">
                 <SearchTable
                   t_title={""}
-                  data={data}
+                  data={responseData}
                   columns={columns}
                   searching={true}
                   sort={false}

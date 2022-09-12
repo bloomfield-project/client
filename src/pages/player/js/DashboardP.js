@@ -3,13 +3,53 @@ import Navbar from "../../../component/NavigationBar/Navbar";
 import "../../Home.css";
 import "../css/Dashboard.css"
 import React from "react";
+import LineChart from "../../../component/Chart/LineChart";
+import Bchart from "../../../component/Chart/BarChart";
 // import { CChart } from '@coreui/react';
 
+// import {Bar} from "react-chartjs-2";
 
+import {useSelector} from 'react-redux'
+
+
+
+const data =[
+  {
+    id:1,
+    year:2022,
+    userGain:234,
+    lost:23
+  },
+  {
+    id:2,
+    year:2022,
+    userGain:234,
+    lost:23
+  },
+  {
+    id:3,
+    year:2022,
+    userGain:234,
+    lost:23
+  },
+  {
+    id:4,
+    year:2022,
+    userGain:234,
+    lost:23
+  },
+  {
+    id:5,
+    year:2022,
+    userGain:234,
+    lost:23
+  },
+]
 
 function DashboardP() {
 
-  
+  const loginData= useSelector(state => state.auth.data)
+  console.log(loginData);
 
   return (
     <div className="page-container-1">
@@ -21,38 +61,33 @@ function DashboardP() {
           <Navbar></Navbar>
         </div>
         <div className="body-container-2" >
+          <h5 style={{width:"92%",textAlign:"left", marginTop:"20px"}}>Batting summary</h5>
+          <hr style={{width:"92%"}}></hr>
           <div className="row-player-dashboard-g-1">
             <div className="column-player-dashboard-g-1">
-                <CChart
-                    type="line" 
-                    data={{
-                        labels: ["January", "February", "March", "April", "May", "June", "July"],
-                        datasets: [
-                        {
-                            label: "My First dataset",
-                            backgroundColor: "rgba(220, 220, 220, 0.2)",
-                            borderColor: "rgba(220, 220, 220, 1)",
-                            pointBackgroundColor: "rgba(220, 220, 220, 1)",
-                            pointBorderColor: "#fff",
-                            data: [40, 20, 12, 39, 10, 40, 39, 80, 40]
-                        },
-                        {
-                            label: "My Second dataset",
-                            backgroundColor: "rgba(151, 187, 205, 0.2)",
-                            borderColor: "rgba(151, 187, 205, 1)",
-                            pointBackgroundColor: "rgba(151, 187, 205, 1)",
-                            pointBorderColor: "#fff",
-                            data: [50, 12, 28, 29, 7, 25, 12, 70, 60]
-                        },
-                        ],
-                    }}
-                />
+            <Bchart />
             </div>
             <div className="column-player-dashboard-g-1">
-                
+            <LineChart />
             </div>
             <div className="column-player-dashboard-g-1">
-                
+            <LineChart />
+            </div>
+          </div>
+
+
+
+          <h5 style={{width:"92%",textAlign:"left", marginTop:"20px"}}>Bowling summary</h5>
+          <hr style={{width:"92%"}}></hr>
+          <div className="row-player-dashboard-g-1" >
+            <div className="column-player-dashboard-g-1">
+            <LineChart />
+            </div>
+            <div className="column-player-dashboard-g-1">
+            <LineChart />
+            </div>
+            <div className="column-player-dashboard-g-1">
+            <LineChart />
             </div>
           </div>
         </div>
@@ -60,6 +95,7 @@ function DashboardP() {
     </div>
   );
 }
+
 
 export default DashboardP;
 

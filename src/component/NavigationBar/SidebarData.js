@@ -61,7 +61,7 @@ export const SidebarDataManager = [
 export const SidebarDataPlayer = [
     {
         title:'Dashboard',
-        path:'/player/Profile',
+        path:'/player/Dashboard',
         icon:<AiIcons.AiFillHome />,
         cName:'nav-text'
     },
@@ -104,6 +104,12 @@ export const SidebarDataPlayer = [
         cName:'nav-text'
     },
     {
+        title:'Appointments',
+        path:'/player/Appointments',
+        icon:<AiIcons.AiFillHome />,
+        cName:'nav-text'
+    },
+    {
         title:'Payments',
         path:'/player/Payments',
         // FaMoneyBillAlt
@@ -122,6 +128,7 @@ export const SidebarDataPlayer = [
         icon:<AiIcons.AiFillHome />,
         cName:'nav-text'
     },
+
     
 
     
