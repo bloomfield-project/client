@@ -4,8 +4,36 @@ import "../../Home.css"
 import "../../player/css/PSessionDetails.css"
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
+import {useSelector} from "react-redux"
+import {fetchData} from '../../AuthServer'
+import React, {useState,useEffect} from "react";
+
 
 function PSessionDetails() {
+  const sessionId= useSelector(state => state.getsession.data)
+  const [responseData,setResponseData]=useState([]);
+  
+  async function getData(){
+    const reqData ={
+      session_id:sessionId,
+    };
+    const authRequest = {
+    "method":"post",
+    "url":"player/sessionDetails",
+    "data":reqData
+    }
+    fetchData(authRequest).then((response)=>{
+      setResponseData(response.data)
+    }).catch(function(error){
+      console.log(error);
+    })
+  }
+
+  useEffect(() => {
+    getData()
+  }, [])
+  
+  console.log(responseData);
   return (
     <div className="page-container-1">
       <div className="header-container">

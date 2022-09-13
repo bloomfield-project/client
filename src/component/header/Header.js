@@ -1,7 +1,7 @@
 import React from 'react';
 import './Header.css';
 import logo from "./bf.png-removebg-preview.png";
-import profpic from "./profpic.jfif"
+import player from "../../pages/player/player.jpg"
 import { BsBell } from "react-icons/bs";
 
 function Header(){
@@ -20,10 +20,10 @@ function Header(){
             <BsBell className='bell'></BsBell>
           </div>
           <div className='username'>
-            <div>W.D.K.G.G.S.Perera</div>
+            <div>Gihan Weerasinghe</div>
           </div>
           <div className='profilePic'>
-            <img src={profpic} alt=""></img>
+            <img src={player} style={{borderRadius : "50%"}} alt=""></img>
           </div>
         </section>
       </div>

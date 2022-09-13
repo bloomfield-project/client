@@ -60,12 +60,12 @@ export const SidebarDataManager = [
 
 
 export const SidebarDataPlayer = [
-    {
-        title:'Dashboard',
-        path:'/player/Dashboard',
-        icon:<AiIcons.AiFillHome />,
-        cName:'nav-text'
-    },
+    // {
+    //     title:'Dashboard',
+    //     path:'/player/Dashboard',
+    //     icon:<AiIcons.AiFillHome />,
+    //     cName:'nav-text'
+    // },
     {
         title:'Performance',
         path:'/player/playerRanking',
@@ -117,12 +117,12 @@ export const SidebarDataPlayer = [
         icon:<FaIcons.FaMoneyBillAlt />,
         cName:'nav-text'
     },
-    {
-        title:'Achivements',
-        path:'/player/Achivements',
-        icon:<AiIcons.AiFillHome />,
-        cName:'nav-text'
-    },
+    // {
+    //     title:'Achivements',
+    //     path:'/player/Achivements',
+    //     icon:<AiIcons.AiFillHome />,
+    //     cName:'nav-text'
+    // },
     {
         title:'Logout',
         path:'/',
