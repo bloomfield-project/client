@@ -106,6 +106,7 @@ import Appointments from "./pages/player/js/Appointments"
 import PendingMatches from "./pages/player/js/PendingMatches"
 
 import AddPracticeMatch from "./pages/Manager/js/AddPracticeMatch";
+import ViewTeam from "./pages/Coach/js/ViewTeam";
 
 import DashboardP from "./pages/player/js/DashboardP";
 
@@ -236,6 +237,7 @@ function App() {
           <Route path="/coach/practiceSessions" element={<PracticeSessions />} />
           <Route path="/coach/editPracticeSession" element={<EditPracticeSessions />} />
           <Route path="/coach/teams" element={<Teams />} />
+          <Route path="/coach/viewTeams" element={<ViewTeam />} />
           <Route path="/coach/achievement" element={<AchievementCV />} />
           <Route path="/coach/profile" element={<Profile />} />
 
