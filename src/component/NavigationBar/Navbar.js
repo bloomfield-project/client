@@ -29,6 +29,7 @@ function Navbar() {
   const location = useLocation();
   const user = location.pathname.split('/')[1]
 
+
   const page =location.pathname.split('/')[2]
   console.log(user, "hjgdsv", location)
   let data =SidebarDataCoach

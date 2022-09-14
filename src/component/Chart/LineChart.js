@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer  } from 'recharts';
 
 export default class LineChart extends PureComponent {
   static demoUrl = 'https://codesandbox.io/s/area-chart-connect-nulls-mdh0c';
@@ -47,18 +47,48 @@ export default class LineChart extends PureComponent {
       pv: 4300,
       amt: 2100,
     },
+    {
+      name: 'Aug',
+      uv: 2000,
+      pv: 9800,
+      amt: 2290,
+    },
+    {
+      name: 'Sep',
+      uv: 2780,
+      pv: 3908,
+      amt: 2000,
+    },
+    {
+      name: 'Oct',
+      uv: 1890,
+      pv: 4800,
+      amt: 2181,
+    },
+    {
+      name: 'Nov',
+      uv: 2390,
+      pv: 3800,
+      amt: 2500,
+    },
+    {
+      name: 'Dec',
+      uv: 3490,
+      pv: 4300,
+      amt: 2100,
+    },
   ];
 
   render() {
     return (
       <div>
-        <ResponsiveContainer width="100%" height={200}>
+        <ResponsiveContainer width="100%" height={250}>
           <AreaChart
-            width={500}
-            height={200}
+            width={90}
+            height={250}
             data={this.data}
             margin={{
-              top: 10,
+              top: 25,
               right: 30,
               left: 0,
               bottom: 0,
@@ -68,7 +98,7 @@ export default class LineChart extends PureComponent {
             <XAxis dataKey="name" />
             <YAxis />
             <Tooltip />
-            <Area type="monotone" dataKey="uv" stroke="#8884d8" fill="#8884d8" />
+            <Area type="monotone" dataKey="uv" stroke="#884d8" fill="#8884d8" />
           </AreaChart>
         </ResponsiveContainer>
         

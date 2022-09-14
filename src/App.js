@@ -101,13 +101,21 @@ import Teams from "./pages/Coach/js/Teams";
 
 import FileUpload from "./component/Form/FileUpload";
 import Achivementss from "./pages/player/js/Achivements"
+import Appointments from "./pages/player/js/Appointments"
 
 import PendingMatches from "./pages/player/js/PendingMatches"
 
 import AddPracticeMatch from "./pages/Manager/js/AddPracticeMatch";
 import ViewTeam from "./pages/Coach/js/ViewTeam";
 
+import DashboardP from "./pages/player/js/DashboardP";
 
+
+//redux store
+
+import store , {persistor} from "./redux/store";
+import {Provider} from 'react-redux';
+import {PersistGate } from 'redux-persist/integration/react'
 
 
 
@@ -132,7 +140,7 @@ function App() {
 
 
   const [login, setLogin] = useState("");
-  console.log(login.role)
+  // console.log(login.role)
   // if(login.role=="manager"){
   //   sidebar=SidebarData
   //   // console.log(sidebar)
@@ -156,6 +164,10 @@ function App() {
       <BrowserRouter>
         {/* <FogotPassForm /> */}
         {/* <ResetPassForm /> */}
+
+        <Provider store={store}>
+          <PersistGate persistor={persistor}>
+
         <Routes>
           <Route path="/ResetPassword" element={<ResetPassForm />} />
           <Route path="/FogotPassword" element={<FogotPassForm/>} />
@@ -184,7 +196,7 @@ function App() {
 
           <Route path="/test" element={<Test />} />
           <Route path="/manager/PlayerRegistration" element={<PlayerRegistration />} />
-          <Route path="/manager/EditPlayerDetails" element={<EditPlayerDetails />} />/
+          <Route path="/manager/EditPlayerDetails/:id" element={<EditPlayerDetails />} />/
           <Route path="/manager/AddCouncellingSession" element={<AddCouncellingSession />} />
           <Route path="/manager/EditCouncellingSession" element={<EditCouncellingSession />} />
           <Route path="/manager/AddEvent" element={<AddEvent />} />
@@ -236,7 +248,7 @@ function App() {
           <Route path="/player/PEvents" element={<PEvents />} />
           <Route path="/player/PlayerRankingList" element={<PlayerRankingList />} />
           <Route path="/player/Payments" element={<Payments />} />
-
+          <Route path="/player/Appointments" element={<Appointments />} />
     
           
           
@@ -261,7 +273,12 @@ function App() {
           <Route path="/admin/PlayerRankings" element={<PlayerRankings />} />
           <Route path="/manager/profile" element={<Profile />} />
           <Route path="/admin/profile" element={<Profile />} />
+
+          <Route path="/couch/profile" element={<Profile />} />
+          <Route path="/player/Dashboard" element={<DashboardP />} />
+
           <Route path="/player/profile" element={<Profile />} />
+
           <Route path="/player/Matches/PendingMatches" element={<PendingMatches />} />
 
 
@@ -270,8 +287,10 @@ function App() {
           <Route path="/file" element={<FileUpload />}  />
           
 
-
-        </Routes>
+        
+          </Routes>
+          </PersistGate>
+        </Provider>
       </BrowserRouter>
     </div>
     

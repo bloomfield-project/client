@@ -23,7 +23,7 @@ function EditDetails({ arr, backLink = "#", border = true, btn = true }) {
               <div className="edit-edit-detail">
                 <h6>{item.data} </h6>
                 {btn ? (
-                  <button type="submit" class="btn btn-success">
+                  <button type="submit" className="btn btn-success">
                     Edit
                   </button>
                 ) : (
@@ -39,7 +39,7 @@ function EditDetails({ arr, backLink = "#", border = true, btn = true }) {
         <div className="edit-edit-detail">
           <p> </p>
           {backLink ? (
-            <Link to={backLink} class="btn btn-secondary">
+            <Link to={backLink} className="btn btn-secondary">
               Back
             </Link>
           ) : (

@@ -9,99 +9,16 @@ import "../../Home.css";
 import SearchTable from "../../../component/Search/SearchTable";
 import profpic from "../../../component/header/profpic.jfif";
 
-async function getData(){
-  const axios = require('axios').default;
-  let res = await axios.get('/api/user/players');
+const Axios = require("axios").default;
+
+async function getData() {
+  const axios = require("axios").default;
+  let res = await axios.get("/api/user/players");
   let result = res.data.data;
-  console.log(result[1].email)
+  console.log(result[1].email);
 }
 
-
-
-
-const data = [
-  {
-    id: "P-51",
-    name: "lamesh iroshan",
-    contact:"0712564236",
-    email:"lamesh@gmail.com",
-    btn: (
-      <Link to={"/manager/EditPlayerDetails"}>
-        <Button variant="secondary">View</Button>
-      </Link>
-    ),
-    // progress: (
-    //   <Link to={"/player/Progress"} style={{color:"green"}}>
-    //     Progress
-    //   </Link>
-    // ),
-  },
-
-  {
-    id: "P-55",
-    name: "lamesh iroshan",
-    contact:"0712876512",
-    email:"lamesh@gmail.com",
-    btn: (
-      <Link to={"/manager/EditPlayerDetails"}>
-        <Button variant="secondary">View</Button>
-      </Link>
-    ),
-    // progress: (
-    //   <Link to={"/player/Progress"} style={{color:"green"}}>
-    //     Progress
-    //   </Link>
-    // ),
-  },
-  {
-    id: "P-102",
-    name: "lamesh iroshan",
-    contact:"072564236",
-    email:"lamesh@gmail.com",
-    btn: (
-      <Link to={"/manager/EditPlayerDetails"}>
-        <Button variant="secondary">View</Button>
-      </Link>
-    ),
-    // progress: (
-    //   <Link to={"/player/Progress"} style={{color:"green"}}>
-    //     Progress
-    //   </Link>
-    // ),
-  },
-  {
-    id: "P-62",
-    name: "Asitha Muthumala",
-    contact:"0765264236",
-    email:"asikavinda@gmail.com",
-    btn: (
-      <Link to={"/manager/EditPlayerDetails"}>
-        <Button variant="secondary">View</Button>
-      </Link>
-    ),
-    // progress: (
-    //   <Link to={"/player/Progress"} style={{color:"green"}}>
-    //     Progress
-    //   </Link>
-    // ),
-  },
-  {
-    id: "P-70",
-    name: "Gihan Trellow",
-    contact:"0712564236",
-    email:"lamesh@gmail.com",
-    btn: (
-      <Link to={"/manager/EditPlayerDetails"}>
-        <Button variant="secondary">View</Button>
-      </Link>
-    ),
-    // progress: (
-    //   <Link to={"/player/Progress"} style={{color:"green"}}>
-    //     Progress
-    //   </Link>
-    // ),
-  },
-];
+let dataArray = [];
 
 // console.log(data[0]);
 const columns = [
@@ -125,30 +42,40 @@ const columns = [
     title: "",
     field: "btn",
   },
-  // {
-  //   title:"",
-  //   field : "progress",
-  //   cellStyle: {
-  //     color: 'rgba(149, 41, 41, 1)'
-  //   },
-  // }
+ 
 ];
-const axios = require('axios').default;
 function Players() {
-  let result
-  // async function getData(result){
-    
-  //   const res = await axios.get('/api/user/players');
-  //   result = res.data.data;
-  //   console.log("udin")
-  //   // console.log(result[1].email)
-  //   console.log("yatin")
-  // }
-  useEffect(() => {
-    getData()
-  }, [])
-  
-  
+  let result;
+
+  const [post, setPost] = React.useState(null);
+
+  React.useEffect(() => {
+    Axios.get("http://localhost:3001/api/user/players").then((response) => {
+      setPost(response.data);
+    });
+  }, []);
+
+  console.log("post data function ", post);
+
+  if (!post) return null;
+
+  {post.data.map((item, i) => {
+     dataArray[i] = 
+      
+        {
+          id: "BP-" + item.user_id ,
+          name: item.name,
+          contact: item.contact,
+          email: item.email,
+          btn: (
+            <Link to={"/manager/EditPlayerDetails/"+ item.user_id}>
+              <Button variant="secondary">View</Button>
+            </Link>
+          ),
+        }
+        
+   
+  })}
   // getData(result)
   // console.log("eliyen")
   return (
@@ -186,7 +113,7 @@ function Players() {
               <div className="tablee">
                 <SearchTable
                   t_title={""}
-                  data={data}
+                  data={dataArray}
                   columns={columns}
                   searching={true}
                   sort={false}
@@ -205,23 +132,10 @@ function Players() {
           </div>
         </div>
       </div>
-      {/* <Container className="page-container-1">
-        <Row className="header-container">
-          <Col >
-            <Header />
-          </Col>
-        </Row>
-        <Row className="body-container-1">
-          <Col md="auto">
-            <Navbar/>
-          </Col>
-          <Col md="auto">
-            <Tables list={List} colNames={colNames} />
-          </Col>
-        </Row>
-      </Container> */}
+      
     </>
   );
 }
 
 export default Players;
+

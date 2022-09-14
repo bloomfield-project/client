@@ -28,9 +28,13 @@ function Progress() {
               
               <div className="player-content" style={{width:"95%" ,marginTop:"50px"}}>
                 <div className="tableTopic"><h4>Attendance for sessions</h4></div>
+                    <div className="filter-by-date-G">
+                        <label>Select month:</label>
+                        <input type="month" className="filter-by-date-month"></input>
+                    </div>
                 <hr></hr>
                 <div className="pie-chart-box" style={{width:"97%"}}>
-                    <div className="pie-chart" style={{width:"250px"}}>
+                    <div className="pie-chart" style={{width:"150px"}}>
                         <PieChart
                             data={[
                                 { title: 'One', value: 15, color: '#009270' },
