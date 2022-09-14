@@ -9,37 +9,50 @@ import { Link, useParams, useLocation } from "react-router-dom";
 
 const axios = require("axios").default;
 
-function GetPostData(res) {
+let userData = [];
+
+
+function EditPlayerDetails() {
   const [post, setPost] = useState(null);
-  setPost(res);
-  console.log("Data set eka ", post);
-}
-
-function EditPlayerDetails(props) {
+  
+  const GetPostData = () => {
+    
+    axios
+      .post("/api/user/playerSelect", userData)
+      .then((results) => {
+        // alert(results.data.res_data.name);
+        // console.log(results.data.res_data.name)
+        // return GetPostData(results.data.res_data);
+        setPost(results.data.res_data);
+      })
+      .catch((err) => console.log(err));
+    console.log("Data set eka ", post);
+  }
+  
+  
   const { id } = useParams();
-
   let user = [];
 
   console.log("type is : " + id);
-  let userData = {
+  userData = {
     user_id: id,
   };
 
-  axios
-    .post("/api/user/playerSelect", userData)
-    .then((results) => {
-      // alert(results.res_data);
-      return GetPostData(results.data.res_data)
-      // console.log(results.data.res_data);
-      // user = results.data.res_data;
-      // alert(user[0].name);
-    })
-    .catch((err) => alert(err));
+  useEffect(() => {
+    GetPostData();
+    console.log("inside use effect")
+  },[]);
+
+  if (!post) return null;
+  // alert(post[0].name)
+  
+  console.log(post[0].name)
+  // const name = post[0].name;
 
   const array = [
     {
       lable: "Name",
-      data: "kasun kalhara",
+      data:  (post[0].name).toUpperCase(),
     },
     {
       lable: "Role",
@@ -47,16 +60,20 @@ function EditPlayerDetails(props) {
     },
     {
       lable: "E-mail",
-      data: "kasun@gmail.com",
+      data: post[0].email,
     },
     {
       lable: "Contact",
-      data: "0715486236",
+      data: post[0].contact,
+    },
+    {
+      lable: "Address",
+      data: post[0].address,
     },
   ];
   return (
     <>
-      <div className="page-container-1">
+      <div className="page-container-1" >
         <div className="header-container">
           <Header></Header>
         </div>
