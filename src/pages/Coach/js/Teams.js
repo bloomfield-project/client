@@ -15,28 +15,28 @@ const data = [
         // img: <img className="row-image" src={profpic} alt=""></img>,
         CD: "2020-05-06",
         CT: "5.00 PM",
-        btn: <Link to=""><Button variant="secondary">View</Button></Link>,
+        btn: <Link to="/coach/viewTeams"><Button variant="secondary">View</Button></Link>,
     },
     {
         teamname: "Col SS",
         // img: <img className="row-image" src={profpic} alt=""></img>,
         CD: "2020-05-10",
         CT: "3.00 PM",
-        btn: <Link to=""><Button variant="secondary">View</Button></Link>,
+        btn: <Link to="/coach/viewTeams"><Button variant="secondary">View</Button></Link>,
     },
     {
         teamname: "Down South Boys",
         // img: <img className="row-image" src={profpic} alt=""></img>,
         CD: "2020-04-06",
         CT: "5.00 PM",
-        btn: <Link to=""><Button variant="secondary">View</Button></Link>,
+        btn: <Link to="/coach/viewTeams"><Button variant="secondary">View</Button></Link>,
     },
     {
         teamname: "Galle Vorries",
         // img: <img className="row-image" src={profpic} alt=""></img>,
         CD: "2020-05-20",
         CT: "10.00 AM",
-        btn: <Link to=""><Button variant="secondary">View</Button></Link>,
+        btn: <Link to="/coach/viewTeams"><Button variant="secondary">View</Button></Link>,
     },
 
 ];
