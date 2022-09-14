@@ -19,7 +19,7 @@ function SearchTable({t_title, data , columns , searching , sort , filter , pagi
         sorting:sort,
         paging:paging,
         padding:'dense',
-        pageSizeOptions: [],
+        // pageSizeOptions: [],
         headerStyle: {
           backgroundColor: headerC,
           height:headerH,

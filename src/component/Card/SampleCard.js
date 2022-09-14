@@ -41,7 +41,7 @@ function SampleCard({ arr }) {
           </>
         );
       })}
-    </>
+     </>
   );
 }
 
