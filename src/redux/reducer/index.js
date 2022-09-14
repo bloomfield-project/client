@@ -1,9 +1,12 @@
 import {combineReducers} from 'redux'
 import authReducer from './AuthReducer'
+import viewSessionReducer from './viewSessionReducer'
 
 
 const rootReducer=combineReducers({
-    auth: authReducer
+    getsession: viewSessionReducer,
+    auth: authReducer,
+    
 })
 
 
