@@ -65,64 +65,64 @@ function Macthes_3() {
                                 <Container>
 
                                     <Row>
-                                        <Col className="M3-main-container-3-1" sm={4}> <h6> <a href="/coach/playerPerformance">Asitha Muthumala</a> </h6> </Col>
-                                        <Col className="M3-main-container-3-2" sm={4}> <h6>BF-0099</h6> </Col>
+                                        <Col className="M3-main-container-3-1" sm={4}> <h6> <a href="/coach/playerPerformance">Gihan Weerasinghe</a> </h6> </Col>
+                                        <Col className="M3-main-container-3-2" sm={4}> <h6>BF-0055</h6> </Col>
                                         <Col className="M3-main-container-3-3" sm={4}></Col>
                                     </Row>
                                     <br></br>
 
                                     <Row>
                                         <Col className="M3-main-container-3-1" sm={4}> <h6> <a href="/coach/playerPerformance">Asitha Muthumala</a> </h6> </Col>
-                                        <Col className="M3-main-container-3-2" sm={4}> <h6>BF-0099</h6> </Col>
+                                        <Col className="M3-main-container-3-2" sm={4}> <h6>BF-0065</h6> </Col>
                                         <Col className="M3-main-container-3-3" sm={4}></Col>
                                     </Row>
                                     <br></br>
 
                                     <Row>
-                                        <Col className="M3-main-container-3-1" sm={4}> <h6> <a href="/coach/playerPerformance">Asitha Muthumala</a> </h6> </Col>
-                                        <Col className="M3-main-container-3-2" sm={4}> <h6>BF-0099</h6> </Col>
+                                        <Col className="M3-main-container-3-1" sm={4}> <h6> <a href="/coach/playerPerformance">Gayan Perera</a> </h6> </Col>
+                                        <Col className="M3-main-container-3-2" sm={4}> <h6>BF-0066</h6> </Col>
                                         <Col className="M3-main-container-3-3" sm={4}></Col>
                                     </Row>
                                     <br></br>
 
                                     <Row>
-                                        <Col className="M3-main-container-3-1" sm={4}> <h6> <a href="/coach/playerPerformance">Asitha Muthumala</a> </h6> </Col>
-                                        <Col className="M3-main-container-3-2" sm={4}> <h6>BF-0099</h6> </Col>
+                                        <Col className="M3-main-container-3-1" sm={4}> <h6> <a href="/coach/playerPerformance">Dilshan Perera</a> </h6> </Col>
+                                        <Col className="M3-main-container-3-2" sm={4}> <h6>BF-0067</h6> </Col>
                                         <Col className="M3-main-container-3-3" sm={4}></Col>
                                     </Row>
                                     <br></br>
 
                                     <Row>
-                                        <Col className="M3-main-container-3-1" sm={4}> <h6> <a href="/coach/playerPerformance">Asitha Muthumala</a> </h6> </Col>
-                                        <Col className="M3-main-container-3-2" sm={4}> <h6>BF-0099</h6> </Col>
+                                        <Col className="M3-main-container-3-1" sm={4}> <h6> <a href="/coach/playerPerformance">Sanath Jayasuriya</a> </h6> </Col>
+                                        <Col className="M3-main-container-3-2" sm={4}> <h6>BF-0068</h6> </Col>
                                         <Col className="M3-main-container-3-3" sm={4}></Col>
                                     </Row>
                                     <br></br>
 
                                     <Row>
-                                        <Col className="M3-main-container-3-1" sm={4}> <h6> <a href="/coach/playerPerformance">Asitha Muthumala</a> </h6> </Col>
-                                        <Col className="M3-main-container-3-2" sm={4}> <h6>BF-0099</h6> </Col>
+                                        <Col className="M3-main-container-3-1" sm={4}> <h6> <a href="/coach/playerPerformance">Dilan Perera</a> </h6> </Col>
+                                        <Col className="M3-main-container-3-2" sm={4}> <h6>BF-0069</h6> </Col>
                                         <Col className="M3-main-container-3-3" sm={4}></Col>
                                     </Row>
                                     <br></br>
 
                                     <Row>
-                                        <Col className="M3-main-container-3-1" sm={4}> <h6> <a href="/coach/playerPerformance">Asitha Muthumala</a> </h6> </Col>
-                                        <Col className="M3-main-container-3-2" sm={4}> <h6>BF-0099</h6> </Col>
+                                        <Col className="M3-main-container-3-1" sm={4}> <h6> <a href="/coach/playerPerformance">Kaveera Malinga</a> </h6> </Col>
+                                        <Col className="M3-main-container-3-2" sm={4}> <h6>BF-0075</h6> </Col>
                                         <Col className="M3-main-container-3-3" sm={4}></Col>
                                     </Row>
                                     <br></br>
 
                                     <Row>
-                                        <Col className="M3-main-container-3-1" sm={4}> <h6> <a href="/coach/playerPerformance">Asitha Muthumala</a> </h6> </Col>
-                                        <Col className="M3-main-container-3-2" sm={4}> <h6>BF-0099</h6> </Col>
+                                        <Col className="M3-main-container-3-1" sm={4}> <h6> <a href="/coach/playerPerformance">Lasith Malinga</a> </h6> </Col>
+                                        <Col className="M3-main-container-3-2" sm={4}> <h6>BF-0074</h6> </Col>
                                         <Col className="M3-main-container-3-3" sm={4}></Col>
                                     </Row>
                                     <br></br>
 
                                     <Row>
-                                        <Col className="M3-main-container-3-1" sm={4}> <h6> <a href="/coach/playerPerformance">Asitha Muthumala</a> </h6> </Col>
-                                        <Col className="M3-main-container-3-2" sm={4}> <h6>BF-0099</h6> </Col>
+                                        <Col className="M3-main-container-3-1" sm={4}> <h6> <a href="/coach/playerPerformance">Kasun Gunawardhana</a> </h6> </Col>
+                                        <Col className="M3-main-container-3-2" sm={4}> <h6>BF-0075</h6> </Col>
                                         <Col className="M3-main-container-3-3" sm={4}></Col>
                                     </Row>
                                     <br></br>

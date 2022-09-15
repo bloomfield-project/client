@@ -73,7 +73,7 @@ function LoginN({ setLogin }){
                 history('/player/Dashboard',{state: data.data})
             }
             else if(data.data.role=='couch'){
-                history('/couch/profile',{state: data.data})
+                history('/coach/profile',{state: data.data})
             }
             else if(data.data.role=='admin'){
                 history('/admin/profile',{state: data.data})
