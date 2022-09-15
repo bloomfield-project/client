@@ -11,12 +11,12 @@ import profpic from "../../../component/header/profpic.jfif";
 
 const Axios = require("axios").default;
 
-async function getData() {
-  const axios = require("axios").default;
-  let res = await axios.get("/api/user/players");
-  let result = res.data.data;
-  console.log(result[1].email);
-}
+// async function getData() {
+//   const axios = require("axios").default;
+//   let res = await axios.get("/api/user/players");
+//   let result = res.data.data;
+//   console.log(result[1].email);
+// }
 
 let dataArray = [];
 
@@ -64,7 +64,7 @@ function Players() {
       
         {
           id: "BP-" + item.user_id ,
-          name: item.name,
+          name: (item.name).replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase()),
           contact: item.contact,
           email: item.email,
           btn: (

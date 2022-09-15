@@ -1,9 +1,4 @@
-import React, { useState } from "react";
-// import styled from "styled-components";
-
-// import Container from "react-bootstrap/Container";
-// import Row from "react-bootstrap/Row";
-// import Col from "react-bootstrap/Col";
+import React, { useState, useEffect, ChangeEvent, FormEvent } from "react";
 import Header from "../../../component/header/Header";
 import Navbar from "../../../component/NavigationBar/Navbar";
 import Tables from "../../../component/Table/Table";
@@ -11,103 +6,77 @@ import Button from "react-bootstrap/Button";
 import "../../Home.css";
 import SearchTable from "../../../component/Search/SearchTable";
 import profpic from "../../../component/header/profpic.jfif";
+import Modal from "react-bootstrap/Modal";
+import SampleForm from "../../../component/Form/SampleForm";
+import ResetSubmit from "../../../component/Form/ResetSubmit";
+// const { genSaltSync, hashSync } = require("bcrypt");
+import {useDispatch,useSelector} from 'react-redux'
 
-const List = [
-  { id: 1, name: "John Doe", Age: 27 },
-  { id: 1, name: "John Doe", Age: 27 },
-  { id: 1, name: "John Doe", Age: <Button variant="secondary">View</Button> },
-];
+
+const Axios = require("axios").default;
 
 // const colNames = ["id", "Name", "Age"];
 
 // const tableStyle = 'striped bordered hover size="sm" ';
 
-const data = [
-  {
-    id: "1101",
-    img: <img className="row-image" src={profpic} alt=""></img>,
-    name: "lamesh iroshan",
-    ammount: '5000',
-    btn: <Button variant="secondary">View</Button>,
-  },
-
-  {
-    id: "1102",
-    img: <img className="row-image" src={profpic} alt=""></img>,
-    name: "Ramesh nimnath",
-    ammount: '5000',
-    btn: <Button variant="secondary">View</Button>,
-  },
-  { img:<img className="row-image" src={profpic} alt=""></img> ,name: "Nimesh dilshan",ammount: '5000', btn:<Button variant="secondary">View</Button>},
-  {id:'1103', img:<img className="row-image" src={profpic} alt=""></img> ,name: "Saaru wijesinghe",ammount: '5000', btn:<Button variant="secondary">View</Button>},
-  {id:'1105', img:<img className="row-image" src={profpic} alt=""></img> ,name: "Ashan grove", ammount: '5000', btn:<Button variant="secondary">View</Button>},
-
-];
-
+let paid = [];
+let unpaid = [];
+let amount;
+var user_role;
+let obj;
 // console.log(data[0]);
+
+let validation;
+
 const columns = [
-  {
-    title: "Payment ID",
-    field:'id',
-    
-    // headerStyle: {
-    //   backgroundColor: '#039be5',
-    // }
-  },
   {
     title: "Player",
     field: "img",
   },
   {
-    title:'', field:'name',
+    title: "",
+    field: "name",
   },
   {
     title: "Ammount",
     field: "ammount",
     cellStyle: {
-      color: 'rgba(41, 149, 65, 1)'
+      color: "rgba(41, 149, 65, 1)",
     },
   },
   {
-    title: "",
-    field: "btn",
+    title: "Date",
+    field: "date",
   },
-];
-
-const data_1 = [
-  {
-    img: <img className="row-image" src={profpic} alt=""></img>,
-    name: "lamesh iroshan",
-    ammount: '-5000',
-    btn: <Button variant="secondary">Pay</Button>,
-  },
-
-  {
-    img: <img className="row-image" src={profpic} alt=""></img>,
-    name: "Ramesh nimnath",
-    ammount: '-5000',
-    btn: <Button variant="secondary">Pay</Button>,
-  },
-  { img:<img className="row-image" src={profpic} alt=""></img> ,name: "Nimesh dilshan",ammount: '-5000', btn:<Button variant="secondary">Pay</Button>},
-  { img:<img className="row-image" src={profpic} alt=""></img> ,name: "Saaru wijesinghe",ammount: '-5000', btn:<Button variant="secondary">Pay</Button>},
-  { img:<img className="row-image" src={profpic} alt=""></img> ,name: "Ashan grove", ammount: '-5000', btn:<Button variant="secondary">Pay</Button>},
-
 ];
 
 // console.log(data[0]);
+let array1 = [
+  {
+    title: "",
+    for: "password",
+    type: "text",
+    name: "password",
+    placeholder: "Password",
+    id: "password",
+    required: true,
+  },
+];
+
 const columns_1 = [
   {
     title: "Player",
     field: "img",
   },
   {
-    title:'', field:'name',
+    title: "",
+    field: "name",
   },
   {
     title: "Ammount",
     field: "ammount",
     cellStyle: {
-      color: 'rgba(149, 41, 41, 1)'
+      color: "rgba(149, 41, 41, 1)",
     },
   },
   {
@@ -117,21 +86,201 @@ const columns_1 = [
 ];
 
 function Membership() {
+  const [tabNumber, setTabNumber] = useState(1);
+  const [GetPaid, setPost] = useState(null);
+  const [GetUnpaid, setUnpaid] = useState(null);
 
-  const[tabNumber, setTabNumber]  = useState(1);
+  const [show, setShow] = useState(false);
+  const [u_id, setName] = useState(null);
 
-  const selectTab_1 = ()=>{
+  const [password, setPassword] = useState("");
+
+  const [compRes, setRes] = React.useState("");
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  
+  // const dispatch = useDispatch()
+  const loginData= useSelector(state => state.auth.data)
+  // console.log(loginData.data.nic);
+  // console.log("user id ::::::: " , loginData.data);
+  
+  
+  
+  
+  // console.log(mdata, "  mdata")
+  // password getting part
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log("Form was submitted!");
+    // setPassword(event.target.value);
+    console.log(password);
+
+    let mdata = {
+      nic : loginData.data.nic,
+      password: password,
+    }
+
+    passCompare(mdata);
+    alert(compRes.success);
+
+    if(compRes.success === 1){
+      console.log("PAsswords are mathched");
+    }
+  };
+
+  const handlePasswordChange = (event) => {
+    event.preventDefault();
+    setPassword(event.target.value);
+  };
+
+
+  function passCompare(mdata) {
+    Axios.post("http://localhost:3001/api/manager/getPassword", mdata)
+    .then((res) => {return setRes(res.data)})
+    .catch((err) => console.log("error is arized", err));
+  }
+
+  if(compRes) console.log("password from back end : : " , compRes);
+
+  const doPayment = (event) => {
+    // event.preventDefault();
+    setName(event.target.value);
+    // if (name) {
+    console.log("name from button : " + u_id);
+    handleShow();
+    // }
+  };
+
+
+  React.useEffect(() => {
+    Axios.get("http://localhost:3001/api/manager/payment/paid").then((res) => {
+      setPost(res.data.data);
+      // console.log(res.data.data);
+    });
+  }, []);
+
+  React.useEffect(() => {
+    Axios.get("http://localhost:3001/api/manager/payment/unpaid").then(
+      (res) => {
+        setUnpaid(res.data.data);
+        // console.log(res.data.data);
+      }
+    );
+  }, []);
+
+  if (!GetUnpaid) return null;
+
+  if (!GetPaid) return null;
+
+  // console.log(GetPaid);
+
+  GetPaid.map((item, i) => {
+    amount = item.total_amount;
+    paid[i] = {
+      img: <img className="row-image" src={profpic} alt=""></img>,
+      name: item.name.replace(/(^\w{1})|(\s+\w{1})/g, (letter) =>
+        letter.toUpperCase()
+      ),
+      ammount: item.total_amount,
+      date: item.date,
+    };
+  });
+
+  // console.log("Get unpaid : ", GetUnpaid);
+
+  unpaid.length = 0;
+  GetUnpaid.map((items, i) => {
+    user_role = items.role.toUpperCase();
+    // console.log(user_role);
+    if (user_role === "PLAYER") {
+      obj = {
+        id: items.user_id,
+        img: <img className="row-image" src={profpic} alt=""></img>,
+        name: items.name.replace(/(^\w{1})|(\s+\w{1})/g, (letter) =>
+          letter.toUpperCase()
+        ),
+        ammount: amount + items.role,
+        btn: (
+          <Button
+            key={i}
+            variant="secondary"
+            value={items.user_id}
+            onClick={doPayment}
+          >
+            Pay {items.user_id}
+            {/* <input type="hidden" id="custId" name="custId" value="3487"></input> */}
+          </Button>
+        ),
+      };
+      unpaid.push(obj);
+      // obj=null;
+    }
+  });
+
+  // console.log("unpaid : ", unpaid);
+  const uniqueIds = [];
+
+  const unique = unpaid.filter((element) => {
+    const isDuplicate = uniqueIds.includes(element.id);
+
+    if (!isDuplicate) {
+      uniqueIds.push(element.id);
+
+      return true;
+    }
+
+    return false;
+  });
+
+  // console.log("uniq : ", unique);
+
+  const selectTab_1 = () => {
     setTabNumber(1);
-    // console.log(tabNumber + "selectTab 1");
-  }
-  const selectTab_2 = ()=>{
+  };
+  const selectTab_2 = () => {
     setTabNumber(2);
-    // console.log(tabNumber + "selectTab 2");
-
-  }
+  };
 
   return (
     <>
+      {/* Pop up modal for enter manager password for confirm payment */}
+      <Modal
+        show={show}
+        onHide={handleClose}
+        backdrop="static"
+        keyboard={false}
+        centered
+      >
+        <Modal.Header
+          closeButton
+          style={{ backgroundColor: "white", border: "none" }}
+        >
+          <Modal.Title> </Modal.Title>
+        </Modal.Header>
+        <Modal.Body
+          style={{
+            backgroundColor: "white",
+            height: "fit-content",
+            padding: "0",
+          }}
+        >
+          <form onSubmit={handleSubmit} className="form-group mb-3" >
+            <input
+              type="password"
+              placeholder="Enter password"
+              onChange={handlePasswordChange}
+              value={password}
+              className="form-control w-76 bg-white text-dark mx-auto"
+              style={{marginLeft:"5px" , width:"90%"}}
+            />
+            <ResetSubmit />
+          </form>
+        </Modal.Body>
+      </Modal>
+      {/* Pop up modal for enter manager password for confirm payment */}
+
       <div className="page-container-1">
         <div className="header-container">
           <Header></Header>
@@ -146,10 +295,16 @@ function Membership() {
               <h1>Annual Membership</h1>
             </div>
             <div className="tabs">
-
               <div className="tabs-left">
-                <h5 className= {tabNumber === 1 ? "tab-active" : "tab" } > <a  onClick={()=>selectTab_1(1)}> Paid</a> {tabNumber === 1 ? <hr></hr> : ""}</h5>
-                <h5 className= {tabNumber === 2 ? "tab-active" : "tab" } ><a  onClick={()=>selectTab_2(2)} > Unpaied</a> {tabNumber === 2 ? <hr></hr> : ""} </h5>
+                <h5 className={tabNumber === 1 ? "tab-active" : "tab"}>
+                  {" "}
+                  <a onClick={() => selectTab_1(1)}> Paid</a>{" "}
+                  {tabNumber === 1 ? <hr></hr> : ""}
+                </h5>
+                <h5 className={tabNumber === 2 ? "tab-active" : "tab"}>
+                  <a onClick={() => selectTab_2(2)}> Unpaied</a>{" "}
+                  {tabNumber === 2 ? <hr></hr> : ""}{" "}
+                </h5>
               </div>
 
               {/* <div className="tabs-right">
@@ -159,47 +314,32 @@ function Membership() {
 
             <hr></hr>
             <div className="table-box-1">
-                <div className="tablee"> 
+              <div className="tablee">
                 <SearchTable
-                t_title={""}
-                data={tabNumber === 1 ? data : data_1}
-                columns={tabNumber === 1 ? columns : columns_1}
-                searching={true}
-                sort={false}
-                filter={false}
-                paging={true}
-                headerC={"#4a4a4a"}
-                headerH={"40px"}
-                headerFC={'white'}
-                headerFS={'1.2rem'}
-                headerFW={'500'}
-                // height: 40px
-    //             font-size: 1.2rem;
-    // font-weight: 500;
-              />
-                </div>
-              
+                  t_title={""}
+                  data={tabNumber === 1 ? paid : unique}
+                  columns={tabNumber === 1 ? columns : columns_1}
+                  searching={true}
+                  sort={false}
+                  filter={false}
+                  paging={true}
+                  headerC={"#4a4a4a"}
+                  headerH={"40px"}
+                  headerFC={"white"}
+                  headerFS={"1.2rem"}
+                  headerFW={"500"}
+                  // height: 40px
+                  //             font-size: 1.2rem;
+                  // font-weight: 500;
+                />
+              </div>
             </div>
 
             {/* </div> */}
           </div>
         </div>
       </div>
-      {/* <Container className="page-container-1">
-        <Row className="header-container">
-          <Col >
-            <Header />
-          </Col>
-        </Row>
-        <Row className="body-container-1">
-          <Col md="auto">
-            <Navbar/>
-          </Col>
-          <Col md="auto">
-            <Tables list={List} colNames={colNames} />
-          </Col>
-        </Row>
-      </Container> */}
+     
     </>
   );
 }

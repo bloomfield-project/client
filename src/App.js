@@ -257,7 +257,7 @@ function App() {
           <Route path="/admin/Membershipfee" element={<Membershipfee/>}  />
           <Route path="/admin/Employees" element={<Employees/>}  />
           <Route path="/admin/AddEmployee" element={<AddEmployee/>}  />
-          <Route path="/admin/EditEmployee" element={<EditEmployee />}  />
+          <Route path="/admin/EditEmployee/:id" element={<EditEmployee />}  />
           <Route path="/admin/UserView" element={< UpdateDeleteUser/>} />
           <Route path="/admin/Achivements" element={< Achivements />} />
           <Route path="/admin/Accounts" element={< Accounts />} />
