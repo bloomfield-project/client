@@ -25,6 +25,7 @@ let error_email = null;
 let error_nic = null;
 let error_contact = null;
 let success = null;
+
 function PlayerRegistration() {
   const [show, setShow] = useState(false);
 
@@ -34,43 +35,48 @@ function PlayerRegistration() {
   let array1 = [
     {
       title: "Name",
-      for: "last-name",
+      // for: "last-name",
       type: "text",
       name: "name",
       placeholder: "Name",
       id: "name",
+      required: "true",
     },
     {
       title: "E-mail",
-      for: "e-mail",
+      // for: "e-mail",
       type: "email",
       name: "e-mail",
       placeholder: "Email",
       id: "email",
+      required: "true",
     },
     {
       title: "Address",
-      for: "address",
+      // for: "address",
       type: "text",
       name: "address",
       placeholder: "Address",
       id: "address",
+      required: "true",
     },
     {
       title: "NIC",
-      for: "nic",
+      // for: "nic",
       type: "text",
       name: "nic",
       placeholder: "N I C",
       id: "nic",
+      required: "true",
     },
     {
       title: "Contact",
-      for: "contact",
+      // for: "contact",
       type: "text",
       name: "contact",
       placeholder: "Contact",
       id: "contact",
+      required: "true",
     },
   ];
 
@@ -94,10 +100,10 @@ function PlayerRegistration() {
     filetitle: "Profile",
   };
 
+
   const createUser = (event) => {
     event.preventDefault();
-    console.log(event);
-
+    console.log("eevent : : ", event);
 
     let userData = {
       name: event.target[0].value,
@@ -106,6 +112,7 @@ function PlayerRegistration() {
       nic: event.target[3].value,
       contact: event.target[4].value,
       role: event.target[5].value,
+      // date:currentDate,
     };
     // const isValid = await userSchema.isValid(userData);
 
@@ -121,7 +128,7 @@ function PlayerRegistration() {
         error_nic = null;
         success = null;
 
-        if(results.data.validate[3] != null){
+        if (results.data.validate[3] != null) {
           success = results.data.validate[3];
           alert(success);
         }
@@ -141,8 +148,6 @@ function PlayerRegistration() {
           // alert(results.data.validate[2]);
           console.log(error_email);
         }
-
-        
 
         handleShow();
 
@@ -268,7 +273,7 @@ function PlayerRegistration() {
                   {/* <AddMultipleSelections /> */}
 
                   <SelectOption label={"Player Role"} option={option} />
-                  <FileUpload filetitle={"Profile Image"} filefor={"for"} />
+                  <FileUpload filetitle={"Profile Image"}  />
                   <ResetSubmit />
                 </form>
               </div>

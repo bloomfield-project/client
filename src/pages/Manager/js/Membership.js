@@ -1,4 +1,4 @@
-import React, { useState, useEffect, ChangeEvent, FormEvent } from "react";
+import React, { useState, useEffect, ChangeEvent, FormEvent,useRef } from "react";
 import Header from "../../../component/header/Header";
 import Navbar from "../../../component/NavigationBar/Navbar";
 import Tables from "../../../component/Table/Table";
@@ -10,8 +10,7 @@ import Modal from "react-bootstrap/Modal";
 import SampleForm from "../../../component/Form/SampleForm";
 import ResetSubmit from "../../../component/Form/ResetSubmit";
 // const { genSaltSync, hashSync } = require("bcrypt");
-import {useDispatch,useSelector} from 'react-redux'
-
+import { useDispatch, useSelector } from "react-redux";
 
 const Axios = require("axios").default;
 
@@ -99,50 +98,45 @@ function Membership() {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  
+
   // const dispatch = useDispatch()
-  const loginData= useSelector(state => state.auth.data)
-  // console.log(loginData.data.nic);
-  // console.log("user id ::::::: " , loginData.data);
-  
-  
-  
-  
-  // console.log(mdata, "  mdata")
-  // password getting part
+  const loginData = useSelector((state) => state.auth.data);
+  const count = useRef(0);
+
+  useEffect(() => {
+    count.current = count.current + 1;
+  });
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    alert("hahvjvjkbbnnn,nkjlk;kl;mlnkbhcfdxdzezezez")
     console.log("Form was submitted!");
-    // setPassword(event.target.value);
+    setPassword(event.target.value);
     console.log(password);
 
     let mdata = {
-      nic : loginData.data.nic,
+      nic: loginData.data.nic,
       password: password,
-    }
+    };
 
     passCompare(mdata);
     alert(compRes.success);
 
-    if(compRes.success === 1){
+    if (compRes.success === 1) {
       console.log("PAsswords are mathched");
     }
-  };
-
-  const handlePasswordChange = (event) => {
-    event.preventDefault();
-    setPassword(event.target.value);
   };
 
 
   function passCompare(mdata) {
     Axios.post("http://localhost:3001/api/manager/getPassword", mdata)
-    .then((res) => {return setRes(res.data)})
-    .catch((err) => console.log("error is arized", err));
+      .then((res) => {
+        return setRes(res.data);
+      })
+      .catch((err) => console.log("error is arized", err));
   }
 
-  if(compRes) console.log("password from back end : : " , compRes);
+  if (compRes) console.log("password from back end : : ", compRes);
 
   const doPayment = (event) => {
     // event.preventDefault();
@@ -152,7 +146,6 @@ function Membership() {
     handleShow();
     // }
   };
-
 
   React.useEffect(() => {
     Axios.get("http://localhost:3001/api/manager/payment/paid").then((res) => {
@@ -266,16 +259,25 @@ function Membership() {
             padding: "0",
           }}
         >
-          <form onSubmit={handleSubmit} className="form-group mb-3" >
+          <h1>Render Count: {count.current}</h1>
+          <form className="form-group mb-3"  onSubmit={handleSubmit}>
             <input
+              onSubmit={handleSubmit}
               type="password"
               placeholder="Enter password"
-              onChange={handlePasswordChange}
+              onChange={(event)=>{setPassword(event.target.value)}}
               value={password}
               className="form-control w-76 bg-white text-dark mx-auto"
-              style={{marginLeft:"5px" , width:"90%"}}
-            />
-            <ResetSubmit />
+              style={{ marginLeft: "5px", width: "90%" }}
+              />
+            <div className="d-grid gap-2 d-md-flex justify-content-md-end p-3 mb-2">
+              <button type="reset" className="btn btn-secondary">
+                Reset
+              </button>
+              <button type="submit" className="btn btn-success">
+                Add
+              </button>
+            </div>
           </form>
         </Modal.Body>
       </Modal>
@@ -293,6 +295,7 @@ function Membership() {
             {/* <div > */}
             <div className="title">
               <h1>Annual Membership</h1>
+              <h1>Render Count: {count.current}</h1>
             </div>
             <div className="tabs">
               <div className="tabs-left">
@@ -339,7 +342,6 @@ function Membership() {
           </div>
         </div>
       </div>
-     
     </>
   );
 }
