@@ -10,10 +10,10 @@ function FileUpload( {filetitle= "title", filefor= "for" }) {
   };
   return (
     <>
-      <label for={filefor} className="d-flex justify-content-start w-100 p-3">
+      <label  className="d-flex justify-content-start w-100 p-3">
         {filetitle}
       </label>
-      <div class="form-group file-upload-wrapper w-100 p-3 mb-2">
+      <div className="form-group file-upload-wrapper w-100 p-3 mb-2">
         <FileUploader
           multiple={true}
           handleChange={handleChange}
