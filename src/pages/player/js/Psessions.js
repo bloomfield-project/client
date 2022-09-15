@@ -120,6 +120,7 @@ function Session() {
                                 <div className="col-51">Session</div>
                                 <div className="col-51">Date</div>
                                 <div className="col-51">Time</div>
+                                <div className="col-51">Coach</div>
                                 <div className="col-51"></div>
                             </div>
 
@@ -130,6 +131,7 @@ function Session() {
                                 <div className="col-51">{item.type}</div>
                                 <div className="col-51">{item.date}</div>
                                 <div className="col-51">{item.time}</div>
+                                <div className="col-51">{item.name}</div>
                                 <div className="col-51"><button value={item.session_id} onClick={e => viewSession(e.target.value)}>View</button></div>
                           
 
