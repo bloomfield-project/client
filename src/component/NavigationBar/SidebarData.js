@@ -239,12 +239,12 @@ export const SidebarDataCoach = [
         icon:<AiIcons.AiFillHome />,
         cName:'nav-text'
     },
-    {
-        title:'Calender',
-        path:'',
-        icon:<AiIcons.AiFillHome />,
-        cName:'nav-text'
-    },
+    // {
+    //     title:'Calender',
+    //     path:'',
+    //     icon:<AiIcons.AiFillHome />,
+    //     cName:'nav-text'
+    // },
     {
         title:'Logout',
         path:'/',

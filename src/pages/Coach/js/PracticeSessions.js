@@ -6,7 +6,6 @@ import Button from "react-bootstrap/Button";
 import "../../Home.css";
 import SearchTable from "../../../component/Search/SearchTable";
 import { Link } from "react-router-dom";
-// import Button from "react-bootstrap/Button";
 
 
 const data_1 = [
@@ -185,6 +184,7 @@ function Session() {
   }
 
   return (
+
     <>
       <div className="page-container-1">
         <div className="header-container">
