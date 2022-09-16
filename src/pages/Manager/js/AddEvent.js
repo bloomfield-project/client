@@ -6,11 +6,19 @@ import SampleForm from "../../../component/Form/SampleForm";
 import { Link } from "react-router-dom";
 import ResetSubmit from "../../../component/Form/ResetSubmit";
 import Navbar from "../../../component/NavigationBar/Navbar";
+import Modal from "react-bootstrap/Modal";
 
 const axios = require("axios").default;
 
-
 function AddEvent() {
+  const [errorMsg, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  var edate;
   var date = new Date();
   date.setDate(date.getDate() + 7);
 
@@ -30,7 +38,6 @@ function AddEvent() {
 
   // alert(String(day).length)
   // alert(currentDate)
-
 
   let array1 = [
     {
@@ -71,7 +78,7 @@ function AddEvent() {
 
   const createEvent = (event) => {
     event.preventDefault();
-    console.log("inside createEvent")
+    console.log("inside createEvent");
     console.log(event);
     console.log("inside event function");
 
@@ -80,19 +87,85 @@ function AddEvent() {
       date: event.target[1].value,
       time: event.target[2].value,
       description: event.target[3].value,
-      
     };
 
     console.log(eventData);
 
-    axios .post("/api/manager/addevent" , eventData)
-    .then((results)=> {
-      console.log(results)
-    }).catch((err)=> console.log("error : ", err))
+    axios
+      .post("/api/manager/addevent", eventData)
+      .then((results) => {
+        setError(results.data.message);
+        setSuccess(results.data.success);
+        console.log(errorMsg);
+
+        if (errorMsg) {
+          edate = errorMsg.event_name;
+          alert(edate);
+          handleShow();
+        }
+      })
+      .catch((err) => console.log("error : ", err));
   };
 
   return (
     <>
+      <Modal
+        show={show}
+        onHide={handleClose}
+        backdrop="static"
+        keyboard={false}
+        centered
+      >
+        <Modal.Header
+          closeButton
+          style={{ backgroundColor: "white", border: "none" }}
+        >
+          <Modal.Title> </Modal.Title>
+        </Modal.Header>
+        <Modal.Body
+          style={{
+            backgroundColor: "white",
+            height: "fit-content",
+            padding: "0",
+          }}
+        >
+          {success === 0 ? (
+            <p
+              style={{
+                color: "#f0677b",
+                textAlign: "center",
+                fontSize: "large",
+                backgroundColor: "white",
+                margin: "0",
+              }}
+            >
+              {errorMsg}
+              {/* {edate} */}
+            </p>
+          ) : (
+            <p
+              style={{
+                color: "#626d80",
+                textAlign: "center",
+                fontSize: "large",
+                backgroundColor: "white",
+                margin: "0",
+              }}
+            >
+              {errorMsg}
+              {/* {edate} */}
+            </p>
+          )}
+
+          {/* <h1>Render Count: {count.current}</h1> */}
+        </Modal.Body>
+        <Modal.Footer style={{ border: "none" }}>
+          <button type="button" class="btn btn-success" onClick={handleClose}>
+            OK
+          </button>
+        </Modal.Footer>
+      </Modal>
+
       <div className="page-container-1">
         <div className="header-container">
           <Header></Header>
