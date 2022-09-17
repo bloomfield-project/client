@@ -80,7 +80,7 @@ function Session() {
           date: moment.utc(item.date).format('YYYY-MM-DD'),
           time: item.time,
           btn: (
-            <Link to={"/manager/EditCouncellingSession"}>
+            <Link to={"/manager/EditCouncellingSession/"+ item.c_session_id}>
               <Button variant="secondary">View</Button>
             </Link>
           ),
@@ -98,7 +98,7 @@ function Session() {
          date: moment.utc(item.date).format('YYYY-MM-DD'),
          time: item.time,
          btn: (
-           <Link to={"/manager/EditCouncellingSession"}>
+           <Link to={"/manager/EditEvent/"+ item.event_id}>
              <Button variant="secondary">View</Button>
            </Link>
          ),

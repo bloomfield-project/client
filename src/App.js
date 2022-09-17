@@ -198,9 +198,9 @@ function App() {
           <Route path="/manager/PlayerRegistration" element={<PlayerRegistration />} />
           <Route path="/manager/EditPlayerDetails/:id" element={<EditPlayerDetails />} />/
           <Route path="/manager/AddCouncellingSession" element={<AddCouncellingSession />} />
-          <Route path="/manager/EditCouncellingSession" element={<EditCouncellingSession />} />
+          <Route path="/manager/EditCouncellingSession/:id" element={<EditCouncellingSession />} />
           <Route path="/manager/AddEvent" element={<AddEvent />} />
-          <Route path="/manager/EditEvent" element={<EditEvent />} />
+          <Route path="/manager/EditEvent/:id" element={<EditEvent />} />
           <Route path="/manager/Achivement" element = {<Achivement/>} />
           <Route path="/card" element = {<SampleCard/>} />
           <Route path="/manager/AddAchivement" element={<AddAchivement/>}  />
