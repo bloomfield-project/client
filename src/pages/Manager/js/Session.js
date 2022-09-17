@@ -5,65 +5,14 @@ import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import "../../Home.css";
 import SearchTable from "../../../component/Search/SearchTable";
+import moment from 'moment';
 
-const data = [
-  {
-    id: "1101",
-    // img: <img className="row-image" src={profpic} alt=""></img>,
-    event: "Crismas party",
-    date: "2022-05-11",
-    time: "09:00 am",
-    btn: (
-      <Link to={"/manager/EditEvent"}>
-        <Button variant="secondary">View</Button>
-      </Link>
-    ),
-  },
+const Axios = require("axios").default;
 
-  {
-    id: "1101",
-    // img: <img className="row-image" src={profpic} alt=""></img>,
-    event: "Crismas party",
-    date: "2022-05-11",
-    time: "09:00 am",
-    btn: (
-      <Link to={"/manager/EditEvent"}>
-        <Button variant="secondary">View</Button>
-      </Link>
-    ),
-  },
-  {
-    id: "1101",
-    // img: <img className="row-image" src={profpic} alt=""></img>,
-    event: "Crismas party",
-    date: "2022-05-11",
-    time: "09:00 am",
-    btn: (
-      <Link to={"/manager/EditEvent"}>
-        <Button variant="secondary">View</Button>
-      </Link>
-    ),
-  },
-  {
-    id: "1101",
-    // img: <img className="row-image" src={profpic} alt=""></img>,
-    event: "Crismas party",
-    date: "2022-05-11",
-    time: "09:00 am",
-    btn: (
-      <Link to={"/manager/EditEvent"}>
-        <Button variant="secondary">View</Button>
-      </Link>
-    ),
-  },
-];
+const Upcomming_event = [];
 
 // console.log(data[0]);
 const columns = [
-  {
-    title: "ID",
-    field: "id",
-  },
   {
     title: "Event",
     field: "event",
@@ -82,57 +31,7 @@ const columns = [
   },
 ];
 
-const data_1 = [
-  {
-    // id: "1101",
-    // img: <img className="row-image" src={profpic} alt=""></img>,
-    mentor: "Dr.chaminda wimukthi",
-    date: "2022-05-11",
-    time: "09:00 am",
-    btn: (
-      <Link to={"/manager/EditCouncellingSession"}>
-        <Button variant="secondary">View</Button>
-      </Link>
-    ),
-  },
-
-  {
-    // id: "1101",
-    // img: <img className="row-image" src={profpic} alt=""></img>,
-    mentor: "Dr.chaminda wimukthi",
-    date: "2022-05-11",
-    time: "09:00 am",
-    btn: (
-      <Link to={"/manager/EditCouncellingSession"}>
-        <Button variant="secondary">View</Button>
-      </Link>
-    ),
-  },
-  {
-    // id: "1101",
-    // img: <img className="row-image" src={profpic} alt=""></img>,
-    mentor: "Dr.chaminda wimukthi",
-    date: "2022-05-11",
-    time: "09:00 am",
-    btn: (
-      <Link to={"/manager/EditCouncellingSession"}>
-        <Button variant="secondary">View</Button>
-      </Link>
-    ),
-  },
-  {
-    // id: "1101",
-    // img: <img className="row-image" src={profpic} alt=""></img>,
-    mentor: "Dr.chaminda wimukthi",
-    date: "2022-05-11",
-    time: "09:00 am",
-    btn: (
-      <Link to={"/manager/EditCouncellingSession"}>
-        <Button variant="secondary">View</Button>
-      </Link>
-    ),
-  },
-];
+const Upcomming_session = [];
 
 // console.log(data[0]);
 const columns_1 = [
@@ -156,7 +55,57 @@ const columns_1 = [
 
 function Session() {
   const [tabNumber, setTabNumber] = useState(1);
+  const [UpSession, setUpSession] = React.useState("");
+  const [UpEvent, setUpEvent] = React.useState("");
 
+  React.useEffect(() => {
+    Axios.get("http://localhost:3001/api/manager/getUpcommingSession").then((response) => {
+      setUpSession(response.data);
+    });
+  }, []);
+
+  React.useEffect(() => {
+    Axios.get("http://localhost:3001/api/manager/getUpcommingEvent").then((response) => {
+      setUpEvent(response.data);
+    });
+  }, []);
+
+  if (!UpSession) return null;
+
+  {UpSession.data.map((item, i) => {
+     Upcomming_session[i] = 
+      
+        {
+          mentor: (item.mentor).replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase()) ,
+          date: moment.utc(item.date).format('YYYY-MM-DD'),
+          time: item.time,
+          btn: (
+            <Link to={"/manager/EditCouncellingSession"}>
+              <Button variant="secondary">View</Button>
+            </Link>
+          ),
+        }
+        
+   
+  })}
+
+  if(!UpEvent) return null;
+  {UpEvent.data.map((item, i) => {
+    Upcomming_event[i] = 
+     
+       {
+         event: (item.event_name).replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase()) ,
+         date: moment.utc(item.date).format('YYYY-MM-DD'),
+         time: item.time,
+         btn: (
+           <Link to={"/manager/EditCouncellingSession"}>
+             <Button variant="secondary">View</Button>
+           </Link>
+         ),
+       }
+       
+  
+ })}
   const selectTab_1 = () => {
     setTabNumber(1);
     // console.log(tabNumber + "selectTab 1");
@@ -210,8 +159,8 @@ function Session() {
             <div className="table-box-1">
               <div className="tablee">
                 <SearchTable
-                  t_title={""}
-                  data={tabNumber === 2 ? data : data_1}
+                  t_title={tabNumber === 2 ? "Upcomming Events" : "Upcomming Session"}
+                  data={tabNumber === 2 ? Upcomming_event : Upcomming_session}
                   columns={tabNumber === 2 ? columns : columns_1}
                   searching={true}
                   sort={false}
