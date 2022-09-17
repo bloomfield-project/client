@@ -2,37 +2,56 @@ import React from "react";
 import Header from "../../../component/header/Header";
 // import "../css/PlayerRegistration.css";
 import { IoChevronBackCircleOutline } from "react-icons/io5";
-// import SampleForm from "../../../component/Form/SampleForm";
-import { Link } from "react-router-dom";
+
 import EditDetails from "../../../component/EditDetail/EditDetails";
 import Navbar from "../../../component/NavigationBar/Navbar";
+import { Link, useParams, useLocation } from "react-router-dom";
+
+import moment from 'moment';
+
+
+const Axios = require("axios").default;
 
 function EditCouncellingSession() {
+  const [event, setevent] = React.useState("");
+
+  const { id } = useParams();
+  const userData = {
+    id:id,
+  };
+
+  React.useEffect(() => {
+    Axios.post("http://localhost:3001/api/manager/getSession", userData).then((response) => {
+      console.log(response)
+      setevent(response.data);
+    }).catch((err) => console.log(err));
+  }, []);
+
+  if(!event) return null;
+
   const array = [
     {
-      lable: "Name",
-      data: "kasun kalhara",
+      lable: "Title",
+      data: (event.data[0].title).replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase()),
     },
     {
-      lable: "Age",
-      data: "25",
+      lable: "Date",
+      data: moment.utc(event.data[0].date).format('YYYY-MM-DD'),
     },
     {
-      lable: "Role",
-      data: "supervisore",
+      lable: "Time",
+      data: (event.data[0].time),
     },
     {
-      lable: "Name",
-      data: "kasun kalhara",
+      lable: "Mentor",
+      data: (event.data[0].mentor).replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase()),
     },
+    
     {
-      lable: "Age",
-      data: "25",
+      lable: "Place",
+      data: (event.data[0].place).replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase()),
     },
-    {
-      lable: "Role",
-      data: "supervisore",
-    },
+    
   ];
   return (
     <>
