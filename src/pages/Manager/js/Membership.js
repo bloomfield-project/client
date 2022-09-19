@@ -23,7 +23,25 @@ let unpaid = [];
 let amount;
 var user_role;
 let obj;
+let u_id;
+let compRes;
 // console.log(data[0]);
+
+var date = new Date();
+
+
+let day = date.getDate();
+let month = date.getMonth() + 1;
+let year = date.getFullYear();
+
+var currentDate;
+if (String(day).length == 1) {
+  currentDate = `${year}-${month}-0${day}`;
+}
+if (String(month).length == 1) {
+  currentDate = `${year}-0${month}-${day}`;
+}
+
 
 let validation;
 
@@ -90,11 +108,9 @@ function Membership() {
   const [GetUnpaid, setUnpaid] = useState(null);
 
   const [show, setShow] = useState(false);
-  const [u_id, setName] = useState(null);
+  
 
-  const [password, setPassword] = useState("");
-
-  const [compRes, setRes] = React.useState("");
+  // const [compRes, setRes] = React.useState("");
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -109,40 +125,72 @@ function Membership() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    alert("hahvjvjkbbnnn,nkjlk;kl;mlnkbhcfdxdzezezez")
-    console.log("Form was submitted!");
-    setPassword(event.target.value);
-    console.log(password);
-
+    console.log(event)
+    //alert("hahvjvjkbbnnn,nkjlk;kl;mlnkbhcfdxdzezezez")
+    console.log("Form was submitted! : " ,event.target[0].value);
     let mdata = {
       nic: loginData.data.nic,
-      password: password,
+      password: event.target[0].value,
     };
 
     passCompare(mdata);
-    alert(compRes.success);
+    console.log("succes ", compRes);
 
-    if (compRes.success === 1) {
-      console.log("PAsswords are mathched");
-    }
+    
   };
 
 
   function passCompare(mdata) {
     Axios.post("http://localhost:3001/api/manager/getPassword", mdata)
       .then((res) => {
-        return setRes(res.data);
+        compRes = res.data.comp;
+        console.log(res.data.comp)
+        if (compRes) {
+
+          let data = {
+            date: currentDate,
+            total_amount: amount,
+            user_id:u_id,
+          }
+    
+          console.log("data : ",data)
+          // console.log("Passwords are mathched");
+          Axios.post("http://localhost:3001/api/manager/addMembership", data)
+          .then((res) => {
+            // console.log(setRes(res.data));
+            handleClose()
+            window.location.reload()
+    
+          })
+          .catch((err) => console.log("error is arized", err));
+      
+        }
+        else{
+          alert("Enter Correct Password !")
+        }
       })
       .catch((err) => console.log("error is arized", err));
   }
 
-  if (compRes) console.log("password from back end : : ", compRes);
+  // if (compRes) console.log("password from back end : : ", compRes.message);
+
+  ///need to go inside if condition
+
+
+
+ 
+   
+
+
+
+  /////
 
   const doPayment = (event) => {
-    // event.preventDefault();
-    setName(event.target.value);
+    event.preventDefault();
+    console.log(event)
+    u_id = event.target.attributes[1].nodeValue;
     // if (name) {
-    console.log("name from button : " + u_id);
+    console.log("name from button : " + event.target.attributes[1].nodeValue + u_id);
     handleShow();
     // }
   };
@@ -194,15 +242,16 @@ function Membership() {
         name: items.name.replace(/(^\w{1})|(\s+\w{1})/g, (letter) =>
           letter.toUpperCase()
         ),
-        ammount: amount + items.role,
+        ammount: amount,
         btn: (
           <Button
             key={i}
+            type= "submit"
             variant="secondary"
             value={items.user_id}
             onClick={doPayment}
           >
-            Pay {items.user_id}
+            Pay
             {/* <input type="hidden" id="custId" name="custId" value="3487"></input> */}
           </Button>
         ),
@@ -250,7 +299,7 @@ function Membership() {
           closeButton
           style={{ backgroundColor: "white", border: "none" }}
         >
-          <Modal.Title> </Modal.Title>
+          <Modal.Title> Enter Password For Confirm </Modal.Title>
         </Modal.Header>
         <Modal.Body
           style={{
@@ -259,14 +308,11 @@ function Membership() {
             padding: "0",
           }}
         >
-          <h1>Render Count: {count.current}</h1>
+          {/* <h1>Render Count: {count.current}</h1> */}
           <form className="form-group mb-3"  onSubmit={handleSubmit}>
             <input
-              onSubmit={handleSubmit}
               type="password"
               placeholder="Enter password"
-              onChange={(event)=>{setPassword(event.target.value)}}
-              value={password}
               className="form-control w-76 bg-white text-dark mx-auto"
               style={{ marginLeft: "5px", width: "90%" }}
               />
@@ -274,12 +320,15 @@ function Membership() {
               <button type="reset" className="btn btn-secondary">
                 Reset
               </button>
-              <button type="submit" className="btn btn-success">
+              <button type="submit" className="btn btn-success" >
                 Add
               </button>
             </div>
           </form>
         </Modal.Body>
+        <Modal.Footer style={{ backgroundColor: "white", border: "none" }}>
+
+        </Modal.Footer>
       </Modal>
       {/* Pop up modal for enter manager password for confirm payment */}
 
