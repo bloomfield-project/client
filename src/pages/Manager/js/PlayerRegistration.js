@@ -15,21 +15,24 @@ import Modal from "react-bootstrap/Modal";
 
 const axios = require("axios").default;
 
-const userSchema = yup.object().shape({
-  first_name: yup.string().required("Required!"),
-  last_name: yup.string().required(),
-  email: yup.string().email("plese enter correct email").required(),
-});
+// const userSchema = yup.object().shape({
+//   first_name: yup.string().required("Required!"),
+//   last_name: yup.string().required(),
+//   email: yup.string().email("plese enter correct email").required(),
+// });
 
-let error_email = null;
-let error_nic = null;
-let error_contact = null;
+let error_msg = null;
+let error_field=null;
 let success = null;
 
 function PlayerRegistration() {
   const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setShow(false);
+    window.location.reload()
+
+  };
   const handleShow = () => setShow(true);
 
   let array1 = [
@@ -95,10 +98,10 @@ function PlayerRegistration() {
     },
   ];
 
-  const file = {
-    filefor: "for",
-    filetitle: "Profile",
-  };
+  // const file = {
+  //   filefor: "for",
+  //   filetitle: "Profile",
+  // };
 
 
   const createUser = (event) => {
@@ -122,39 +125,21 @@ function PlayerRegistration() {
     axios
       .post("/api/user/", userData)
       .then((results) => {
-        console.log(userData);
-        error_contact = null;
-        error_email = null;
-        error_nic = null;
-        success = null;
-
-        if (results.data.validate[3] != null) {
-          success = results.data.validate[3];
-          alert(success);
+        console.log("user data " ,userData);
+        console.log("results ",results)
+       
+        if(results.data.err){
+          error_field = (results.data.err).split(" ");
+          error_msg  = ` ${error_field[2]} Has Allready Used `;
+          success = null;
         }
-
-        if (results.data.validate[0] != null) {
-          error_contact = results.data.validate[0];
-          console.log(error_contact);
-          // alert(results.data.validate[0]);
-        }
-        if (results.data.validate[1] != null) {
-          // alert(results.data.validate[1]);
-          error_email = results.data.validate[1];
-          console.log(error_email);
-        }
-        if (results.data.validate[2] != null) {
-          error_nic = results.data.validate[2];
-          // alert(results.data.validate[2]);
-          console.log(error_email);
+        else if(!results.data.err){
+          error_msg  = null;
+          success = "Register Successful";
         }
 
         handleShow();
 
-        error_contact = null;
-        error_email = null;
-        error_nic = null;
-        success = null;
       })
       .catch((err) => console.log("error is arized", err));
 
@@ -174,17 +159,18 @@ function PlayerRegistration() {
       >
         <Modal.Header
           closeButton
-          style={{ backgroundColor: "#89f5c1", border: "none" }}
+          style={{ backgroundColor: "white", border: "none" }}
         >
           <Modal.Title> </Modal.Title>
         </Modal.Header>
         <Modal.Body
           style={{
-            backgroundColor: "#03d1a1",
+            backgroundColor: "white",
             height: "fit-content",
             padding: "0",
           }}
         >
+    
           <p
             style={{
               color: "#f0677b",
@@ -194,30 +180,9 @@ function PlayerRegistration() {
               margin: "0",
             }}
           >
-            {error_email}
+            {error_msg}
           </p>
-          <p
-            style={{
-              color: "#f0677b",
-              textAlign: "center",
-              fontSize: "large",
-              backgroundColor: "white",
-              margin: "0",
-            }}
-          >
-            {error_contact}
-          </p>
-          <p
-            style={{
-              color: "#f0677b",
-              textAlign: "center",
-              fontSize: "large",
-              backgroundColor: "white",
-              margin: "0",
-            }}
-          >
-            {error_nic}
-          </p>
+          
           <p
             style={{
               color: "#03d1a1",
@@ -230,7 +195,7 @@ function PlayerRegistration() {
             {success}
           </p>
         </Modal.Body>
-        <Modal.Footer style={{ backgroundColor: "#89f5c1", border: "none" }}>
+        <Modal.Footer style={{ backgroundColor: "white", border: "none" }}>
           {/*<Button variant="secondary" onClick={handleClose}>
             Cancell
   </Button>*/}

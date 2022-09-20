@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import ResetSubmit from "../Form/ResetSubmit";
 import "./EditDetail.css";
 // import Button from "react-bootstrap/Button";
 
@@ -20,32 +21,27 @@ function EditDetails({ arr, backLink = "#", border = true, btn = true }) {
               <div className="edit-lable">
                 <label>{item.lable}</label>
               </div>
-              <div className="edit-edit-detail">
-                <h6>{item.data} </h6>
-                {btn ? (
-                  <button type="submit" className="btn btn-success">
-                    Edit
-                  </button>
-                ) : (
-                  ""
-                )}
+            
+              
+              <div className="d-grid gap-2 d-md-flex justify-content-md-end p-3 mb-2">
+                <input
+                  type={item.type}
+                  name={item.name}
+                  className="form-control"
+                  id={item.id}
+                  placeholder={item.data}
+                  required={item.required}
+                  defaultValue={item.data}
+                />
               </div>
+             
             </>
           );
         })}
-
+        
         {/* repeat stop */}
         <br></br>
-        <div className="edit-edit-detail">
-          <p> </p>
-          {backLink ? (
-            <Link to={backLink} className="btn btn-secondary">
-              Back
-            </Link>
-          ) : (
-            ""
-          )}
-        </div>
+       
       </div>
     </div>
   );
