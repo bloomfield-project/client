@@ -11,25 +11,30 @@ const axios = require("axios").default;
 
 let userData = [];
 
-
 function EditPlayerDetails() {
   const [post, setPost] = useState(null);
-  
+  const [post1, setPost1] = useState(null);
+
   const GetPostData = () => {
-    
     axios
       .post("/api/user/playerSelect", userData)
       .then((results) => {
-        // alert(results.data.res_data.name);
-        // console.log(results.data.res_data.name)
-        // return GetPostData(results.data.res_data);
         setPost(results.data.res_data);
       })
       .catch((err) => console.log(err));
     console.log("Data set eka ", post);
-  }
+    axios
+    .post("/api/manager/playerRole", userData)
+    .then((results) => {
+      console.log("post 1:: ", results.data.data[0])
+      setPost1(results.data.data[0]);
+    })
+    .catch((err)=>console.log("errorrrr : ",err))
+    
+  };
   
-  
+
+
   const { id } = useParams();
   let user = [];
 
@@ -40,40 +45,45 @@ function EditPlayerDetails() {
 
   useEffect(() => {
     GetPostData();
-    console.log("inside use effect")
-  },[]);
+    console.log("inside use effect");
+  }, []);
 
   if (!post) return null;
   // alert(post[0].name)
-  
-  console.log(post[0].name)
+
+  console.log(post[0].name);
+  console.log(post1);
   // const name = post[0].name;
 
   const array = [
     {
       lable: "Name",
-      data:  (post[0].name).toUpperCase(),
-    },
-    {
-      lable: "Role",
-      data: "Bowler",
+      data: post[0].name.replace(/(^\w{1})|(\s+\w{1})/g, (letter) =>
+        letter.toUpperCase()
+      ),
     },
     {
       lable: "E-mail",
       data: post[0].email,
+      btn: "true",
+      type: "email",
     },
     {
       lable: "Contact",
       data: post[0].contact,
+      btn: "true",
     },
     {
       lable: "Address",
       data: post[0].address,
+      btn: "true",
+      type: "text",
     },
   ];
+  
   return (
     <>
-      <div className="page-container-1" >
+      <div className="page-container-1">
         <div className="header-container">
           <Header></Header>
         </div>

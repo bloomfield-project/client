@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 function SampleForm({ arr }) {
-  arr.map((item) => console.log(item));
+  // arr.map((item) => console.log(item));
 
   return (
     <div className="w-100 p-3 bg-white text-dark rounded">
