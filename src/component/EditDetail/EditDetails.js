@@ -29,6 +29,8 @@ function EditDetails({ arr, backLink = "#", border = true, btn = true }) {
                   name={item.name}
                   className="form-control"
                   id={item.id}
+                  min={item.min}
+                  max={item.max}
                   placeholder={item.data}
                   required={item.required}
                   defaultValue={item.data}
