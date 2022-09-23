@@ -6,7 +6,7 @@ import SampleForm from "../../../component/Form/SampleForm";
 import { Link } from "react-router-dom";
 import Navbar from "../../../component/NavigationBar/Navbar";
 import ResetSubmit from "../../../component/Form/ResetSubmit";
-
+import moment from 'moment';
 import Modal from "react-bootstrap/Modal";
 
 import axios from "axios";
@@ -93,7 +93,7 @@ function AddCouncellingSession() {
 
     let formData = {
       title: event.target[0].value,
-      date: event.target[1].value,
+      date: moment.utc(event.target[1].value).format('YYYY-MM-DD'),
       time: event.target[2].value,
       place: event.target[3].value,
       mentor: event.target[4].value,

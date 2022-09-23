@@ -36,6 +36,10 @@ const Upcomming_session = [];
 // console.log(data[0]);
 const columns_1 = [
   {
+    title: "Title",
+    field: "title",
+  },
+  {
     title: "Mentor",
     field: "mentor",
   },
@@ -76,6 +80,7 @@ function Session() {
      Upcomming_session[i] = 
       
         {
+          title: (item.title).replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase()),
           mentor: (item.mentor).replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase()) ,
           date: moment.utc(item.date).format('YYYY-MM-DD'),
           time: item.time,

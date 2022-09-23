@@ -14,7 +14,7 @@ import Modal from "react-bootstrap/Modal";
 
 const Axios = require("axios").default;
 var errorMsg = "";
-  var success = "";
+var success = "";
 
 function EditEvent() {
   const [eventdata, setevent] = useState("");
