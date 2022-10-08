@@ -8,64 +8,10 @@ import Button from "react-bootstrap/Button";
 import "../../Home.css";
 import SearchTable from "../../../component/Search/SearchTable";
 import profpic from "../../../component/header/profpic.jfif";
+const Axios = require("axios").default;
 
-const data = [
-  {
-    id: "1101",
-    img: <img className="row-image" src={profpic} alt=""></img>,
-    name: "lamesh iroshan",
-    btn: (
-      <Link to={"/admin/UserView"}>
-        <Button variant="secondary">View</Button>
-      </Link>
-    ),
-    
-  },
-
-  {
-    id: "1102",
-    img: <img className="row-image" src={profpic} alt=""></img>,
-    name: "Ramesh nimnath",
-    btn: (
-      <Link to={"/admin/UserView"}>
-        <Button variant="secondary">View</Button>
-      </Link>
-    ),
-    
-  },
-  {
-    id: "1104",
-    img: <img className="row-image" src={profpic} alt=""></img>,
-    name: "Nimesh dilshan",
-    btn: (
-      <Link to={"/admin/UserView"}>
-        <Button variant="secondary">View</Button>
-      </Link>
-    ),
-    
-  },
-  {
-    id: "1103",
-    img: <img className="row-image" src={profpic} alt=""></img>,
-    name: "Saaru wijesinghe",
-    btn: (
-      <Link to={"/admin/UserView"}>
-        <Button variant="secondary">View</Button>
-      </Link>
-    ),
-   
-  },
-  {
-    id: "1105",
-    img: <img className="row-image" src={profpic} alt=""></img>,
-    name: "Ashan grove",
-    btn: (
-      <Link to={"/admin/UserView"}>
-        <Button variant="secondary">View</Button>
-      </Link>
-    ),
-    
-  },
+const dataArray = [
+  
 ];
 
 // console.log(data[0]);
@@ -83,6 +29,10 @@ const columns = [
     field: "name",
   },
   {
+    title: "Role",
+    field: "role",
+  },
+  {
     title: "",
     field: "btn",
   },
@@ -90,6 +40,47 @@ const columns = [
 ];
 
 function Employees() {
+
+
+  const [post, setPost] = React.useState(null);
+
+  React.useEffect(() => {
+    Axios.get("http://localhost:3001/api/user/employees").then((response) => {
+      setPost(response.data);
+    });
+  }, []);
+
+  console.log("post data function ", post);
+  
+  if (!post) return null;
+
+  let role ;
+  let id_prefix;
+  {post.data.map((item, i) => {
+    role = (item.role).replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase());
+    
+    if(role == "Coach"){
+      id_prefix = "BC-"
+    }else if(role == "Manager"){
+      id_prefix = "BM-"
+    }
+     dataArray[i] = 
+        {
+          id: id_prefix + item.user_id ,
+          name: (item.name).replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase()),
+          img: <img className="row-image" src={profpic} alt=""></img>,
+          contact: item.contact,
+          email: item.email,
+          role:(item.role).replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase()),
+          btn: (
+            <Link to={"/admin/EditEmployee/"+ item.user_id}>
+              <Button variant="secondary">View</Button>
+            </Link>
+          ),
+        }
+        
+   
+  })}
   return (
     <>
       <div className="page-container-1">
@@ -125,7 +116,7 @@ function Employees() {
               <div className="tablee">
                 <SearchTable
                   t_title={""}
-                  data={data}
+                  data={dataArray}
                   columns={columns}
                   searching={true}
                   sort={false}

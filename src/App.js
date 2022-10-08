@@ -38,7 +38,7 @@ import AddEvent from "./pages/Manager/js/AddEvent";
 import EditEvent from "./pages/Manager/js/EditEvent";
 import Achivement from "./pages/Manager/js/Achivement";
 import SampleCard from "./component/Card/SampleCard";
-import AddAchivement from "./pages/Manager/js/AddAchivement";
+import AddTeamAchivement from "./pages/Manager/js/AddTeamAchivement";
 import MatchDetail from "./pages/Manager/js/MatchDetail";
 import Players1 from "./pages/Coach/js/Players";
 import PlayerDetails from "./pages/Coach/js/PlayerDetails";
@@ -198,12 +198,12 @@ function App() {
           <Route path="/manager/PlayerRegistration" element={<PlayerRegistration />} />
           <Route path="/manager/EditPlayerDetails/:id" element={<EditPlayerDetails />} />/
           <Route path="/manager/AddCouncellingSession" element={<AddCouncellingSession />} />
-          <Route path="/manager/EditCouncellingSession" element={<EditCouncellingSession />} />
+          <Route path="/manager/EditCouncellingSession/:id" element={<EditCouncellingSession />} />
           <Route path="/manager/AddEvent" element={<AddEvent />} />
-          <Route path="/manager/EditEvent" element={<EditEvent />} />
+          <Route path="/manager/EditEvent/:id" element={<EditEvent />} />
           <Route path="/manager/Achivement" element = {<Achivement/>} />
           <Route path="/card" element = {<SampleCard/>} />
-          <Route path="/manager/AddAchivement" element={<AddAchivement/>}  />
+          <Route path="/manager/AddTeamAchivement" element={<AddTeamAchivement/>}  />
           <Route path="/player/I" element={<IntroTable />} />
           <Route path="/C" element={<Calander />} />
           <Route path="/manager/MatchDetail" element={<MatchDetail />} />
@@ -257,7 +257,7 @@ function App() {
           <Route path="/admin/Membershipfee" element={<Membershipfee/>}  />
           <Route path="/admin/Employees" element={<Employees/>}  />
           <Route path="/admin/AddEmployee" element={<AddEmployee/>}  />
-          <Route path="/admin/EditEmployee" element={<EditEmployee />}  />
+          <Route path="/admin/EditEmployee/:id" element={<EditEmployee />}  />
           <Route path="/admin/UserView" element={< UpdateDeleteUser/>} />
           <Route path="/admin/Achivements" element={< Achivements />} />
           <Route path="/admin/Accounts" element={< Accounts />} />

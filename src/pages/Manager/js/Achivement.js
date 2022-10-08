@@ -6,63 +6,11 @@ import Button from "react-bootstrap/Button";
 import "../../Home.css";
 import SampleCard from "../../../component/Card/SampleCard";
 // import profpic from "../header/profpic.jfif";
+import moment from "moment";
 import profpic from "../../../component/header/profpic.jfif";
+const Axios = require("axios").default;
 
-const data = [
-  {
-    title: "Won the hero cup ODI series",
-    img: <img className="card-detail-img" src={profpic} alt=""></img>,
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,  but also",
-    date: "2022-05-11",
-    time: "09:00 am",
-    // btn: (
-    //   <Link to={"#"}>
-    //     <Button variant="secondary">View</Button>
-    //   </Link>
-    // ),
-  },
-
-  {
-    title: "Won the hero cup ODI series",
-    img: <img className="card-detail-img" src={profpic} alt=""></img>,
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,  but also",
-    date: "2022-05-11",
-    time: "09:00 am",
-    // btn: (
-    //   <Link to={"#"}>
-    //     <Button variant="secondary">View</Button>
-    //   </Link>
-    // ),
-  },
-  {
-    title: "Won the Champion leage ODI series",
-    img: <img className="card-detail-img" src={profpic} alt=""></img>,
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,  but also",
-    date: "2022-05-11",
-    time: "09:00 am",
-    // btn: (
-    //   <Link to={"#"}>
-    //     <Button variant="secondary">View</Button>
-    //   </Link>
-    // ),
-  },
-  {
-    title: "Won the Champion leage ODI series",
-    img: <img className="card-detail-img" src={profpic} alt=""></img>,
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,  but also",
-    date: "2022-05-11",
-    time: "09:00 am",
-    // btn: (
-    //   <Link to={"#"}>
-    //     <Button variant="secondary">View</Button>
-    //   </Link>
-    // ),
-  },
-];
+let data = [];
 
 const data_1 = [
   {
@@ -126,7 +74,39 @@ const data_1 = [
 
 function Achivement() {
   const [tabNumber, setTabNumber] = useState(1);
+  const [tachi, settach] = React.useState();
 
+
+  
+  React.useEffect(() => {
+    async function fetchData() {
+      const reqtachi = await Axios.get(
+        "http://localhost:3001/api/manager/getteamAchi"
+      );
+
+      settach(reqtachi.data.data);
+      return reqtachi;
+    }
+    fetchData();
+  }, []);
+
+  console.log(tachi)
+if(tachi){
+  tachi.map((item, i)=>{
+    data[i] =
+    {
+        title: item.title,
+        img: <img className="card-detail-img" src={item.image} alt=""></img>,
+        description: item.description,
+        date: moment.utc(item.date).format("YYYY-MM-DD"),       
+      
+    }
+    
+  })
+}
+  
+
+  
   const selectTab_1 = () => {
     setTabNumber(1);
     // console.log(tabNumber + "selectTab 1");
@@ -167,8 +147,8 @@ function Achivement() {
                 <Link
                   to={
                     tabNumber === 1
-                      ? "/manager/AddAchivement"
-                      : "#"
+                      ? "/manager/AddTeamAchivement"
+                      : "/manager/AddPlayerAchivement"
                   }
                 >
                   <Button variant="outline-success">+ Add</Button>
