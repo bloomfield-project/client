@@ -30,9 +30,9 @@ function Matches() {
     const[Month, setMonth]  = useState(thisMonth);
 
 
-const [responseData,setResponseData]=useState([]);
-const [responseDataPast,setPastResponseData]=useState([]);
-  async function getData(url,num){
+    const [responseData,setResponseData]=useState([]);
+    const [responseDataPast,setPastResponseData]=useState([]);
+    async function getData(url,num){
     
 
     const reqData ={
@@ -128,7 +128,7 @@ const [responseDataPast,setPastResponseData]=useState([]);
                                 </div>
                             </div>
                             <div className="match-box-down">
-                                <Link to={"/player/Matches/PendingMatches"}>
+                                <Link to={"/player/Matches/PendingMatches/"+item.match_id}>
                                     <Button variant="secondary">View</Button>
                                 </Link></div>
                             </div>
@@ -174,7 +174,7 @@ const [responseDataPast,setPastResponseData]=useState([]);
                                     <div className="match-box-down-1-right"><h5 style={{color:"#a5a5a5"}}>{item.date}</h5></div>
                                 </div>
                                 <div className="match-box-down">
-                                    <Link to={"/player/MatchDetails"}>
+                                    <Link to={"/player/MatchDetails/"+item.match_id}>
                                         <Button variant="secondary">View</Button>
                                     </Link>
                                 </div>
@@ -190,15 +190,8 @@ const [responseDataPast,setPastResponseData]=useState([]);
                 
                 </Tabs>
             </div>
-            
-            
-            
-
-
           </div>
         </div>
-        
-        
       </div>
   );
   }

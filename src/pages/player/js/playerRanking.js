@@ -8,6 +8,7 @@ import { Tabs } from 'antd';
 import 'antd/dist/antd.css';
 import Tablee from "../../../component/ScoreTable/ScoreTable";
 import IntroTable from "../../../component/IntroTable/IntroTable"
+import {useState,useEffect} from "react";
 
 
 import { useLocation } from "react-router-dom";
@@ -37,10 +38,33 @@ const LIST_M = [
 ];
 
 
+
 function PlayerRanking() {
 
     const location = useLocation();
     console.log(location.state)
+
+
+    const [ODI,setODI]=useState("table-tab")
+    const [T20,setT20]=useState("table-tab")
+    const [Test,setTest]=useState("table-tab")
+
+    function getODI(){
+        setODI("table-tab-active")
+        setT20("table-tab")
+        setTest("table-tab")
+        
+    }
+    function getT20(){
+        setT20("table-tab-active")
+        setODI("table-tab")
+        setTest("table-tab")
+    }
+    function getTest(){
+        setTest("table-tab-active")
+        setT20("table-tab")
+        setODI("table-tab")
+    }
 
     return (
       <div className="page-container-1">
@@ -114,9 +138,9 @@ function PlayerRanking() {
 
                                 <div className="filter-by-date-tabs">
                                     <div className="table-tabs">
-                                        <div className="table-tab">ODI</div>
-                                        <div className="table-tab-active">T20</div>
-                                        <div className="table-tab">TEST</div>
+                                        <button onClick={getODI} className={ODI}>ODI</button>
+                                        <button onClick={getT20} className={T20}>T20</button>
+                                        <button onClick={getTest} className={Test}>TEST</button>
                                     </div>
                                     <div className="filter-by-date">
                                         <label>Select month:</label>

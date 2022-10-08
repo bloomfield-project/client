@@ -9,6 +9,11 @@ const viewSessionReducer=(state=initialState,action)=>{
             return({
                 data:action.data
             })
+
+        case "getAEvent":
+            return({
+                data:action.data
+            })
          
         default :
             return state

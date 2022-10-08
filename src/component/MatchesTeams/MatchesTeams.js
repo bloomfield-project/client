@@ -2,7 +2,7 @@ import React from "react";
 import Team from "./Team.png";
 import opTeam from "./opTeam.jpg";
 import Button from "react-bootstrap/Button";
-import "./MatchesTeams.css";
+// import "./MatchesTeams.css";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
