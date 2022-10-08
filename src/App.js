@@ -185,7 +185,7 @@ function App() {
           <Route path="/player/Progress" element={<Progress />} />
           <Route path="/player/PrivateProgress" element={<PrivateProgress />} />
           <Route path="/player/Matches" element={<Matches />} />
-          <Route path="/player/MatchDetails" element={<MatchDetails />} />
+          <Route path="/player/MatchDetails/:id" element={<MatchDetails />} />
           <Route path="/player/PSessionDetails" element={<PSessionDetails />} />
           <Route path="/player/CSessionDetails" element={<CSessionDetails />} />
           <Route path="/player/EventDetails" element={<EventDetails />} />
@@ -279,7 +279,7 @@ function App() {
 
           <Route path="/player/profile" element={<Profile />} />
 
-          <Route path="/player/Matches/PendingMatches" element={<PendingMatches />} />
+          <Route path="/player/Matches/PendingMatches/:id" element={<PendingMatches />} />
 
 
 

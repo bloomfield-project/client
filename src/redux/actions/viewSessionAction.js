@@ -4,3 +4,10 @@ export const getASession = (data) => {
         data
     })
 }
+
+export const getAEvent = (data) => {
+    return ({
+        type:'getAEvent',
+        data
+    })
+}

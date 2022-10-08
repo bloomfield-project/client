@@ -26,6 +26,7 @@ function PSessionDetails() {
     }
     fetchData(authRequest).then((response)=>{
       setResponseData(response.data)
+      console.log(response.data);
     }).catch(function(error){
       console.log(error);
     })
@@ -41,17 +42,19 @@ function PSessionDetails() {
     }
     fetchData(authRequest).then((response)=>{
       setResponseC(response.data)
+      console.log(response.data);
     }).catch(function(error){
       console.log(error);
     })
   }
 
-  useEffect(() => {
-    getData()
-  }, [])
+   
 
   useEffect(() => {
     getData2()
+  }, [])
+  useEffect(() => {
+    getData()
   }, [])
   
   console.log(responseData);
