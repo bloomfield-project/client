@@ -186,7 +186,7 @@ function App() {
           <Route path="/player/PrivateProgress" element={<PrivateProgress />} />
           <Route path="/player/Matches" element={<Matches />} />
           <Route path="/player/MatchDetails/:id" element={<MatchDetails />} />
-          <Route path="/player/PSessionDetails" element={<PSessionDetails />} />
+          <Route path="/player/Psession/PSessionDetails" element={<PSessionDetails />} />
           <Route path="/player/CSessionDetails" element={<CSessionDetails />} />
           <Route path="/player/EventDetails" element={<EventDetails />} />
           <Route path="/player/EventDetails" element={<EventDetails />} />

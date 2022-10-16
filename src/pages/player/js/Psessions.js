@@ -80,7 +80,7 @@ function Session() {
   function viewSession(num){
   alert(num)
     dispatch(getASession(num))
-    history('/player/PSessionDetails')
+    history('/player/Psession/PSessionDetails')
   }
   
 
