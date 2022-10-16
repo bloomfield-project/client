@@ -6,22 +6,80 @@ import "../../Manager/css/table.css"
 import profpic from "../../../component/header/profpic.jfif"
 import { Tabs } from 'antd';
 import React from 'react';
+import {useState,useEffect} from "react";
+import {fetchData} from '../../AuthServer'  
 
 
 
 const { TabPane } = Tabs;
 
-
-
-
-const onChange = (key) => {
-    console.log(key);
-  };
-
 function PlayerRankingList() {
-    function changeColor(key){
-        // alert(key)
+    
+    const [responseData,setResponseData]=useState([]);
+    const [ODI,setODI]=useState("table-tab-active")
+    const [T20,setT20]=useState("table-tab")
+    const [Test,setTest]=useState("table-tab")
+    const [catgry,setCatgry]=useState(1)
+    const [Format,setFormat]=useState("ODI")
+    const onChange = (key) => {
+        setODI("table-tab-active")
+        setT20("table-tab")
+        setTest("table-tab")
+        setFormat("ODI")
+        setCatgry(key)
+        console.log(key);
+            getData()
+    };
+
+
+    function getODI(){
+        setODI("table-tab-active")
+        setT20("table-tab")
+        setTest("table-tab")
+        setFormat("ODI")
+            getData()
     }
+    function getT20(){
+        setT20("table-tab-active")
+        setODI("table-tab")
+        setTest("table-tab")
+        setFormat("T20")
+            getData()
+    }
+    function getTest(){
+        setTest("table-tab-active")
+        setT20("table-tab")
+        setODI("table-tab")
+        setFormat("TEST")
+            getData()
+    }
+    
+
+
+    async function getData(){
+        const reqData ={
+          catagory:catgry,
+          format:Format,
+          
+        };
+        const authRequest = {
+        "method":"post",
+        "url":"player/Ranking",
+        "data":reqData
+      }
+      fetchData(authRequest).then((response)=>{
+        setResponseData(response.data)
+      }).catch(function(error){
+        console.log(error);
+      })
+    }
+    useEffect(() => {
+        getData()
+    }, [])
+
+    console.log(responseData)
+
+
     return (
       <div className="page-container-1">
         <div className="header-container">
@@ -46,9 +104,9 @@ function PlayerRankingList() {
                     <TabPane tab="Batting" key="1">
                     <div className="table-box-11">
                         <div className="table-tabs">
-                            <div className="table-tab" onClick={changeColor(2)}>ODI</div>
-                            <div className="table-tab-active">T20</div>
-                            <div className="table-tab">TEST</div>
+                            <button onClick={getODI} className={ODI}>ODI</button>
+                            <button onClick={getT20} className={T20}>T20</button>
+                            <button onClick={getTest} className={Test}>TEST</button>
                         </div>
                         <div className="tablee">
                             <div className="my-table-row-g">
@@ -101,9 +159,9 @@ function PlayerRankingList() {
                     <TabPane tab="Bowling" key="2">
                     <div className="table-box-11">
                         <div className="table-tabs">
-                            <div className="table-tab">ODI</div>
-                            <div className="table-tab-active">T20</div>
-                            <div className="table-tab">TEST</div>
+                            <button onClick={getODI} className={ODI}>ODI</button>
+                            <button onClick={getT20} className={T20}>T20</button>
+                            <button onClick={getTest} className={Test}>TEST</button>
                         </div>
                         <div className="tablee">
                             <div className="table-head">
@@ -148,9 +206,9 @@ function PlayerRankingList() {
                     <TabPane tab="All-rounders" key="3">
                     <div className="table-box-11">
                         <div className="table-tabs">
-                            <div className="table-tab">ODI</div>
-                            <div className="table-tab-active">T20</div>
-                            <div className="table-tab">TEST</div>
+                            <button onClick={getODI} className={ODI}>ODI</button>
+                            <button onClick={getT20} className={T20}>T20</button>
+                            <button onClick={getTest} className={Test}>TEST</button>
                         </div>
                         <div className="tablee">
                             <div className="table-head">

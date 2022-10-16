@@ -26,7 +26,7 @@ function Matches() {
     var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
     var yyyy = today.getFullYear();
     today = mm + '/' + dd + '/' + yyyy;
-    var thisMonth =yyyy+"-"+mm
+    var thisMonth =yyyy+"-"+mm+"-"+dd
     const[Month, setMonth]  = useState(thisMonth);
 
 
@@ -97,11 +97,11 @@ function Matches() {
                     <TabPane tab="Pending" key="1">
 
 
-                     <div className="filter-by-date-G">
+                     {/* <div className="filter-by-date-G">
                         <label>Select month:</label>
                         <input type="month" id="start" name="start" min={thisMonth}  value={Month} className="filter-by-date-month"  onChange={e => setThisMonth(e.target.value)}></input>
                         <button className="Select-Button-G-G" onClick={getSessionForMonth}>Select</button>
-                      </div>
+                      </div> */}
                         
                     <div className="matches-container-outer-box">
                         {/* match card */}
@@ -122,7 +122,7 @@ function Matches() {
                                     <div className="box-mid-mid-down"><h5 style={{color:"#a5a5a5"}}>{item.ground}</h5></div>
                                 </div>
                                 <div className="match-box-mid-right">
-                                    <div className="box-mid-right-up"><h4 style={{color:"#a5a5a5"}}>{item.op_team}</h4></div>
+                                    <div className="box-mid-right-up"><h4 style={{color:"#a5a5a5"}}>{item.op_team_name}</h4></div>
                                     <div className="box-mid-right-mid"><img src={opTeam}></img></div>
                                     <div className="box-mid-right-down"><h5 style={{color:"#a5a5a5"}}>{item.date}</h5></div>
                                 </div>
@@ -164,7 +164,7 @@ function Matches() {
                                         <div className="box-mid-mid-down"><h5 style={{color:"#a5a5a5"}}>{item.ground}</h5></div>
                                     </div>
                                     <div className="match-box-mid-right">
-                                        <div className="box-mid-right-up"><h4 style={{color:"#a5a5a5"}}>{item.op_team}</h4></div>
+                                        <div className="box-mid-right-up"><h4 style={{color:"#a5a5a5"}}>{item.op_team_name}</h4></div>
                                         <div className="box-mid-right-mid"><img src={opTeam}></img></div>
                                         <div className="box-mid-right-down"><h5 >{item.op_score+"-"+item.op_wickets+" ("+item.op_overs+")"}</h5></div>
                                     </div>

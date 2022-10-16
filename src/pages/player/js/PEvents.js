@@ -35,7 +35,7 @@ function PEvents() {
   const onChange = (key) => {
     console.log(key);
     setTabNumber(key)
-};
+  };
 
 
 

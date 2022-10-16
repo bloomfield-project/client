@@ -45,7 +45,7 @@ function PlayerRanking() {
     console.log(location.state)
 
 
-    const [ODI,setODI]=useState("table-tab")
+    const [ODI,setODI]=useState("table-tab-active")
     const [T20,setT20]=useState("table-tab")
     const [Test,setTest]=useState("table-tab")
 
