@@ -186,6 +186,8 @@
 }
 .col-5-2 {
     width: 35%;
+    display: flex;
+    justify-content: center;
 }
 
 .col-7-1 , .col-7-3 , .col-7-4,.col-7-5,.col-7-6,.col-7-7{
