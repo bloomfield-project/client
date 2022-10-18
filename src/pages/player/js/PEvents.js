@@ -131,7 +131,7 @@ const dataC=responseDataC.data
                           
                             {msgC!=0?dataC?.map((item,i)  => 
                               <><div key={i} className="table-row">
-                                <div className="col-51">PS-{item.title}</div>
+                                <div className="col-51">{item.title}</div>
                                 <div className="col-51">{item.mentor_details+". "+item.mentor}</div>
                                 <div className="col-51">{item.date}</div>
                                 <div className="col-51">{item.time}</div>

@@ -8,13 +8,14 @@ import { Tabs } from 'antd';
 import React from 'react';
 import {useState,useEffect} from "react";
 import {fetchData} from '../../AuthServer'  
+import {useDispatch,useSelector} from 'react-redux'
 
 
 
 const { TabPane } = Tabs;
 
 function PlayerRankingList() {
-    
+    const loginData= useSelector(state => state.auth.data)
     const [responseData,setResponseData]=useState([]);
     const [ODI,setODI]=useState("table-tab-active")
     const [T20,setT20]=useState("table-tab")
@@ -27,8 +28,7 @@ function PlayerRankingList() {
         setTest("table-tab")
         setFormat("ODI")
         setCatgry(key)
-        console.log(key);
-            getData()
+        getData("ODI",key)
     };
 
 
@@ -37,29 +37,30 @@ function PlayerRankingList() {
         setT20("table-tab")
         setTest("table-tab")
         setFormat("ODI")
-            getData()
+            getData("ODI")
     }
     function getT20(){
         setT20("table-tab-active")
         setODI("table-tab")
         setTest("table-tab")
         setFormat("T20")
-            getData()
+            getData("T20")
     }
     function getTest(){
         setTest("table-tab-active")
         setT20("table-tab")
         setODI("table-tab")
         setFormat("TEST")
-            getData()
+            getData("TEST")
     }
     
 
 
-    async function getData(){
+    async function getData(format=Format,key=catgry){
+        var catgry=key
         const reqData ={
           catagory:catgry,
-          format:Format,
+          format:format,
           
         };
         const authRequest = {
@@ -76,8 +77,8 @@ function PlayerRankingList() {
     useEffect(() => {
         getData()
     }, [])
-
-    console.log(responseData)
+    const dataupcomming=responseData.data
+    console.log(dataupcomming)
 
 
     return (
@@ -109,14 +110,17 @@ function PlayerRankingList() {
                             <button onClick={getTest} className={Test}>TEST</button>
                         </div>
                         <div className="tablee">
-                            <div className="my-table-row-g">
-                                <div className="col-5-1">1</div>
-                                <div className="col-5-2"><img className="row-image" src={profpic} alt=""></img><a href="/player/playerRanking">Sameera Madushan</a></div>
-                                <div className="col-5-3">53.4</div>
-                                <div className="col-5-4">122.3</div>
-                                <div className="col-5-5">932</div>
-                                
-                            </div>
+                        {/* {dataupcomming!=[]?dataupcomming?.filter(user => user.user_id===5).sort((a, b) => a.rating > b.rating ? -1 : 1).map((item,i)  => 
+                              <><div key={i} className="my-table-row-g">
+                                <div className="col-5-1">{i+1}</div>
+                                <div className="col-5-2"><img className="row-image" src={profpic} alt=""></img><a href="/player/playerRanking" style={{width: "80%", textAlign: "left", paddingTop:"10px"}}>{item.name}</a></div>
+                                <div className="col-5-1">{item.avg}</div>
+                                <div className="col-5-1">{item.sr}</div>
+                                <div className="col-5-1">{item.rating}</div>
+
+                              </div><hr></hr></>
+                            ):<h6 style={{ height : "200px"}}>NO sessions to display</h6>} */}
+                            
                             <div className="table-head">
                                 <div className="col-5-1">Position</div>
                                 <div className="col-5-2">Player</div>
@@ -124,33 +128,16 @@ function PlayerRankingList() {
                                 <div className="col-5-4">SR</div>
                                 <div className="col-5-5">Rating</div>
                             </div>
-                            <div className="table-row">
-                                <div className="col-5-1">1</div>
-                                <div className="col-5-2"><img className="row-image" src={profpic} alt=""></img><a href="/player/playerRanking">Sameera Madushan</a></div>
-                                <div className="col-5-3">53.4</div>
-                                <div className="col-5-4">122.3</div>
-                                <div className="col-5-5">932</div>
-                                
-                            </div>
-                            <hr></hr>
-                            <div className="table-row">
-                                <div className="col-5-1">2</div>
-                                <div className="col-5-2"><img className="row-image" src={profpic} alt=""></img><a href="/player/playerRanking">Sameera Madushan</a></div>
-                                <div className="col-5-3">50.43</div>
-                                <div className="col-5-4">117.34</div>
-                                <div className="col-5-5">907</div>
-                                
-                            </div>
-                            <hr></hr>
-                            <div className="table-row">
-                                <div className="col-5-1">3</div>
-                                <div className="col-5-2"><img className="row-image" src={profpic} alt=""></img><a href="/player/playerRanking">Sameera Madushan</a></div>
-                                <div className="col-5-3">49.4</div>
-                                <div className="col-5-4">111.6</div>
-                                <div className="col-5-5">875</div>
-                                
-                            </div>
-                            <hr></hr>
+                            {dataupcomming!=[]?dataupcomming?.sort((a, b) => a.rating > b.rating ? -1 : 1).map((item,i)  => 
+                              <><div key={i} className="table-row">
+                                <div className="col-5-1">{i+1}</div>
+                                <div className="col-5-2"><img className="row-image" src={profpic} alt=""></img><a href="/player/playerRanking" style={{width: "80%", textAlign: "left", paddingTop:"10px"}}>{item.name}</a></div>
+                                <div className="col-5-1">{item.avg}</div>
+                                <div className="col-5-1">{item.sr}</div>
+                                <div className="col-5-1">{item.rating}</div>
+
+                              </div><hr></hr></>
+                            ):<h6 style={{ height : "200px"}}>NO sessions to display</h6>}
                             
                         </div>
 
@@ -164,6 +151,17 @@ function PlayerRankingList() {
                             <button onClick={getTest} className={Test}>TEST</button>
                         </div>
                         <div className="tablee">
+                            {/* {dataupcomming!=[]?dataupcomming?.filter(user => user.user_id===5).sort((a, b) => a.B_rating > b.B_rating ? -1 : 1).map((item,i)  => 
+                              <><div key={i} className="my-table-row-g">
+                                <div className="col-5-1">{i+1}</div>
+                                <div className="col-5-2"><img className="row-image" src={profpic} alt=""></img><a href="/player/playerRanking" style={{width: "80%", textAlign: "left", paddingTop:"10px"}}>{item.name}</a></div>
+                                <div className="col-5-1">{item.econ}</div>
+                                <div className="col-5-1">{item.b_wkts}</div>
+                                <div className="col-5-1">{item.B_rating}</div>
+
+                              </div><hr></hr></>
+                            ):<h6 style={{ height : "200px"}}>NO sessions to display</h6>} */}
+
                             <div className="table-head">
                                 <div className="col-5-1">Position</div>
                                 <div className="col-5-2">Player</div>
@@ -171,16 +169,17 @@ function PlayerRankingList() {
                                 <div className="col-5-4">Wkts</div>
                                 <div className="col-5-5">Rating</div>
                             </div>
-                            <div className="table-row">
-                                <div className="col-5-1">1</div>
-                                <div className="col-5-2"><img className="row-image" src={profpic} alt=""></img><a href="/player/playerRanking">Sameera Madushan</a></div>
-                                <div className="col-5-3">4.32</div>
-                                <div className="col-5-4">76</div>
-                                <div className="col-5-5">932</div>
-                                
-                            </div>
-                            <hr></hr>
-                            <div className="table-row">
+                            {dataupcomming!=[]?dataupcomming?.sort((a, b) => a.B_rating > b.B_rating ? -1 : 1).map((item,i)  => 
+                              <><div key={i} className="table-row">
+                                <div className="col-5-1">{i+1}</div>
+                                <div className="col-5-2"><img className="row-image" src={profpic} alt=""></img><a href="/player/playerRanking" style={{width: "80%", textAlign: "left", paddingTop:"10px"}}>{item.name}</a></div>
+                                <div className="col-5-1">{item.econ}</div>
+                                <div className="col-5-1">{item.b_wkts}</div>
+                                <div className="col-5-1">{item.B_rating}</div>
+
+                              </div><hr></hr></>
+                            ):<h6 style={{ height : "200px"}}>NO sessions to display</h6>}
+                            {/* <div className="table-row">
                                 <div className="col-5-1">2</div>
                                 <div className="col-5-2"><img className="row-image" src={profpic} alt=""></img><a href="/player/playerRanking">Sameera Madushan</a></div>
                                 <div className="col-5-3">5.43</div>
@@ -197,7 +196,7 @@ function PlayerRankingList() {
                                 <div className="col-5-5">875</div>
                                 
                             </div>
-                            <hr></hr>
+                            <hr></hr> */}
                             
                         </div>
 
@@ -211,6 +210,18 @@ function PlayerRankingList() {
                             <button onClick={getTest} className={Test}>TEST</button>
                         </div>
                         <div className="tablee">
+                            {/* {dataupcomming!=[]?dataupcomming?.filter(user => user.user_id===5).sort((a, b) => a.A_rating > b.A_rating ? -1 : 1).map((item,i)  => 
+                              <><div key={i} className="table-row">
+                                <div className="col-7-1">{i+1}</div>
+                                <div className="col-5-2"><img className="row-image" src={profpic} alt=""></img><a href="/player/playerRanking" style={{width: "80%", textAlign: "left", paddingTop:"10px"}}>{item.name}</a></div>
+                                <div className="col-7-3">{item.avg}</div>
+                                <div className="col-7-4">{item.sr}</div>
+                                <div className="col-7-5">{item.econ}</div>
+                                <div className="col-7-6">{item.b_wkts}</div>
+                                <div className="col-7-7">{item.A_rating}</div>
+
+                              </div><hr></hr></>
+                            ):<h6 style={{ height : "200px"}}>NO sessions to display</h6>} */}
                             <div className="table-head">
                                 <div className="col-7-1">Position</div>
                                 <div className="col-5-2">Player</div>
@@ -220,18 +231,19 @@ function PlayerRankingList() {
                                 <div className="col-7-6">Wkts</div>
                                 <div className="col-7-7">Rating</div>
                             </div>
-                            <div className="table-row">
-                                <div className="col-7-1">1</div>
-                                <div className="col-5-2"><img className="row-image" src={profpic} alt=""></img><a href="/player/playerRanking">Sameera Madushan</a></div>
-                                <div className="col-7-3">53.4</div>
-                                <div className="col-7-4">122.3</div>
-                                <div className="col-7-5">5.43</div>
-                                <div className="col-7-6">65</div>
-                                <div className="col-7-7">911</div>
-                                
-                            </div>
-                            <hr></hr>
-                            <div className="table-row">
+                            {dataupcomming!=[]?dataupcomming?.sort((a, b) => a.A_rating > b.A_rating ? -1 : 1).map((item,i)  => 
+                              <><div key={i} className="table-row">
+                                <div className="col-7-1">{i+1}</div>
+                                <div className="col-5-2"><img className="row-image" src={profpic} alt=""></img><a href="/player/playerRanking" style={{width: "80%", textAlign: "left", paddingTop:"10px"}}>{item.name}</a></div>
+                                <div className="col-7-3">{item.avg}</div>
+                                <div className="col-7-4">{item.sr}</div>
+                                <div className="col-7-5">{item.econ}</div>
+                                <div className="col-7-6">{item.b_wkts}</div>
+                                <div className="col-7-7">{item.A_rating}</div>
+
+                              </div><hr></hr></>
+                            ):<h6 style={{ height : "200px"}}>NO sessions to display</h6>}
+                            {/* <div className="table-row">
                                 <div className="col-7-1">2</div>
                                 <div className="col-5-2"><img className="row-image" src={profpic} alt=""></img><a href="/player/playerRanking">Sameera Madushan</a></div>
                                 <div className="col-7-3">51.4</div>
@@ -252,7 +264,7 @@ function PlayerRankingList() {
                                 <div className="col-7-7">875</div>
                                 
                             </div>
-                            <hr></hr>
+                            <hr></hr> */}
                             
                         </div>
 
