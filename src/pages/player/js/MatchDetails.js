@@ -21,7 +21,7 @@ function MatchDetails() {
     async function getData(){
         const reqData ={
         match_id:id,
-        statuss:"done"
+        statuss:1
         };
         const authRequest = {
         "method":"post",
@@ -40,7 +40,7 @@ function MatchDetails() {
         getData()
     }, [])
     
-    console.log(responseP===[]?responseP:"not");
+    console.log(responseP);
     const successP=responseP.success
     const players=responseP.data
 
@@ -111,7 +111,7 @@ function MatchDetails() {
                     <>
                     <div className="table-row-MD">
                         <div className="col-MD-1"><a href="#">{item.name}</a></div>
-                        <div className="col-MD-2">{item.name}</div>
+                        <div className="col-MD-2"></div>
                         <div className="col-MD-3">{item.name}</div>
                         <div className="col-MD-4">{item.name}</div>
                         <div className="col-MD-5">{item.name}</div>

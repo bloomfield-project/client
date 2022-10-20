@@ -194,7 +194,7 @@ function Progress() {
                                 <div className="col-4-1">{"PS-"+item.session_id}</div>
                                 <div className="col-4-2">{item.type}</div>
                                 <div className="col-4-3">{item.attendance}</div>
-                                <div className="col-4-4"><a href="/player/PrivateProgress">Details</a></div>
+                                <div className="col-4-4"><a href={"/player/PrivateProgress/"+item.session_id}>Details</a></div>
 
                               </div><hr></hr></>
                             ):<h6 style={{ height : "200px"}}>NO sessions to display</h6>}

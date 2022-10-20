@@ -151,7 +151,7 @@ function EditEmployee() {
             <div className="page-container-gray" style={{ width: "100%" }}>
               <div className="l-back-r-title">
                 <div className="l-back-r-title-icon">
-                  <Link to={"/manager/Players"}>
+                  <Link to={"/admin/Employees"}>
                     <IoChevronBackCircleOutline
                       style={{
                         color: "rgba(0, 146, 112, 1)",
