@@ -1,19 +1,15 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Header from "../../../component/header/Header";
 import Navbar from "../../../component/NavigationBar/Navbar";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import "../../Home.css";
-import SearchTable from "../../../component/Search/SearchTable";
 import { Tabs } from 'antd';
 import 'antd/dist/antd.css';
-
-
-
-
-
-
-
+import {fetchData} from '../../AuthServer'
+import {useDispatch,useSelector} from 'react-redux'
+import {getAEvent} from "../../../redux/actions/viewSessionAction"
+import {useNavigate} from "react-router-dom"
 
 
 
@@ -22,166 +18,69 @@ import 'antd/dist/antd.css';
 const { TabPane } = Tabs;
 
 
-
-
-
-
-const data = [
-  {
-    id: "1101",
-    // img: <img className="row-image" src={profpic} alt=""></img>,
-    event: "Crismas party",
-    date: "2022-05-11",
-    time: "09:00 am",
-    btn: (
-      <Link to={"/player/EventDetails"}>
-        <Button variant="secondary">View</Button>
-      </Link>
-    ),
-  },
-
-  {
-    id: "1101",
-    // img: <img className="row-image" src={profpic} alt=""></img>,
-    event: "Crismas party",
-    date: "2022-05-11",
-    time: "09:00 am",
-    btn: (
-      <Link to={"/player/EventDetails"}>
-        <Button variant="secondary">View</Button>
-      </Link>
-    ),
-  },
-  {
-    id: "1101",
-    // img: <img className="row-image" src={profpic} alt=""></img>,
-    event: "Crismas party",
-    date: "2022-05-11",
-    time: "09:00 am",
-    btn: (
-      <Link to={"/player/EventDetails"}>
-        <Button variant="secondary">View</Button>
-      </Link>
-    ),
-  },
-  {
-    id: "1101",
-    // img: <img className="row-image" src={profpic} alt=""></img>,
-    event: "Crismas party",
-    date: "2022-05-11",
-    time: "09:00 am",
-    btn: (
-      <Link to={"/player/EventDetails"}>
-        <Button variant="secondary">View</Button>
-      </Link>
-    ),
-  },
-];
-
-// console.log(data[0]);
-const columns = [
-  {
-    title: "ID",
-    field: "id",
-  },
-  {
-    title: "Event",
-    field: "event",
-  },
-  {
-    title: "Date",
-    field: "date",
-  },
-  {
-    title: "Time",
-    field: "time",
-  },
-  {
-    title: "",
-    field: "btn",
-  },
-];
-
-const data_1 = [
-  {
-    // id: "1101",
-    // img: <img className="row-image" src={profpic} alt=""></img>,
-    mentor: "Dr.chaminda wimukthi",
-    date: "2022-05-11",
-    time: "09:00 am",
-    btn: (
-      <Link to={"/player/CSessionDetails"}>
-        <Button variant="secondary">View</Button>
-      </Link>
-    ),
-  },
-
-  {
-    // id: "1101",
-    // img: <img className="row-image" src={profpic} alt=""></img>,
-    mentor: "Dr.chaminda wimukthi",
-    date: "2022-05-11",
-    time: "09:00 am",
-    btn: (
-      <Link to={"/player/CSessionDetails"}>
-      <Button variant="secondary">View</Button>
-    </Link>
-    ),
-  },
-  {
-    // id: "1101",
-    // img: <img className="row-image" src={profpic} alt=""></img>,
-    mentor: "Dr.chaminda wimukthi",
-    date: "2022-05-11",
-    time: "09:00 am",
-    btn: (
-      <Link to={"/player/CSessionDetails"}>
-        <Button variant="secondary">View</Button>
-      </Link>
-    ),
-  },
-  {
-    // id: "1101",
-    // img: <img className="row-image" src={profpic} alt=""></img>,
-    mentor: "Dr.chaminda wimukthi",
-    date: "2022-05-11",
-    time: "09:00 am",
-    btn: (
-      <Link to={"/player/CSessionDetails"}>
-        <Button variant="secondary">View</Button>
-      </Link>
-    ),
-  },
-];
-
-// console.log(data[0]);
-const columns_1 = [
-  {
-    title: "Mentor",
-    field: "mentor",
-  },
-  {
-    title: "Date",
-    field: "date",
-  },
-  {
-    title: "Time",
-    field: "time",
-  },
-  {
-    title: "",
-    field: "btn",
-  },
-];
-
 function PEvents() {
+  const dispatch = useDispatch()
+  const history = useNavigate()
+
+
   const [tabNumber, setTabNumber] = useState(1);
+
+  function viewSession(num){
+    alert(num)
+      dispatch(getAEvent(num))
+      history('/player/EventDetails')
+    }
 
 
   const onChange = (key) => {
     console.log(key);
     setTabNumber(key)
-};
+  };
+
+
+
+
+  const [responseDataE,setResponseDataE]=useState([]);
+  const [responseDataC,setResponseDataC]=useState([]);
+  async function getData(url,num){
+    
+
+    const reqData ={
+      
+      
+    };
+    const authRequest = {
+    "method":"post",
+    "url":url,
+    "data":reqData
+  }
+  fetchData(authRequest).then((response)=>{
+    if(num===1)setResponseDataC(response.data)
+    else if(num===2)setResponseDataE(response.data)
+    
+  }).catch(function(error){
+    console.log(error);
+  })
+  }
+
+  useEffect(() => {
+    getData("player/counceling",1)
+}, [])
+useEffect(() => {
+    getData("player/events",2)
+}, [])
+
+
+console.log(responseDataE.success)
+console.log(responseDataC.success)
+
+const msgE=responseDataE.success
+const msgC=responseDataC.success
+
+const dataE=responseDataE.data
+const dataC=responseDataC.data
+
+
 
   return (
     <>
@@ -221,23 +120,28 @@ function PEvents() {
                     <TabPane tab="Counseling Sessions" key="1">
                       <div className="table-box-11">
                         <div className="tablee">
-                          <SearchTable
-                            t_title={''}
-                            data={data_1}
-                            columns={columns_1}
-                            searching={false}
-                            sort={false}
-                            filter={false}
-                            paging={true}
-                            headerC={"#4a4a4a"}
-                            headerH={"40px"}
-                            headerFC={"white"}
-                            headerFS={"1.2rem"}
-                            headerFW={"500"}
-                            // height: 40px
-                            //             font-size: 1.2rem;
-                            // font-weight: 500;
-                          />
+                        <div className="table-head">
+                                <div className="col-51">Session Name</div>
+                                <div className="col-51">Mentor</div>
+                                <div className="col-51">Date</div>
+                                <div className="col-51">Time</div>
+                                <div className="col-51">Place</div>
+                            </div>
+
+                          
+                            {msgC!=0?dataC?.map((item,i)  => 
+                              <><div key={i} className="table-row">
+                                <div className="col-51">{item.title}</div>
+                                <div className="col-51">{item.mentor_details+". "+item.mentor}</div>
+                                <div className="col-51">{item.date}</div>
+                                <div className="col-51">{item.time}</div>
+                                <div className="col-51">{item.place}</div>
+                                {/* <div className="col-51"><button value={item.session_id} onClick={e => viewSession(e.target.value)}>View</button></div> */}
+                          
+
+                              </div><hr></hr></>
+                            ):<h6 style={{ height : "200px"}}>NO sessions to display</h6>}
+
                         </div>
                       </div>
                         
@@ -245,23 +149,25 @@ function PEvents() {
                     <TabPane tab="Events" key="2">
                       <div className="table-box-11">
                         <div className="tablee">
-                          <SearchTable
-                            t_title={''}
-                            data={data}
-                            columns={columns}
-                            searching={false}
-                            sort={false}
-                            filter={false}
-                            paging={true}
-                            headerC={"#4a4a4a"}
-                            headerH={"40px"}
-                            headerFC={"white"}
-                            headerFS={"1.2rem"}
-                            headerFW={"500"}
-                            // height: 40px
-                            //             font-size: 1.2rem;
-                            // font-weight: 500;
-                          />
+                          <div className="table-head">
+                                <div className="col-51" style={{width: "25%"}}>Title</div>
+                                <div className="col-51" style={{width: "25%"}}>Date</div>
+                                <div className="col-51" style={{width: "25%"}}>Time</div>
+                                <div className="col-51" style={{width: "25%"}}></div>
+                                
+                            </div>
+
+                          
+                            {msgE!=0?dataE?.map((item,i)  => 
+                              <><div key={i} className="table-row">
+                                <div className="col-51">{item.event_name}</div>
+                                <div className="col-51">{item.date}</div>
+                                <div className="col-51">{item.time}</div>
+                                <div className="col-51"><button value={item.event_id} onClick={e => viewSession(e.target.value)}>View</button></div>
+                          
+
+                              </div><hr></hr></>
+                            ):<h6 style={{ height : "200px"}}>NO sessions to display</h6>}
                         </div>
                       </div>
                     </TabPane>

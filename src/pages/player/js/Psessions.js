@@ -10,7 +10,7 @@ import SearchTable from "../../../component/Search/SearchTable";
 import player from "../player.jpg"
 import { Tabs } from 'antd';
 import 'antd/dist/antd.css';
-import {fetchData} from '../../AuthServer'
+import {fetchData} from '../../AuthServer'  
 import {useDispatch,useSelector} from 'react-redux'
 import {getASession} from "../../../redux/actions/viewSessionAction"
 import {useNavigate} from "react-router-dom"
@@ -80,15 +80,14 @@ function Session() {
   function viewSession(num){
   alert(num)
     dispatch(getASession(num))
-    history('/player/PSessionDetails')
+    history('/player/Psession/PSessionDetails')
   }
   
 
 
-  
+   
  
   console.log(Month);
-
   return (
     <>
       <div className="page-container-1">

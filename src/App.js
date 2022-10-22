@@ -183,10 +183,10 @@ function App() {
           <Route path="/manager/SampleForm" element={<SampleForm />} />
           <Route path="/player/playerRanking" element={<PlayerRanking />} />
           <Route path="/player/Progress" element={<Progress />} />
-          <Route path="/player/PrivateProgress" element={<PrivateProgress />} />
+          <Route path="/player/PrivateProgress/:id" element={<PrivateProgress />} />
           <Route path="/player/Matches" element={<Matches />} />
-          <Route path="/player/MatchDetails" element={<MatchDetails />} />
-          <Route path="/player/PSessionDetails" element={<PSessionDetails />} />
+          <Route path="/player/MatchDetails/:id" element={<MatchDetails />} />
+          <Route path="/player/Psession/PSessionDetails" element={<PSessionDetails />} />
           <Route path="/player/CSessionDetails" element={<CSessionDetails />} />
           <Route path="/player/EventDetails" element={<EventDetails />} />
           <Route path="/player/EventDetails" element={<EventDetails />} />
@@ -270,7 +270,7 @@ function App() {
 
 
           <Route path="/admin/Raking" element={<Ranking />} />
-          <Route path="/admin/PlayerRankings" element={<PlayerRankings />} />
+          <Route path="/admin/PlayerRanking/:id" element={<PlayerRankings />} />
           <Route path="/manager/profile" element={<Profile />} />
           <Route path="/admin/profile" element={<Profile />} />
 
@@ -279,7 +279,7 @@ function App() {
 
           <Route path="/player/profile" element={<Profile />} />
 
-          <Route path="/player/Matches/PendingMatches" element={<PendingMatches />} />
+          <Route path="/player/Matches/PendingMatches/:id" element={<PendingMatches />} />
 
 
 

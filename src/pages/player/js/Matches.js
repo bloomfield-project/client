@@ -26,13 +26,13 @@ function Matches() {
     var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
     var yyyy = today.getFullYear();
     today = mm + '/' + dd + '/' + yyyy;
-    var thisMonth =yyyy+"-"+mm
+    var thisMonth =yyyy+"-"+mm+"-"+dd
     const[Month, setMonth]  = useState(thisMonth);
 
 
-const [responseData,setResponseData]=useState([]);
-const [responseDataPast,setPastResponseData]=useState([]);
-  async function getData(url,num){
+    const [responseData,setResponseData]=useState([]);
+    const [responseDataPast,setPastResponseData]=useState([]);
+    async function getData(url,num){
     
 
     const reqData ={
@@ -75,7 +75,7 @@ const [responseDataPast,setPastResponseData]=useState([]);
     const msgP = responseDataPast.success
     const dataMP=responseDataPast.data
     console.log(msgP+"KJNKnnkjnknjkjjjjjjknnjjjjjjjjj")
-    console.log(dataMP)
+    console.log(Month)
     return (
       <div className="page-container-1">
         <div className="header-container">
@@ -97,11 +97,11 @@ const [responseDataPast,setPastResponseData]=useState([]);
                     <TabPane tab="Pending" key="1">
 
 
-                     <div className="filter-by-date-G">
+                     {/* <div className="filter-by-date-G">
                         <label>Select month:</label>
                         <input type="month" id="start" name="start" min={thisMonth}  value={Month} className="filter-by-date-month"  onChange={e => setThisMonth(e.target.value)}></input>
                         <button className="Select-Button-G-G" onClick={getSessionForMonth}>Select</button>
-                      </div>
+                      </div> */}
                         
                     <div className="matches-container-outer-box">
                         {/* match card */}
@@ -122,13 +122,13 @@ const [responseDataPast,setPastResponseData]=useState([]);
                                     <div className="box-mid-mid-down"><h5 style={{color:"#a5a5a5"}}>{item.ground}</h5></div>
                                 </div>
                                 <div className="match-box-mid-right">
-                                    <div className="box-mid-right-up"><h4 style={{color:"#a5a5a5"}}>{item.op_team}</h4></div>
+                                    <div className="box-mid-right-up"><h4 style={{color:"#a5a5a5"}}>{item.op_team_name}</h4></div>
                                     <div className="box-mid-right-mid"><img src={opTeam}></img></div>
                                     <div className="box-mid-right-down"><h5 style={{color:"#a5a5a5"}}>{item.date}</h5></div>
                                 </div>
                             </div>
                             <div className="match-box-down">
-                                <Link to={"/player/Matches/PendingMatches"}>
+                                <Link to={"/player/Matches/PendingMatches/"+item.match_id}>
                                     <Button variant="secondary">View</Button>
                                 </Link></div>
                             </div>
@@ -164,7 +164,7 @@ const [responseDataPast,setPastResponseData]=useState([]);
                                         <div className="box-mid-mid-down"><h5 style={{color:"#a5a5a5"}}>{item.ground}</h5></div>
                                     </div>
                                     <div className="match-box-mid-right">
-                                        <div className="box-mid-right-up"><h4 style={{color:"#a5a5a5"}}>{item.op_team}</h4></div>
+                                        <div className="box-mid-right-up"><h4 style={{color:"#a5a5a5"}}>{item.op_team_name}</h4></div>
                                         <div className="box-mid-right-mid"><img src={opTeam}></img></div>
                                         <div className="box-mid-right-down"><h5 >{item.op_score+"-"+item.op_wickets+" ("+item.op_overs+")"}</h5></div>
                                     </div>
@@ -174,7 +174,7 @@ const [responseDataPast,setPastResponseData]=useState([]);
                                     <div className="match-box-down-1-right"><h5 style={{color:"#a5a5a5"}}>{item.date}</h5></div>
                                 </div>
                                 <div className="match-box-down">
-                                    <Link to={"/player/MatchDetails"}>
+                                    <Link to={"/player/MatchDetails/"+item.match_id}>
                                         <Button variant="secondary">View</Button>
                                     </Link>
                                 </div>
@@ -190,15 +190,8 @@ const [responseDataPast,setPastResponseData]=useState([]);
                 
                 </Tabs>
             </div>
-            
-            
-            
-
-
           </div>
         </div>
-        
-        
       </div>
   );
   }

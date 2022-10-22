@@ -26,6 +26,7 @@ function PSessionDetails() {
     }
     fetchData(authRequest).then((response)=>{
       setResponseData(response.data)
+      console.log(response.data);
     }).catch(function(error){
       console.log(error);
     })
@@ -41,17 +42,19 @@ function PSessionDetails() {
     }
     fetchData(authRequest).then((response)=>{
       setResponseC(response.data)
+      console.log(response.data);
     }).catch(function(error){
       console.log(error);
     })
   }
 
-  useEffect(() => {
-    getData()
-  }, [])
+   
 
   useEffect(() => {
     getData2()
+  }, [])
+  useEffect(() => {
+    getData()
   }, [])
   
   console.log(responseData);
@@ -103,7 +106,7 @@ function PSessionDetails() {
                         <>
                           <div className="SessionDetails-row-down">{item.name}</div>
                         </>
-                      ):<h6 style={{ height : "200px"}}>NO sessions to display</h6>}
+                      ):<h6 style={{ height : "200px"}}>NO Caoches to display</h6>}
                       
                     </div>
 
@@ -116,7 +119,7 @@ function PSessionDetails() {
                         <>
                           <div className="SessionDetails-row-down"><div className="s-r-d-left">{"BC-"+item.player_ids}</div><div className="s-r-d-right">{item.name}</div></div>
                         </>
-                      ):<h6 style={{ height : "200px"}}>NO sessions to display</h6>}
+                      ):<h6 style={{ height : "200px"}}>NO Players to display</h6>}
 
 
                       

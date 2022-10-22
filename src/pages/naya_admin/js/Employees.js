@@ -51,7 +51,7 @@ function Employees() {
   }, []);
 
   console.log("post data function ", post);
-  
+  const data = post?post.data:"";
   if (!post) return null;
 
   let role ;
@@ -114,20 +114,26 @@ function Employees() {
             <hr></hr>
             <div className="table-box-1">
               <div className="tablee">
-                <SearchTable
-                  t_title={""}
-                  data={dataArray}
-                  columns={columns}
-                  searching={true}
-                  sort={false}
-                  filter={false}
-                  paging={true}
-                  headerC={"#4a4a4a"}
-                  headerH={"40px"}
-                  headerFC={"white"}
-                  headerFS={"1.2rem"}
-                  headerFW={"500"}
-                />
+                  <div className="table-head">
+                      <div className="coll-4-11">Employee ID</div>
+                      <div className="coll-4-11">Employee Name</div>
+                      <div className="coll-4-1">Job Role</div>
+                      <div className="coll-4-1"></div>
+                  </div>
+                  {dataArray!=[]?dataArray?.map((item,i) =>
+                  <>
+                    <div className="table-row">
+                    <div className="coll-4-11">{item.id}</div>
+                      <div className="coll-4-11">{item.name}</div>
+                      <div className="coll-4-1">{item.role}</div>
+                      <div className="coll-4-1"> 
+                      {item.btn}
+                      </div>
+                      
+                    </div>
+                    <hr></hr>
+                  </>):"gg"}
+                 
               </div>
             </div>
 
