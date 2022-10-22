@@ -7,6 +7,8 @@ import { Link } from "react-router-dom";
 import ResetSubmit from "../../../component/Form/ResetSubmit";
 import Navbar from "../../../component/NavigationBar/Navbar";
 import Modal from "react-bootstrap/Modal";
+import moment from 'moment';
+
 
 const axios = require("axios").default;
 
@@ -21,18 +23,10 @@ function AddEvent() {
   var edate;
   var date = new Date();
   date.setDate(date.getDate() + 7);
-
-  let day = date.getDate();
-  let month = date.getMonth() + 1;
-  let year = date.getFullYear();
-
-  var currentDate;
-  if (String(day).length == 1) {
-    currentDate = `${year}-${month}-0${day}`;
-  }
-  if (String(month).length == 1) {
-    currentDate = `${year}-0${month}-${day}`;
-  }
+  
+  var currentDate = moment(date).format("YYYY-MM-DD");
+  
+  console.log("current date : ", currentDate);
 
   // String(currentDate)
 

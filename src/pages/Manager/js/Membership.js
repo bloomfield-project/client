@@ -11,9 +11,9 @@ import SampleForm from "../../../component/Form/SampleForm";
 import ResetSubmit from "../../../component/Form/ResetSubmit";
 // const { genSaltSync, hashSync } = require("bcrypt");
 import { useDispatch, useSelector } from "react-redux";
+import moment from "moment";
 
 const Axios = require("axios").default;
-
 // const colNames = ["id", "Name", "Age"];
 
 // const tableStyle = 'striped bordered hover size="sm" ';
@@ -34,13 +34,8 @@ let day = date.getDate();
 let month = date.getMonth() + 1;
 let year = date.getFullYear();
 
-var currentDate;
-if (String(day).length == 1) {
-  currentDate = `${year}-${month}-0${day}`;
-}
-if (String(month).length == 1) {
-  currentDate = `${year}-0${month}-${day}`;
-}
+var currentDate=moment.utc(date).format("YYYY-MM-DD");
+
 
 
 let validation;
@@ -172,18 +167,6 @@ function Membership() {
       .catch((err) => console.log("error is arized", err));
   }
 
-  // if (compRes) console.log("password from back end : : ", compRes.message);
-
-  ///need to go inside if condition
-
-
-
- 
-   
-
-
-
-  /////
 
   const doPayment = (event) => {
     event.preventDefault();

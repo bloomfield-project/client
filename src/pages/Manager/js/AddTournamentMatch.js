@@ -15,8 +15,16 @@ import ResetSubmit from "../../../component/Form/ResetSubmit";
 import FileUpload from "../../../component/Form/FileUpload";
 import SelectOption from "../../../component/Form/SelectOption";
 import { object } from "prop-types";
+import moment from "moment";
 
 const Axios = require("axios").default;
+
+var date = new Date();
+date.setDate(date.getDate() + 7);
+
+var currentDate = moment(date).format("YYYY-MM-DD");
+
+console.log("current date : ", currentDate);
 
 function SetValidation(res) {
   const [post, setPost] = useState(null);
@@ -38,7 +46,9 @@ const AddTournament = (event) => {
   };
 
   Axios.post("http://localhost:3001/api/manager/AddTournamentMatch", formData)
-    .then((res) => {return SetValidation(res)})
+    .then((res) => {
+      return SetValidation(res);
+    })
     .catch((err) => console.log("error is arized", err));
 };
 
@@ -65,7 +75,7 @@ function AddTournamentMatch(props) {
   let array1 = [
     {
       title: "Date",
-
+      min: String(currentDate),
       type: "date",
       placeholder: "",
       id: "date",
