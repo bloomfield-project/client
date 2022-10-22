@@ -154,7 +154,7 @@ function Membership() {
           }
     
           console.log("data : ",data)
-          // console.log("Passwords are mathched");
+          console.log("Passwords are mathched");
           Axios.post("http://localhost:3001/api/manager/addMembership", data)
           .then((res) => {
             // console.log(setRes(res.data));
@@ -190,7 +190,7 @@ function Membership() {
     console.log(event)
     u_id = event.target.attributes[1].nodeValue;
     // if (name) {
-    console.log("name from button : " + event.target.attributes[1].nodeValue + u_id);
+    console.log("name from button : " + event.target.attributes[1].nodeValue +" "+ u_id);
     handleShow();
     // }
   };
@@ -211,12 +211,12 @@ function Membership() {
     );
   }, []);
 
-  if (!GetUnpaid) return null;
+  // if (!GetUnpaid) return null;
 
-  if (!GetPaid) return null;
+  // if (!GetPaid) return null;
 
   // console.log(GetPaid);
-
+if(GetPaid){
   GetPaid.map((item, i) => {
     amount = item.total_amount;
     paid[i] = {
@@ -228,40 +228,46 @@ function Membership() {
       date: item.date,
     };
   });
+}
+ 
 
   // console.log("Get unpaid : ", GetUnpaid);
 
   unpaid.length = 0;
-  GetUnpaid.map((items, i) => {
-    user_role = items.role.toUpperCase();
-    // console.log(user_role);
-    if (user_role === "PLAYER") {
-      obj = {
-        id: items.user_id,
-        img: <img className="row-image" src={profpic} alt=""></img>,
-        name: items.name.replace(/(^\w{1})|(\s+\w{1})/g, (letter) =>
-          letter.toUpperCase()
-        ),
-        ammount: amount,
-        btn: (
-          <Button
-            key={i}
-            type= "submit"
-            variant="secondary"
-            value={items.user_id}
-            onClick={doPayment}
-          >
-            Pay
-            {/* <input type="hidden" id="custId" name="custId" value="3487"></input> */}
-          </Button>
-        ),
-      };
-      unpaid.push(obj);
-      // obj=null;
-    }
-  });
 
-  // console.log("unpaid : ", unpaid);
+  if(GetUnpaid){
+    GetUnpaid.map((items, i) => {
+      user_role = items.role.toUpperCase();
+      // console.log(user_role);
+      if (user_role === "PLAYER") {
+        obj = {
+          id: items.user_id,
+          img: <img className="row-image" src={profpic} alt=""></img>,
+          name: items.name.replace(/(^\w{1})|(\s+\w{1})/g, (letter) =>
+            letter.toUpperCase()
+          ),
+          ammount: amount,
+          btn: (
+            <Button
+              key={i}
+              type= "submit"
+              variant="secondary"
+              value={items.user_id}
+              onClick={doPayment}
+            >
+              Pay
+              {/* <input type="hidden" id="custId" name="custId" value="3487"></input> */}
+            </Button>
+          ),
+        };
+        unpaid.push(obj);
+        // obj=null;
+      }
+    });
+  }
+ 
+
+  console.log("unpaid : ", unpaid);
   const uniqueIds = [];
 
   const unique = unpaid.filter((element) => {
