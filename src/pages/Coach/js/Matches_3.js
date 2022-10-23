@@ -1,10 +1,12 @@
 import React from "react";
 import Header from "../../../component/header/Header";
+import Button from "react-bootstrap/Button";
 import { IoChevronBackCircleOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import MatchesTeams from "../../../component/MatchesTeams/MatchesTeams";
 import "../css/Matches_3.css";
 import "../../Home.css";
+import Table from 'react-bootstrap/Table';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -24,9 +26,9 @@ function Macthes_3() {
 
                 <div className="body-container-1">
 
-                <div className="navbar-container">
-                    <Navbar></Navbar>
-                </div>
+                    <div className="navbar-container">
+                        <Navbar></Navbar>
+                    </div>
 
                     <div className="body-container-2">
 
@@ -62,7 +64,7 @@ function Macthes_3() {
 
                                 <hr></hr>
 
-                                <Container>
+                                {/* <Container>
 
                                     <Row>
                                         <Col className="M3-main-container-3-1" sm={4}> <h6> <a href="/coach/playerPerformance">Gihan Weerasinghe</a> </h6> </Col>
@@ -127,7 +129,44 @@ function Macthes_3() {
                                     </Row>
                                     <br></br>
 
-                                </Container>
+                                </Container> */}
+
+                                <Table striped bordered hover>
+                                    <thead>
+                                        <tr>
+                                            <th>Player Code</th>
+                                            <th>Player Name</th>
+                                            <th>Performance</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <tr>
+                                            <td>BF-75</td>
+                                            <td>Kumar Sangakkar</td>
+                                            <td><Link to={"/coach/playerPerformance"}><Button variant="secondary">Add</Button></Link></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>BF-75</td>
+                                            <td>Kumar Sangakkar</td>
+                                            <td><Link to={"/coach/playerPerformance"}><Button variant="secondary">Add</Button></Link></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>BF-75</td>
+                                            <td>Kumar Sangakkar</td>
+                                            <td><Link to={"/coach/playerPerformance"}><Button variant="secondary">Add</Button></Link></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>BF-75</td>
+                                            <td>Kumar Sangakkar</td>
+                                            <td><Link to={"/coach/playerPerformance"}><Button variant="secondary">Add</Button></Link></td>
+                                        </tr>
+                                        
+                                    </tbody>
+                                </Table>
 
                             </div>
 

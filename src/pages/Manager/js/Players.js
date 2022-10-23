@@ -44,7 +44,9 @@ const columns = [
   },
  
 ];
+
 function Players() {
+  
   let result;
 
   const [post, setPost] = React.useState(null);
@@ -77,9 +79,28 @@ function Players() {
    })}
   }
 
- 
+
+  // {post.data.map((item, i) => {
+  //    dataArray[i] = 
+      
+  //       {
+  //         id: "BP-" + item.user_id ,
+  //         name: item.name,
+  //         contact: item.contact,
+  //         email: item.email,
+  //         btn: (
+  //           <Link to={"/manager/EditPlayerDetails/"+ item.user_id}>
+  //             <Button variant="secondary">View</Button>
+  //           </Link>
+  //         ),
+  //       } 
+   
+  // })}
+
+
   // getData(result)
   // console.log("eliyen")
+
   return (
     <>
       <div className="page-container-1">
