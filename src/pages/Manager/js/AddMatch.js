@@ -47,7 +47,7 @@ const columns = [
     field: "title",
   },
   {
-    title:"",
+    title:""
   },
   {
     title: "",
@@ -58,6 +58,7 @@ const columns = [
 function AddMatch() {
   const [tabNumber, setTabNumber] = useState(1);
   const [matchTitle, setTitle] = useState("");
+
 
   React.useEffect(() => {
     // console.log("inside useEffect")
@@ -75,7 +76,7 @@ function AddMatch() {
     {
       matchTitle.data.map((item, i) => {
         tournment_data[i] = {
-         
+         key:i,
           title: item.title,
           btn: (
             <Link
@@ -185,7 +186,7 @@ function AddMatch() {
                   </div>
                   <div className="tablee">
                     <SearchTable
-                      title={""}
+                      t_title={""}
                       data={tournment_data}
                       columns={columns}
                       searching={true}
