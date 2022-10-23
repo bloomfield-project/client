@@ -30,10 +30,6 @@ let compRes;
 var date = new Date();
 
 
-let day = date.getDate();
-let month = date.getMonth() + 1;
-let year = date.getFullYear();
-
 var currentDate=moment.utc(date).format("YYYY-MM-DD");
 
 
@@ -181,24 +177,17 @@ function Membership() {
   React.useEffect(() => {
     Axios.get("http://localhost:3001/api/manager/payment/paid").then((res) => {
       setPost(res.data.data);
-      // console.log(res.data.data);
+      console.log(res.data.data);
     });
-  }, []);
-
-  React.useEffect(() => {
     Axios.get("http://localhost:3001/api/manager/payment/unpaid").then(
       (res) => {
         setUnpaid(res.data.data);
-        // console.log(res.data.data);
+        console.log(res.data.data);
       }
     );
   }, []);
 
-  // if (!GetUnpaid) return null;
 
-  // if (!GetPaid) return null;
-
-  // console.log(GetPaid);
 if(GetPaid){
   GetPaid.map((item, i) => {
     amount = item.total_amount;
@@ -333,7 +322,7 @@ if(GetPaid){
             {/* <div > */}
             <div className="title">
               <h1>Annual Membership</h1>
-              <h1>Render Count: {count.current}</h1>
+              {/* <h1>Render Count: {count.current}</h1> */}
             </div>
             <div className="tabs">
               <div className="tabs-left">

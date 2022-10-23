@@ -21,10 +21,9 @@ function MatchDetail() {
       }
     );
   }, []);
-
   console.log("post data function ", post);
 
-  if (!post) return null;
+    
 
   return (
     <>
@@ -58,79 +57,82 @@ function MatchDetail() {
               <div className="tablee">
                 <div className="gap-3"></div>
 
-                {/* match card */}
-                {post.data.map((item, i) => {
-                  return (
-               <>
-                      <div className="matche-container-outer-box" key={i}>
-                        <div className="match-box-up">
-                          <div className="go-out">
-                            <h4
-                              style={{
-                                color: "#009270",
-                                fontSize: "2rem",
-                                fontWeight: "bolder",
-                              }}
-                            >
-                              Hero Cup
-                            </h4>
-                          </div>
-                        </div>
-                        <div className="match-box-mid">
-                          <div className="match-box-mid-left">
-                            <div className="box-mid-left-up">
-                              <h4 style={{ color: "#a5a5a5" }}>BLOOMFIELD</h4>
-                            </div>
-                            <div className="box-mid-left-mid">
-                              <img src={Team}></img>
-                            </div>
-                            <div className="box-mid-left-down">
-                              {/* <h5>176-6 (18.3)</h5> */}
+                {post ? (
+                  post.data.map((item, i) => {
+                    return (
+                      <>
+                        <div className="matche-container-outer-box" key={i}>
+                          <div className="match-box-up">
+                            <div className="go-out">
+                              <h4
+                                style={{
+                                  color: "#009270",
+                                  fontSize: "2rem",
+                                  fontWeight: "bolder",
+                                }}
+                              >
+                                {item.title}
+                              </h4>
                             </div>
                           </div>
-                          <div className="match-box-mid-mid">
-                            <div className="box-mid-mid-up">
-                              <h5 style={{ color: "#a5a5a5" }}>{item.match_format}</h5>
+                          <div className="match-box-mid">
+                            <div className="match-box-mid-left">
+                              <div className="box-mid-left-up">
+                                <h4 style={{ color: "#a5a5a5" }}>BLOOMFIELD</h4>
+                              </div>
+                              <div className="box-mid-left-mid">
+                                <img src={Team}></img>
+                              </div>
+                              <div className="box-mid-left-down"></div>
                             </div>
-                            <div className="box-mid-mid-mid">VS</div>
-                            <div className="box-mid-mid-down">
-                              <h5 style={{ color: "#a5a5a5" }}>
-                                {item.ground}
+                            <div className="match-box-mid-mid">
+                              <div className="box-mid-mid-up">
+                                <h5 style={{ color: "#a5a5a5" }}>
+                                  {item.match_format}
+                                </h5>
+                              </div>
+                              <div className="box-mid-mid-mid">VS</div>
+                              <div className="box-mid-mid-down">
+                                <h5 style={{ color: "#a5a5a5" }}>
+                                  {item.ground}
+                                </h5>
+                              </div>
+                            </div>
+                            <div className="match-box-mid-right">
+                              <div className="box-mid-right-up">
+                                <h4 style={{ color: "#a5a5a5" }}>
+                                  {item.op_team_name}
+                                </h4>
+                              </div>
+                              <div className="box-mid-right-mid">
+                                <img src={opTeam}></img>
+                              </div>
+                              <div className="box-mid-right-down"></div>
+                            </div>
+                          </div>
+                          <div className="match-box-down-1">
+                            <div className="match-box-down-1-left">
+                              <h5 style={{ color: "#009270" }}>
+                                {/* BLOOMFIELD won by 4 wkts */}
                               </h5>
                             </div>
-                          </div>
-                          <div className="match-box-mid-right">
-                            <div className="box-mid-right-up">
-                              <h4 style={{ color: "#a5a5a5" }}>{item.op_team_name}</h4>
-                            </div>
-                            <div className="box-mid-right-mid">
-                              <img src={opTeam}></img>
-                            </div>
-                            <div className="box-mid-right-down">
-                              {/* <h5>175-7 (20)</h5> */}
+                            <div className="match-box-down-1-right">
+                              <h5 style={{ color: "#a5a5a5" }}>{item.date}</h5>
                             </div>
                           </div>
-                        </div>
-                        <div className="match-box-down-1">
-                          <div className="match-box-down-1-left">
-                            <h5 style={{ color: "#009270" }}>
-                              {/* BLOOMFIELD won by 4 wkts */}
-                            </h5>
-                          </div>
-                          <div className="match-box-down-1-right">
-                            <h5 style={{ color: "#a5a5a5" }}>{item.date}</h5>
+                          <div className="match-box-down">
+                            <Button variant="secondary">View</Button>
                           </div>
                         </div>
-                        <div className="match-box-down">
-                          <Button variant="secondary">View</Button>
-                        </div>
-                      </div>
-                      <div className="gap-3"></div>
-                  </>
-                  );
-                })}
-
-                
+                        <div className="gap-3"></div>
+                      </>
+                    );
+                  })
+                ) : (
+                  <div className="spinner-border m-5" role="status">
+                    <span className="sr-only"></span>
+                  </div>
+                )}
 
                 {/* match card */}
               </div>
