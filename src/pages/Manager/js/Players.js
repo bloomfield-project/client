@@ -11,12 +11,12 @@ import profpic from "../../../component/header/profpic.jfif";
 
 const Axios = require("axios").default;
 
-async function getData() {
-  const axios = require("axios").default;
-  let res = await axios.get("/api/user/players");
-  let result = res.data.data;
-  console.log(result[1].email);
-}
+// async function getData() {
+//   const axios = require("axios").default;
+//   let res = await axios.get("/api/user/players");
+//   let result = res.data.data;
+//   console.log(result[1].email);
+// }
 
 let dataArray = [];
 
@@ -59,24 +59,44 @@ function Players() {
 
   console.log("post data function ", post);
 
-  if (!post) return null;
+  if (post) {
+    {post.data.map((item, i) => {
+      dataArray[i] = 
+       
+         {
+           id: "BP-" + item.user_id ,
+           name: (item.name).replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase()),
+           contact: item.contact,
+           email: item.email,
+          //  btn: (
+          //    <Link to={"/manager/EditPlayerDetails/"+ item.user_id}>
+          //      <Button variant="secondary">View</Button>
+          //    </Link>
+          //  ),
+         }
+         
+    
+   })}
+  }
 
-  {post.data.map((item, i) => {
-     dataArray[i] = 
+
+  // {post.data.map((item, i) => {
+  //    dataArray[i] = 
       
-        {
-          id: "BP-" + item.user_id ,
-          name: item.name,
-          contact: item.contact,
-          email: item.email,
-          btn: (
-            <Link to={"/manager/EditPlayerDetails/"+ item.user_id}>
-              <Button variant="secondary">View</Button>
-            </Link>
-          ),
-        } 
+  //       {
+  //         id: "BP-" + item.user_id ,
+  //         name: item.name,
+  //         contact: item.contact,
+  //         email: item.email,
+  //         btn: (
+  //           <Link to={"/manager/EditPlayerDetails/"+ item.user_id}>
+  //             <Button variant="secondary">View</Button>
+  //           </Link>
+  //         ),
+  //       } 
    
-  })}
+  // })}
+
 
   // getData(result)
   // console.log("eliyen")
@@ -127,6 +147,7 @@ function Players() {
                   headerFC={"white"}
                   headerFS={"1.2rem"}
                   headerFW={"500"}
+                  on
                 />
               </div>
             </div>

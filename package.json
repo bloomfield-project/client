@@ -11,7 +11,8 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
-    "antd": "^4.22.4",
+    "all": "^0.0.0",
+    "antd": "^4.23.6",
     "axios": "^0.27.2",
     "bootstrap": "^5.2.0",
     "bootstrap-icons": "^1.9.1",
@@ -21,7 +22,9 @@
     "material-table": "^1.69.3",
     "mdb-react-ui-kit": "^4.1.0",
     "mdbootstrap": "^4.20.0",
+    "moment": "^2.29.4",
     "prop-types": "^15.6.0",
+    "rc-tabs": "^12.2.1",
     "react": "^17.0.2",
     "react-beautiful-dnd": "^13.1.0",
     "react-bootstrap": "^2.5.0",
@@ -47,9 +50,9 @@
     "yup": "^0.32.11"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "jest",
+    "start": "react-scripts --max_old_space_size=4096 start",
+    "build": "react-scripts --max_old_space_size=4096 build",
+    "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

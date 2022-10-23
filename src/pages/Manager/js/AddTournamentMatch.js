@@ -15,14 +15,18 @@ import ResetSubmit from "../../../component/Form/ResetSubmit";
 import FileUpload from "../../../component/Form/FileUpload";
 import SelectOption from "../../../component/Form/SelectOption";
 import { object } from "prop-types";
+import moment from "moment";
 
 const Axios = require("axios").default;
 
-function SetValidation(res) {
-  const [post, setPost] = useState(null);
-  setPost(res);
-  console.log("Data set eka ", post);
-}
+var date = new Date();
+date.setDate(date.getDate() + 7);
+
+var currentDate = moment(date).format("YYYY-MM-DD");
+
+console.log("current date : ", currentDate);
+
+
 
 const AddTournament = (event) => {
   event.preventDefault();
@@ -30,15 +34,27 @@ const AddTournament = (event) => {
   console.log(event);
 
   let formData = {
-    date: event.target[0].value,
-    time: event.target[1].value,
-    ground: event.target[2].value,
+    title: event.target[0].value,
+    date: event.target[1].value,
+    time: event.target[2].value,
+    ground: event.target[3].value,
     match_format: event.target[4].value,
-    op_team_name: event.target[3].value,
+    op_team_name: event.target[5].value,
   };
 
   Axios.post("http://localhost:3001/api/manager/AddTournamentMatch", formData)
-    .then((res) => {return SetValidation(res)})
+    .then((res) => {
+      // console.log("res", res);
+      
+      if (res.data.validation != null) {
+        alert(res.data.validation);
+      } else {
+        alert("Match Add Successfully");
+        window.location.reload();
+      }
+
+      // setPost(res);
+    })
     .catch((err) => console.log("error is arized", err));
 };
 
@@ -46,7 +62,6 @@ function AddTournamentMatch(props) {
   const { type } = useParams();
 
   console.log("type is : " + type);
-
   const option = [
     {
       value: "T20",
@@ -65,7 +80,7 @@ function AddTournamentMatch(props) {
   let array1 = [
     {
       title: "Date",
-
+      min: String(currentDate),
       type: "date",
       placeholder: "",
       id: "date",
@@ -130,15 +145,6 @@ function AddTournamentMatch(props) {
                 </div>
 
                 <h1>Add Tournament Match </h1>
-                {/* <ul>
-                  {this.post.data.map((item, i) => {
-                    return (
-                      <li key={i}>
-                        {item.ground} - {item.date}
-                      </li>
-                    );
-                  })}
-                </ul> */}
               </div>
 
               <div className="form-container">
@@ -167,6 +173,8 @@ function AddTournamentMatch(props) {
                           onSubmit={AddTournament}
                         >
                           <form>
+                            <input type="hidden" value={type}></input>
+
                             <SampleForm arr={array1} />
                             <SelectOption
                               label={"Match Format"}

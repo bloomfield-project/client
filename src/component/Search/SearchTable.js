@@ -5,7 +5,7 @@ import MaterialTable from "material-table";
 // import { TableBody } from "@material-ui/core";
 // import { AddBox, ArrowDownward } from "@material-ui/icons";
 
-function SearchTable({t_title, data , columns , searching , sort , filter , paging,headerH,headerC , headerFC ,headerFS , headerFW}) {
+function SearchTable({t_title, data , columns , searching , sort , filter , paging="true",headerH,headerC , headerFC ,headerFS , headerFW}) {
 
   return (
     <div>
@@ -19,6 +19,7 @@ function SearchTable({t_title, data , columns , searching , sort , filter , pagi
         sorting:sort,
         paging:paging,
         padding:'dense',
+        paginationType: 'normal',
         // pageSizeOptions: [],
         headerStyle: {
           backgroundColor: headerC,
@@ -35,19 +36,3 @@ function SearchTable({t_title, data , columns , searching , sort , filter , pagi
 }
 
 export default SearchTable;
-
-// [
-//   { title: 'Name', field: 'name' },
-//   { title: 'Surname', field: 'surname' },
-//   { title: 'Birth Year', field: 'birthYear', type: 'numeric' },
-//   {
-//     title: 'Birth Place',
-//     field: 'birthCity',
-//     lookup: { 34: 'İstanbul', 63: 'Şanlıurfa' },
-//   },
-// ]
-
-// [
-//   { name: 'Mehmet', surname: 'Baran', birthYear: 1987, birthCity: 63 },
-//   { name: 'Zerya Betül', surname: 'Baran', birthYear: 2017, birthCity: 34 },
-// ]

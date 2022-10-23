@@ -10,7 +10,7 @@ import SearchTable from "../../../component/Search/SearchTable";
 import player from "../player.jpg"
 import { Tabs } from 'antd';
 import 'antd/dist/antd.css';
-import {fetchData} from '../../AuthServer'
+import {fetchData} from '../../AuthServer'  
 import {useDispatch,useSelector} from 'react-redux'
 import {getASession} from "../../../redux/actions/viewSessionAction"
 import {useNavigate} from "react-router-dom"
@@ -80,15 +80,14 @@ function Session() {
   function viewSession(num){
   alert(num)
     dispatch(getASession(num))
-    history('/player/PSessionDetails')
+    history('/player/Psession/PSessionDetails')
   }
   
 
 
-  
+   
  
   console.log(Month);
-
   return (
     <>
       <div className="page-container-1">
@@ -120,6 +119,7 @@ function Session() {
                                 <div className="col-51">Session</div>
                                 <div className="col-51">Date</div>
                                 <div className="col-51">Time</div>
+                                <div className="col-51">Coach</div>
                                 <div className="col-51"></div>
                             </div>
 
@@ -130,6 +130,7 @@ function Session() {
                                 <div className="col-51">{item.type}</div>
                                 <div className="col-51">{item.date}</div>
                                 <div className="col-51">{item.time}</div>
+                                <div className="col-51">{item.name}</div>
                                 <div className="col-51"><button value={item.session_id} onClick={e => viewSession(e.target.value)}>View</button></div>
                           
 

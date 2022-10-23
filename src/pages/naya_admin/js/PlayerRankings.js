@@ -1,476 +1,228 @@
-import Header from "../../../component/header/Header";
+import Header from "../../../component/header/Header"
 import Navbar from "../../../component/NavigationBar/Navbar";
 import React from "react";
-import "../../Home.css";
-// import "../css/playerRanking.css";
-import player from "../../player/player.jpg";
-import { Tabs } from "antd";
-import "antd/dist/antd.css";
+import "../../Home.css"
+// import "../css/playerRanking.css"
+import player from "../player.jpg"
+import { Tabs } from 'antd';
+import 'antd/dist/antd.css';
 import Tablee from "../../../component/ScoreTable/ScoreTable";
-import IntroTable from "../../../component/IntroTable/IntroTable";
+import IntroTable from "../../../component/IntroTable/IntroTable"
+import {useState,useEffect} from "react";
+import {fetchData} from '../../AuthServer' 
+import { useLocation ,useParams } from "react-router-dom";
+import {useDispatch,useSelector} from 'react-redux'
 
-function playerRankings() {
-  const { TabPane } = Tabs;
 
-  const onChange = (key) => {
-    console.log(key);
-  };
 
-  const COL_NAMES = [
-    " ",
-    "M",
-    "Inn",
-    "NO",
-    "Runs",
-    "HS",
-    "Avg",
-    "Ducks",
-    "SR",
-    "50",
-    "100",
-    "200",
-    "4s",
-    "6s",
-  ];
-  const LIST = [
-    {
-      format: "ODI",
-      M: "10",
-      Inn: "10",
-      NO: "10",
-      Runs: "10",
-      HS: "10",
-      Avg: "10",
-      Ducks: "10",
-      SR: "87.65",
-      fifty: "10",
-      hunderd: "10",
-      doubleH: "10",
-      fours: "10",
-      sixes: "10",
-    },
-    {
-      format: "T20",
-      M: "10",
-      Inn: "10",
-      NO: "10",
-      Runs: "10",
-      HS: "10",
-      Avg: "10",
-      Ducks: "10",
-      SR: "121.23",
-      fifty: "10",
-      hunderd: "10",
-      doubleH: "10",
-      fours: "10",
-      sixes: "10",
-    },
-    {
-      format: "TEST",
-      M: "10",
-      Inn: "10",
-      NO: "10",
-      Runs: "10",
-      HS: "10",
-      Avg: "10",
-      Ducks: "10",
-      SR: "10",
-      fifty: "10",
-      hunderd: "10",
-      doubleH: "10",
-      fours: "10",
-      sixes: "10",
-    },
-  ];
 
-  const COL_NAMES_M = [
-    " ",
-    "M",
-    "Inn",
-    "NO",
-    "Runs",
-    "HS",
-    "Avg",
-    "Ducks",
-    "SR",
-    "50",
-    "100",
-    "200",
-    "4s",
-    "6s",
-  ];
-  const LIST_M = [
-    {
-      format: "ODI",
-      M: "10",
-      Inn: "10",
-      NO: "10",
-      Runs: "10",
-      HS: "10",
-      Avg: "10",
-      Ducks: "10",
-      SR: "87.65",
-      fifty: "10",
-      hunderd: "10",
-      doubleH: "10",
-      fours: "10",
-      sixes: "10",
-    },
-    {
-      format: "T20",
-      M: "10",
-      Inn: "10",
-      NO: "10",
-      Runs: "10",
-      HS: "10",
-      Avg: "10",
-      Ducks: "10",
-      SR: "121.23",
-      fifty: "10",
-      hunderd: "10",
-      doubleH: "10",
-      fours: "10",
-      sixes: "10",
-    },
-    {
-      format: "TEST",
-      M: "10",
-      Inn: "10",
-      NO: "10",
-      Runs: "10",
-      HS: "10",
-      Avg: "10",
-      Ducks: "10",
-      SR: "10",
-      fifty: "10",
-      hunderd: "10",
-      doubleH: "10",
-      fours: "10",
-      sixes: "10",
-    },
-  ];
-  return (
-    <div className="page-container-1">
-      <div className="header-container">
-        <Header></Header>
-      </div>
-      <div className="body-container-1">
-        <div className="navbar-container">
-          <Navbar></Navbar>
+
+
+
+
+
+
+function PlayerRanking() {
+    const loginData= useSelector(state => state.auth.data)
+    const [responseData,setResponseData]=useState([]);
+    const [responseDataB,setResponseDataB]=useState([]);
+    const [responseDataF,setResponseDataF]=useState([]);
+    const [responseDataI,setResponseDataI]=useState([]);
+    // const location = useLocation();
+    // console.log(location.state)
+    const urlBat= "player/performance"
+    const urlBowl= "player/performanceBowl"
+    const urlFld= "player/performanceFld"
+    const urlIntro= "player/intro"
+    const { id } = useParams();
+    async function getData(url){
+        
+        const reqData ={
+            user_id:id,
+        };
+        const authRequest = {
+        "method":"post",
+        "url":url,
+        "data":reqData
+      }
+      fetchData(authRequest).then((response)=>{
+        if(url==="player/performance"){
+            setResponseData(response.data)
+        }
+        else if(url==="player/performanceBowl"){
+            setResponseDataB(response.data)
+        }
+        else if(url==="player/performanceFld"){
+            setResponseDataF(response.data)
+        }
+        else if(url==="player/intro"){
+            setResponseDataI(response.data)
+        }
+        
+      }).catch(function(error){
+        console.log(error);
+      })
+    }
+    useEffect(() => {
+        getData(urlIntro)
+        getData(urlBat)
+        getData(urlBowl)
+        getData(urlFld)
+    }, [])
+    const dataupcomming=responseData.data
+    const dataupcommingB=responseDataB.data
+    const dataupcommingF=responseDataF.data
+    const dataupcommingI=responseDataI.data
+    console.log(dataupcomming)
+    console.log(dataupcommingB)
+    console.log(dataupcommingF)
+    console.log(dataupcommingI)
+
+    const COL_NAMES = [" ","M", "Inn", "Balls", "Runs" , "HS", "Avg", "Ducks", "SR","50","100","200" ,"4s", "6s"];
+    const LIST = dataupcomming;
+
+    const COL_NAMES_M = ["","M", "Inn", "Overs", "Runs" , "Wkts", "Econ","3W","5W","Hatricks" ,"maiden" ,"WB" ,"NB"];
+    const LIST_M = dataupcommingB;
+
+    return (
+      <div className="page-container-1">
+        <div className="header-container">
+          <Header></Header>
         </div>
-        <div className="body-container-2">
-          <div className="title">
-            <h1>Player Perfomance</h1>
+        <div className="body-container-1">
+          <div className="navbar-container">
+            <Navbar ></Navbar>
           </div>
-          <div className="player-details-box">
-            <img className="playerImage" src={player} alt="Italian Trulli" />
-            <IntroTable />
-          </div>
-          <div className="playerPreformanceBody">
-            <Tabs defaultActiveKey="1" onChange={onChange}>
-              <TabPane tab="Career" key="1">
-                <div className="player-content">
-                  <div className="tableTopic">
-                    <h4>Bating Career Summary</h4>
-                  </div>
-                  <hr></hr>
-                  <Tablee list={LIST} colNames={COL_NAMES} width="100%" />
-                  <span className="gap"></span>
-
-                  <div className="tableTopic">
-                    <h4>Bowling Career Summary</h4>
-                  </div>
-                  <hr></hr>
-                  <Tablee list={LIST} colNames={COL_NAMES} width="100%" />
-                  <span className="gap"></span>
-
-                  <div className="tableTopic">
-                    <h4>Fielding Career Summary</h4>
-                  </div>
-                  <hr></hr>
-
-                  <div className="fielding">
-                    <div className="fielding-row">
-                      <div className="coll-1">
-                        <h5>Catches</h5>
-                      </div>
-                      <div className="coll-2">
-                        <h5>:</h5>
-                      </div>
-                      <div className="coll-3">
-                        <h5>24</h5>
-                      </div>
+          <div className="body-container-2">
+              <div className="title">
+                <h1>Player Perfomance</h1>
+              </div>
+              <div className="player-details-box">
+                <img className="playerImage" src={player} alt="Italian Trulli" />
+                <div style={{display:"flex", flexDirection:"column",justifyContent:"space-between", height:"200px", width:"fit-content", borderRadius:"10px" , marginLeft:"50px"}}>
+                    <div style={{width: "351px", height: "52px" , backgroundColor: "#006950" , display: "flex", justifyContent:"center", alignItems:"center" , paddingTop: "5px", borderTopRightRadius: "10px" ,borderTopLeftRadius: "10px"}}>
+                        <h3 style={{color:"white"}}>{dataupcommingI?dataupcommingI[0].name:""}</h3>
                     </div>
-                    <div className="fielding-row">
-                      <div className="coll-1">
-                        <h5>Run-Outs</h5>
-                      </div>
-                      <div className="coll-2">
-                        <h5>:</h5>
-                      </div>
-                      <div className="coll-3">
-                        <h5>24</h5>
-                      </div>
+                    <div style={{width: "351px", height:"fit-content" ,display:"flex", justifyContent: "space-between"}}>
+                        <div style={{width:"175px", height:"36px", backgroundColor:"#009270", paddingTop:"5px",textAlign:"left", paddingLeft:"10px"}}>
+                        <h5 style={{color:"white",fontWeight:"normal", fontSize: "1rem"}}>Age</h5>
+                        </div>
+                        <div style={{ width:"175px", height:"36px", backgroundColor:"#009270", paddingTop:"5px",textAlign:"left", paddingLeft:"10px"}}>
+                        <h5 style={{color:"white",fontWeight:"normal", fontSize: "1rem"}}>{dataupcommingI?dataupcommingI[0].Age:""}</h5>
+                        </div>
                     </div>
-                  </div>
-                  <span className="gap"></span>
-                  <div className="tableTopic">
-                    <h4>Matches</h4>
-                  </div>
-                  <hr></hr>
-
-                  <div className="table-tabs">
-                    <div className="table-tab">ODI</div>
-                    <div className="table-tab-active">T20</div>
-                    <div className="table-tab">TEST</div>
-                  </div>
-
-                  <span className="gp-21"></span>
-
-                  {/*begin*/}
-                  <div className="tablee-14">
-                    <div className="table-head-14">
-                      <div className="col-14-1">
-                        <h5>Match</h5>
-                      </div>
-                      <div className="col-14-2">
-                        <h5>AT</h5>
-                      </div>
-                      <div className="col-14-3">
-                        <h5>Runs</h5>
-                      </div>
-                      <div className="col-14-14">
-                        <h5>balls</h5>
-                      </div>
-                      <div className="col-14-4">
-                        <h5>SR</h5>
-                      </div>
-                      <div className="col-14-5">
-                        <h5>6s</h5>
-                      </div>
-                      <div className="col-14-6">
-                        <h5>4s</h5>
-                      </div>
-                      <div className="col-14-7">
-                        <h5>Overs</h5>
-                      </div>
-                      <div className="col-14-8">
-                        <h5>Runs</h5>
-                      </div>
-                      <div className="col-14-9">
-                        <h5>Econ</h5>
-                      </div>
-                      <div className="col-14-10">
-                        <h5>Wkts</h5>
-                      </div>
-                      <div className="col-14-11">
-                        <h5>MO</h5>
-                      </div>
-                      <div className="col-14-12">
-                        <h5>NB</h5>
-                      </div>
-                      <div className="col-14-13">
-                        <h5>WB</h5>
-                      </div>
+                    <div style={{width: "351px", height:"fit-content" ,display:"flex", justifyContent: "space-between"}}>
+                        <div style={{width:"175px", height:"36px", backgroundColor:"#009270", paddingTop:"5px",textAlign:"left", paddingLeft:"10px"}}>
+                        <h5 style={{color:"white",fontWeight:"normal", fontSize: "1rem"}}>Role</h5>
+                        </div>
+                        <div style={{ width:"175px", height:"36px", backgroundColor:"#009270", paddingTop:"5px",textAlign:"left", paddingLeft:"10px"}}>
+                        <h5 style={{color:"white",fontWeight:"normal", fontSize: "1rem"}}>{dataupcommingI?dataupcommingI[0].player_role:""}</h5>
+                        </div>
                     </div>
-                    <div className="table-row-14">
-                      <div className="col-14-1">
-                        <a href="#">
-                          vs SSC
-                          <br />
-                          Pallekale stadium
-                        </a>
-                      </div>
-                      <div className="col-14-2">AT-2</div>
-                      <div className="col-14-3">87</div>
-                      <div className="col-14-14">72</div>
-                      <div className="col-14-4">107.2</div>
-                      <div className="col-14-5">3</div>
-                      <div className="col-14-6">5</div>
-                      <div className="col-14-7">-</div>
-                      <div className="col-14-8">-</div>
-                      <div className="col-14-9">-</div>
-                      <div className="col-14-10">-</div>
-                      <div className="col-14-11">-</div>
-                      <div className="col-14-12">-</div>
-                      <div className="col-14-13">-</div>
+                    <div style={{width: "351px", height:"fit-content" ,display:"flex", justifyContent: "space-between"}}>
+                        <div style={{width:"175px", height:"36px", backgroundColor:"#009270", paddingTop:"5px",textAlign:"left", paddingLeft:"10px"}}>
+                        <h5 style={{color:"white",fontWeight:"normal", fontSize: "1rem"}}>Batting Style</h5>
+                        </div>
+                        <div style={{ width:"175px", height:"36px", backgroundColor:"#009270", paddingTop:"5px",textAlign:"left", paddingLeft:"10px"}}>
+                        <h5 style={{color:"white",fontWeight:"normal", fontSize: "1rem"}}>{dataupcommingI?dataupcommingI[0].batting_style:""}</h5>
+                        </div>
                     </div>
-                    <hr></hr>
-                    <div className="table-row-14">
-                      <div className="col-14-1">
-                        <a href="#">
-                          vs SSC
-                          <br />
-                          Pallekale stadium
-                        </a>
-                      </div>
-                      <div className="col-14-2">AT-2</div>
-                      <div className="col-14-3">87</div>
-                      <div className="col-14-14">72</div>
-                      <div className="col-14-4">107.2</div>
-                      <div className="col-14-5">3</div>
-                      <div className="col-14-6">5</div>
-                      <div className="col-14-7">-</div>
-                      <div className="col-14-8">-</div>
-                      <div className="col-14-9">-</div>
-                      <div className="col-14-10">-</div>
-                      <div className="col-14-11">-</div>
-                      <div className="col-14-12">-</div>
-                      <div className="col-14-13">-</div>
+                    <div style={{width: "351px", height:"fit-content" ,display:"flex", justifyContent: "space-between"}}>
+                        <div style={{width:"175px", height:"36px", backgroundColor:"#009270", paddingTop:"5px",textAlign:"left", paddingLeft:"10px" , borderBottomLeftRadius:"10px"}}>
+                        <h5 style={{color:"white",fontWeight:"normal", fontSize: "1rem"}}>Bowling Style</h5>
+                        </div>
+                        <div style={{ width:"175px", height:"36px", backgroundColor:"#009270", paddingTop:"5px",textAlign:"left", paddingLeft:"10px" , borderBottomRightRadius:"10px"}}>
+                        <h5 style={{color:"white",fontWeight:"normal", fontSize: "1rem"}}>{dataupcommingI?dataupcommingI[0].bowling_style:""}</h5>
+                        </div>
                     </div>
-                    <hr></hr>
-                    <div className="table-row-14">
-                      <div className="col-14-1">
-                        <a href="#">
-                          vs SSC
-                          <br />
-                          Pallekale stadium
-                        </a>
-                      </div>
-                      <div className="col-14-2">AT-2</div>
-                      <div className="col-14-3">87</div>
-                      <div className="col-14-14">72</div>
-                      <div className="col-14-4">107.2</div>
-                      <div className="col-14-5">3</div>
-                      <div className="col-14-6">5</div>
-                      <div className="col-14-7">-</div>
-                      <div className="col-14-8">-</div>
-                      <div className="col-14-9">-</div>
-                      <div className="col-14-10">-</div>
-                      <div className="col-14-11">-</div>
-                      <div className="col-14-12">-</div>
-                      <div className="col-14-13">-</div>
-                    </div>
-                    <hr></hr>
-                    <div className="table-row-14">
-                      <div className="col-14-1">
-                        <a href="#">
-                          vs SSC
-                          <br />
-                          Pallekale stadium
-                        </a>
-                      </div>
-                      <div className="col-14-2">AT-2</div>
-                      <div className="col-14-3">87</div>
-                      <div className="col-14-14">72</div>
-                      <div className="col-14-4">107.2</div>
-                      <div className="col-14-5">3</div>
-                      <div className="col-14-6">5</div>
-                      <div className="col-14-7">-</div>
-                      <div className="col-14-8">-</div>
-                      <div className="col-14-9">-</div>
-                      <div className="col-14-10">-</div>
-                      <div className="col-14-11">-</div>
-                      <div className="col-14-12">-</div>
-                      <div className="col-14-13">-</div>
-                    </div>
-                    <hr></hr>
-                    <div className="table-row-14">
-                      <div className="col-14-1">
-                        <a href="#">
-                          vs SSC
-                          <br />
-                          Pallekale stadium
-                        </a>
-                      </div>
-                      <div className="col-14-2">AT-2</div>
-                      <div className="col-14-3">87</div>
-                      <div className="col-14-14">72</div>
-                      <div className="col-14-4">107.2</div>
-                      <div className="col-14-5">3</div>
-                      <div className="col-14-6">5</div>
-                      <div className="col-14-7">-</div>
-                      <div className="col-14-8">-</div>
-                      <div className="col-14-9">-</div>
-                      <div className="col-14-10">-</div>
-                      <div className="col-14-11">-</div>
-                      <div className="col-14-12">-</div>
-                      <div className="col-14-13">-</div>
-                    </div>
-                    <hr></hr>
-                  </div>
-                  {/*end*/}
                 </div>
-              </TabPane>
-              <TabPane tab="Practice" key="2">
-                <div className="player-content">
-                  <div className="tableTopic">
-                    <h4>Batting</h4>
-                    <h5>No of sessions</h5>
-                  </div>
-                  <hr></hr>
-                  <div className="sesNameNo">
-                    <h4>Batting</h4>
-                    <div className="Noses">
-                      <h5>11</h5>
-                    </div>
-                  </div>
-                  <div className="sesNameNo">
-                    <h4>Batting</h4>
-                    <div className="Noses">
-                      <h5>11</h5>
-                    </div>
-                  </div>
-                  <div className="sesNameNo">
-                    <h4>Batting</h4>
-                    <div className="Noses">
-                      <h5>11</h5>
-                    </div>
-                  </div>
-                  <div className="sesNameNo">
-                    <h4>Batting</h4>
-                    <div className="Noses">
-                      <h5>11</h5>
-                    </div>
-                  </div>
-                  <div className="sesNameNo">
-                    <h4>Batting</h4>
-                    <div className="Noses">
-                      <h5>11</h5>
-                    </div>
-                  </div>
+              </div>
+              <div className="playerPreformanceBody">
+                {/* <Tabs defaultActiveKey="1" onChange={onChange}> */}
+                    
+                        {/* <TabPane tab="Career" key="1"> */}
+                            <div className="player-content">
+                                <div className="tableTopic"><h4>Bating Career Summary</h4></div>
+                                <hr></hr>
+                                <Tablee
+                                    list={LIST?LIST:""}
+                                    colNames={COL_NAMES}
+                                    width="100%"
+                                />
+                                 <span className="gap"></span>   
 
-                  <span className="gap"></span>
-                  <div className="tableTopic">
-                    <h4>Bowling</h4>
-                    <h5>No of sessions</h5>
-                  </div>
-                  <hr></hr>
-                  <div className="sesNameNo">
-                    <h4>Batting</h4>
-                    <div className="Noses">
-                      <h5>22</h5>
-                    </div>
-                  </div>
-                  <div className="sesNameNo">
-                    <h4>Batting</h4>
-                    <div className="Noses">
-                      <h5>11</h5>
-                    </div>
-                  </div>
-                  <div className="sesNameNo">
-                    <h4>Batting</h4>
-                    <div className="Noses">
-                      <h5>11</h5>
-                    </div>
-                  </div>
-                  <div className="sesNameNo">
-                    <h4>Batting</h4>
-                    <div className="Noses">
-                      <h5>11</h5>
-                    </div>
-                  </div>
-                </div>
-               
-              </TabPane>
-              
-            </Tabs>
-            
+                                <div className="tableTopic"><h4>Bowling Career Summary</h4></div>
+                                <hr></hr>
+                                <Tablee
+                                    list={LIST_M?LIST_M:""}
+                                    colNames={COL_NAMES_M}
+                                    width="100%"
+                                />
+                                <span className="gap"></span>   
+
+                                <div className="tableTopic"><h4>Fielding Career Summary</h4></div>
+                                <hr></hr>
+
+                                <div className="fielding">
+                                    <div className="fielding-row">
+                                        <div className="coll-1">
+                                            <h5>Catches</h5>
+                                        </div><div className="coll-2">
+                                            <h5>:</h5>
+                                        </div>
+                                        <div className="coll-3">
+                                            <h5>{dataupcommingF?dataupcommingF[0].catches:""}</h5>
+                                        </div>
+                                    </div>
+                                    <div className="fielding-row">
+                                        <div className="coll-1">
+                                            <h5>Run-Outs</h5>
+                                        </div><div className="coll-2">
+                                            <h5>:</h5>
+                                        </div>
+                                        <div className="coll-3">
+                                            <h5>{dataupcommingF?dataupcommingF[0].runout:""}</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span className="gap"></span>  
+                                
+                            </div>
+
+                            
+                            
+                        {/* </TabPane> */}
+                        {/* <TabPane tab="Practice" key="2">
+                            <div className="player-content">
+                                <div className="tableTopic"><h4>Batting</h4><h5>No of sessions</h5></div>
+                                <hr></hr>
+                                <div className="sesNameNo"><h4>Batting</h4><div className="Noses"><h5>11</h5></div></div>
+                                <div className="sesNameNo"><h4>Batting</h4><div className="Noses"><h5>11</h5></div></div>
+                                <div className="sesNameNo"><h4>Batting</h4><div className="Noses"><h5>11</h5></div></div>
+                                <div className="sesNameNo"><h4>Batting</h4><div className="Noses"><h5>11</h5></div></div>
+                                <div className="sesNameNo"><h4>Batting</h4><div className="Noses"><h5>11</h5></div></div>
+
+
+                                
+                                
+                                <span className="gap"></span>
+                                <div className="tableTopic"><h4>Bowling</h4><h5>No of sessions</h5></div>
+                                <hr></hr>
+                                <div className="sesNameNo"><h4>Batting</h4><div className="Noses"><h5>22</h5></div></div>
+                                <div className="sesNameNo"><h4>Batting</h4><div className="Noses"><h5>11</h5></div></div>
+                                <div className="sesNameNo"><h4>Batting</h4><div className="Noses"><h5>11</h5></div></div>
+                                <div className="sesNameNo"><h4>Batting</h4><div className="Noses"><h5>11</h5></div></div>
+                            </div>
+                        </TabPane> */}
+                    
+                {/* </Tabs> */}
+              </div>
           </div>
         </div>
+        
+        
       </div>
-    </div>
   );
-}
-
-export default playerRankings;
+  }
+  
+  export default PlayerRanking;

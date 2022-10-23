@@ -1,41 +1,190 @@
-import React from "react";
+import React ,{useState} from "react";
 import Header from "../../../component/header/Header";
 // import "../css/PlayerRegistration.css";
 import { IoChevronBackCircleOutline } from "react-icons/io5";
-// import SampleForm from "../../../component/Form/SampleForm";
-import { Link } from "react-router-dom";
+
 import EditDetails from "../../../component/EditDetail/EditDetails";
 import Navbar from "../../../component/NavigationBar/Navbar";
+import { Link, useParams, useLocation } from "react-router-dom";
+import Modal from "react-bootstrap/Modal";
+import moment from "moment";
+import ResetSubmit from "../../../component/Form/ResetSubmit";
+
+const Axios = require("axios").default;
+
+var date = new Date();
+date.setDate(date.getDate() + 7);
+
+var currentDate = moment(date).format("YYYY-MM-DD");
+
+console.log("current date : ", currentDate);
+var errorMsg = "";
+var success = "";
 
 function EditCouncellingSession() {
+  const [event, setevent] = React.useState("");
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => {
+    setShow(false);
+    
+  } 
+  const handleShow = () => setShow(true);
+ 
+
+  const { id } = useParams();
+  const session_id = {
+    id: id,
+  };
+
+  console.log("session id : ", id);
+
+  React.useEffect(() => {
+    Axios.post("http://localhost:3001/api/manager/getSession", session_id)
+      .then((response) => {
+        console.log(response);
+        setevent(response.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  if (!event) return null;
+
   const array = [
     {
-      lable: "Name",
-      data: "kasun kalhara",
+      lable: "Title",
+      data: event.data[0].title.replace(/(^\w{1})|(\s+\w{1})/g, (letter) =>
+        letter.toUpperCase()
+      ),
+      type: "text",
     },
     {
-      lable: "Age",
-      data: "25",
+      lable: "Date",
+      data: moment.utc(event.data[0].date).format("YYYY-MM-DD"),
+      type: "date",
+      min: String(currentDate),
     },
     {
-      lable: "Role",
-      data: "supervisore",
+      lable: "Time",
+      data: event.data[0].time,
+      type: "time",
     },
     {
-      lable: "Name",
-      data: "kasun kalhara",
+      lable: "Mentor",
+      data: event.data[0].mentor.replace(/(^\w{1})|(\s+\w{1})/g, (letter) =>
+        letter.toUpperCase()
+      ),
+      type: "text",
     },
     {
-      lable: "Age",
-      data: "25",
+      lable: "Mentor Details",
+      data: event.data[0].mentor.replace(/(^\w{1})|(\s+\w{1})/g, (letter) =>
+        letter.toUpperCase()
+      ),
+      type: "text",
     },
+
     {
-      lable: "Role",
-      data: "supervisore",
+      lable: "Place",
+      data: event.data[0].place.replace(/(^\w{1})|(\s+\w{1})/g, (letter) =>
+        letter.toUpperCase()
+      ),
+      type: "text",
     },
   ];
+
+  const handleSumit = (event) => {
+    event.preventDefault();
+    console.log("event :: ", event);
+    let formData = {
+      title: event.target[0].value,
+      date: event.target[1].value,
+      mentor: event.target[2].value,
+      time: event.target[3].value,
+      place: event.target[4].value,
+      mentor_details: event.target[5].value,
+    };
+
+    Axios
+      .post("http://localhost:3001/api/manager/EditSession", formData)
+      .then((results) => {
+        errorMsg = results.data.message;
+        success = results.data.success;
+        console.log("error meddage : " + errorMsg + "success : "+success);
+
+
+        if (errorMsg) {
+          // edate = errorMsg.event_name;
+          //alert(edate);
+          handleShow();
+          
+        }
+      })
+      .catch((err) => console.log("error : ", err));
+  };
+
   return (
     <>
+
+<Modal
+        show={show}
+        onHide={handleClose}
+        backdrop="static"
+        keyboard={false}
+        centered
+      >
+        <Modal.Header
+          closeButton
+          style={{ backgroundColor: "white", border: "none" }}
+        >
+          <Modal.Title> </Modal.Title>
+        </Modal.Header>
+        <Modal.Body
+          style={{
+            backgroundColor: "white",
+            height: "fit-content",
+            padding: "0",
+          }}
+        >
+          {success === 0 ? (
+            <p
+              style={{
+                color: "#f0677b",
+                textAlign: "center",
+                fontSize: "large",
+                backgroundColor: "white",
+                margin: "0",
+              }}
+            >
+              {errorMsg}
+              {/* {edate} */}
+            </p>
+          ) : (
+            <p
+              style={{
+                color: "#626d80",
+                textAlign: "center",
+                fontSize: "large",
+                backgroundColor: "white",
+                margin: "0",
+              }}
+            >
+              Event Update Successful
+            </p>
+          )}
+
+          {/* <h1>Render Count: {count.current}</h1> */}
+        </Modal.Body>
+        <Modal.Footer style={{ border: "none" }}>
+          <Link to={success === 1 ? "/manager/Session" : "#"}>
+            <button type="button" class="btn btn-success" onClick={handleClose}>
+              OK
+            </button>
+          </Link>
+        </Modal.Footer>
+      </Modal>
+
+
       <div className="page-container-1">
         <div className="header-container">
           <Header></Header>
@@ -58,11 +207,14 @@ function EditCouncellingSession() {
                   </Link>
                 </div>
 
-                <h1>Event Details</h1>
+                <h1>Session Details</h1>
               </div>
 
               <div className="form-container">
-                <EditDetails arr={array} backLink={"/manager/Session"} />
+                <form onSubmit={handleSumit}>
+                  <EditDetails arr={array} backLink={"/manager/Session"} />
+                  <ResetSubmit />
+                </form>
               </div>
             </div>
           </div>

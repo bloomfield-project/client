@@ -15,62 +15,71 @@ import Modal from "react-bootstrap/Modal";
 
 const axios = require("axios").default;
 
-const userSchema = yup.object().shape({
-  first_name: yup.string().required("Required!"),
-  last_name: yup.string().required(),
-  email: yup.string().email("plese enter correct email").required(),
-});
+// const userSchema = yup.object().shape({
+//   first_name: yup.string().required("Required!"),
+//   last_name: yup.string().required(),
+//   email: yup.string().email("plese enter correct email").required(),
+// });
 
-let error_email = null;
-let error_nic = null;
-let error_contact = null;
+let error_msg = null;
+let error_field=null;
 let success = null;
+
 function PlayerRegistration() {
   const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setShow(false);
+    window.location.reload()
+
+  };
   const handleShow = () => setShow(true);
 
   let array1 = [
     {
       title: "Name",
-      for: "last-name",
+      // for: "last-name",
       type: "text",
       name: "name",
       placeholder: "Name",
       id: "name",
+      required: "true",
     },
     {
       title: "E-mail",
-      for: "e-mail",
+      // for: "e-mail",
       type: "email",
       name: "e-mail",
       placeholder: "Email",
       id: "email",
+      required: "true",
     },
     {
       title: "Address",
-      for: "address",
+      // for: "address",
       type: "text",
       name: "address",
       placeholder: "Address",
       id: "address",
+      required: "true",
     },
     {
       title: "NIC",
-      for: "nic",
+      // for: "nic",
       type: "text",
       name: "nic",
       placeholder: "N I C",
       id: "nic",
+      required: "true",
     },
     {
       title: "Contact",
-      for: "contact",
+      // for: "contact",
       type: "text",
       name: "contact",
       placeholder: "Contact",
       id: "contact",
+      required: "true",
     },
   ];
 
@@ -89,15 +98,15 @@ function PlayerRegistration() {
     },
   ];
 
-  const file = {
-    filefor: "for",
-    filetitle: "Profile",
-  };
+  // const file = {
+  //   filefor: "for",
+  //   filetitle: "Profile",
+  // };
+
 
   const createUser = (event) => {
     event.preventDefault();
-    console.log(event);
-
+    console.log("eevent : : ", event);
 
     let userData = {
       name: event.target[0].value,
@@ -106,6 +115,7 @@ function PlayerRegistration() {
       nic: event.target[3].value,
       contact: event.target[4].value,
       role: event.target[5].value,
+      // date:currentDate,
     };
     // const isValid = await userSchema.isValid(userData);
 
@@ -115,41 +125,21 @@ function PlayerRegistration() {
     axios
       .post("/api/user/", userData)
       .then((results) => {
-        console.log(userData);
-        error_contact = null;
-        error_email = null;
-        error_nic = null;
-        success = null;
-
-        if(results.data.validate[3] != null){
-          success = results.data.validate[3];
-          alert(success);
+        console.log("user data " ,userData);
+        console.log("results ",results)
+       
+        if(results.data.err){
+          error_field = (results.data.err).split(" ");
+          error_msg  = ` ${error_field[2]} Has Allready Used `;
+          success = null;
         }
-
-        if (results.data.validate[0] != null) {
-          error_contact = results.data.validate[0];
-          console.log(error_contact);
-          // alert(results.data.validate[0]);
+        else if(!results.data.err){
+          error_msg  = null;
+          success = "Register Successful";
         }
-        if (results.data.validate[1] != null) {
-          // alert(results.data.validate[1]);
-          error_email = results.data.validate[1];
-          console.log(error_email);
-        }
-        if (results.data.validate[2] != null) {
-          error_nic = results.data.validate[2];
-          // alert(results.data.validate[2]);
-          console.log(error_email);
-        }
-
-        
 
         handleShow();
 
-        error_contact = null;
-        error_email = null;
-        error_nic = null;
-        success = null;
       })
       .catch((err) => console.log("error is arized", err));
 
@@ -169,17 +159,18 @@ function PlayerRegistration() {
       >
         <Modal.Header
           closeButton
-          style={{ backgroundColor: "#89f5c1", border: "none" }}
+          style={{ backgroundColor: "white", border: "none" }}
         >
           <Modal.Title> </Modal.Title>
         </Modal.Header>
         <Modal.Body
           style={{
-            backgroundColor: "#03d1a1",
+            backgroundColor: "white",
             height: "fit-content",
             padding: "0",
           }}
         >
+    
           <p
             style={{
               color: "#f0677b",
@@ -189,30 +180,9 @@ function PlayerRegistration() {
               margin: "0",
             }}
           >
-            {error_email}
+            {error_msg}
           </p>
-          <p
-            style={{
-              color: "#f0677b",
-              textAlign: "center",
-              fontSize: "large",
-              backgroundColor: "white",
-              margin: "0",
-            }}
-          >
-            {error_contact}
-          </p>
-          <p
-            style={{
-              color: "#f0677b",
-              textAlign: "center",
-              fontSize: "large",
-              backgroundColor: "white",
-              margin: "0",
-            }}
-          >
-            {error_nic}
-          </p>
+          
           <p
             style={{
               color: "#03d1a1",
@@ -225,7 +195,7 @@ function PlayerRegistration() {
             {success}
           </p>
         </Modal.Body>
-        <Modal.Footer style={{ backgroundColor: "#89f5c1", border: "none" }}>
+        <Modal.Footer style={{ backgroundColor: "white", border: "none" }}>
           {/*<Button variant="secondary" onClick={handleClose}>
             Cancell
   </Button>*/}
@@ -268,7 +238,7 @@ function PlayerRegistration() {
                   {/* <AddMultipleSelections /> */}
 
                   <SelectOption label={"Player Role"} option={option} />
-                  <FileUpload filetitle={"Profile Image"} filefor={"for"} />
+                  <FileUpload filetitle={"Profile Image"}  />
                   <ResetSubmit />
                 </form>
               </div>
