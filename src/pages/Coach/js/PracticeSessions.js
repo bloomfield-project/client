@@ -1,98 +1,45 @@
-import React, {useState} from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../../../component/header/Header";
 import Navbar from "../../../component/NavigationBar/Navbar";
-// import Tables from "../../../component/Table/Table";
 import Button from "react-bootstrap/Button";
 import "../../Home.css";
 import SearchTable from "../../../component/Search/SearchTable";
 import { Link } from "react-router-dom";
+import { fetchData } from '../../AuthServer';
+import { useSelector } from 'react-redux';
+import axios from "axios";
 
+let data_2 = [
+
+  {
+    sessionname: "vs SCC",
+    space: " ",
+    session: "Practice Match",
+    date: '2022-05-11',
+    time: "5.00 PM",
+    btn: <Link to={"/coach/editPracticeSession"}><Button variant="secondary">View</Button></Link>,
+  },
+
+];
 
 const data_1 = [
- 
-  {
-    sessionname: "PS-001",
-    // img: <img className="row-image" src={profpic} alt=""></img>,
-    session: "Batting",
-    date: '2022-05-11',
-    time: '09:00 am',
-    btn: <Link to="/coach/editPracticeSession"><Button variant="secondary">View</Button></Link>,
-  },
 
   {
-    sessionname: "PS-002",
-    // img: <img className="row-image" src={profpic} alt=""></img>,
-    session: "Bowling",
-    date: '2022-05-21',
-    time: '10:00 am',
-    btn: <Link to="/coach/editPracticeSession"><Button variant="secondary">View</Button></Link>,
-  },
-
-  {
-    sessionname: "PS-003",
-    // img: <img className="row-image" src={profpic} alt=""></img>,
-    session: "Fielding",
-    date: '2022-06-11',
-    time: '10:00 am',
-    btn: <Link to="/coach/editPracticeSession"><Button variant="secondary">View</Button></Link>,
-  },
-
-  {
-    sessionname: "PS-004",
-    // img: <img className="row-image" src={profpic} alt=""></img>,
-    session: "Bowling",
-    date: '2022-05-13',
-    time: '11:00 am',
-    btn: <Link to="/coach/editPracticeSession"><Button variant="secondary">View</Button></Link>,
+      sessionname: "vs SCC",
+      space: " ",
+      session: "Practice Match",
+      date: '2022-05-11',
+      time: "5.00 PM",
+      btn: <Link to={"/coach/VPS"}><Button variant="secondary">View</Button></Link>,
   },
 
 ];
 
-const data_2 = [
- 
-  {
-    sessionname: "PS-010",
-    // img: <img className="row-image" src={profpic} alt=""></img>,
-    session: "Batting",
-    date: '2022-05-05',
-    time: '09:00 am',
-    btn: <Link to="/coach/VPS"><Button variant="secondary">View</Button></Link>,
-  },
-
-  {
-    sessionname: "PS-011",
-    // img: <img className="row-image" src={profpic} alt=""></img>,
-    session: "Bowling",
-    date: '2022-05-05',
-    time: '11:00 am',
-    btn: <Link to="/coach/VPS"><Button variant="secondary">View</Button></Link>,
-  },
-
-  {
-    sessionname: "PS-012",
-    // img: <img className="row-image" src={profpic} alt=""></img>,
-    session: "Fielding",
-    date: '2022-05-05',
-    time: '1:00 pm',
-    btn: <Link to="/coach/VPS"><Button variant="secondary">View</Button></Link>,
-  },
-
-  {
-    sessionname: "PS-013",
-    // img: <img className="row-image" src={profpic} alt=""></img>,
-    session: "Batting",
-    date: '2022-05-05',
-    time: '3:00 pm',
-    btn: <Link to="/coach/VPS"><Button variant="secondary">View</Button></Link>,
-  },
-
-];
-
-// console.log(data[0]);
 const columns = [
+
   {
     title: "Session Name",
-    field:'sessionname',
+    field: 'sessionname',
   },
   {
     title: "Session",
@@ -110,154 +57,194 @@ const columns = [
     title: "",
     field: "btn",
   }
+
 ];
 
-// const data_1 = [
-//   {
-//     // id: "1101",
-//     // img: <img className="row-image" src={profpic} alt=""></img>,
-//     mentor: "Dr.chaminda wimukthi",
-//     date: '2022-05-11',
-//     time: '09:00 am',
-//     btn: <Button variant="secondary">View</Button>,
-//   },
+// const baseURL = "http://localhost:3001/api/coach/practiceSession/All";
 
-//   {
-//     // id: "1101",
-//     // img: <img className="row-image" src={profpic} alt=""></img>,
-//     mentor: "Dr.chaminda wimukthi",
-//     date: '2022-05-11',
-//     time: '09:00 am',
-//     btn: <Button variant="secondary">View</Button>,
-//   },
-//   {
-//     // id: "1101",
-//     // img: <img className="row-image" src={profpic} alt=""></img>,
-//     mentor: "Dr.chaminda wimukthi",
-//     date: '2022-05-11',
-//     time: '09:00 am',
-//     btn: <Button variant="secondary">View</Button>,
-//   },
-//   {
-//     // id: "1101",
-//     // img: <img className="row-image" src={profpic} alt=""></img>,
-//     mentor: "Dr.chaminda wimukthi",
-//     date: '2022-05-11',
-//     time: '09:00 am',
-//     btn: <Button variant="secondary">View</Button>,
-//   },
-
-// ];
-
-// // console.log(data[0]);
-// const columns_1 = [
-//   {
-//     title: "Mentor",
-//     field: "mentor",
-//   },
-//   {
-//     title: "Date",
-//     field: "date",
-//   },
-//   {
-//     title: "Time",
-//     field: "time",
-//   },
-//   {
-//     title: "",
-//     field: "btn",
-//   }
-// ];
 
 function Session() {
 
-  const[tabNumber, setTabNumber]  = useState(1);
+  // const loginData = useSelector(state => state.auth.data);
+  // console.log(loginData.data.user_id);
+  const [tabNumber, setTabNumber] = useState(1);
 
-  const selectTab_1 = ()=>{
+  // const [postp, setPost] = React.useState(null);
+
+  // React.useEffect(() => {
+  //   axios.post(`${baseURL}`).then((response) => {
+  //     setPost(response.data);
+  //   });
+  // }, []);
+
+  // function createPost() {
+  //   axios
+  //     .postp(baseURL, {
+  //       id: loginData.data.user_id
+  //     })
+  //     .then((response) => {
+  //       setPost(response.data);
+  //     });
+  // }
+
+  // if (!postp) return "No post!"
+
+  // console.log(postp);
+
+  // const [responseDataToday, setResponseDataToday] = useState([]);
+  // const [responseDataAll, setResponseDataAll] = useState([]);
+
+  // let today = new Date();
+  // let dd = String(today.getDate()).padStart(2, '0');
+  // let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+  // let yyyy = today.getFullYear();
+  // today = yyyy + '-' + mm + '-' + dd;
+
+
+  // async function getData(url, num) {
+
+  //   const reqData = {
+  //     id: loginData.data.user_id,
+  //   };
+
+
+  //   const authRequest = {
+  //     "method": "post",
+  //     "url": url,
+  //     "data": reqData
+  //   }
+
+  //   fetchData(authRequest).then((response) => {
+  //     if (num === 1) setResponseDataToday(response.data)
+  //     else if (num === 2) setResponseDataAll(response.data)
+  //   }).catch(function (error) {
+  //     console.log(error);
+  //   })
+
+  // }
+
+  // useEffect(() => {
+  //   getData("coach/practiceSession/Today", 1)
+  // }, [])
+
+  // useEffect(() => {
+  //   getData("coach/practiceSession/All", 2)
+  // }, [])
+
+
+  // const todayS = responseDataToday.data;
+  // const allS = responseDataAll.data;
+
+  // console.log("aa", todayS);
+  // console.log("bb", allS);
+
+  // console.log("accc", todayS[0]["session_id"]);
+  // console.log("fvmfkvkm", todayS.length);
+
+  // console.log(data_1)
+
+
+  // {for (let i = 0; i < todayS.length; i++) {
+  //   data_1[i] = {
+  //     sessionname: todayS[i]["session_id"],
+  //     session:todayS[i]["session_id"],
+  //     date:todayS[i]["session_id"],
+  //     time:todayS[i]["session_id"],
+  //   }
+  // }}
+
+
+
+  const selectTab_1 = () => {
     setTabNumber(1);
-    // console.log(tabNumber + "selectTab 1");
   }
-  const selectTab_2 = ()=>{
-    setTabNumber(2);
-    // console.log(tabNumber + "selectTab 2");
 
+  const selectTab_2 = () => {
+    setTabNumber(2);
   }
+
+  // {
+  //   setResponseDataToday.data.map((item, i) => (
+  //     data_1[i] = {
+  //       sessionname: item.session_id,
+  //     }
+  //   ))
+  // }
+
+  // console.log(data_1)
+
 
   return (
 
     <>
+
       <div className="page-container-1">
+
         <div className="header-container">
           <Header></Header>
         </div>
+
         <div className="body-container-1">
+
           <div className="navbar-container">
             <Navbar></Navbar>
           </div>
+
           <div className="body-container-2">
-            {/* <div > */}
+
             <div className="title">
               <h1>Practice Sessions</h1>
             </div>
+
             <div className="tabs">
-                {/* <h5 className="tab-active">Couceling<hr></hr></h5>
-                <h5 className="tab">Events</h5> */}
+
               <div className="tabs-left">
-                <h5 className= {tabNumber === 1 ? "tab-active" : "tab" } > <a  onClick={()=>selectTab_1(1)}>All</a> {tabNumber === 1 ? <hr></hr> : ""}</h5>
-                <h5 className= {tabNumber === 2 ? "tab-active" : "tab" } ><a  onClick={()=>selectTab_2(1)} >Today</a>  {tabNumber === 2 ? <hr></hr> : ""}</h5>
+                <h5 className={tabNumber === 1 ? "tab-active" : "tab"} > <a onClick={() => selectTab_1(1)}>All</a> {tabNumber === 1 ? <hr></hr> : ""}</h5>
+                <h5 className={tabNumber === 2 ? "tab-active" : "tab"} ><a onClick={() => selectTab_2(1)} >Today</a>  {tabNumber === 2 ? <hr></hr> : ""}</h5>
               </div>
 
               <div className="tabs-right">
                 <Link to="/coach/APS"><Button variant="outline-success">+ Add</Button></Link>
               </div>
-                                
-            </div>
-            
-            <hr></hr>
-            <div className="table-box-1">
-                <div className="tablee"> 
-                <SearchTable
-                title={false}
-                data={tabNumber === 2 ? data_2 : data_1}
-                columns={tabNumber === 2 ? columns : columns}
-                searching={true}
-                sort={false}
-                filter={false}
-                paging={true}
-                headerC={"#4a4a4a"}
-                headerH={"40px"}
-                headerFC={'white'}
-                headerFS={'1.2rem'}
-                headerFW={'500'}
-                // height: 40px
-    //             font-size: 1.2rem;
-    // font-weight: 500;
-              />
-                </div>
-              
+
             </div>
 
-            {/* </div> */}
+            <hr></hr>
+
+            <div className="table-box-1">
+
+              <div className="tablee">
+
+                <SearchTable
+                  title={"mmvdmslvmlm"}
+                  data={tabNumber === 2 ? data_1 : data_2}
+                  columns={columns}
+                  searching={true}
+                  sort={false}
+                  filter={false}
+                  paging={true}
+                  headerC={"#4a4a4a"}
+                  headerH={"40px"}
+                  headerFC={'white'}
+                  headerFS={'1.2rem'}
+                  headerFW={'500'}
+                />
+
+              </div>
+
+            </div>
+
           </div>
+
         </div>
+
       </div>
-      {/* <Container className="page-container-1">
-        <Row className="header-container">
-          <Col >
-            <Header />
-          </Col>
-        </Row>
-        <Row className="body-container-1">
-          <Col md="auto">
-            <Navbar/>
-          </Col>
-          <Col md="auto">
-            <Tables list={List} colNames={colNames} />
-          </Col>
-        </Row>
-      </Container> */}
+
     </>
+
   );
+
 }
+
 
 export default Session;

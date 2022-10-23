@@ -31,7 +31,6 @@ function Navbar() {
 
 
   const page =location.pathname.split('/')[2]
-  console.log(user, "hjgdsv", location)
   let data =SidebarDataCoach
   if (user == "manager") {
     data = SidebarDataManager

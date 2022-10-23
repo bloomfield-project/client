@@ -215,12 +215,12 @@ export const SidebarDataCoach = [
         icon:<FaIcons.FaSquarespace />,
         cName:'nav-text'
     },
-    {
-        title:'Appoinments',
-        path:'/coach/appoinments',
-        icon:<AiIcons.AiFillHome />,
-        cName:'nav-text'
-    },
+    // {
+    //     title:'Appoinments',
+    //     path:'/coach/appoinments',
+    //     icon:<AiIcons.AiFillHome />,
+    //     cName:'nav-text'
+    // },
     {
         title:'Players',
         path:'/coach/players',

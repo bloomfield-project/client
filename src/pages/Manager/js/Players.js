@@ -44,7 +44,9 @@ const columns = [
   },
  
 ];
+
 function Players() {
+  
   let result;
 
   const [post, setPost] = React.useState(null);
@@ -72,12 +74,13 @@ function Players() {
               <Button variant="secondary">View</Button>
             </Link>
           ),
-        }
-        
+        } 
    
   })}
+
   // getData(result)
   // console.log("eliyen")
+
   return (
     <>
       <div className="page-container-1">

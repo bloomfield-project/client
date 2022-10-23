@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import Header from "../../../component/header/Header";
 import Navbar from "../../../component/NavigationBar/Navbar";
-import { Link } from "react-router-dom";
-import Button from "react-bootstrap/Button";
-import "../../Home.css";
 import SampleCard from "../../../component/Card/SampleCard";
-// import profpic from "../header/profpic.jfif";
+import "../../Home.css";
 import profpic from "../../../component/header/profpic.jfif";
 
 const data_1 = [
@@ -17,11 +14,6 @@ const data_1 = [
             "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,  but also",
         date: "2022-05-11",
         time: "09:00 am",
-        // btn: (
-        //   <Link to={"#"}>
-        //     <Button variant="secondary">View</Button>
-        //   </Link>
-        // ),
     },
     {
         title: "Won the hero cup ODI series",
@@ -30,11 +22,6 @@ const data_1 = [
             "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,  but also",
         date: "2022-05-11",
         time: "09:00 am",
-        // btn: (
-        //   <Link to={"#"}>
-        //     <Button variant="secondary">View</Button>
-        //   </Link>
-        // ),
     },
     {
         title: "Won the hero cup ODI series",
@@ -43,11 +30,6 @@ const data_1 = [
             "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,  but also",
         date: "2022-05-11",
         time: "09:00 am",
-        // btn: (
-        //   <Link to={"#"}>
-        //     <Button variant="secondary">View</Button>
-        //   </Link>
-        // ),
     },
     {
         title: "Won the hero cup ODI series",
@@ -56,11 +38,6 @@ const data_1 = [
             "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,  but also",
         date: "2022-05-11",
         time: "09:00 am",
-        // btn: (
-        //   <Link to={"#"}>
-        //     <Button variant="secondary">View</Button>
-        //   </Link>
-        // ),
     },
 
 ];
@@ -75,11 +52,6 @@ const data_2 = [
             "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,  but also",
         date: "2022-05-11",
         time: "09:00 am",
-        // btn: (
-        //   <Link to={"#"}>
-        //     <Button variant="secondary">View</Button>
-        //   </Link>
-        // ),
     },
     {
         main_title: "Shehan Lakmal",
@@ -89,11 +61,6 @@ const data_2 = [
             "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,  but also",
         date: "2022-05-11",
         time: "09:00 am",
-        // btn: (
-        //   <Link to={"#"}>
-        //     <Button variant="secondary">View</Button>
-        //   </Link>
-        // ),
     },
     {
         main_title: "Shehan Lakmal",
@@ -103,11 +70,6 @@ const data_2 = [
             "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,  but also",
         date: "2022-05-11",
         time: "09:00 am",
-        // btn: (
-        //   <Link to={"#"}>
-        //     <Button variant="secondary">View</Button>
-        //   </Link>
-        // ),
     },
     {
         main_title: "Shehan Lakmal",
@@ -117,11 +79,6 @@ const data_2 = [
             "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,  but also",
         date: "2022-05-11",
         time: "09:00 am",
-        // btn: (
-        //   <Link to={"#"}>
-        //     <Button variant="secondary">View</Button>
-        //   </Link>
-        // ),
     },
 
 ];
@@ -133,6 +90,7 @@ function AchivementCoachView() {
     const selectTab_1 = () => {
         setTabNumber(1);
     };
+
     const selectTab_2 = () => {
         setTabNumber(2);
     };
@@ -140,6 +98,7 @@ function AchivementCoachView() {
     return (
 
         <>
+
             <div className="page-container-1">
 
                 <div className="header-container">
@@ -163,19 +122,19 @@ function AchivementCoachView() {
                             <div className="tabs-left">
 
                                 <h5 className={tabNumber === 1 ? "tab-active" : "tab"}>
-                                    {" "}
-                                    <a onClick={() => selectTab_1(1)}>Team </a>{" "}
+                                    <a onClick={() => selectTab_1(1)}>Team </a>
                                     {tabNumber === 1 ? <hr></hr> : ""}
                                 </h5>
+
                                 <h5 className={tabNumber === 2 ? "tab-active" : "tab"}>
-                                    <a onClick={() => selectTab_2(2)}> Players</a>{" "}
+                                    <a onClick={() => selectTab_2(2)}> Players</a>
                                     {tabNumber === 2 ? <hr></hr> : ""}
                                 </h5>
 
                             </div>
 
-                            <div className="tabs-right">
-                                {/* <Link
+                            {/* <div className="tabs-right">
+                                <Link
                                     to={
                                         tabNumber === 1
                                         ? "/manager/AddAchivement"
@@ -183,12 +142,13 @@ function AchivementCoachView() {
                                     }
                                    >
                                     <Button variant="outline-success">+ Add</Button>
-                                </Link> */}
-                            </div>
+                                </Link>
+                            </div> */}
 
                         </div>
 
                         <hr></hr>
+
                         <div className="table-box-1">
 
                             <div className="tablee">
@@ -210,6 +170,7 @@ function AchivementCoachView() {
         </>
 
     );
+
 }
 
 export default AchivementCoachView;
