@@ -1,17 +1,21 @@
 import React, { useState } from "react";
 import Header from "../../../component/header/Header";
 import Navbar from "../../../component/NavigationBar/Navbar";
+import InputField from "../../../component/InputField/InputField";
+import AddMultipleSelections from "../../../component/AddMultipleSelections/AddMultipleSelections";
+import "../css/AddPracticeSession.css";
 import { IoChevronBackCircleOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
-import "../css/AddPracticeSession.css";
-import InputField from "../../../component/InputField/InputField";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+<<<<<<< HEAD
 import AddMultipleSelections from "../../../component/AddMultipleSelections/AddMultipleSelections";
 import moment from "moment";
+=======
+>>>>>>> 8a4271fa7f1022fb779e33be6bfc59b4cbcf7199
 
 const Axios = require("axios").default;
 
@@ -87,11 +91,13 @@ function AddPracticeSession() {
                         <div className="l-back-r-title">
 
                             <div className="l-back-r-title-icon">
+
                                 <Link to={"/coach/practiceSessions"}>
                                     <IoChevronBackCircleOutline
                                         style={{ color: "rgba(0, 146, 112, 1)", fontSize: " 40px" }}
                                     />
                                 </Link>
+
                             </div>
 
                             <h1>Add Practice session</h1>
@@ -156,22 +162,23 @@ function AddPracticeSession() {
                                 <Button variant="success" className="APS-Form-5-2" type="submit">Add</Button>{' '}
 
                             </div>
+<<<<<<< HEAD
                         </form>
+=======
+>>>>>>> 8a4271fa7f1022fb779e33be6bfc59b4cbcf7199
 
                         </div>
-
-
 
                     </div>
 
                 </div>
 
-
-
             </div>
 
         </>
+
     );
+
 }
 
 export default AddPracticeSession;

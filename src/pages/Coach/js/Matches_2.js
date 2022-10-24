@@ -133,7 +133,7 @@ function Session() {
                         <div className="tabs">
 
                             <div className="tabs-left">
-                                <h5 className={tabNumber === 1 ? "tab-active" : "tab"} > <a onClick={() => selectTab_1(1)}>Pending</a> {tabNumber === 1 ? <hr></hr> : ""}</h5>
+                                <h5 className={tabNumber === 1 ? "tab-active" : "tab"} > <a onClick={() => selectTab_1(1)}>Played</a> {tabNumber === 1 ? <hr></hr> : ""}</h5>
                                 <h5 className={tabNumber === 2 ? "tab-active" : "tab"} ><a onClick={() => selectTab_2(1)} >Past</a>  {tabNumber === 2 ? <hr></hr> : ""}</h5>
                             </div>
 
@@ -160,9 +160,6 @@ function Session() {
                                     headerFC={'white'}
                                     headerFS={'1.2rem'}
                                     headerFW={'500'}
-                                    // height: 40px
-                                    // font-size: 1.2rem;
-                                    // font-weight: 500;
                                 />
                             </div>
 
