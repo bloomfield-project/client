@@ -13,6 +13,46 @@ import opTeam from "../../player/player.jpg";
 import MatchesTeams from "../../../component/MatchesTeams/MatchesTeams";
 import ResetSubmit from "../../../component/Form/ResetSubmit";
 import FileUpload from "../../../component/Form/FileUpload";
+import moment from "moment";
+const Axios = require("axios").default;
+
+var edate;
+var date = new Date();
+date.setDate(date.getDate() + 7);
+
+var currentDate = moment(date).format("YYYY-MM-DD");
+
+const formControl = (event) =>{
+  event.preventDefault();
+  console.log("this is event : ",event)
+
+  const formData = {
+    date: event.target[0].value,
+    time: event.target[1].value,
+    title: "Practice",
+    ground: event.target[3].value,
+    match_format: "practice",
+    op_team_name: event.target[2].value,
+
+  }
+
+  console.log("form data : ",formData)
+
+  Axios.post("http://localhost:3001/api/manager/addPracticeMatch", formData)
+  .then((res) => {
+    // console.log("res", res);
+    
+    if (res.data.message != null) {
+      alert(res.data.message);
+    } else {
+      alert("Match Add Successfully");
+      window.location.reload();
+    }
+
+    // setPost(res);
+  })
+  .catch((err) => console.log("error is arized", err));
+}
 
 function AddPracticeMatch() {
   let array1 = [
@@ -21,28 +61,29 @@ function AddPracticeMatch() {
       for: "exampleInputEmail1",
       type: "date",
       placeholder: "",
-      id: "f-name",
+      id: "date",
+      min: currentDate,
     },
     {
       title: "Time",
       for: "exampleInputEmail1",
-      type: "text",
+      type: "time",
       placeholder: "",
-      id: "l-name",
+      id: "time",
     },
     {
       title: "Oppesite Team",
       for: "exampleInputEmail1",
       type: "text",
       placeholder: "",
-      id: "email",
+      id: "opposote",
     },
     {
       title: "Ground",
       for: "exampleInputEmail1",
       type: "text",
       placeholder: "",
-      id: "contact",
+      id: "ground",
     },
   ];
 
@@ -91,7 +132,7 @@ function AddPracticeMatch() {
                               fontWeight: "bolder",
                             }}
                           >
-                            Hero Cup
+                           Practice Match
                           </h4>
                         </div>
                       </div>
@@ -100,7 +141,7 @@ function AddPracticeMatch() {
                         style={{ height: "auto", minWidth: "100%" }}
                       >
                         <div className="form-container">
-                          <form >
+                          <form onSubmit={formControl}>
                             <SampleForm arr={array1} />
                             <FileUpload filefor="logo" filetitle="Logo" />
                             <ResetSubmit />
@@ -108,22 +149,7 @@ function AddPracticeMatch() {
                         </div>
                       </div>
                     </div>
-                    <div className="tablee">
-                      <MatchesTeams
-                        btns=""
-                        wonornot=""
-                        left="Starts at 09.30"
-                        middle="R.Premadasa Stadium"
-                        right="2022 Oct 16"
-                      />
-                      <MatchesTeams
-                        btns=""
-                        wonornot=""
-                        left="Starts at 09.30"
-                        middle="R.Premadasa Stadium"
-                        right="2022 Oct 16"
-                      />
-                    </div>
+                    
                   </div>
                 </div>
               </div>

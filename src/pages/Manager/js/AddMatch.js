@@ -31,8 +31,7 @@ const AddMatchTitle = (event) => {
   Axios.post("/api/manager/addMatchTitle", formData)
     .then((results) => {
       console.log("results.data.message :", results.data.message);
-      window.location.reload()
-
+      window.location.reload();
     })
     .catch((err) => console.log("error : ", err));
 };
@@ -41,13 +40,12 @@ const tournment_data = [];
 
 // console.log(data[0]);
 const columns = [
-
   {
     title: "Title",
     field: "title",
   },
   {
-    title:""
+    title: "",
   },
   {
     title: "",
@@ -58,7 +56,6 @@ const columns = [
 function AddMatch() {
   const [tabNumber, setTabNumber] = useState(1);
   const [matchTitle, setTitle] = useState("");
-
 
   React.useEffect(() => {
     // console.log("inside useEffect")
@@ -76,7 +73,7 @@ function AddMatch() {
     {
       matchTitle.data.map((item, i) => {
         tournment_data[i] = {
-         key:i,
+          key: i,
           title: item.title,
           btn: (
             <Link
@@ -100,6 +97,7 @@ function AddMatch() {
   };
   const selectTab_2 = () => {
     setTabNumber(2);
+
     // console.log(tabNumber + "selectTab 2");
   };
   return (
@@ -177,7 +175,18 @@ function AddMatch() {
                         {tabNumber === 1 ? <hr></hr> : ""}
                       </h5>
                       <h5 className={tabNumber === 2 ? "tab-active" : "tab"}>
-                        <a onClick={() => selectTab_2(2)}>Practice</a>{" "}
+                        {/* <a onClick={() => selectTab_2(2)}> */}
+                          <Link
+                            to={{
+                              pathname: "/manager/AddPracticeMatch/",
+                              state: { stateParam: true },
+                            }}
+                          >
+                           <p style={{ color: "rgba(0, 146, 112, 1)", fontSize: " " }}><a>Practice</a></p> 
+                            
+                          </Link>
+                          
+                        
                         {tabNumber === 2 ? <hr></hr> : ""}
                       </h5>
                     </div>
