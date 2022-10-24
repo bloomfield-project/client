@@ -11,9 +11,14 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+<<<<<<< HEAD
+
+import moment from "moment";
+=======
 import AddMultipleSelections from "../../../component/AddMultipleSelections/AddMultipleSelections";
 import moment from "moment";
 
+>>>>>>> c36e308314576779cfc4c9bbd78f93507c5d1064
 
 const Axios = require("axios").default;
 
@@ -160,9 +165,13 @@ function AddPracticeSession() {
                                 <Button variant="success" className="APS-Form-5-2" type="submit">Add</Button>{' '}
 
                             </div>
+<<<<<<< HEAD
+                        </form>
+=======
 
                         </form>
 
+>>>>>>> c36e308314576779cfc4c9bbd78f93507c5d1064
 
                         </div>
 
