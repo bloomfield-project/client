@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Header from "../../../component/header/Header";
 import Navbar from "../../../component/NavigationBar/Navbar";
 import Button from "react-bootstrap/Button";
@@ -6,9 +6,14 @@ import "../../Home.css";
 import SearchTable from "../../../component/Search/SearchTable";
 import "../css/Matches_2.css"
 import { Link } from "react-router-dom";
+import { Tabs } from 'antd';
+import 'antd/dist/antd.css';
+import {useState,useEffect} from "react";
+import {fetchData} from '../../AuthServer' ;
+import {useDispatch,useSelector} from 'react-redux'
 
 
-
+const { TabPane } = Tabs;
 const data = [
 
     {
@@ -101,6 +106,11 @@ const columns = [
 ];
 
 function Session() {
+    const onChange = (key) => {
+        console.log(key);
+        setTabNumber(key)
+      };
+    
 
     const [tabNumber, setTabNumber] = useState(1);
 
@@ -112,66 +122,194 @@ function Session() {
         setTabNumber(2);
     }
 
+    //''''''''''''''''''''''''''''''''''''''''
+    const [responseData, setResponseData] = useState([]);
+    const [responseDataFuture, setResponseDataFuture] = useState([]);
+    const [responseDataUnmarked, setResponseDataUnmarked] = useState([]);
+    
+    const url = "player/coach/addTeamMatches";
+    const future = "player/coach/future";
+    const Unmarked = "player/coach/Unmarked";
+    async function getData(url, Team = "") {
+      const reqData = {
+        team_id: 2,
+      };
+      const authRequest = {
+        method: "post",
+        url: url,
+        data: reqData,
+      };
+      fetchData(authRequest)
+        .then((response) => {
+          if(url==="player/coach/addTeamMatches"){setResponseData(response.data);}
+          else if(url==="player/coach/future"){setResponseDataFuture(response.data);}
+          else if(url==="player/coach/Unmarked"){setResponseDataUnmarked(response.data);}
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
+    useEffect(() => {
+      getData(url);
+      getData(future);
+      getData(Unmarked);
+    }, []);
+    const dataupcomming = responseData.data;
+    console.log(dataupcomming);
+    
+    
+    
+    const dataFuture=responseDataFuture.data
+    const dataUnmarked=responseDataUnmarked.data
+    console.log(dataFuture);
+    console.log(dataUnmarked);
+  //''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
     return (
-
         <>
-            <div className="page-container-1">
+          <div className="page-container-1">
+            <div className="header-container">
+              <Header></Header>
 
-                <div className="header-container">
-                    <Header></Header>
-                </div>
-
-                <div className="body-container-1">
-                    <div className="navbar-container">
-                        <Navbar></Navbar>
-                    </div>
-                    <div className="body-container-2">
-
-                        <div className="title">
-                            <h1>Matches</h1>
-                        </div>
-                        <div className="tabs">
-
-                            <div className="tabs-left">
-                                <h5 className={tabNumber === 1 ? "tab-active" : "tab"} > <a onClick={() => selectTab_1(1)}>Played</a> {tabNumber === 1 ? <hr></hr> : ""}</h5>
-                                <h5 className={tabNumber === 2 ? "tab-active" : "tab"} ><a onClick={() => selectTab_2(1)} >Past</a>  {tabNumber === 2 ? <hr></hr> : ""}</h5>
-                            </div>
-
-                            <div className="tabs-right">
-                                
-                            </div>
-
-                        </div>
-
-                        <hr></hr>
-                        <div className="table-box-1" >
-
-                            <div className="tablee">
-                                <SearchTable
-                                    title={false}
-                                    data={tabNumber === 2 ? data_1 : data}
-                                    columns={tabNumber === 2 ? columns : columns}
-                                    searching={true}
-                                    sort={false}
-                                    filter={false}
-                                    paging={true}
-                                    headerC={"#4a4a4a"}
-                                    headerH={"40px"}
-                                    headerFC={'white'}
-                                    headerFS={'1.2rem'}
-                                    headerFW={'500'}
-                                />
-                            </div>
-
-                        </div>
-
-
-                    </div>
-                </div>
             </div>
-
+            <div className="body-container-1">
+              <div className="navbar-container">
+                <Navbar></Navbar>
+              </div>
+              <div className="body-container-2">
+                <div className="title">
+                  <h1>Matches</h1>
+                </div>
+                
+                <div className="playerPreformanceBody">
+                    <Tabs defaultActiveKey="1" onChange={onChange}>
+                        
+                        <TabPane tab="Add Team" key="1">
+                          <div className="table-box-11">
+                            <div className="tablee">
+                            <div className="table-head">
+                                    <div className="col-51">Match ID</div>
+                                    <div className="col-51">Format</div>
+                                    <div className="col-51">Date</div>
+                                    <div className="col-51">Ground</div>
+                                    <div className="col-51">Opposite Team</div>
+                                    <div className="col-51"></div>
+                                </div>
+    
+                                {dataupcomming?dataupcomming?.map((item,i)=>
+                                <>
+                                <div  className="table-row">
+                                    <div className="col-51">M-{item.match_id}</div>
+                                    <div className="col-51">{item.match_format}</div>
+                                    <div className="col-51">{item.date}</div>
+                                    <div className="col-51">{item.ground}</div>
+                                    <div className="col-51">{item.op_team_name}</div>
+                                    <div className="col-51"><a href={"/coach/TeamToMatch/"+item.match_id}><button>View</button></a></div>
+                                    {/* <div className="col-51"><button value={item.session_id} onClick={e => viewSession(e.target.value)}>View</button></div> */}
+                              
+    
+                                  </div><hr></hr></>):""}
+    
+                            </div>
+                          </div>
+                            
+                        </TabPane>
+                        <TabPane tab="Future" key="2">
+                          <div className="table-box-11">
+                          <div className="tablee">
+                            <div className="table-head">
+                                    <div className="col-51">Match ID</div>
+                                    <div className="col-51">Format</div>
+                                    <div className="col-51">Date</div>
+                                    <div className="col-51">Ground</div>
+                                    <div className="col-51">Our Team</div>
+                                    <div className="col-51">Opposite Team</div>
+                                    <div className="col-51"></div>
+                                </div>
+    
+                              
+                              {dataFuture?dataFuture?.map((item,i) => <>
+                                <div  className="table-row">
+                                    <div className="col-51">M-{item.match_id}</div>
+                                    <div className="col-51">{item.match_format}</div>
+                                    <div className="col-51">{item.date}</div>
+                                    <div className="col-51">{item.ground}</div>
+                                    <div className="col-51">{item.name}</div>
+                                    <div className="col-51">{item.op_team_name}</div>
+                                    <div className="col-51"><a href={"/coach/FutureTeams/"+item.match_id+"/"+item.name}><button>View</button></a></div>
+                                    {/* <div className="col-51"><button value={item.session_id} onClick={e => viewSession(e.target.value)}>View</button></div> */}
+                              
+    
+                                  </div><hr></hr></>):""}
+    
+                            </div>
+                          </div>
+                        </TabPane>
+                        <TabPane tab="Unmarked" key="3">
+                          <div className="table-box-11">
+                          <div className="tablee">
+                                <div className="table-head">
+                                    <div className="col-51">Match ID</div>
+                                    <div className="col-51">Format</div>
+                                    <div className="col-51">Date</div>
+                                    <div className="col-51">Time</div>
+                                    <div className="col-51">Our Team</div>
+                                    <div className="col-51">Opposite Team</div>
+                                    <div className="col-51"></div>
+                                </div>
+    
+                                {dataUnmarked?dataUnmarked?.map((item,i)=>
+                                <>
+                                <div key={i} className="table-row">
+                                    <div className="col-51">M-{item.match_id}</div>
+                                    <div className="col-51">{item.format}</div>
+                                    <div className="col-51">{item.date}</div>
+                                    <div className="col-51">{item.time}</div>
+                                    <div className="col-51">{item.name}</div>
+                                    <div className="col-51">{item.op_team_name}</div>
+                                    <div className="col-51"><a href={"/coach/matches3/"+item.match_id}><button>View</button></a></div>
+                                    
+                              
+    
+                                  </div><hr></hr>
+                                </>):""}
+    
+                            </div>
+                          </div>
+                        </TabPane>
+                        <TabPane tab="Marked" key="4">
+                          <div className="table-box-11">
+                            <div className="tablee">
+                              <div className="table-head">
+                                    <div className="col-51" style={{width: "25%"}}>Title</div>
+                                    <div className="col-51" style={{width: "25%"}}>Date</div>
+                                    <div className="col-51" style={{width: "25%"}}>Time</div>
+                                    <div className="col-51" style={{width: "25%"}}></div>
+                                    
+                                </div>
+    
+                              
+                               <div className="table-row">
+                                    <div className="col-51">mmmmmmm</div>
+                                    <div className="col-51">mmmmm</div>
+                                    <div className="col-51">mmmmmmmm</div>
+                                    <div className="col-51"></div>
+                              
+    
+                                  </div><hr></hr>
+                            </div>
+                          </div>
+                        </TabPane>
+                    
+                    </Tabs>
+                  </div>
+    
+                {/* </div> */}
+              </div>
+            </div>
+          </div>
         </>
-    );
+      );
 }
 
 export default Session;

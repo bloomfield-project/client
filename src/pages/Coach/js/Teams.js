@@ -6,7 +6,8 @@ import "../../Home.css";
 import "../css/Teams.css";
 import SearchTable from "../../../component/Search/SearchTable";
 import { Link } from "react-router-dom";
-
+import {useEffect} from "react";
+import {fetchData} from '../../AuthServer' ;
 
 const data = [
 
@@ -78,6 +79,31 @@ const columns = [
 
 function Teams() {
 
+    const [responseData,setResponseData]=useState([]);
+    const url= "player/coach/getTeam"
+    async function getData(url,Team=""){
+        
+        const reqData ={
+            date:"2022-10-26",
+        };
+        const authRequest = {
+        "method":"post",
+        "url":url,
+        "data":reqData
+      }
+      fetchData(authRequest).then((response)=>{
+            setResponseData(response.data)
+        
+      }).catch(function(error){
+        console.log(error);
+      })
+    }
+    useEffect(() => {
+        getData(url)
+    }, [])
+    const dataupcomming=responseData.data
+    console.log(dataupcomming)
+
     return (
 
         <>
@@ -103,32 +129,32 @@ function Teams() {
                             </div>
 
                             <div className="tabs-right">
-                                <Link to=""><Button variant="outline-success">+ Add</Button></Link>
+                                <Link to="/coach/CreateTeam"><Button variant="outline-success">+ Add</Button></Link>
                             </div>
 
                         </div>
 
                         <hr></hr>
-                        <div className="team-box">
+                        <div className="team-box" style={{height:"fit-content", paddingBottom:"50px"}}>
                         <div className="tablee">
-                                <SearchTable
-                                    title={false}
-                                    data={data}
-                                    columns={columns}
-                                    searching={true}
-                                    sort={false}
-                                    filter={false}
-                                    paging={true}
-                                    headerC={"#4a4a4a"}
-                                    headerH={"40px"}
-                                    headerFC={'white'}
-                                    headerFS={'1.2rem'}
-                                    headerFW={'500'}
-                                    // height: 40px
-                                    // font-size: 1.2rem;
-                                    // font-weight: 500;
-                                />
+                            <div className="table-head">
+                                <div className="col-4-1">Team ID</div>
+                                <div className="col-4-1">Team</div>
+                                <div className="col-4-1">Date</div>
+                                <div className="col-4-1"></div>
                             </div>
+                            {dataupcomming?dataupcomming.map((item,i) => <>
+                                <div  className="table-row">
+                                    <div className="col-4-1" >T-{item.team_id}</div>
+                                    <div className="col-4-1">{item.name}</div>
+                                    <div className="col-4-1">{item.date}</div>
+                                    <div className="col-4-1"><Link to={"/coach/viewTeams/"+item.team_id}><Button variant="secondary">View</Button></Link></div>
+                                
+                                
+                                </div>
+                                <hr></hr>
+                            </>):""}
+                        </div>
                         </div>
 
                     </div>

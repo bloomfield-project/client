@@ -3,7 +3,7 @@
     /* background-color: brown; */
 }
 .player-details-box{
-    /* padding-top: 50px; */
+    margin-bottom: 20px;
     display: flex;
     width: 95%;
     justify-content: start;
@@ -20,7 +20,7 @@
     background-color: rgb(13, 122, 59);
 }
 .playerPreformanceBody{
-    margin-top: 50px;
+    /* margin-top: 50px; */
     width: 95%;
 }
 .PplayerPreformanceBody{
