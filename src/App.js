@@ -21,6 +21,8 @@ import Progress from "./pages/player/js/Progress"
 import PrivateProgress from "./pages/player/js/PrivateProgress"
 import Matches from "./pages/player/js/Matches";
 import MatchDetails from "./pages/player/js/MatchDetails";
+import MMatchDetails from "./pages/Manager/js/MMatchDetails";
+
 import PSessionDetails from "./pages/player/js/PSessionDetails";
 import CSessionDetails from "./pages/player/js/CSessionDetails";
 import EventDetails from "./pages/player/js/EventDetails";
@@ -39,7 +41,11 @@ import EditEvent from "./pages/Manager/js/EditEvent";
 import Achivement from "./pages/Manager/js/Achivement";
 import SampleCard from "./component/Card/SampleCard";
 import AddTeamAchivement from "./pages/Manager/js/AddTeamAchivement";
+
 import MatchDetail from "./pages/Manager/js/MatchDetail";
+
+
+
 import Players1 from "./pages/Coach/js/Players";
 import PlayerDetails from "./pages/Coach/js/PlayerDetails";
 import AddMatch from "./pages/Manager/js/AddMatch";
@@ -104,6 +110,8 @@ import Achivementss from "./pages/player/js/Achivements"
 import Appointments from "./pages/player/js/Appointments"
 
 import PendingMatches from "./pages/player/js/PendingMatches"
+import MPendingMatches from "./pages/Manager/js/MPendingMatches"
+
 
 import AddPracticeMatch from "./pages/Manager/js/AddPracticeMatch";
 import ViewTeam from "./pages/Coach/js/ViewTeam";
@@ -185,7 +193,13 @@ function App() {
           <Route path="/player/Progress" element={<Progress />} />
           <Route path="/player/PrivateProgress/:id" element={<PrivateProgress />} />
           <Route path="/player/Matches" element={<Matches />} />
+
+
           <Route path="/player/MatchDetails/:id" element={<MatchDetails />} />
+          <Route path="/Manager/MMatchDetails/:id" element={<MMatchDetails />} />
+          {/* add new router here */}
+
+
           <Route path="/player/Psession/PSessionDetails" element={<PSessionDetails />} />
           <Route path="/player/CSessionDetails" element={<CSessionDetails />} />
           <Route path="/player/EventDetails" element={<EventDetails />} />
@@ -280,6 +294,7 @@ function App() {
           <Route path="/player/profile" element={<Profile />} />
 
           <Route path="/player/Matches/PendingMatches/:id" element={<PendingMatches />} />
+          <Route path="/Manager/Matches/PendingMatches/:id" element={<MPendingMatches />} />
 
 
 
