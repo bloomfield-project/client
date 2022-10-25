@@ -6,6 +6,88 @@
     display: flex;
     
 }
+.coll-4-113{
+    width: 33.3%;
+}
+
+
+.in-put-con-tainer{
+    margin-top: 30px;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+}
+
+.l-a-b-e-l{
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.double-box-out{
+    /* background-color: aqua; */
+    width: 100%;
+    display: flex;
+    margin-top: 30px;
+}
+
+.left-box-1-G , .right-box-1-G{
+    width: 50%;
+    /* background-color: brown; */
+    height: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.left-box-in-G ,.right-box-in-G{
+    height: 95%;
+    width: 80%;
+    border-radius: 10px;
+    border: 1px solid #c2c0c0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    /* background-color: blue; */
+}
+
+.ROW-P-G{
+    width: 95%;
+    height: 60px;
+    /* background-color: black; */
+    display: flex;
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px rgb(161, 161, 161);
+    margin-bottom: 5px;
+}
+
+.ROW-P-G-col-1{
+    width: 50%;
+    height: 100%;
+    /* background-color: aqua; */
+}
+.iddd{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 5px;
+}
+.name-p{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.ROW-P-G-col-2{
+    width: 25%;
+    height: 100%;
+    /* background-color: blue; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 
 

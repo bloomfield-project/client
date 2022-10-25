@@ -63,10 +63,13 @@
 .Attendance-head {
     font-weight: bold;
     margin-left: 5vw;
+    
+    visibility: hidden;
 }
 
 .Attendance-head-1 {
     margin-left: 18vw;
+    visibility: hidden;
 }
 
 /*check box styling end*/

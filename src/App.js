@@ -115,7 +115,7 @@ import MPendingMatches from "./pages/Manager/js/MPendingMatches"
 
 import AddPracticeMatch from "./pages/Manager/js/AddPracticeMatch";
 import ViewTeam from "./pages/Coach/js/ViewTeam";
-
+import CreateTeam from "./pages/Coach/js/CreateTeam";
 import DashboardP from "./pages/player/js/DashboardP";
 
 
@@ -124,7 +124,8 @@ import DashboardP from "./pages/player/js/DashboardP";
 import store , {persistor} from "./redux/store";
 import {Provider} from 'react-redux';
 import {PersistGate } from 'redux-persist/integration/react'
-
+import TeamToMatch from "./pages/Coach/js/TeamToMatch";
+import FutureTeams from "./pages/Coach/js/FutureTeams";
 
 
 
@@ -225,7 +226,8 @@ function App() {
           <Route path="/manager/AddTournamentMatch/:type" element={<AddTournamentMatch />} />
           <Route path="manager/AddPracticeMatch" element={< AddPracticeMatch/>} />
 
-
+          
+          <Route path="/coach/CreateTeam" element={<CreateTeam/>} />
           <Route path="/coach/Ap" element={<ViewAppoinments/>} />
           <Route path="/coach/PlayerD" element={<PlayerDetails />} />
           <Route path="/coach/M1" element={<Matches_1 />} />
@@ -246,15 +248,16 @@ function App() {
           <Route path="/coach/players" element={<Players1 />} />
           <Route path="/coach/appoinments" element={<Appoinments />} />
           <Route path="/coach/matches" element={<Matches_2 />} />
-          <Route path="/coach/matches3" element={<Macthes_3 />} />
-          <Route path="/coach/playerPerformance" element={<PlayerPerformance />} />
+          <Route path="/coach/matches3/:id" element={<Macthes_3 />} />
+          <Route path="/coach/playerPerformance/:id/:player" element={<PlayerPerformance />} />
           <Route path="/coach/practiceSessions" element={<PracticeSessions />} />
           <Route path="/coach/editPracticeSession" element={<EditPracticeSessions />} />
           <Route path="/coach/teams" element={<Teams />} />
-          <Route path="/coach/viewTeams" element={<ViewTeam />} />
+          <Route path="/coach/viewTeams/:id" element={<ViewTeam />} />
           <Route path="/coach/achievement" element={<AchievementCV />} />
           <Route path="/coach/profile" element={<Profile />} />
-
+          <Route path="/coach/TeamToMatch/:id" element={<TeamToMatch />} />
+          <Route path="/coach/FutureTeams/:id/:name" element={<FutureTeams />} />
 
 
 
