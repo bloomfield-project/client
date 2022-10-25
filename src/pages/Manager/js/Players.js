@@ -90,7 +90,7 @@ function Players() {
         email: item.email,
         btn: (
           <Link to={"/manager/EditPlayerDetails/" + item.user_id}>
-            <Button variant="secondary">View</Button>
+            <Button variant="secondary">Edit</Button>
           </Link>
         ),
       };
