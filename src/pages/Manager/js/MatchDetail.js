@@ -227,7 +227,7 @@ const loginData = useSelector((state) => state.auth.data);
           .then((res) => {
             // console.log(setRes(res.data));
             handleClose()
-            window.location.reload()
+            window.history.back()
     
           })
           .catch((err) => console.log("error is arized", err));

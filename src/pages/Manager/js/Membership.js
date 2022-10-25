@@ -150,7 +150,7 @@ function Membership() {
           .then((res) => {
             // console.log(setRes(res.data));
             handleClose()
-            window.location.reload()
+            window.history.back()
     
           })
           .catch((err) => console.log("error is arized", err));
@@ -191,7 +191,7 @@ if(GetPaid){
   GetPaid.map((item, i) => {
     amount = item.total_amount;
     paid[i] = {
-      img: <img className="row-image" src={profpic} alt=""></img>,
+      img: <img className="row-image" src={item.image} alt=""></img>,
       name: item.name.replace(/(^\w{1})|(\s+\w{1})/g, (letter) =>
         letter.toUpperCase()
       ),
@@ -209,11 +209,11 @@ if(GetPaid){
   if(GetUnpaid){
     GetUnpaid.map((items, i) => {
       user_role = items.role.toUpperCase();
-      // console.log(user_role);
+      console.log("img url :",items.image);
       if (user_role === "PLAYER") {
         obj = {
           id: items.user_id,
-          img: <img className="row-image" src={profpic} alt=""></img>,
+          img: <img className="row-image" src={items.image} alt=""></img>,
           name: items.name.replace(/(^\w{1})|(\s+\w{1})/g, (letter) =>
             letter.toUpperCase()
           ),

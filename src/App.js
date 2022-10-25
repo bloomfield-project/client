@@ -224,7 +224,7 @@ function App() {
           <Route path="/manager/MatchDetail" element={<MatchDetail />} />
           <Route path="/manager/AddMatch" element={<AddMatch />} />
           <Route path="/manager/AddTournamentMatch/:type" element={<AddTournamentMatch />} />
-          <Route path="manager/AddPracticeMatch" element={< AddPracticeMatch/>} />
+          <Route path="/manager/AddPracticeMatch" element={< AddPracticeMatch/>} />
 
           
           <Route path="/coach/CreateTeam" element={<CreateTeam/>} />
