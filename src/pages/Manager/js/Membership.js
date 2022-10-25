@@ -187,7 +187,6 @@ function Membership() {
     );
   }, []);
 
-
 if(GetPaid){
   GetPaid.map((item, i) => {
     amount = item.total_amount;

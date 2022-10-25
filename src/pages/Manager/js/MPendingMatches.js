@@ -91,7 +91,7 @@ function MPendingMatches() {
                 
                         {players===undefined?<h1>hi</h1>:
                         <div className="matche-container-outer-box">
-                            <div className="match-box-up"><div className="go-out"><h4 style={{color:"#009270", fontSize:"2rem", fontWeight:"bolder"}}>Hero Cup</h4></div></div>
+                            <div className="match-box-up"><div className="go-out"><h4 style={{color:"#009270", fontSize:"2rem", fontWeight:"bolder"}}>players[0].title</h4></div></div>
                             <div className="match-box-mid">
                                 <div className="match-box-mid-left">
                                     <div className="box-mid-left-up"><h4 style={{color:"#a5a5a5"}}>BLOOMFIELD</h4></div>
