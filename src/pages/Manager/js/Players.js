@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import Header from "../../../component/header/Header";
@@ -8,8 +7,11 @@ import Button from "react-bootstrap/Button";
 import "../../Home.css";
 import SearchTable from "../../../component/Search/SearchTable";
 import profpic from "../../../component/header/profpic.jfif";
+import React, { useState, useEffect } from "react";
+import { fetchData } from "../../AuthServer";
+import { useDispatch, useSelector } from "react-redux";
 
-const Axios = require("axios").default;
+// const Axios = require("axios").default;
 
 // async function getData() {
 //   const axios = require("axios").default;
@@ -42,44 +44,60 @@ const columns = [
     title: "",
     field: "btn",
   },
- 
 ];
 
 function Players() {
-  
   let result;
 
-  const [post, setPost] = React.useState(null);
-
-  React.useEffect(() => {
-    Axios.get("http://localhost:3001/api/user/players").then((response) => {
-      setPost(response.data);
-    });
+  const [post, setPost] = useState("");
+  async function getData() {
+    // const reqData ={
+    //   // eventId:"eventId",
+    // };
+    const authRequest = {
+      method: "post",
+      url: "user/players",
+      data: "null",
+    };
+    fetchData(authRequest)
+      .then((response) => {
+        setPost(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+  useEffect(() => {
+    getData();
   }, []);
 
-  console.log("post data function ", post);
+  // React.useEffect(() => {
+  //   Axios.get("http://localhost:3001/api/user/players").then((response) => {
+  //     setPost(response.data);
+  //   });
+  // }, []);
+  const dataa = post.data;
+  console.log("post data function ", dataa);
 
-  if (post) {
-    {post.data.map((item, i) => {
-      dataArray[i] = 
-       
-         {
-           id: "BP-" + item.user_id ,
-           name: (item.name).replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase()),
-           contact: item.contact,
-           email: item.email,
-           btn: (
-             <Link to={"/manager/EditPlayerDetails/"+ item.user_id}>
-               <Button variant="secondary">View</Button>
-             </Link>
-           ),
-         }
-         
-    
-   })}
+  {
+    dataa?.map((item, i) => {
+      dataArray[i] = {
+        id: "BP-" + item.user_id,
+        name: item.name.replace(/(^\w{1})|(\s+\w{1})/g, (letter) =>
+          letter.toUpperCase()
+        ),
+        contact: item.contact,
+        email: item.email,
+        btn: (
+          <Link to={"/manager/EditPlayerDetails/" + item.user_id}>
+            <Button variant="secondary">View</Button>
+          </Link>
+        ),
+      };
+    });
   }
 
-
+  console.log(dataArray)
 
   // getData(result)
   // console.log("eliyen")
@@ -117,7 +135,10 @@ function Players() {
             <hr></hr>
             <div className="table-box-1">
               <div className="tablee">
-                <SearchTable
+                
+                {dataArray?
+                <>
+                  <SearchTable
                   t_title={""}
                   data={dataArray}
                   columns={columns}
@@ -130,8 +151,10 @@ function Players() {
                   headerFC={"white"}
                   headerFS={"1.2rem"}
                   headerFW={"500"}
-                  on
+                  
                 />
+                </>
+                :""}
               </div>
             </div>
 
@@ -139,13 +162,8 @@ function Players() {
           </div>
         </div>
       </div>
-      
     </>
   );
 }
 
 export default Players;
-
-
-
-
