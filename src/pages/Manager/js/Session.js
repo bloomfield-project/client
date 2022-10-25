@@ -74,43 +74,46 @@ function Session() {
     });
   }, []);
 
-  if (!UpSession) return null;
-
-  {UpSession.data.map((item, i) => {
-     Upcomming_session[i] = 
-      
-        {
-          title: (item.title).replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase()),
-          mentor: (item.mentor).replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase()) ,
-          date: moment.utc(item.date).format('YYYY-MM-DD'),
-          time: item.time,
-          btn: (
-            <Link to={"/manager/EditCouncellingSession/"+ item.c_session_id}>
-              <Button variant="secondary">View</Button>
-            </Link>
-          ),
-        }
-        
-   
-  })}
-
-  if(!UpEvent) return null;
-  {UpEvent.data.map((item, i) => {
-    Upcomming_event[i] = 
-     
-       {
-         event: (item.event_name).replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase()) ,
-         date: moment.utc(item.date).format('YYYY-MM-DD'),
-         time: item.time,
-         btn: (
-           <Link to={"/manager/EditEvent/"+ item.event_id}>
-             <Button variant="secondary">View</Button>
-           </Link>
-         ),
-       }
+  if (UpSession){
+    {UpSession.data.map((item, i) => {
+      Upcomming_session[i] = 
        
-  
- })}
+         {
+           title: (item.title).replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase()),
+           mentor: (item.mentor).replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase()) ,
+           date: moment.utc(item.date).format('YYYY-MM-DD'),
+           time: item.time,
+           btn: (
+             <Link to={"/manager/EditCouncellingSession/"+ item.c_session_id}>
+               <Button variant="secondary">View</Button>
+             </Link>
+           ),
+         }
+         
+    
+   })}
+  }
+
+
+  if(UpEvent){
+    {UpEvent.data.map((item, i) => {
+      Upcomming_event[i] = 
+       
+         {
+           event: (item.event_name).replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase()) ,
+           date: moment.utc(item.date).format('YYYY-MM-DD'),
+           time: item.time,
+           btn: (
+             <Link to={"/manager/EditEvent/"+ item.event_id}>
+               <Button variant="secondary">View</Button>
+             </Link>
+           ),
+         }
+         
+    
+   })}
+  }
+ 
   const selectTab_1 = () => {
     setTabNumber(1);
     // console.log(tabNumber + "selectTab 1");

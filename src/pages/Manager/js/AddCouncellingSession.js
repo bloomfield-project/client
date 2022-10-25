@@ -22,17 +22,10 @@ function AddCouncellingSession() {
   var date = new Date();
   date.setDate(date.getDate() + 7);
 
-  let day = date.getDate();
-  let month = date.getMonth() + 1;
-  let year = date.getFullYear();
+  var currentDate = moment(date).format("YYYY-MM-DD");
+ 
 
-  var currentDate;
-  if (String(day).length == 1) {
-    currentDate = `${year}-${month}-0${day}`;
-  }
-  if (String(month).length == 1) {
-    currentDate = `${year}-0${month}-${day}`;
-  }
+  console.log("current date : ",currentDate)
 
   let array1 = [
     {
@@ -46,6 +39,7 @@ function AddCouncellingSession() {
     {
       title: "Date",
       min: String(currentDate),
+      // max: currentDate,
 
       type: "date",
       placeholder: "",

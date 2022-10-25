@@ -11,9 +11,9 @@ import SampleForm from "../../../component/Form/SampleForm";
 import ResetSubmit from "../../../component/Form/ResetSubmit";
 // const { genSaltSync, hashSync } = require("bcrypt");
 import { useDispatch, useSelector } from "react-redux";
+import moment from "moment";
 
 const Axios = require("axios").default;
-
 // const colNames = ["id", "Name", "Age"];
 
 // const tableStyle = 'striped bordered hover size="sm" ';
@@ -30,17 +30,8 @@ let compRes;
 var date = new Date();
 
 
-let day = date.getDate();
-let month = date.getMonth() + 1;
-let year = date.getFullYear();
+var currentDate=moment.utc(date).format("YYYY-MM-DD");
 
-var currentDate;
-if (String(day).length == 1) {
-  currentDate = `${year}-${month}-0${day}`;
-}
-if (String(month).length == 1) {
-  currentDate = `${year}-0${month}-${day}`;
-}
 
 
 let validation;
@@ -154,7 +145,7 @@ function Membership() {
           }
     
           console.log("data : ",data)
-          // console.log("Passwords are mathched");
+          console.log("Passwords are mathched");
           Axios.post("http://localhost:3001/api/manager/addMembership", data)
           .then((res) => {
             // console.log(setRes(res.data));
@@ -172,25 +163,13 @@ function Membership() {
       .catch((err) => console.log("error is arized", err));
   }
 
-  // if (compRes) console.log("password from back end : : ", compRes.message);
-
-  ///need to go inside if condition
-
-
-
- 
-   
-
-
-
-  /////
 
   const doPayment = (event) => {
     event.preventDefault();
     console.log(event)
     u_id = event.target.attributes[1].nodeValue;
     // if (name) {
-    console.log("name from button : " + event.target.attributes[1].nodeValue + u_id);
+    console.log("name from button : " + event.target.attributes[1].nodeValue +" "+ u_id);
     handleShow();
     // }
   };
@@ -198,25 +177,18 @@ function Membership() {
   React.useEffect(() => {
     Axios.get("http://localhost:3001/api/manager/payment/paid").then((res) => {
       setPost(res.data.data);
-      // console.log(res.data.data);
+      console.log(res.data.data);
     });
-  }, []);
-
-  React.useEffect(() => {
     Axios.get("http://localhost:3001/api/manager/payment/unpaid").then(
       (res) => {
         setUnpaid(res.data.data);
-        // console.log(res.data.data);
+        console.log(res.data.data);
       }
     );
   }, []);
 
-  if (!GetUnpaid) return null;
 
-  if (!GetPaid) return null;
-
-  // console.log(GetPaid);
-
+if(GetPaid){
   GetPaid.map((item, i) => {
     amount = item.total_amount;
     paid[i] = {
@@ -228,40 +200,46 @@ function Membership() {
       date: item.date,
     };
   });
+}
+ 
 
   // console.log("Get unpaid : ", GetUnpaid);
 
   unpaid.length = 0;
-  GetUnpaid.map((items, i) => {
-    user_role = items.role.toUpperCase();
-    // console.log(user_role);
-    if (user_role === "PLAYER") {
-      obj = {
-        id: items.user_id,
-        img: <img className="row-image" src={profpic} alt=""></img>,
-        name: items.name.replace(/(^\w{1})|(\s+\w{1})/g, (letter) =>
-          letter.toUpperCase()
-        ),
-        ammount: amount,
-        btn: (
-          <Button
-            key={i}
-            type= "submit"
-            variant="secondary"
-            value={items.user_id}
-            onClick={doPayment}
-          >
-            Pay
-            {/* <input type="hidden" id="custId" name="custId" value="3487"></input> */}
-          </Button>
-        ),
-      };
-      unpaid.push(obj);
-      // obj=null;
-    }
-  });
 
-  // console.log("unpaid : ", unpaid);
+  if(GetUnpaid){
+    GetUnpaid.map((items, i) => {
+      user_role = items.role.toUpperCase();
+      // console.log(user_role);
+      if (user_role === "PLAYER") {
+        obj = {
+          id: items.user_id,
+          img: <img className="row-image" src={profpic} alt=""></img>,
+          name: items.name.replace(/(^\w{1})|(\s+\w{1})/g, (letter) =>
+            letter.toUpperCase()
+          ),
+          ammount: amount,
+          btn: (
+            <Button
+              key={i}
+              type= "submit"
+              variant="secondary"
+              value={items.user_id}
+              onClick={doPayment}
+            >
+              Pay
+              {/* <input type="hidden" id="custId" name="custId" value="3487"></input> */}
+            </Button>
+          ),
+        };
+        unpaid.push(obj);
+        // obj=null;
+      }
+    });
+  }
+ 
+
+  console.log("unpaid : ", unpaid);
   const uniqueIds = [];
 
   const unique = unpaid.filter((element) => {
@@ -344,7 +322,7 @@ function Membership() {
             {/* <div > */}
             <div className="title">
               <h1>Annual Membership</h1>
-              <h1>Render Count: {count.current}</h1>
+              {/* <h1>Render Count: {count.current}</h1> */}
             </div>
             <div className="tabs">
               <div className="tabs-left">

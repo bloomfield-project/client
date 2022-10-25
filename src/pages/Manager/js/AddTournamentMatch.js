@@ -6,23 +6,37 @@ import Navbar from "../../../component/NavigationBar/Navbar";
 import SampleForm from "../../../component/Form/SampleForm";
 import { IoChevronBackCircleOutline } from "react-icons/io5";
 
-// import Button from "react-bootstrap/Button";
 import "antd/dist/antd.css";
-// import Team from "../../player/Team.png";
+
 // import opTeam from "../../player/player.jpg";
 import MatchesTeams from "../../../component/MatchesTeams/MatchesTeams";
 import ResetSubmit from "../../../component/Form/ResetSubmit";
 import FileUpload from "../../../component/Form/FileUpload";
 import SelectOption from "../../../component/Form/SelectOption";
 import { object } from "prop-types";
+import moment from "moment";
+import {
+  ref,
+  uploadBytes,
+  getDownloadURL,
+  listAll,
+  list,
+} from "firebase/storage";
+import { storage } from "../../../../src/firebase";
+import { v4 } from "uuid";
+
+const fileTypes = ["JPG", "PNG", "GIF"];
 
 const Axios = require("axios").default;
 
-function SetValidation(res) {
-  const [post, setPost] = useState(null);
-  setPost(res);
-  console.log("Data set eka ", post);
-}
+var date = new Date();
+date.setDate(date.getDate() + 7);
+
+var currentDate = moment(date).format("YYYY-MM-DD");
+
+console.log("current date : ", currentDate);
+
+var imgurl;
 
 const AddTournament = (event) => {
   event.preventDefault();
@@ -30,23 +44,58 @@ const AddTournament = (event) => {
   console.log(event);
 
   let formData = {
-    date: event.target[0].value,
-    time: event.target[1].value,
-    ground: event.target[2].value,
+    title: event.target[0].value,
+    date: event.target[1].value,
+    time: event.target[2].value,
+    ground: event.target[3].value,
     match_format: event.target[4].value,
-    op_team_name: event.target[3].value,
+    op_team_name: event.target[5].value,
+    image: imgurl,
   };
 
+  console.log("POST img url : ",imgurl);
+  
   Axios.post("http://localhost:3001/api/manager/AddTournamentMatch", formData)
-    .then((res) => {return SetValidation(res)})
+    .then((res) => {
+      // console.log("res", res);
+
+      if (res.data.validation != null) {
+        alert(res.data.validation);
+      } else {
+        alert("Match Add Successfully");
+        window.location.reload();
+      }
+
+      // setPost(res);
+    })
     .catch((err) => console.log("error is arized", err));
 };
 
 function AddTournamentMatch(props) {
+ 
+
+  const [imageUpload, setImageUpload] = useState(null);
+  const [imageUrl, setImageUrls] = useState(null);
   const { type } = useParams();
 
-  console.log("type is : " + type);
+  const imagesListRef = ref(storage, "images/");
 
+  const uploadFile = () => {
+    if (imageUpload == null) return;
+    const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
+    uploadBytes(imageRef, imageUpload).then((snapshot) => {
+
+      alert("image uploaded")
+      getDownloadURL(snapshot.ref).then((url) => {
+        setImageUrls(url);
+        imgurl = url;
+        console.log("imgurl : ",imgurl);
+      });
+
+    });
+  };
+
+  console.log("type is : " + type);
   const option = [
     {
       value: "T20",
@@ -65,7 +114,7 @@ function AddTournamentMatch(props) {
   let array1 = [
     {
       title: "Date",
-
+      min: String(currentDate),
       type: "date",
       placeholder: "",
       id: "date",
@@ -130,15 +179,6 @@ function AddTournamentMatch(props) {
                 </div>
 
                 <h1>Add Tournament Match </h1>
-                {/* <ul>
-                  {this.post.data.map((item, i) => {
-                    return (
-                      <li key={i}>
-                        {item.ground} - {item.date}
-                      </li>
-                    );
-                  })}
-                </ul> */}
               </div>
 
               <div className="form-container">
@@ -164,20 +204,47 @@ function AddTournamentMatch(props) {
                       >
                         <div
                           className="form-container"
-                          onSubmit={AddTournament}
+                          // onSubmit={AddTournament}
                         >
                           <form>
+                            <input type="hidden" value={type}></input>
+
                             <SampleForm arr={array1} />
                             <SelectOption
                               label={"Match Format"}
                               option={option}
                             />
-                            <FileUpload
+                            {/* <FileUpload
                               filefor="opIcon"
                               filetitle="Opposite Teame Icon"
-                            />
+
+
+                            /> */}
+                            {/* <label className="d-flex justify-content-start w-100 p-3">
+                              upload
+                            </label> */}
+                            <div className="form-group file-upload-wrapper w-100 p-3 mb-2">
+                              <input
+                                type="file"
+                                onChange={(event) => {
+                                  setImageUpload(event.target.files[0]);
+                                }}
+                                className="form-control"
+                              />
+                              <br></br>
+                              <button onClick={uploadFile} className="btn btn-primary" style={{float:"right"}}>
+                                {" "}
+                                Upload Image
+                              </button>
+                              <br></br>
+                                <img src={imageUrl} style={{width:"150px"}}/>
+                              
+
+                            </div>
+                            
                             <ResetSubmit />
                           </form>
+
                         </div>
                       </div>
                     </div>

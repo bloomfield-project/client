@@ -44,7 +44,9 @@ const columns = [
   },
  
 ];
+
 function Players() {
+  
   let result;
 
   const [post, setPost] = React.useState(null);
@@ -57,27 +59,31 @@ function Players() {
 
   console.log("post data function ", post);
 
-  if (!post) return null;
+  if (post) {
+    {post.data.map((item, i) => {
+      dataArray[i] = 
+       
+         {
+           id: "BP-" + item.user_id ,
+           name: (item.name).replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase()),
+           contact: item.contact,
+           email: item.email,
+           btn: (
+             <Link to={"/manager/EditPlayerDetails/"+ item.user_id}>
+               <Button variant="secondary">View</Button>
+             </Link>
+           ),
+         }
+         
+    
+   })}
+  }
 
-  {post.data.map((item, i) => {
-     dataArray[i] = 
-      
-        {
-          id: "BP-" + item.user_id ,
-          name: (item.name).replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase()),
-          contact: item.contact,
-          email: item.email,
-          btn: (
-            <Link to={"/manager/EditPlayerDetails/"+ item.user_id}>
-              <Button variant="secondary">View</Button>
-            </Link>
-          ),
-        }
-        
-   
-  })}
+
+
   // getData(result)
   // console.log("eliyen")
+
   return (
     <>
       <div className="page-container-1">
@@ -124,6 +130,7 @@ function Players() {
                   headerFC={"white"}
                   headerFS={"1.2rem"}
                   headerFW={"500"}
+                  on
                 />
               </div>
             </div>
@@ -138,4 +145,7 @@ function Players() {
 }
 
 export default Players;
+
+
+
 

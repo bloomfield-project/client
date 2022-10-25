@@ -3,99 +3,49 @@ import { Link } from "react-router-dom";
 // import SampleForm from "../../../component/Form/SampleForm";
 
 import Header from "../../../component/header/Header";
-// import Navbar from "../../../component/NavigationBar/Navbar";
-// import Tables from "../../../component/Table/Table";
-import Button from "react-bootstrap/Button";
+import moment from "moment";
 import "../../Home.css";
 import SearchTable from "../../../component/Search/SearchTable";
 import { IoChevronBackCircleOutline } from "react-icons/io5";
 import { BiChevronRightCircle } from "react-icons/bi";
 import Navbar from "../../../component/NavigationBar/Navbar";
+import ResetSubmit from "../../../component/Form/ResetSubmit";
 
-const tournment_data = [
-  {
-    id: "1101",
-    title: "Hero cup",
-    btn: (
-      <Link
-        to={{
-          pathname: "/manager/AddTournamentMatch/"+"Hero Cup",
-          state: { stateParam: true },
-        }}
-      >
-        <BiChevronRightCircle
-          style={{ color: "rgba(0, 146, 112, 1)", fontSize: " 35px" }}
-        />
-      </Link>
-    ),
-  },
+const Axios = require("axios").default;
 
-  {
-    id: "1102",
-    title: "Champion leage",
-    btn: (
-      <Link
-        to={{
-          pathname: "/manager/AddTournamentMatch/"+"Champion leage",
-          state: { stateParam: true },
-        }}
-      >
-        <BiChevronRightCircle
-          style={{ color: "rgba(0, 146, 112, 1)", fontSize: " 35px" }}
-        />
-      </Link>
+var CurrentDate = new Date();
+const AddMatchTitle = (event) => {
+  event.preventDefault();
+
+  console.log(event);
+
+  let formData = {
+    title: event.target[0].value.replace(/(^\w{1})|(\s+\w{1})/g, (letter) =>
+      letter.toUpperCase()
     ),
-  },
-  {
-    id: "1104",
-    title: "LPL",
-    btn: (
-      <Link
-        to={{
-          pathname: "/manager/AddTournamentMatch/"+"LPL",
-          state: { stateParam: true },
-        }}
-      >
-        <BiChevronRightCircle
-          style={{ color: "rgba(0, 146, 112, 1)", fontSize: " 35px" }}
-        />
-      </Link>
-    ),
-  },
-  // {
-  //   id: "1103",
-  //   title: "Saaru wijesinghe",
-  //   btn: (
-  //     <Link to={"/manager/AddTournamentDetail"}>
-  //       <BiChevronRightCircle
-  //         style={{ color: "rgba(0, 146, 112, 1)", fontSize: " 35px" }}
-  //       />
-  //     </Link>
-  //   ),
-  // },
-  // {
-  //   id: "1105",
-  //   title: "Ashan grove",
-  //   btn: (
-  //     <Link to={"/manager/AddTournamentDetail"}>
-  //       <BiChevronRightCircle
-  //         style={{ color: "rgba(0, 146, 112, 1)", fontSize: "35px" }}
-  //       />
-  //     </Link>
-  //   ),
-  // },
-];
+    date: moment.utc(CurrentDate).format("YYYY-MM-DD"),
+  };
+
+  alert("title is : " + event.target[0].value);
+
+  Axios.post("/api/manager/addMatchTitle", formData)
+    .then((results) => {
+      console.log("results.data.message :", results.data.message);
+      window.location.reload();
+    })
+    .catch((err) => console.log("error : ", err));
+};
+
+const tournment_data = [];
 
 // console.log(data[0]);
 const columns = [
   {
-    title: "ID",
-    field: "id",
-  },
-
-  {
     title: "Title",
     field: "title",
+  },
+  {
+    title: "",
   },
   {
     title: "",
@@ -105,13 +55,49 @@ const columns = [
 
 function AddMatch() {
   const [tabNumber, setTabNumber] = useState(1);
+  const [matchTitle, setTitle] = useState("");
 
+  React.useEffect(() => {
+    // console.log("inside useEffect")
+    Axios.get("http://localhost:3001/api/manager/getMatchTitle")
+      .then((response) => {
+        console.log(response);
+        setTitle(response.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  if (matchTitle) {
+    // alert("Match titles ok ");
+
+    {
+      matchTitle.data.map((item, i) => {
+        tournment_data[i] = {
+          key: i,
+          title: item.title,
+          btn: (
+            <Link
+              to={{
+                pathname: "/manager/AddTournamentMatch/" + item.title,
+                state: { stateParam: true },
+              }}
+            >
+              <BiChevronRightCircle
+                style={{ color: "rgba(0, 146, 112, 1)", fontSize: " 35px" }}
+              />
+            </Link>
+          ),
+        };
+      });
+    }
+  }
   const selectTab_1 = () => {
     setTabNumber(1);
     // console.log(tabNumber + "selectTab 1");
   };
   const selectTab_2 = () => {
     setTabNumber(2);
+
     // console.log(tabNumber + "selectTab 2");
   };
   return (
@@ -144,46 +130,40 @@ function AddMatch() {
 
               <div className="form-container">
                 <div className="table-box-1">
-                  <div
-                    style={{
-                      width: "100%",
-                      display: "flex",
-                      flexDirection: "column",
-                      paddingTop: "10px",
-                    }}
-                  >
-                    <lable
+                  <form style={{ width: "100%" }} onSubmit={AddMatchTitle}>
+                    <div
                       style={{
-                        margin: "auto",
-                        width: "90%",
-                        textAlign: "left",
-                        fontSize: "20px",
+                        width: "100%",
+                        display: "flex",
+                        flexDirection: "column",
+                        paddingTop: "10px",
                       }}
                     >
-                      Match Title
-                    </lable>
-                    <input
-                      type={"text"}
-                      placeholder={"Title"}
-                      style={{ width: "90%", margin: "auto" }}
-                    ></input>
-                  </div>
-
-                  <div className="tabs">
-                    <div className="tabs-left"></div>
-
-                    <div className="tabs-right">
-                      <Link
-                        to={
-                          tabNumber === 1
-                            ? "/manager/AddTournamentMatch"
-                            : "/manager/AddPracticeMatch"
-                        }
+                      <lable
+                        style={{
+                          margin: "auto",
+                          width: "90%",
+                          textAlign: "left",
+                          fontSize: "20px",
+                        }}
                       >
-                        <Button variant="outline-success">+ Add</Button>
-                      </Link>
+                        Match Title
+                      </lable>
+                      <input
+                        type={"text"}
+                        placeholder={"Title"}
+                        required
+                        style={{ width: "90%", margin: "auto" }}
+                      ></input>
                     </div>
-                  </div>
+
+                    <div className="tabs">
+                      <div className="tabs-left"></div>
+
+                      <ResetSubmit />
+                    </div>
+                  </form>
+
                   <div
                     className="tabs"
                     style={{ height: "40px", width: "95%" }}
@@ -195,7 +175,18 @@ function AddMatch() {
                         {tabNumber === 1 ? <hr></hr> : ""}
                       </h5>
                       <h5 className={tabNumber === 2 ? "tab-active" : "tab"}>
-                        <a onClick={() => selectTab_2(2)}>Practice</a>{" "}
+                        {/* <a onClick={() => selectTab_2(2)}> */}
+                          <Link
+                            to={{
+                              pathname: "/manager/AddPracticeMatch/",
+                              state: { stateParam: true },
+                            }}
+                          >
+                           <p style={{ color: "rgba(0, 146, 112, 1)", fontSize: " " }}><a>Practice</a></p> 
+                            
+                          </Link>
+                          
+                        
                         {tabNumber === 2 ? <hr></hr> : ""}
                       </h5>
                     </div>
@@ -204,7 +195,7 @@ function AddMatch() {
                   </div>
                   <div className="tablee">
                     <SearchTable
-                      title={""}
+                      t_title={""}
                       data={tournment_data}
                       columns={columns}
                       searching={true}
@@ -230,3 +221,5 @@ function AddMatch() {
 }
 
 export default AddMatch;
+
+
