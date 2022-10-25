@@ -514,7 +514,7 @@ const loginData = useSelector((state) => state.auth.data);
                             </div>
                             <div className="match-box-down">
                               <Link
-                                to={"/Manager/MMatchDetails/" + item.match_id}
+                                to={"/manager/MMatchDetails/" + item.match_id}
                               >
                                 <Button variant="secondary">View</Button>
                               </Link>
