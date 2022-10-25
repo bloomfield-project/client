@@ -150,7 +150,7 @@ function Employees() {
         ),
         edit: (
           <Link to={"/admin/EditEmployee/" + item.user_id}>
-            <Button variant="secondary">View</Button>{" "}
+            <Button variant="secondary">Edit</Button>{" "}
           </Link>
         ),
         delete: (
