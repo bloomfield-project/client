@@ -2,15 +2,15 @@ import React, { useState, useEffect } from "react";
 import Header from "../../../component/header/Header";
 import Navbar from "../../../component/NavigationBar/Navbar";
 import "../../Home.css";
-import "../css/MatchDetails.css";
-import Team from "../Team.png";
-import opTeam from "../opTeam.jpg";
+import "../../player/css/Matches.css"
+import Team from "../../player/Team.png"
+import opTeam from "../../player/opTeam.jpg"
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import { useParams, useLocation } from "react-router-dom";
 import { fetchData } from "../../AuthServer";
 
-function MatchDetails() {
+function MMatchDetails() {
   const { id } = useParams();
 
   console.log("type is : " + id);
@@ -271,7 +271,7 @@ function MatchDetails() {
             {/*end*/}
 
             <div className="match-box-down">
-              <Link to={"/player/Matches"}>
+              <Link to={"/manager/MatcheDetail"}>
                 <Button variant="secondary">Back</Button>
               </Link>
             </div>
@@ -282,4 +282,4 @@ function MatchDetails() {
   );
 }
 
-export default MatchDetails;
+export default MMatchDetails;

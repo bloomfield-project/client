@@ -1,4 +1,6 @@
-import * as React from "react";
+// import * as React from "react";
+import React, { useState } from "react";
+
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
@@ -18,7 +20,10 @@ const top100Films = [
   { title: "Lasith Ambuldeniya" },
 ];
 
+
+
 export default function AddMultipleSelections(props) {
+  const [selected, setSelected] = useState([]);
   return (
     <div className="w-100 p-3 mb-2">
       <Stack spacing={3} sx={{ width: 500 }}>
@@ -34,10 +39,13 @@ export default function AddMultipleSelections(props) {
               {...params}
               label={props.name}
               placeholder={props.placeHolder}
+
             />
           )}
         />
       </Stack>
+
+    
     </div>
   );
 }
