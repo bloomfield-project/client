@@ -43,7 +43,7 @@ function AddTeamAchivement() {
   const [show, setShow] = useState(false);
 
   const handleClose = () => {
-    window.location.reload()
+    window.history.back()
   };
   const handleShow = () => setShow(true);
 

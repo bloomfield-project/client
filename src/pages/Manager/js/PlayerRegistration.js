@@ -3,7 +3,6 @@ import Header from "../../../component/header/Header";
 import "../css/PlayerRegistration.css";
 import { IoChevronBackCircleOutline } from "react-icons/io5";
 import SampleForm from "../../../component/Form/SampleForm";
-import { Link } from "react-router-dom";
 import Navbar from "../../../component/NavigationBar/Navbar";
 import FileUpload from "../../../component/Form/FileUpload";
 import AddMultipleSelections from "../../../component/AddMultipleSelections/AddMultipleSelections";
@@ -12,25 +11,53 @@ import * as yup from "yup";
 import SelectOption from "../../../component/Form/SelectOption";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import { Link, useParams, useLocation } from "react-router-dom";
+
+import {
+  ref,
+  uploadBytes,
+  getDownloadURL,
+  listAll,
+  list,
+} from "firebase/storage";
+import { storage } from "../../../../src/firebase";
+import { v4 } from "uuid";
 
 const axios = require("axios").default;
 
-// const userSchema = yup.object().shape({
-//   first_name: yup.string().required("Required!"),
-//   last_name: yup.string().required(),
-//   email: yup.string().email("plese enter correct email").required(),
-// });
 
 let error_msg = null;
 let error_field=null;
 let success = null;
+var imgurl;
+
 
 function PlayerRegistration() {
   const [show, setShow] = useState(false);
+  const [imageUpload, setImageUpload] = useState(null);
+  const [imageUrl, setImageUrls] = useState(null);
+  const { type } = useParams();
+
+  const imagesListRef = ref(storage, "images/");
+
+  const uploadFile = () => {
+    if (imageUpload == null) return;
+    const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
+    uploadBytes(imageRef, imageUpload).then((snapshot) => {
+
+      alert("image uploaded")
+      getDownloadURL(snapshot.ref).then((url) => {
+        setImageUrls(url);
+        imgurl = url;
+        console.log("imgurl : ",imgurl);
+      });
+
+    });
+  };
 
   const handleClose = () => {
     setShow(false);
-    window.location.reload()
+    window.history.back()
 
   };
   const handleShow = () => setShow(true);
@@ -115,6 +142,7 @@ function PlayerRegistration() {
       nic: event.target[3].value,
       contact: event.target[4].value,
       role: event.target[5].value,
+      image: imgurl ? imgurl : "",
       // date:currentDate,
     };
     // const isValid = await userSchema.isValid(userData);
@@ -238,7 +266,24 @@ function PlayerRegistration() {
                   {/* <AddMultipleSelections /> */}
 
                   <SelectOption label={"Player Role"} option={option} />
-                  <FileUpload filetitle={"Profile Image"}  />
+                  <div className="form-group file-upload-wrapper w-100 p-3 mb-2">
+                              <input
+                                type="file"
+                                onChange={(event) => {
+                                  setImageUpload(event.target.files[0]);
+                                }}
+                                className="form-control"
+                              />
+                              <br></br>
+                              <button onClick={uploadFile} className="btn btn-primary" style={{float:"right"}}>
+                                {" "}
+                                Upload Image
+                              </button>
+                              <br></br>
+                                <img src={imageUrl} style={{width:"150px"}}/>
+                              
+
+                            </div>
                   <ResetSubmit />
                 </form>
               </div>

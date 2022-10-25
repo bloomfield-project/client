@@ -63,7 +63,7 @@ const AddTournament = (event) => {
         alert(res.data.validation);
       } else {
         alert("Match Add Successfully");
-        window.location.reload();
+        window.history.back()
       }
 
       // setPost(res);

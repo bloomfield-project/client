@@ -46,7 +46,7 @@ const formControl = (event) =>{
       alert(res.data.message);
     } else {
       alert("Match Add Successfully");
-      window.location.reload();
+      window.history.back()
     }
 
     // setPost(res);
