@@ -5,6 +5,7 @@ import * as IoIcons from "react-icons/io";
 import { BsFillTrophyFill,BsFillDiagram3Fill,BsPersonLinesFill ,BsFillCreditCardFill,BsCalendar2EventFill } from "react-icons/bs";
 import { MdSportsCricket , MdEventAvailable} from "react-icons/md";
 import { GiTrophyCup , GiAchievement} from "react-icons/gi";
+import { BsDistributeVertical } from "react-icons/bs";
 
 export const SidebarDataManager = [
     {
@@ -53,7 +54,7 @@ export const SidebarDataManager = [
     {
         title:'Logout',
         path:'/',
-        icon:<AiIcons.AiFillHome />,
+        icon:<FaIcons.FaPowerOff />,
         cName:'nav-text'
     },
 ]
@@ -95,13 +96,13 @@ export const SidebarDataPlayer = [
     {
         title:'Ranking',
         path:'/player/PlayerRankingList',
-        icon:<AiIcons.AiFillHome />,
+        icon:<BsFillDiagram3Fill />,
         cName:'nav-text'
     },
     {
         title:'Attendance',
         path:'/player/Progress',
-        icon:<AiIcons.AiFillHome />,
+        icon:<BsDistributeVertical />,
         cName:'nav-text'
     },
     // {
@@ -114,7 +115,7 @@ export const SidebarDataPlayer = [
         title:'Payments',
         path:'/player/Payments',
         // FaMoneyBillAlt
-        icon:<FaIcons.FaMoneyBillAlt />,
+        icon:<FaIcons.FaMoneyBillAlt/>, 
         cName:'nav-text'
     },
     // {
@@ -126,7 +127,7 @@ export const SidebarDataPlayer = [
     {
         title:'Logout',
         path:'/',
-        icon:<AiIcons.AiFillHome />,
+        icon:<FaIcons.FaPowerOff />,
         cName:'nav-text'
     },
 
@@ -157,7 +158,7 @@ export const SidebarDataAdmin = [
     {
         title:'Payments',
         path:'/admin/AnnualMembership',
-        icon:<AiIcons.AiFillHome />,
+        icon:<FaIcons.FaMoneyBillAlt/>,
         cName:'nav-text'
     },
     {
@@ -170,7 +171,7 @@ export const SidebarDataAdmin = [
         title:'Achivements',
         path:'/admin/Achivements',
         // GiTrophyCup
-        icon:<GiTrophyCup />,
+        icon:<BsFillTrophyFill />,
         cName:'nav-text'
     },
     {
@@ -183,7 +184,7 @@ export const SidebarDataAdmin = [
     {
         title:'Logout',
         path:'/',
-        icon:<AiIcons.AiFillHome />,
+        icon:<FaIcons.FaPowerOff />,
         cName:'nav-text'
     },
         
@@ -206,7 +207,7 @@ export const SidebarDataCoach = [
     {
         title:'Matches',
         path:'/coach/matches',
-        icon:<FaIcons.FaCartPlus />,
+        icon:<MdSportsCricket/>,
         cName:'nav-text'
     },
     {
@@ -224,19 +225,19 @@ export const SidebarDataCoach = [
     {
         title:'Players',
         path:'/coach/players',
-        icon:<AiIcons.AiFillHome />,
+        icon:<BsPersonLinesFill />,
         cName:'nav-text'
     },
     {
         title:'Ranking',
         path:'/coach/bloomfieldCricketRanking',
-        icon:<AiIcons.AiFillHome />,
+        icon:<BsFillDiagram3Fill />,
         cName:'nav-text'
     },
     {
         title:'Achievements',
         path:'/coach/achievement',
-        icon:<AiIcons.AiFillHome />,
+        icon:<BsFillTrophyFill />,
         cName:'nav-text'
     },
     // {
@@ -248,10 +249,8 @@ export const SidebarDataCoach = [
     {
         title:'Logout',
         path:'/',
-        icon:<AiIcons.AiFillHome />,
+        icon:<FaIcons.FaPowerOff />,
         cName:'nav-text'
     },
      
 ]
-
-

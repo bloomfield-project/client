@@ -204,7 +204,7 @@ function AddTournamentMatch(props) {
                       >
                         <div
                           className="form-container"
-                          // onSubmit={AddTournament}
+                          onSubmit={AddTournament}
                         >
                           <form>
                             <input type="hidden" value={type}></input>
