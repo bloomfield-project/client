@@ -106,7 +106,7 @@ function ViewPracticeSessions() {
                                 </Container>
 
                                 <div className="EPS-main-2-2">
-                                    <AddMultipleSelections name={"Add Couches"} />
+                                    {/* <AddMultipleSelections name={"Add Couches"} /> */}
                                 </div>
 
 
@@ -144,7 +144,7 @@ function ViewPracticeSessions() {
 
                                 <div className="EPS-main-3-2">
 
-                                    <AddMultipleSelections name={"Add Players"} />
+                                    {/* <AddMultipleSelections name={"Add Players"} /> */}
 
                                 </div>
 

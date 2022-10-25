@@ -6,7 +6,14 @@ import Button from "react-bootstrap/Button";
 import "../../Home.css";
 import SearchTable from "../../../component/Search/SearchTable";
 import { Link } from "react-router-dom";
+import { Tabs } from 'antd';
+import 'antd/dist/antd.css';
 
+const { TabPane } = Tabs;
+
+const onChange = (key) => {
+    console.log(key);
+};
 
 const data_1 = [
  
@@ -112,62 +119,7 @@ const columns = [
   }
 ];
 
-// const data_1 = [
-//   {
-//     // id: "1101",
-//     // img: <img className="row-image" src={profpic} alt=""></img>,
-//     mentor: "Dr.chaminda wimukthi",
-//     date: '2022-05-11',
-//     time: '09:00 am',
-//     btn: <Button variant="secondary">View</Button>,
-//   },
 
-//   {
-//     // id: "1101",
-//     // img: <img className="row-image" src={profpic} alt=""></img>,
-//     mentor: "Dr.chaminda wimukthi",
-//     date: '2022-05-11',
-//     time: '09:00 am',
-//     btn: <Button variant="secondary">View</Button>,
-//   },
-//   {
-//     // id: "1101",
-//     // img: <img className="row-image" src={profpic} alt=""></img>,
-//     mentor: "Dr.chaminda wimukthi",
-//     date: '2022-05-11',
-//     time: '09:00 am',
-//     btn: <Button variant="secondary">View</Button>,
-//   },
-//   {
-//     // id: "1101",
-//     // img: <img className="row-image" src={profpic} alt=""></img>,
-//     mentor: "Dr.chaminda wimukthi",
-//     date: '2022-05-11',
-//     time: '09:00 am',
-//     btn: <Button variant="secondary">View</Button>,
-//   },
-
-// ];
-
-// // console.log(data[0]);
-// const columns_1 = [
-//   {
-//     title: "Mentor",
-//     field: "mentor",
-//   },
-//   {
-//     title: "Date",
-//     field: "date",
-//   },
-//   {
-//     title: "Time",
-//     field: "time",
-//   },
-//   {
-//     title: "",
-//     field: "btn",
-//   }
-// ];
 
 function Session() {
 
@@ -199,43 +151,79 @@ function Session() {
             <div className="title">
               <h1>Practice Sessions</h1>
             </div>
-            <div className="tabs">
-                {/* <h5 className="tab-active">Couceling<hr></hr></h5>
-                <h5 className="tab">Events</h5> */}
-              <div className="tabs-left">
-                <h5 className= {tabNumber === 1 ? "tab-active" : "tab" } > <a  onClick={()=>selectTab_1(1)}>All</a> {tabNumber === 1 ? <hr></hr> : ""}</h5>
-                <h5 className= {tabNumber === 2 ? "tab-active" : "tab" } ><a  onClick={()=>selectTab_2(1)} >Today</a>  {tabNumber === 2 ? <hr></hr> : ""}</h5>
-              </div>
+            <div className="tabs"  style={{justifyContent:"right"}}>
+                
+              
 
-              <div className="tabs-right">
+              <div className="tabs-right" >
                 <Link to="/coach/APS"><Button variant="outline-success">+ Add</Button></Link>
               </div>
                                 
             </div>
-            
-            <hr></hr>
-            <div className="table-box-1">
-                <div className="tablee"> 
-                <SearchTable
-                title={false}
-                data={tabNumber === 2 ? data_2 : data_1}
-                columns={tabNumber === 2 ? columns : columns}
-                searching={true}
-                sort={false}
-                filter={false}
-                paging={true}
-                headerC={"#4a4a4a"}
-                headerH={"40px"}
-                headerFC={'white'}
-                headerFS={'1.2rem'}
-                headerFW={'500'}
-                // height: 40px
-    //             font-size: 1.2rem;
-    // font-weight: 500;
-              />
-                </div>
+            <div className="tabs-contain-box">
+            <Tabs defaultActiveKey="1" onChange={onChange}>
+                        
+                  <TabPane tab="Today" key="1">
+
+                  <div className="matches-container-outer-box">
+                  
+                  
+                      <div className="tablee" style={{width:"100%"}}> 
+                        <div className="table-head">
+                            <div className="col-5-1">Session ID</div>
+                            <div className="col-5-2">Session</div>
+                            <div className="col-5-3">Date</div>
+                            <div className="col-5-4">Time</div>
+                            <div className="col-5-5"></div>
+                        </div>
+                        <div  className="table-row">
+                            <div className="col-5-1" >PS-001</div>
+                            <div className="col-5-2">Batting</div>
+                            <div className="col-5-1">2022-01-01</div>
+                            <div className="col-5-1">09.00</div>
+                            <div className="col-5-1"><Link to="/coach/VPS"><Button variant="secondary">View</Button></Link></div>
+
+                        
+                        <hr></hr>
+                      </div>
+                    
+                  </div>
+
+                  </div>
+                      
+                  </TabPane>
+                  <TabPane tab="Future" key="2">
+                  <div className="matches-container-outer-box">
+                  
+                  
+                      <div className="tablee" style={{width:"100%"}}> 
+                        <div className="table-head">
+                            <div className="col-5-1">Session ID</div>
+                            <div className="col-5-2">Session</div>
+                            <div className="col-5-3">Date</div>
+                            <div className="col-5-4">Time</div>
+                            <div className="col-5-5"></div>
+                        </div>
+                        <div  className="table-row">
+                            <div className="col-5-1">PS-001</div>
+                            <div className="col-5-2">Batting</div>
+                            <div className="col-5-1">2022-01-01</div>
+                            <div className="col-5-1">09.00</div>
+                            <div className="col-5-1"><a href="/coach/editPracticeSession"><button>View</button></a></div>
+
+                        
+                        <hr></hr>
+                      </div>
+                    
+                  </div>
+
+                  </div>
+                      
+                  </TabPane>
               
-            </div>
+          </Tabs>
+          </div>
+            
 
             {/* </div> */}
           </div>

@@ -12,6 +12,7 @@
     width: 250px;
     height: 100%;
     background-color: aqua;
+    
 }
 
 .body-container-2{
@@ -26,3 +27,68 @@
     z-index: 10;
 }
 
+.Payments-table-admin-manager{
+    width: 100%;
+}
+
+
+.o-u-t{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    /* background-color: aqua; */
+
+}
+
+.top-ic{
+    font-size: 1.2rem;
+    font-weight: 400;
+    width: 95%;
+    /* background-color: aqua; */
+    text-align: left;
+    color: rgb(129, 129, 129);
+}
+
+.an-s-wer{
+    font-size: 1.5rem;
+    font-weight: 400;
+    width: 90%;
+    /* background-color: blue; */
+    text-align: left;
+}
+
+.o-u{
+    width: 95%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    /* background-color: blue; */
+    /* justify-content: left; */
+
+}
+.top-i{
+    font-size: 1.2rem;
+    font-weight: 400;
+    /* background-color: aqua; */
+    text-align: left;
+    color: rgb(129, 129, 129);
+
+}
+
+
+.an-s-w{
+    margin-left: 80px;
+    width: 300px;
+    height: 35px;
+    border-radius: 6px;
+}
+
+.b-t-n{
+    margin-left: 20px;
+    width: 20%;
+    display: flex;
+    justify-content: space-around;
+}
