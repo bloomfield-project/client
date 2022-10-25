@@ -5,19 +5,17 @@ import Button from "react-bootstrap/Button";
 import "../../Home.css";
 import SearchTable from "../../../component/Search/SearchTable";
 import { Link } from "react-router-dom";
-<<<<<<< HEAD
 import { Tabs } from 'antd';
 import 'antd/dist/antd.css';
-
+import { fetchData } from '../../AuthServer';
+import { useSelector } from 'react-redux';
+import axios from "axios";
 const { TabPane } = Tabs;
 
 const onChange = (key) => {
     console.log(key);
 };
-=======
-import { fetchData } from '../../AuthServer';
-import { useSelector } from 'react-redux';
-import axios from "axios";
+
 
 let data_2 = [
 
@@ -31,7 +29,6 @@ let data_2 = [
   },
 
 ];
->>>>>>> 517665f382782abfe1dae4dda80a2c813025e8c5
 
 const data_1 = [
 
@@ -71,10 +68,7 @@ const columns = [
 
 ];
 
-<<<<<<< HEAD
-=======
 // const baseURL = "http://localhost:3001/api/coach/practiceSession/All";
->>>>>>> 517665f382782abfe1dae4dda80a2c813025e8c5
 
 
 function Session() {
@@ -209,11 +203,9 @@ function Session() {
             <div className="title">
               <h1>Practice Sessions</h1>
             </div>
-<<<<<<< HEAD
             <div className="tabs"  style={{justifyContent:"right"}}>
                 
               
-=======
 
             <div className="tabs">
 
@@ -221,12 +213,10 @@ function Session() {
                 <h5 className={tabNumber === 1 ? "tab-active" : "tab"} > <a onClick={() => selectTab_1(1)}>All</a> {tabNumber === 1 ? <hr></hr> : ""}</h5>
                 <h5 className={tabNumber === 2 ? "tab-active" : "tab"} ><a onClick={() => selectTab_2(1)} >Today</a>  {tabNumber === 2 ? <hr></hr> : ""}</h5>
               </div>
->>>>>>> 517665f382782abfe1dae4dda80a2c813025e8c5
 
               <div className="tabs-right" >
                 <Link to="/coach/APS"><Button variant="outline-success">+ Add</Button></Link>
               </div>
-<<<<<<< HEAD
                                 
             </div>
             <div className="tabs-contain-box">
@@ -293,7 +283,6 @@ function Session() {
           </Tabs>
           </div>
             
-=======
 
             </div>
 
@@ -321,7 +310,6 @@ function Session() {
               </div>
 
             </div>
->>>>>>> 517665f382782abfe1dae4dda80a2c813025e8c5
 
           </div>
 
