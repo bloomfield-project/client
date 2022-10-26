@@ -5,33 +5,17 @@ import Button from "react-bootstrap/Button";
 import "../../Home.css";
 import SearchTable from "../../../component/Search/SearchTable";
 import { Link } from "react-router-dom";
-<<<<<<< HEAD
 import { Tabs } from 'antd';
 import 'antd/dist/antd.css';
+import {fetchData} from '../../AuthServer' ;
 
 const { TabPane } = Tabs;
 
 const onChange = (key) => {
     console.log(key);
 };
-=======
-import { fetchData } from '../../AuthServer';
-import { useSelector } from 'react-redux';
-import axios from "axios";
 
-let data_2 = [
 
-  {
-    sessionname: "vs SCC",
-    space: " ",
-    session: "Practice Match",
-    date: '2022-05-11',
-    time: "5.00 PM",
-    btn: <Link to={"/coach/editPracticeSession"}><Button variant="secondary">View</Button></Link>,
-  },
-
-];
->>>>>>> 517665f382782abfe1dae4dda80a2c813025e8c5
 
 const data_1 = [
 
@@ -71,10 +55,8 @@ const columns = [
 
 ];
 
-<<<<<<< HEAD
-=======
-// const baseURL = "http://localhost:3001/api/coach/practiceSession/All";
->>>>>>> 517665f382782abfe1dae4dda80a2c813025e8c5
+
+
 
 
 function Session() {
@@ -167,6 +149,31 @@ function Session() {
   //   }
   // }}
 
+  const [responseData,setResponseData]=useState([]);
+    const url= "manager/getOldSession"
+    async function getData(url,method){
+        
+        const reqData ={
+            date:"2022-10-26",
+        };
+        const authRequest = {
+        "method":method,
+        "url":url,
+        "data":reqData
+      }
+      fetchData(authRequest).then((response)=>{
+            setResponseData(response.data)
+        
+      }).catch(function(error){
+        console.log(error);
+      })
+    }
+    useEffect(() => {
+        getData(url,"get")
+    }, [])
+    const dataupcomming=responseData.data
+    console.log(dataupcomming)
+
 
 
   const selectTab_1 = () => {
@@ -209,33 +216,25 @@ function Session() {
             <div className="title">
               <h1>Practice Sessions</h1>
             </div>
-<<<<<<< HEAD
+
             <div className="tabs"  style={{justifyContent:"right"}}>
                 
               
-=======
 
-            <div className="tabs">
-
-              <div className="tabs-left">
-                <h5 className={tabNumber === 1 ? "tab-active" : "tab"} > <a onClick={() => selectTab_1(1)}>All</a> {tabNumber === 1 ? <hr></hr> : ""}</h5>
-                <h5 className={tabNumber === 2 ? "tab-active" : "tab"} ><a onClick={() => selectTab_2(1)} >Today</a>  {tabNumber === 2 ? <hr></hr> : ""}</h5>
-              </div>
->>>>>>> 517665f382782abfe1dae4dda80a2c813025e8c5
 
               <div className="tabs-right" >
                 <Link to="/coach/APS"><Button variant="outline-success">+ Add</Button></Link>
               </div>
-<<<<<<< HEAD
+
                                 
             </div>
             <div className="tabs-contain-box">
             <Tabs defaultActiveKey="1" onChange={onChange}>
                         
-                  <TabPane tab="Today" key="1">
+                  <TabPane tab="Completed" key="1">
 
                   <div className="matches-container-outer-box">
-                  
+                 
                   
                       <div className="tablee" style={{width:"100%"}}> 
                         <div className="table-head">
@@ -245,23 +244,25 @@ function Session() {
                             <div className="col-5-4">Time</div>
                             <div className="col-5-5"></div>
                         </div>
+                        {dataupcomming?dataupcomming.map((item,i)=><>
                         <div  className="table-row">
-                            <div className="col-5-1" >PS-001</div>
-                            <div className="col-5-2">Batting</div>
-                            <div className="col-5-1">2022-01-01</div>
-                            <div className="col-5-1">09.00</div>
+                            <div className="col-5-1" >PS-{item.c_session_id}</div>
+                            <div className="col-5-2">{item.title}</div>
+                            <div className="col-5-1">{item.date}</div>
+                            <div className="col-5-1">{item.time}</div>
                             <div className="col-5-1"><Link to="/coach/VPS"><Button variant="secondary">View</Button></Link></div>
 
                         
-                        <hr></hr>
+                        
                       </div>
+                      <hr></hr></> ):""}
                     
                   </div>
 
                   </div>
                       
                   </TabPane>
-                  <TabPane tab="Future" key="2">
+                  <TabPane tab="UPcomming" key="2">
                   <div className="matches-container-outer-box">
                   
                   
@@ -293,35 +294,7 @@ function Session() {
           </Tabs>
           </div>
             
-=======
 
-            </div>
-
-            <hr></hr>
-
-            <div className="table-box-1">
-
-              <div className="tablee">
-
-                <SearchTable
-                  title={"mmvdmslvmlm"}
-                  data={tabNumber === 2 ? data_1 : data_2}
-                  columns={columns}
-                  searching={true}
-                  sort={false}
-                  filter={false}
-                  paging={true}
-                  headerC={"#4a4a4a"}
-                  headerH={"40px"}
-                  headerFC={'white'}
-                  headerFS={'1.2rem'}
-                  headerFW={'500'}
-                />
-
-              </div>
-
-            </div>
->>>>>>> 517665f382782abfe1dae4dda80a2c813025e8c5
 
           </div>
 

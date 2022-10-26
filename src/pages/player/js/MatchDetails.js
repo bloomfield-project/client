@@ -88,7 +88,7 @@ function MatchDetails() {
                     </div>
                     <div className="box-mid-left-down">
                       <h5>
-                        {players[0].our_score +
+                        {players[0].full +45+
                           "-" +
                           players[0].our_wickets +
                           " (" +
@@ -156,9 +156,12 @@ function MatchDetails() {
                 <div className="col-MD1">
                   <h5>BLOOMFIELD</h5>
                 </div>
+                {players === undefined ? (
+              <h1>hi</h1>
+            ) : (
                 <div className="col-MD2">
-                  <h5>176-6 (18.3)</h5>
-                </div>
+                  <h5>{players[0].full+45+"-"+players[0].our_wickets}({players[0].our_overs})</h5>
+                </div>)}
               </div>
               <div className="table-head-MD">
                 <div className="col-MD-1">
@@ -190,14 +193,74 @@ function MatchDetails() {
                       <>
                         <div className="table-row-MD">
                           <div className="col-MD-1">
-                            <a href="#">{item.name}</a>
+                            Gihan Weerasinghe
                           </div>
                           <div className="col-MD-2"></div>
-                          <div className="col-MD-3">{item.name}</div>
-                          <div className="col-MD-4">{item.name}</div>
-                          <div className="col-MD-5">{item.name}</div>
-                          <div className="col-MD-6">{item.name}</div>
-                          <div className="col-MD-7">{item.name}</div>
+                          <div className="col-MD-3">18</div>
+                          <div className="col-MD-4">20</div>
+                          <div className="col-MD-5">0</div>
+                          <div className="col-MD-6">2</div>
+                          <div className="col-MD-7">90</div>
+                        </div>
+                        <hr></hr>
+                        <div className="table-row-MD">
+                          <div className="col-MD-1">
+                            Asitha perera
+                          </div>
+                          <div className="col-MD-2"></div>
+                          <div className="col-MD-3">17</div>
+                          <div className="col-MD-4">24</div>
+                          <div className="col-MD-5">3</div>
+                          <div className="col-MD-6">0</div>
+                          <div className="col-MD-7">88.62</div>
+                        </div>
+                        <hr></hr>
+                        <div className="table-row-MD">
+                          <div className="col-MD-1">
+                            Bimsara franando
+                          </div>
+                          <div className="col-MD-2"></div>
+                          <div className="col-MD-3">30</div>
+                          <div className="col-MD-4">20</div>
+                          <div className="col-MD-5">1</div>
+                          <div className="col-MD-6">2</div>
+                          <div className="col-MD-7">109.62</div>
+                        </div>
+                        <hr></hr>
+                        <div className="table-row-MD">
+                          <div className="col-MD-1">
+                            Gihan Nissanka
+                          </div>
+                          <div className="col-MD-2"></div>
+                          <div className="col-MD-3">40</div>
+                          <div className="col-MD-4">20</div>
+                          <div className="col-MD-5">2</div>
+                          <div className="col-MD-6">3</div>
+                          <div className="col-MD-7">200</div>
+                        </div>
+                        <hr></hr>
+                        <div className="table-row-MD">
+                          <div className="col-MD-1">
+                            Asitha Muthumala
+                          </div>
+                          <div className="col-MD-2"></div>
+                          <div className="col-MD-3">25</div>
+                          <div className="col-MD-4">10</div>
+                          <div className="col-MD-5">3</div>
+                          <div className="col-MD-6">0</div>
+                          <div className="col-MD-7">90</div>
+                        </div>
+                        <hr></hr>
+                        <div className="table-row-MD">
+                          <div className="col-MD-1">
+                            Dilukshan Bimsara
+                          </div>
+                          <div className="col-MD-2"></div>
+                          <div className="col-MD-3">18</div>
+                          <div className="col-MD-4">20</div>
+                          <div className="col-MD-5">0</div>
+                          <div className="col-MD-6">2</div>
+                          <div className="col-MD-7">90</div>
                         </div>
                         <hr></hr>
                       </>
@@ -206,11 +269,11 @@ function MatchDetails() {
 
               <hr></hr>
               <div className="table-row-MD">
-                <div className="col-MD-1">Did Not Bat</div>
+                {/* <div className="col-MD-1">Did Not Bat</div>
                 <div className="col-MD-list">
                   <a href="#">Maheesh Theekshana</a> <b>,</b>{" "}
                   <a href="#">Jefry Vandesay</a>{" "}
-                </div>
+                </div> */}
               </div>
             </div>
             {/*end*/}
@@ -246,27 +309,74 @@ function MatchDetails() {
                 </div>
               </div>
 
-              {players !== undefined
-                ? players
-                    ?.filter((player) => player.no_of_overs > 0)
-                    ?.map((item, i) => (
-                      <>
+              
+                
                         <div className="table-row-MD">
                           <div className="col-MD-1">
-                            <a href="#">{item.name}</a>
+                            <a href="#"> Lahiru Kumara</a>
                           </div>
-                          <div className="col-MD-3">{item.name}</div>
-                          <div className="col-MD-3">{item.name}</div>
-                          <div className="col-MD-4">{item.name}</div>
-                          <div className="col-MD-5">{item.name}</div>
-                          <div className="col-MD-6">{item.name}</div>
-                          <div className="col-MD-7">{item.name}</div>
-                          <div className="col-MD-6">{item.name}</div>
+                          <div className="col-MD-3">4</div>
+                          <div className="col-MD-3">2</div>
+                          <div className="col-MD-4">20</div>
+                          <div className="col-MD-5">1</div>
+                          <div className="col-MD-6">1</div>
+                          <div className="col-MD-7">0</div>
+                          <div className="col-MD-6">5.00</div>
                         </div>
                         <hr></hr>
-                      </>
-                    ))
-                : "jnknknknknkn"}
+                        <div className="table-row-MD">
+                          <div className="col-MD-1">
+                            <a href="#"> Gihan Weerasinghe</a>
+                          </div>
+                          <div className="col-MD-3">4</div>
+                          <div className="col-MD-3">0</div>
+                          <div className="col-MD-4">36</div>
+                          <div className="col-MD-5">4</div>
+                          <div className="col-MD-6">0</div>
+                          <div className="col-MD-7">0</div>
+                          <div className="col-MD-6">9.00</div>
+                        </div>
+                        <hr></hr>
+                        <div className="table-row-MD">
+                          <div className="col-MD-1">
+                            <a href="#"> Dilukshan Bimsara</a>
+                          </div>
+                          <div className="col-MD-3">4</div>
+                          <div className="col-MD-3">1</div>
+                          <div className="col-MD-4">24</div>
+                          <div className="col-MD-5">4</div>
+                          <div className="col-MD-6">1</div>
+                          <div className="col-MD-7">0</div>
+                          <div className="col-MD-6">6.00</div>
+                        </div>
+                        <hr></hr>
+                        <div className="table-row-MD">
+                          <div className="col-MD-1">
+                            <a href="#"> Gihan Weerasinghe</a>
+                          </div>
+                          <div className="col-MD-3">4</div>
+                          <div className="col-MD-3">0</div>
+                          <div className="col-MD-4">36</div>
+                          <div className="col-MD-5">4</div>
+                          <div className="col-MD-6">0</div>
+                          <div className="col-MD-7">0</div>
+                          <div className="col-MD-6">9.00</div>
+                        </div>
+                        <hr></hr>
+                        <div className="table-row-MD">
+                          <div className="col-MD-1">
+                            <a href="#"> Gihan Weerasinghe</a>
+                          </div>
+                          <div className="col-MD-3">4</div>
+                          <div className="col-MD-3">0</div>
+                          <div className="col-MD-4">32</div>
+                          <div className="col-MD-5">4</div>
+                          <div className="col-MD-6">0</div>
+                          <div className="col-MD-7">0</div>
+                          <div className="col-MD-6">8.00</div>
+                        </div>
+                        <hr></hr>
+                     
             </div>
             {/*end*/}
 
