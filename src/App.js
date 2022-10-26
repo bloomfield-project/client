@@ -197,7 +197,7 @@ function App() {
 
 
           <Route path="/player/MatchDetails/:id" element={<MatchDetails />} />
-          <Route path="/Manager/MMatchDetails/:id" element={<MMatchDetails />} />
+          <Route path="/manager/MMatchDetails/:id" element={<MMatchDetails />} />
           {/* add new router here */}
 
 
@@ -224,7 +224,7 @@ function App() {
           <Route path="/manager/MatchDetail" element={<MatchDetail />} />
           <Route path="/manager/AddMatch" element={<AddMatch />} />
           <Route path="/manager/AddTournamentMatch/:type" element={<AddTournamentMatch />} />
-          <Route path="manager/AddPracticeMatch" element={< AddPracticeMatch/>} />
+          <Route path="/manager/AddPracticeMatch" element={< AddPracticeMatch/>} />
 
           
           <Route path="/coach/CreateTeam" element={<CreateTeam/>} />
@@ -297,7 +297,7 @@ function App() {
           <Route path="/player/profile" element={<Profile />} />
 
           <Route path="/player/Matches/PendingMatches/:id" element={<PendingMatches />} />
-          <Route path="/Manager/Matches/PendingMatches/:id" element={<MPendingMatches />} />
+          <Route path="/manager/Matches/PendingMatches/:id" element={<MPendingMatches />} />
 
 
 

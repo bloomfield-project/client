@@ -67,7 +67,7 @@ function MPendingMatches() {
   const successC=responseC.success
   const players=responseP.data
   const coaches=responseC.data
-  console.log(players)
+  console.log("players",players)
   
   
   return (
@@ -89,9 +89,9 @@ function MPendingMatches() {
             
                 {/* <div className="matche-container-outer-box"> */}
                 
-                        {players===undefined?<h1>hi</h1>:
+                        {players===undefined?<h1>Hi</h1>:
                         <div className="matche-container-outer-box">
-                            <div className="match-box-up"><div className="go-out"><h4 style={{color:"#009270", fontSize:"2rem", fontWeight:"bolder"}}>Hero Cup</h4></div></div>
+                            <div className="match-box-up"><div className="go-out"><h4 style={{color:"#009270", fontSize:"2rem", fontWeight:"bolder"}}>{players.length>0?players[0].time:" "}</h4></div></div>
                             <div className="match-box-mid">
                                 <div className="match-box-mid-left">
                                     <div className="box-mid-left-up"><h4 style={{color:"#a5a5a5"}}>BLOOMFIELD</h4></div>

@@ -7,13 +7,16 @@ import SearchTable from "../../../component/Search/SearchTable";
 import { Link } from "react-router-dom";
 import { Tabs } from 'antd';
 import 'antd/dist/antd.css';
+
 import {fetchData} from '../../AuthServer' ;
+
 
 const { TabPane } = Tabs;
 
 const onChange = (key) => {
     console.log(key);
 };
+
 
 
 
@@ -54,7 +57,6 @@ const columns = [
   }
 
 ];
-
 
 
 
@@ -222,6 +224,7 @@ function Session() {
               
 
 
+
               <div className="tabs-right" >
                 <Link to="/coach/APS"><Button variant="outline-success">+ Add</Button></Link>
               </div>
@@ -294,6 +297,7 @@ function Session() {
           </Tabs>
           </div>
             
+
 
 
           </div>

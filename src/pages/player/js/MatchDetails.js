@@ -74,7 +74,7 @@ function MatchDetails() {
                         fontWeight: "bolder",
                       }}
                     >
-                      Hero Cup
+                      {players.length > 0 ? players[0].title : ""}
                     </h4>
                   </div>
                 </div>

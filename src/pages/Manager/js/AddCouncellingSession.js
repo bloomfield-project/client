@@ -100,6 +100,8 @@ function AddCouncellingSession() {
         setError(results.data.message);
         setSuccess(results.data.success);
         console.log(errorMsg);
+        handleShow();
+        window.history.back()
 
         if (errorMsg) {
           // edate = errorMsg.event_name;

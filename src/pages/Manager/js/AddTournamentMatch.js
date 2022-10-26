@@ -63,7 +63,7 @@ const AddTournament = (event) => {
         alert(res.data.validation);
       } else {
         alert("Match Add Successfully");
-        window.location.reload();
+        window.history.back()
       }
 
       // setPost(res);
@@ -204,7 +204,7 @@ function AddTournamentMatch(props) {
                       >
                         <div
                           className="form-container"
-                          // onSubmit={AddTournament}
+                          onSubmit={AddTournament}
                         >
                           <form>
                             <input type="hidden" value={type}></input>

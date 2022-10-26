@@ -74,7 +74,7 @@ function MMatchDetails() {
                         fontWeight: "bolder",
                       }}
                     >
-                      Hero Cup
+                      {players.length > 0 ? players[0].title : ""}
                     </h4>
                   </div>
                 </div>
@@ -271,7 +271,7 @@ function MMatchDetails() {
             {/*end*/}
 
             <div className="match-box-down">
-              <Link to={"/manager/MatcheDetail"}>
+              <Link to={"/manager/MatchDetail"}>
                 <Button variant="secondary">Back</Button>
               </Link>
             </div>
