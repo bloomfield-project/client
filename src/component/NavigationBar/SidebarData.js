@@ -8,12 +8,12 @@ import { GiTrophyCup , GiAchievement} from "react-icons/gi";
 import { BsDistributeVertical } from "react-icons/bs";
 
 export const SidebarDataManager = [
-    {
-        title:'Dashboard',
-        path:'/manager/Profile',
-        icon:<AiIcons.AiFillHome />,
-        cName:'nav-text'
-    },
+    // {
+    //     title:'Dashboard',
+    //     path:'/manager/Profile',
+    //     icon:<AiIcons.AiFillHome />,
+    //     cName:'nav-text'
+    // },
     {
         title:'Match',
         path:'/manager/MatchDetail',
@@ -137,12 +137,12 @@ export const SidebarDataPlayer = [
 ]
 
 export const SidebarDataAdmin = [
-    {
-        title:'Dashboard',
-        path:'/admin/profile',
-        icon:<AiIcons.AiFillHome />,
-        cName:'nav-text'
-    },
+    // {
+    //     title:'Dashboard',
+    //     path:'/admin/profile',
+    //     icon:<AiIcons.AiFillHome />,
+    //     cName:'nav-text'
+    // },
     {
         title:'Employees',
         path:'/admin/Employees',
@@ -192,12 +192,12 @@ export const SidebarDataAdmin = [
 
 export const SidebarDataCoach = [
 
-    {
-        title:'Dashboard',
-        path:'/coach/profile',
-        icon:<AiIcons.AiFillHome />,
-        cName:'nav-text'
-    },
+    // {
+    //     title:'Dashboard',
+    //     path:'/coach/profile',
+    //     icon:<AiIcons.AiFillHome />,
+    //     cName:'nav-text'
+    // },
     {
         title:'Sessions',
         path:'/coach/practiceSessions',

@@ -78,27 +78,9 @@ function Players() {
   // }, []);
   const dataa = post.data;
   console.log("post data function ", dataa);
+  const dataArray =[]
 
-<<<<<<< HEAD
-  if (post) {
-    {post.data.map((item, i) => {
-      dataC[i] = 
-       
-         {
-           id: "BP-" + item.user_id ,
-           name: (item.name).replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase()),
-           contact: item.contact,
-           email: item.email,
-           btn: (
-             <Link to={"/manager/EditPlayerDetails/"+ item.user_id}>
-               <Button variant="secondary">View</Button>
-             </Link>
-           ),
-         }
-         
-    
-   })}
-=======
+
   {
     dataa?.map((item, i) => {
       dataArray[i] = {
@@ -115,7 +97,6 @@ function Players() {
         ),
       };
     });
->>>>>>> f7e2bbcb3781ce25e8d5dead9f9f141da17ecab4
   }
 
   console.log(dataArray)
@@ -156,7 +137,7 @@ function Players() {
             <hr></hr>
             <div className="table-box-1">
               <div className="tablee">
-<<<<<<< HEAD
+
               <div className="table-head">
                   <div className="col-51">Session Name</div>
                   <div className="col-51">Mentor</div>
@@ -178,28 +159,7 @@ function Players() {
 
                 </div><hr></hr></>
               ):<h6 style={{ height : "200px"}}>NO sessions to display</h6>}
-=======
-                
-                {dataArray?
-                <>
-                  <SearchTable
-                  t_title={""}
-                  data={dataArray}
-                  columns={columns}
-                  searching={true}
-                  sort={false}
-                  filter={false}
-                  paging={true}
-                  headerC={"#4a4a4a"}
-                  headerH={"40px"}
-                  headerFC={"white"}
-                  headerFS={"1.2rem"}
-                  headerFW={"500"}
-                  
-                />
-                </>
-                :""}
->>>>>>> f7e2bbcb3781ce25e8d5dead9f9f141da17ecab4
+
               </div>
             </div>
 

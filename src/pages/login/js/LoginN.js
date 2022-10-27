@@ -5,7 +5,7 @@ import React ,{useState } from 'react'
 import {useDispatch,useSelector} from 'react-redux'
 import {logIn,logout} from "../../../redux/actions/authAction"
 import {useNavigate} from "react-router-dom"
-
+// import {useSelector} from 'react-redux'
 const axios = require('axios').default;
 
 
@@ -13,7 +13,7 @@ const axios = require('axios').default;
 
 function LoginN({ setLogin }){
     // redux
-
+    const loginData= useSelector(state => state.auth.data)
 
     const dispatch = useDispatch()
 
@@ -67,17 +67,17 @@ function LoginN({ setLogin }){
         else{
             console.log(data.data.role)
             if(data.data.role==='manager'){
-                history('/manager/profile',{state: data.data})
+                history('/manager/MatchDetail',{state: data.data})
             }
             if(data.data.role==='player'){
                 history('/player/playerRanking',{state: data.data})
             }
             if(data.data.role==='coach'){
                 console.log('jjjjjjj')
-                history('/coach/profile',{state: data.data})
+                history('/coach/practiceSessions',{state: data.data})
             }
             if(data.data.role==='admin'){
-                history('/admin/profile',{state: data.data})
+                history('/admin/Employees',{state: data.data})
             }
             // history('/player/playerRanking',{state: data.data})
             
