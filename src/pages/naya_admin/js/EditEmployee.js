@@ -26,6 +26,8 @@ var imgurl;
 
 let userData = [];
 
+
+
 function EditEmployee() {
   const [post, setPost] = useState(null);
   const [post1, setPost1] = useState(null);
@@ -118,7 +120,7 @@ function EditEmployee() {
     console.log("eevent : : ", event);
 
     let userData = {
-      user_id:id,
+      user_id: id,
       e_mail: event.target[0].value,
       contact: event.target[1].value,
       address: event.target[2].value,
@@ -127,27 +129,29 @@ function EditEmployee() {
     };
     // const isValid = await userSchema.isValid(userData);
 
-    console.log("before post request ",userData);
+    console.log("before post request ", userData);
 
     // let res =  axios.post('/api/user/', userData);
-    axios
-      .post("/api/user/updateEmployee", userData)
-      .then((results) => {
-        console.log("user data ", userData);
-        console.log("results ", results);
+    
+      axios
+        .post("/api/user/updateEmployee", userData)
+        .then((results) => {
+          console.log("user data ", userData);
+          console.log("results ", results);
 
-        if (results.data.err) {
-          error_field = results.data.err.split(" ");
-          error_msg = ` ${error_field[2]} Has Allready Used `;
-          success = null;
-        } else if (!results.data.err) {
-          error_msg = null;
-          success = " Successfully Updated !";
-        }
+          if (results.data.err) {
+            error_field = results.data.err.split(" ");
+            error_msg = ` ${error_field[2]} Has Allready Used `;
+            success = null;
+          } else if (!results.data.err) {
+            error_msg = null;
+            success = " Successfully Updated !";
+          }
 
-        handleShow();
-      })
-      .catch((err) => console.log("error is arized", err));
+          handleShow();
+        })
+        .catch((err) => console.log("error is arized", err));
+    
 
     console.log("after post request ");
   };
@@ -192,7 +196,10 @@ function EditEmployee() {
                 <form onSubmit={createUser}>
                   <EditDetails arr={array} backLink={"/manager/Players"} />
 
-                  <div className="form-group file-upload-wrapper w-100 p-3 mb-2" style={{ margin: "0px", width:"85%"}}>
+                  <div
+                    className="form-group file-upload-wrapper w-100 p-3 mb-2"
+                    style={{ margin: "0px", width: "85%" }}
+                  >
                     <input
                       type="file"
                       onChange={(event) => {
@@ -202,7 +209,7 @@ function EditEmployee() {
                     />
                     <br></br>
                     <button
-                    type="button"
+                      type="button"
                       onClick={uploadFile}
                       className="btn btn-primary"
                       style={{ float: "right" }}
@@ -211,7 +218,10 @@ function EditEmployee() {
                       Upload Image
                     </button>
                     <br></br>
-                    <img src={imageUrl? imageUrl: post[0].image} style={{ width: "150px" }} />
+                    <img
+                      src={imageUrl ? imageUrl : post[0].image}
+                      style={{ width: "150px" }}
+                    />
                   </div>
                   <div className="d-grid gap-2 d-md-flex justify-content-md-end p-3 mb-2">
                     <button type="reset" className="btn btn-secondary">
@@ -276,7 +286,7 @@ function EditEmployee() {
           {/*<Button variant="secondary" onClick={handleClose}>
             Cancell
   </Button>*/}
-          <button type="button" class="btn btn-success" onClick={handleClose}>
+          <button type="button" className="btn btn-success" onClick={handleClose}>
             OK
           </button>
         </Modal.Footer>

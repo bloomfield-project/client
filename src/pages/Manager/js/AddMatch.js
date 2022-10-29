@@ -26,11 +26,13 @@ const AddMatchTitle = (event) => {
     date: moment.utc(CurrentDate).format("YYYY-MM-DD"),
   };
 
-  alert("title is : " + event.target[0].value);
+  // alert("title is : " + event.target[0].value);
 
   Axios.post("/api/manager/addMatchTitle", formData)
     .then((results) => {
       console.log("results.data.message :", results.data.message);
+      alert("Title Add Success : " + event.target[0].value);
+
       window.location.reload();
     })
     .catch((err) => console.log("error : ", err));
@@ -176,17 +178,22 @@ function AddMatch() {
                       </h5>
                       <h5 className={tabNumber === 2 ? "tab-active" : "tab"}>
                         {/* <a onClick={() => selectTab_2(2)}> */}
-                          <Link
-                            to={{
-                              pathname: "/manager/AddPracticeMatch/",
-                              state: { stateParam: true },
+                        <Link
+                          to={{
+                            pathname: "/manager/AddPracticeMatch/",
+                            state: { stateParam: true },
+                          }}
+                        >
+                          <p
+                            style={{
+                              color: "rgba(0, 146, 112, 1)",
+                              fontSize: " ",
                             }}
                           >
-                           <p style={{ color: "rgba(0, 146, 112, 1)", fontSize: " " }}><a>Practice</a></p> 
-                            
-                          </Link>
-                          
-                        
+                            <a>Practice</a>
+                          </p>
+                        </Link>
+
                         {tabNumber === 2 ? <hr></hr> : ""}
                       </h5>
                     </div>
@@ -221,5 +228,3 @@ function AddMatch() {
 }
 
 export default AddMatch;
-
-
