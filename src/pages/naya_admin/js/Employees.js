@@ -106,11 +106,12 @@ function Employees() {
 
           console.log("data : ", data);
           console.log("Passwords are mathched");
-          Axios.post("http://localhost:3001/api/admin/deleteEmployee", data)
+          Axios.post("http://localhost:3001/api/user/deleteEmployee", data)
             .then((res) => {
               // console.log(setRes(res.data));
+              alert("password match")
               handleClose();
-              window.history.back();
+              window.location.reload(); 
             })
             .catch((err) => console.log("error is arized", err));
         } else {

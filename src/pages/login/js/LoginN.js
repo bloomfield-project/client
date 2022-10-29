@@ -67,16 +67,16 @@ function LoginN({ setLogin }){
         else{
             console.log("hey john")
             if(data.data.role=='manager'){
-                history('/manager/profile',{state: data.data})
+                history('/manager/MatchDetail',{state: data.data})
             }
             else if(data.data.role=='player'){
                 history('/player/Dashboard',{state: data.data})
             }
             else if(data.data.role=='couch'){
-                history('/coach/profile',{state: data.data})
+                history('/coach/matches',{state: data.data})
             }
             else if(data.data.role=='admin'){
-                history('/admin/profile',{state: data.data})
+                history('/admin/Employees',{state: data.data})
             }
             // history('/player/playerRanking',{state: data.data})
             
