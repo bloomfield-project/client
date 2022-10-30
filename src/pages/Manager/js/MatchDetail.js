@@ -404,7 +404,7 @@ const loginData = useSelector((state) => state.auth.data);
 
                               <Link
                                 to={
-                                  "/Manager/Matches/PendingMatches/" +
+                                  "/manager/Matches/PendingMatches/" +
                                   item.match_id
                                 }
                               >

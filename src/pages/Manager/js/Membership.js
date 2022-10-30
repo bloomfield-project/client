@@ -331,7 +331,7 @@ if(GetPaid){
                   {tabNumber === 1 ? <hr></hr> : ""}
                 </h5>
                 <h5 className={tabNumber === 2 ? "tab-active" : "tab"}>
-                  <a onClick={() => selectTab_2(2)}> Unpaied</a>{" "}
+                  <a onClick={() => selectTab_2(2)}> Unpaid</a>{" "}
                   {tabNumber === 2 ? <hr></hr> : ""}{" "}
                 </h5>
               </div>
