@@ -115,7 +115,6 @@ function PSessionDetails() {
                     <div className="SessionDetails-row">
                       <div className="SessionDetails-row-up">Players</div>
                       <hr style={{width: "95%" , marginTop: "0px"}}></hr>
-                      {/* {successP==1?players?.map((item,i)  =>  */}
                       
                        
                           <div className="SessionDetails-row-down">
@@ -132,11 +131,6 @@ function PSessionDetails() {
                             <div className="s-r-d-left">{"BC-12"}</div><div className="s-r-d-right">{"Prasad Thushara"}</div></div>
                             <div className="SessionDetails-row-down">
                             <div className="s-r-d-left">{"BC-13"}</div><div className="s-r-d-right">{"Bhashitha Thathsara"}</div></div>
-                        
-                      {/* // ):<h6 style={{ height : "200px"}}>NO Players to display</h6>} */}
-
-
-                      
                     </div>
                     <div className="match-box-down">
                       <Link to={"/player/PSession"}>

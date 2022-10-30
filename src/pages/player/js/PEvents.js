@@ -131,11 +131,11 @@ const dataC=responseDataC.data
                           
                             {msgC!=0?dataC?.map((item,i)  => 
                               <><div key={i} className="table-row">
-                                <div className="col-51">{item.title}</div>
-                                <div className="col-51">{item.mentor_details+". "+item.mentor}</div>
+                                <div className="col-51" style={{textAlign:"left", justifyContent:"left", paddingLeft:"40px"}}>{item.title}</div>
+                                <div className="col-51" style={{textAlign:"left", justifyContent:"left", paddingLeft:"40px"}}>{item.mentor}</div>
                                 <div className="col-51">{item.date}</div>
                                 <div className="col-51">{item.time}</div>
-                                <div className="col-51">{item.place}</div>
+                                <div className="col-51" style={{textAlign:"left", justifyContent:"left", paddingLeft:"40px"}}>{item.place} </div>
                                 {/* <div className="col-51"><button value={item.session_id} onClick={e => viewSession(e.target.value)}>View</button></div> */}
                           
 
@@ -160,7 +160,7 @@ const dataC=responseDataC.data
                           
                             {msgE!=0?dataE?.map((item,i)  => 
                               <><div key={i} className="table-row">
-                                <div className="col-51">{item.event_name}</div>
+                                <div className="col-51" style={{textAlign:"left", justifyContent:"left", paddingLeft:"40px"}}>{item.event_name}</div>
                                 <div className="col-51">{item.date}</div>
                                 <div className="col-51">{item.time}</div>
                                 <div className="col-51"><button value={item.event_id} onClick={e => viewSession(e.target.value)}>View</button></div>

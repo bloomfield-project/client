@@ -144,20 +144,30 @@ function PlayerRanking() {
                             <div className="player-content">
                                 <div className="tableTopic"><h4>Bating Career Summary</h4></div>
                                 <hr></hr>
-                                <Tablee
+                                {/* <Tablee
                                     list={LIST?LIST:""}
                                     colNames={COL_NAMES}
                                     width="100%"
-                                />
+                                /> */}
+                                {LIST?.length===0?<p>No data to display</p>:<Tablee
+                                    list={LIST?LIST:""}
+                                    colNames={COL_NAMES}
+                                    width="100%"
+                                />}
                                  <span className="gap"></span>   
 
                                 <div className="tableTopic"><h4>Bowling Career Summary</h4></div>
                                 <hr></hr>
-                                <Tablee
+                                {/* <Tablee
                                     list={LIST_M?LIST_M:""}
                                     colNames={COL_NAMES_M}
                                     width="100%"
-                                />
+                                /> */}
+                                {LIST_M?.length===0?<p>No data to display</p>:<Tablee
+                                    list={LIST_M?LIST_M:""}
+                                    colNames={COL_NAMES_M}
+                                    width="100%"
+                                />}
                                 <span className="gap"></span>   
 
                                 <div className="tableTopic"><h4>Fielding Career Summary</h4></div>
@@ -171,7 +181,8 @@ function PlayerRanking() {
                                             <h5>:</h5>
                                         </div>
                                         <div className="coll-3">
-                                            <h5>{dataupcommingF?dataupcommingF[0].catches:""}</h5>
+                                            {/* <h5>{dataupcommingF?dataupcommingF[0].catches:""}</h5> */}
+                                            {dataupcommingF?dataupcommingF[0].catches?<h5>{dataupcommingF[0].catches}</h5>:<p>No data to display</p>:""}
                                         </div>
                                     </div>
                                     <div className="fielding-row">
@@ -181,7 +192,8 @@ function PlayerRanking() {
                                             <h5>:</h5>
                                         </div>
                                         <div className="coll-3">
-                                            <h5>{dataupcommingF?dataupcommingF[0].runout:""}</h5>
+                                            {/* <h5>{dataupcommingF?dataupcommingF[0].runout?dataupcommingF[0].runout:"No data to display":""}</h5> */}
+                                            {dataupcommingF?dataupcommingF[0].runout?<h5>{dataupcommingF[0].runout}</h5>:<p>No data to display</p>:""}
                                         </div>
                                     </div>
                                 </div>

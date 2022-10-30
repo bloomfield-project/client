@@ -128,7 +128,7 @@ function Matches() {
                                 </div>
                             </div>
                             <div className="match-box-down">
-                                <Link to={"/player/Matches/PendingMatches/"+item.match_id}>
+                                <Link to={"/player/Matches/PendingMatches/"+item.match_id+"/"+item.team_id}>
                                     <Button variant="secondary">View</Button>
                                 </Link></div>
                             </div>
