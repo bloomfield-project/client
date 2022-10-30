@@ -238,7 +238,7 @@ function App() {
           <Route path="/coach/CB" element={<CheckBox />} />
           <Route path="/coach/MPP" element={<MarkPlayerProgress />} />
           <Route path="/coach/MC" element={<AddMultipleSelections />} />
-          <Route path="/coach/VPS" element={<ViewPracticeSessions />} />
+          <Route path="/coach/VPS/:id" element={<ViewPracticeSessions />} />
           <Route path="/coach/PD1" element={<PlayerDetails_1 />} />
           <Route path="/coach/PPr1" element={<PlayerProgress_1 />} />
           <Route path="/coach/PFeedback" element={<PlayerFeedback />} />
@@ -296,7 +296,7 @@ function App() {
 
           {/* <Route path="/player/profile" element={<Profile />} /> */}
 
-          <Route path="/player/Matches/PendingMatches/:id" element={<PendingMatches />} />
+          <Route path="/player/Matches/PendingMatches/:id/:team" element={<PendingMatches />} />
           <Route path="/manager/Matches/PendingMatches/:id" element={<MPendingMatches />} />
 
 

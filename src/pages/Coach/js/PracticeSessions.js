@@ -151,7 +151,7 @@ function Session() {
   //   }
   // }}
 
-  const [responseData,setResponseData]=useState([]);
+    const [responseData,setResponseData]=useState([]);
     const url= "manager/getOldSession"
     async function getData(url,method){
         
@@ -250,10 +250,10 @@ function Session() {
                         {dataupcomming?dataupcomming.map((item,i)=><>
                         <div  className="table-row">
                             <div className="col-5-1" >PS-{item.c_session_id}</div>
-                            <div className="col-5-2">{item.title}</div>
+                            <div className="col-5-2" style={{textAlign:"left", justifyContent:"left", paddingLeft:"40px"}}>{item.title}</div>
                             <div className="col-5-1">{item.date}</div>
                             <div className="col-5-1">{item.time}</div>
-                            <div className="col-5-1"><Link to="/coach/VPS"><Button variant="secondary">View</Button></Link></div>
+                            <div className="col-5-1"><Link to={"/coach/VPS/"+item.c_session_id}><Button variant="secondary">View</Button></Link></div>
 
                         
                         
