@@ -65,18 +65,22 @@ function LoginN({ setLogin }){
             setInvalid("err-G-active")//val
         }
         else{
+
             console.log(data.data.role)
             if(data.data.role==='manager'){
+
                 history('/manager/MatchDetail',{state: data.data})
             }
             if(data.data.role==='player'){
                 history('/player/playerRanking',{state: data.data})
             }
+
             if(data.data.role==='coach'){
                 console.log('jjjjjjj')
                 history('/coach/practiceSessions',{state: data.data})
             }
             if(data.data.role==='admin'){
+
                 history('/admin/Employees',{state: data.data})
             }
             // history('/player/playerRanking',{state: data.data})

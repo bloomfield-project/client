@@ -198,18 +198,21 @@ export const SidebarDataCoach = [
     //     icon:<AiIcons.AiFillHome />,
     //     cName:'nav-text'
     // },
-    {
-        title:'Sessions',
-        path:'/coach/practiceSessions',
-        icon:<IoIcons.IoIosPaper />,
-        cName:'nav-text'
-    },
+
     {
         title:'Matches',
         path:'/coach/matches',
         icon:<MdSportsCricket/>,
         cName:'nav-text'
     },
+
+    {
+        title:'Sessions',
+        path:'/coach/practiceSessions',
+        icon:<IoIcons.IoIosPaper />,
+        cName:'nav-text'
+    },
+    
     {
         title:'Teams',
         path:'/coach/Teams',

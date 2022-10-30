@@ -1,118 +1,64 @@
-// import React from "react";
-// import Header from "../../../component/header/Header";
-// // import "../css/PlayerRegistration.css";
-// import { IoChevronBackCircleOutline } from "react-icons/io5";
-// import SampleForm from "../../../component/Form/SampleForm";
-// import { Link } from "react-router-dom";
+import React from "react";
+import { useRef, useEffect, useState } from "react";
 
-// function AddEmployee() {
-//   let array1 = [
-//     {
-//       title: "First Name",
-//       for: "exampleInputEmail1",
-//       type: "text",
-//       placeholder: "First Name",
-//       id: "f-name",
-//     },
-//     {
-//       title: "Last Name",
-//       for: "exampleInputEmail1",
-//       type: "text",
-//       placeholder: "Last Name",
-//       id: "l-name",
-//     },
-//     {
-//       title: "e-mail",
-//       for: "exampleInputEmail1",
-//       type: "email",
-//       placeholder: "Email",
-//       id: "email",
-//     },
-//     {
-//       title: "Contact",
-//       for: "exampleInputEmail1",
-//       type: "number",
-//       placeholder: "Contact Number",
-//       id: "contact",
-//     },
-//   ];
-
-//   const file = {
-//     filefor: "for",
-//     filetitle: "Profile",
-//   };
-
-//   return (
-//     <>
-//       <div className="page-container-1">
-//         <div className="header-container">
-//           <Header></Header>
-//         </div>
-//         <div className="page-container-gray">
-//           <div className="l-back-r-title">
-//             <div className="l-back-r-title-icon">
-//               <Link to={"/admin/Employees"}>
-//                 <IoChevronBackCircleOutline
-//                   style={{ color: "rgba(0, 146, 112, 1)", fontSize: " 40px" }}
-//                 />
-//               </Link>
-//             </div>
-
-//             <h1>Employee Registration</h1>
-//           </div>
-
-//           <div className="form-container">
-//             <SampleForm arr={array1} upload={true} border={true} file1={file} />
-//           </div>
-//         </div>
-//       </div>
-//     </>
-//   );
-// }
-
-// export default AddEmployee;
-
-
-import React, { useState } from "react";
 import Header from "../../../component/header/Header";
 // import "../css/PlayerRegistration.css";
 import { IoChevronBackCircleOutline } from "react-icons/io5";
-import SampleForm from "../../../component/Form/SampleForm";
-import { Link, useParams, useLocation } from "react-router-dom";
+import Form from "react-bootstrap/Form";
 import Navbar from "../../../component/NavigationBar/Navbar";
-import FileUpload from "../../../component/Form/FileUpload";
-import AddMultipleSelections from "../../../component/AddMultipleSelections/AddMultipleSelections";
-import ResetSubmit from "../../../component/Form/ResetSubmit";
-import * as yup from "yup";
-import SelectOption from "../../../component/Form/SelectOption";
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
-import {
-  ref,
-  uploadBytes,
-  getDownloadURL,
-  listAll,
-  list,
-} from "firebase/storage";
+import { useFormik } from "formik";
+import { Link, useParams, useLocation } from "react-router-dom";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+
 import { storage } from "../../../../src/firebase";
 import { v4 } from "uuid";
+import { employeeSchema } from "../../../component/Schema/employee";
+import { fetchData } from "../../AuthServer";
 
-const fileTypes = ["JPG", "PNG", "GIF"];
+const moment = require("moment");
 
-const axios = require("axios").default;
+const Axios = require("axios").default;
+const lankaNic2019 = require("lanka-nic-2019");
 
-// const userSchema = yup.object().shape({
-//   first_name: yup.string().required("Required!"),
-//   last_name: yup.string().required(),
-//   email: yup.string().email("plese enter correct email").required(),
-// });
-
-let error_msg = null;
-let error_field=null;
-let success = null;
 var imgurl;
 
-function AddEmployee() {
+const onSubmit = async (values, actions) => {
+  // console.log("value from event :",val);
+
+  values.gender = lankaNic2019.infoNic(values.nic).gender;
+  const d = new Date(lankaNic2019.infoNic(values.nic).birthday);
+  // console.log("date : ", d);
+  values.dob = moment(d).format("YYYY-MM-DD");
+  values.image = imgurl ? imgurl : "";
+  console.log("values : ", values);
+  console.log(lankaNic2019.infoNic(values.nic));
+  console.log("actions : ".actions);
+
+  if (lankaNic2019.validateNic(values.nic)) {
+    // alert("validation done");
+    Axios.post("/api/user/", values)
+      .then((results) => {
+        // console.log("results.data.message :", results.data.err);
+        if (results.data.err) {
+          const splitArr = results.data.err.split("'");
+
+          console.log(splitArr);
+
+          alert(splitArr[1] + " is already used !");
+        } else {
+          alert("Registration succesful");
+          actions.resetForm();
+        }
+      })
+      .catch((err) => console.log("error : ", err));
+  } else {
+    alert("nic is incorrect");
+  }
+
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+};
+
+function PlayerRegistration() {
   const [show, setShow] = useState(false);
   const [imageUpload, setImageUpload] = useState(null);
   const [imageUrl, setImageUrls] = useState(null);
@@ -124,192 +70,41 @@ function AddEmployee() {
     if (imageUpload == null) return;
     const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
     uploadBytes(imageRef, imageUpload).then((snapshot) => {
-
-      alert("image uploaded")
+      alert("image uploaded");
       getDownloadURL(snapshot.ref).then((url) => {
         setImageUrls(url);
         imgurl = url;
-        console.log("imgurl : ",imgurl);
+        console.log("imgurl : ", imgurl);
       });
-
     });
   };
 
-  const handleClose = () => {
-    setShow(false);
-    window.history.back()
-
-  };
-  const handleShow = () => setShow(true);
-
-  let array1 = [
-    {
-      title: "Name",
-      // for: "last-name",
-      type: "text",
-      name: "name",
-      placeholder: "Name",
-      id: "name",
-      required: "true",
+  const {
+    values,
+    errors,
+    touched,
+    isSubmitting,
+    handleBlur,
+    handleChange,
+    handleSubmit,
+  } = useFormik({
+    initialValues: {
+      email: "",
+      name: "",
+      address: "",
+      contact: "",
+      nic: "",
+      user_role: "Bowler",
+      image: "",
     },
-    {
-      title: "E-mail",
-      // for: "e-mail",
-      type: "email",
-      name: "e-mail",
-      placeholder: "Email",
-      id: "email",
-      required: "true",
-    },
-    {
-      title: "Address",
-      // for: "address",
-      type: "text",
-      name: "address",
-      placeholder: "Address",
-      id: "address",
-      required: "true",
-    },
-    {
-      title: "NIC",
-      // for: "nic",
-      type: "text",
-      name: "nic",
-      placeholder: "N I C",
-      id: "nic",
-      required: "true",
-    },
-    {
-      title: "Contact",
-      // for: "contact",
-      type: "text",
-      name: "contact",
-      placeholder: "Contact",
-      id: "contact",
-      required: "true",
-    },
-  ];
+    validationSchema: employeeSchema,
+    onSubmit,
+  });
 
-  const option = [
-    {
-      value: "coach",
-      title: "Coach",
-    },
-    {
-      value: "manager",
-      title: "Manager",
-    },
-  ];
-
-  // const file = {
-  //   filefor: "for",
-  //   filetitle: "Profile",
-  // };
-
-
-  const createUser = (event) => {
-    event.preventDefault();
-    console.log("eevent : : ", event);
-
-    let userData = {
-      name: event.target[0].value,
-      e_mail: event.target[1].value,
-      address: event.target[2].value,
-      nic: event.target[3].value,
-      contact: event.target[4].value,
-      role: event.target[5].value,
-      image:imgurl ? imgurl : "",
-      // date:currentDate,
-    };
-    // const isValid = await userSchema.isValid(userData);
-
-    console.log("before post request ");
-
-    //let res =  axios.post('/api/user/', userData);
-    axios
-      .post("/api/user/", userData)
-      .then((results) => {
-        console.log("user data " ,userData);
-        console.log("results ",results)
-       
-        if(results.data.err){
-          error_field = (results.data.err).split(" ");
-          error_msg  = ` ${error_field[2]} Has Allready Used `;
-          success = null;
-        }
-        else if(!results.data.err){
-          error_msg  = null;
-          success = "Register Successful";
-        }
-
-        handleShow();
-
-      })
-      .catch((err) => console.log("error is arized", err));
-
-    console.log("after post request ");
-  };
+  console.log(errors);
 
   return (
     <>
-      {/*Before pop up model*/}
-
-      <Modal
-        show={show}
-        onHide={handleClose}
-        backdrop="static"
-        keyboard={false}
-        centered
-      >
-        <Modal.Header
-          closeButton
-          style={{ backgroundColor: "white", border: "none" }}
-        >
-          <Modal.Title> </Modal.Title>
-        </Modal.Header>
-        <Modal.Body
-          style={{
-            backgroundColor: "white",
-            height: "fit-content",
-            padding: "0",
-          }}
-        >
-    
-          <p
-            style={{
-              color: "#f0677b",
-              textAlign: "center",
-              fontSize: "large",
-              backgroundColor: "white",
-              margin: "0",
-            }}
-          >
-            {error_msg}
-          </p>
-          
-          <p
-            style={{
-              color: "#03d1a1",
-              textAlign: "center",
-              fontSize: "large",
-              backgroundColor: "white",
-              margin: "0",
-            }}
-          >
-            {success}
-          </p>
-        </Modal.Body>
-        <Modal.Footer style={{ backgroundColor: "white", border: "none" }}>
-          {/*<Button variant="secondary" onClick={handleClose}>
-            Cancell
-  </Button>*/}
-          <button type="button" class="btn btn-success" onClick={handleClose}>
-            OK
-          </button>
-        </Modal.Footer>
-      </Modal>
-
-      {/* After pop up model */}
       <div className="page-container-1">
         <div className="header-container">
           <Header></Header>
@@ -336,31 +131,201 @@ function AddEmployee() {
                 <h1>Employee Registration</h1>
               </div>
 
-              <div className="form-container">
-                <form onSubmit={createUser}>
-                  <SampleForm arr={array1} />
-                  {/* <AddMultipleSelections /> */}
+              <div className="w-80 p-3 bg-white text-dark rounded form-container">
+                {/* <form class= { "w-100 p-3 border border-secondary rounded  w-100 p-3 "}> */}
 
-                  <SelectOption label={"Player Role"} option={option} />
-                  <div className="form-group file-upload-wrapper w-100 p-3 mb-2">
-                              <input
-                                type="file"
-                                onChange={(event) => {
-                                  setImageUpload(event.target.files[0]);
-                                }}
-                                className="form-control"
-                              />
-                              <br></br>
-                              <button onClick={uploadFile} className="btn btn-primary" style={{float:"right"}}>
-                                {" "}
-                                Upload Image
-                              </button>
-                              <br></br>
-                                <img src={imageUrl} style={{width:"150px"}}/>
-                              
+                <form
+                  className={
+                    "w-100 p-3 border border-secondary rounded  w-100 p-3 "
+                  }
+                  onSubmit={handleSubmit}
+                  autoComplete="off"
+                >
+                  <div className="form-group">
+                    <br></br>
+                    <label className="d-flex justify-content-start">Name</label>
 
-                            </div>
-                  <ResetSubmit />
+                    <input
+                      value={values.name}
+                      onChange={handleChange}
+                      id="name"
+                      type="text"
+                      placeholder="Enter your name"
+                      onBlur={handleBlur}
+                      className={
+                        errors.name && touched.name
+                          ? "input-error form-control"
+                          : "form-control"
+                      }
+                    />
+
+                    {errors.name && touched.name && (
+                      <p className="error">{errors.name}</p>
+                    )}
+                  </div>
+                  <div className="form-group">
+                    <br></br>
+                    <label className="d-flex justify-content-start">
+                      Address
+                    </label>
+
+                    <input
+                      value={values.address}
+                      onChange={handleChange}
+                      id="address"
+                      type="text"
+                      placeholder="Enter your address"
+                      onBlur={handleBlur}
+                      className={
+                        errors.address && touched.address
+                          ? "input-error form-control"
+                          : "form-control"
+                      }
+                    />
+
+                    {errors.address && touched.address && (
+                      <p className="error">{errors.address}</p>
+                    )}
+                  </div>
+                  <div className="form-group">
+                    <br></br>
+                    <label className="d-flex justify-content-start">
+                      E-mail
+                    </label>
+
+                    <input
+                      value={values.email}
+                      onChange={handleChange}
+                      id="email"
+                      type="email"
+                      placeholder="Enter your email"
+                      onBlur={handleBlur}
+                      className={
+                        errors.email && touched.email
+                          ? "input-error form-control"
+                          : "form-control"
+                      }
+                    />
+                    {errors.email && touched.email && (
+                      <p className="error">{errors.email}</p>
+                    )}
+                  </div>
+                  <div className="form-group">
+                    <br></br>
+                    <label className="d-flex justify-content-start">
+                      N I C
+                    </label>
+
+                    <input
+                      value={values.nic}
+                      onChange={handleChange}
+                      id="nic"
+                      type="text"
+                      placeholder="Enter your NIC"
+                      onBlur={handleBlur}
+                      className={
+                        errors.nic && touched.nic
+                          ? "input-error form-control"
+                          : "form-control"
+                      }
+                    />
+
+                    {errors.nic && touched.nic && (
+                      <p className="error">{errors.nic}</p>
+                    )}
+                  </div>
+                  <div className="form-group">
+                    <br></br>
+                    <label className="d-flex justify-content-start">
+                      Contact
+                    </label>
+
+                    <input
+                      value={values.contact}
+                      onChange={handleChange}
+                      id="contact"
+                      type="text"
+                      placeholder="Enter your Contact Number"
+                      onBlur={handleBlur}
+                      className={
+                        errors.contact && touched.contact
+                          ? "input-error form-control"
+                          : "form-control"
+                      }
+                    />
+
+                    {errors.contact && touched.contact && (
+                      <p className="error">{errors.contact}</p>
+                    )}
+                  </div>
+                  <div className=" form-group">
+                    <br></br>
+                    <label className="d-flex justify-content-start">
+                      User Role
+                    </label>
+                    <Form.Select
+                      aria-label="Default select example"
+                      name="player_role"
+                      onChange={handleChange}
+                    >
+                      <option
+                        value="manager"
+                        className="text-dark"
+                        name="user_role"
+                        // onChange={handleChange}
+                      >
+                        Manager
+                      </option>
+                      <option value="coach" className="text-dark">
+                        Coach
+                      </option>
+                    </Form.Select>
+                  </div>
+
+                  <div className="form-group file-upload-wrapper ">
+                    <br></br>
+                    <label className="d-flex justify-content-start">
+                      Employee Image
+                    </label>
+
+                    <input
+                      type="file"
+                      onChange={(event) => {
+                        setImageUpload(event.target.files[0]);
+                      }}
+                      className="form-control"
+                      name="image"
+                      // onChange={handleChange}
+                    />
+                    <br></br>
+                    <button
+                      type="button"
+                      onClick={uploadFile}
+                      className="btn btn-primary"
+                      style={{ float: "right" }}
+                    >
+                      {" "}
+                      Upload Image
+                    </button>
+                    <br></br>
+                    <img
+                      src={imageUrl ? imageUrl : ""}
+                      style={{ width: "150px" }}
+                    />
+                  </div>
+
+                  <div className="d-grid gap-2 d-md-flex justify-content-md-end p-3 mb-2">
+                    <button type="reset" className="btn btn-secondary">
+                      Reset
+                    </button>
+                    <button
+                      type="submit"
+                      className="btn btn-success"
+                      disabled={isSubmitting}
+                    >
+                      Register
+                    </button>
+                  </div>
                 </form>
               </div>
             </div>
@@ -371,6 +336,4 @@ function AddEmployee() {
   );
 }
 
-export default AddEmployee;
-
-
+export default PlayerRegistration;

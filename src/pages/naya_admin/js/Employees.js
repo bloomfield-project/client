@@ -109,8 +109,9 @@ function Employees() {
           Axios.post("http://localhost:3001/api/user/deleteEmployee", data)
             .then((res) => {
               // console.log(setRes(res.data));
+              alert("password match")
               handleClose();
-              window.history.back();
+              window.location.reload(); 
             })
             .catch((err) => console.log("error is arized", err));
         } else {

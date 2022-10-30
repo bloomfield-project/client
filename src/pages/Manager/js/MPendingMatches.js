@@ -83,7 +83,7 @@ function MPendingMatches() {
           
 
               <div className="title">
-                <h1>Player Perfomance</h1>
+                <h1>Match</h1>
               </div>
             <div className="matches-container-outer-box" style={{width:"95%"}}>
             
