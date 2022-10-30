@@ -288,13 +288,13 @@ function App() {
 
           <Route path="/admin/Raking" element={<Ranking />} />
           <Route path="/admin/PlayerRanking/:id" element={<PlayerRankings />} />
-          <Route path="/manager/profile" element={<Profile />} />
+          {/* <Route path="/manager/profile" element={<Profile />} /> */}
           <Route path="/admin/profile" element={<Profile />} />
 
-          <Route path="/couch/profile" element={<Profile />} />
+          {/* <Route path="/couch/profile" element={<Profile />} /> */}
           <Route path="/player/Dashboard" element={<DashboardP />} />
 
-          <Route path="/player/profile" element={<Profile />} />
+          {/* <Route path="/player/profile" element={<Profile />} /> */}
 
           <Route path="/player/Matches/PendingMatches/:id/:team" element={<PendingMatches />} />
           <Route path="/manager/Matches/PendingMatches/:id" element={<MPendingMatches />} />
