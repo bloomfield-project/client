@@ -76,8 +76,6 @@ function Achivement() {
   const [tabNumber, setTabNumber] = useState(1);
   const [tachi, settach] = React.useState();
 
-
-  
   React.useEffect(() => {
     async function fetchData() {
       const reqtachi = await Axios.get(
@@ -90,23 +88,18 @@ function Achivement() {
     fetchData();
   }, []);
 
-  console.log(tachi)
-if(tachi){
-  tachi.map((item, i)=>{
-    data[i] =
-    {
+  console.log(tachi);
+  if (tachi) {
+    tachi.map((item, i) => {
+      data[i] = {
         title: item.title,
         img: <img className="card-detail-img" src={item.image} alt=""></img>,
         description: item.description,
-        date: moment.utc(item.date).format("YYYY-MM-DD"),       
-      
-    }
-    
-  })
-}
-  
+        date: moment.utc(item.date).format("YYYY-MM-DD"),
+      };
+    });
+  }
 
-  
   const selectTab_1 = () => {
     setTabNumber(1);
     // console.log(tabNumber + "selectTab 1");
@@ -131,26 +124,9 @@ if(tachi){
               <h1>{"Achivements"}</h1>
             </div>
             <div className="tabs">
-              <div className="tabs-left">
-                <h5 className={tabNumber === 1 ? "tab-active" : "tab"}>
-                  {" "}
-                  <a onClick={() => selectTab_1(1)}>Team </a>{" "}
-                  {tabNumber === 1 ? <hr></hr> : ""}
-                </h5>
-                <h5 className={tabNumber === 2 ? "tab-active" : "tab"}>
-                  <a onClick={() => selectTab_2(2)}> Players</a>{" "}
-                  {tabNumber === 2 ? <hr></hr> : ""}
-                </h5>
-              </div>
-
+              <div className="tabs-left"></div>
               <div className="tabs-right">
-                <Link
-                  to={
-                    tabNumber === 1
-                      ? "/manager/AddTeamAchivement"
-                      : "/manager/AddPlayerAchivement"
-                  }
-                >
+                <Link to={"/manager/AddTeamAchivement"}>
                   <Button variant="outline-success">+ Add</Button>
                 </Link>
               </div>
@@ -159,11 +135,7 @@ if(tachi){
             <hr></hr>
             <div className="table-box-1">
               <div className="tablee">
-                {tabNumber === 1 ? (
-                  <SampleCard arr={data} />
-                ) : (
-                  <SampleCard arr={data_1} />
-                )}
+                <SampleCard arr={data} />
               </div>
             </div>
           </div>

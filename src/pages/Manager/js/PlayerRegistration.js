@@ -13,25 +13,28 @@ import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { storage } from "../../../../src/firebase";
 import { v4 } from "uuid";
 import { playerSchema } from "../../../component/Schema/player";
+import { fetchData } from "../../AuthServer";
 
+const moment = require("moment");
 const axios = require("axios").default;
 const lankaNic2019 = require("lanka-nic-2019")
 
-let error_msg = null;
-let error_field = null;
-let success = null;
 var imgurl;
 
 const onSubmit = async (values, actions) => {
   // console.log("value from event :",val);
-  values.gender = "male";
+  values.gender = lankaNic2019.infoNic(values.nic).gender;
+  const d = new Date(lankaNic2019.infoNic(values.nic).birthday);
+  // console.log("date : ", d);
+  values.dob = moment(d).format('YYYY-MM-DD')
+  values.image = imgurl? imgurl : "";
   console.log("values : ", values);
   console.log( lankaNic2019.infoNic(values.nic ) )
   console.log("actions : ".actions);
 
   if(lankaNic2019.validateNic(values.nic)){
     alert("validation done")
-    
+
   }else{
     alert("nic is incorrect")
   }
