@@ -44,7 +44,7 @@ function Session() {
     };
     const authRequest = {
     "method":"post",
-    "url":"player/session",
+    "url":"player/sessions",
     "data":reqData
   }
   fetchData(authRequest).then((response)=>{

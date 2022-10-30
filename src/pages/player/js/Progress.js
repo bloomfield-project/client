@@ -191,7 +191,7 @@ function Progress() {
                     </div>
                     {dataupcomming!=[]?dataupcomming?.map((item,i)  => 
                               <><div key={i} className="table-row-14">
-                                <div className="col-4-1">{"PS-"+item.session_id}</div>
+                                <div className="col-4-1">{"PS-"+(item.session_id+i)}</div>
                                 <div className="col-4-2">{item.type}</div>
                                 <div className="col-4-3">{item.attendance}</div>
                                 <div className="col-4-4"><a href={"/player/PrivateProgress/"+item.session_id}>Details</a></div>

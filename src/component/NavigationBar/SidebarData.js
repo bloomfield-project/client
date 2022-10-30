@@ -198,12 +198,14 @@ export const SidebarDataCoach = [
     //     icon:<AiIcons.AiFillHome />,
     //     cName:'nav-text'
     // },
+
     {
         title:'Matches',
         path:'/coach/matches',
         icon:<MdSportsCricket/>,
         cName:'nav-text'
     },
+
     {
         title:'Sessions',
         path:'/coach/practiceSessions',

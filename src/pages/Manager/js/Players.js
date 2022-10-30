@@ -20,7 +20,7 @@ import { useDispatch, useSelector } from "react-redux";
 //   console.log(result[1].email);
 // }
 
-let dataArray = [];
+let dataC = [];
 
 // console.log(data[0]);
 const columns = [
@@ -78,6 +78,8 @@ function Players() {
   // }, []);
   const dataa = post.data;
   console.log("post data function ", dataa);
+  const dataArray =[]
+
 
   {
     dataa?.map((item, i) => {
@@ -135,26 +137,29 @@ function Players() {
             <hr></hr>
             <div className="table-box-1">
               <div className="tablee">
-                
-                {dataArray?
-                <>
-                  <SearchTable
-                  t_title={""}
-                  data={dataArray}
-                  columns={columns}
-                  searching={true}
-                  sort={false}
-                  filter={false}
-                  paging={true}
-                  headerC={"#4a4a4a"}
-                  headerH={"40px"}
-                  headerFC={"white"}
-                  headerFS={"1.2rem"}
-                  headerFW={"500"}
-                  
-                />
-                </>
-                :""}
+
+              <div className="table-head">
+                  <div className="col-51">Session Name</div>
+                  <div className="col-51">Mentor</div>
+                  <div className="col-51">Date</div>
+                  <div className="col-51">Time</div>
+                  <div className="col-51">Place</div>
+              </div>
+
+            
+              {dataC?dataC?.map((item,i)  => 
+                <><div key={i} className="table-row">
+                  <div className="col-51">{item.id}</div>
+                  <div className="col-51">{item.name}</div>
+                  <div className="col-51">{item.contact}</div>
+                  <div className="col-51">{item.email}</div>
+                  <div className="col-51">{item.btn}</div>
+                  {/* <div className="col-51"><button value={item.session_id} onClick={e => viewSession(e.target.value)}>View</button></div> */}
+            
+
+                </div><hr></hr></>
+              ):<h6 style={{ height : "200px"}}>NO sessions to display</h6>}
+
               </div>
             </div>
 

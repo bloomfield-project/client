@@ -12,8 +12,10 @@ function InputField (props) {
 
                     <div className='ipm-row'>
                         <div><Form.Label className='ipm-1'>{props.label}</Form.Label></div>
+
                         <div><Form.Control defaultValue={props.value} type={props.type?props.type:"text"} className='ipm-2' placeholder={props.pc}/></div>
                         <div><Form.Control type={props.type} className='ipm-2' placeholder={props.pc} min={props.min} max={props.max} defaultValue={props.default} /></div>
+
                     </div>
                 
             </Form.Group>

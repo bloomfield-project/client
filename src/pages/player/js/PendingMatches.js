@@ -21,11 +21,11 @@ function PendingMatches() {
   async function getData(){
     const reqData ={
       match_id:id,
-      statuss:"pending"
+      statuss:0
     };
     const authRequest = {
     "method":"post",
-    "url":"player/matchPlayer",
+    "url":"player/matchPlayers",
     "data":reqData
     }
     fetchData(authRequest).then((response)=>{
