@@ -16,7 +16,7 @@ import { playerSchema } from "../../../component/Schema/player";
 import { fetchData } from "../../AuthServer";
 
 const moment = require("moment");
-const axios = require("axios").default;
+const Axios = require("axios").default;
 const lankaNic2019 = require("lanka-nic-2019")
 
 var imgurl;
@@ -33,7 +33,23 @@ const onSubmit = async (values, actions) => {
   console.log("actions : ".actions);
 
   if(lankaNic2019.validateNic(values.nic)){
-    alert("validation done")
+    alert("validation done");
+    Axios.post("/api/user/playerRegistration",values)
+
+    .then((results)=>{
+      if (results.data.err) {
+        const splitArr = results.data.err.split("'");
+
+        console.log(splitArr);
+
+        alert(splitArr[1] + " is already used !");
+      } else {
+        alert("Registration succesful");
+        actions.resetForm();
+      }
+    })
+    .catch((err) => console.log("error : ", err));
+    
 
   }else{
     alert("nic is incorrect")
@@ -79,9 +95,9 @@ function PlayerRegistration() {
       address: "",
       contact: "",
       nic: "",
-      player_role: "Bowler",
-      batting_style: "None",
-      bowling_style: "None",
+      user_role: "",
+      batting_style: "",
+      bowling_style: "",
       image:"",
     },
     validationSchema: playerSchema,
@@ -252,28 +268,40 @@ function PlayerRegistration() {
                     </label>
                     <Form.Select
                       aria-label="Default select example"
-                      name="player_role"
+                      name="user_role"
                       onChange={handleChange}
                     >
-                      <option
-                        value="Bowler"
+                       <option
+                        value=""
                         className="text-dark"
-                        name="player_role"
+                        name="user_role"
+                        // onChange={handleChange}
+                      >
+                        
+                      </option>
+                      <option
+                        value="bowler"
+                        className="text-dark"
+                        name="user_role"
                         // onChange={handleChange}
                       >
                         Bowler
                       </option>
-                      <option value="Batsman" className="text-dark">
+                      <option value="batsman" className="text-dark" name="user_role" >
                         Batsman
                       </option>
                       <option
-                        value="All-Rounder"
+                        value="allrounder"
                         className="text-dark"
-                        name="player_role"
+                        name="user_role"
                       >
-                        All Rounder
+                        All-Rounder
                       </option>
+                      
                     </Form.Select>
+                    {errors.user_role && touched.user_role && (
+                      <p className="error">{errors.user_role}</p>
+                    )}
                   </div>
                   <div className=" form-group">
                     <br></br>
@@ -286,21 +314,21 @@ function PlayerRegistration() {
                       onChange={handleChange}
                     >
                       <option
-                        value="None"
+                        value="none"
                         className="text-dark"
                         name="batting_style"
                       >
                         None
                       </option>
                       <option
-                        value="Left-Handed"
+                        value="left-handed"
                         className="text-dark"
                         name="batting_style"
                       >
                         Left-Handed
                       </option>
                       <option
-                        value="Right-Handed"
+                        value="right-handed"
                         className="text-dark"
                         name="batting_style"
                       >
@@ -320,42 +348,42 @@ function PlayerRegistration() {
                       onChange={handleChange}
                     >
                       <option
-                        value="None"
+                        value="none"
                         className="text-dark"
                         name="bowling_style"
                       >
                         None
                       </option>
                       <option
-                        value="Fast"
+                        value="fast"
                         className="text-dark"
                         name="bowling_style"
                       >
                         Fast
                       </option>
                       <option
-                        value="Medium-Fast"
+                        value="medium-fast"
                         className="text-dark"
                         name="bowling_style"
                       >
                         Medium-Fast
                       </option>
                       <option
-                        value="Yorker"
+                        value="yorker"
                         className="text-dark"
                         name="bowling_style"
                       >
                         Yorker
                       </option>
                       <option
-                        value="Spin"
+                        value="spin"
                         className="text-dark"
                         name="bowling_style"
                       >
                         Spin
                       </option>
                       <option
-                        value="Carrom"
+                        value="carrom"
                         className="text-dark"
                         name="bowling_style"
                       >

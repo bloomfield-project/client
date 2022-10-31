@@ -122,7 +122,7 @@ function AnnualMembership() {
                 <button style={{display:editbtn}} type="submit" class="btn btn-success" onClick={clickEdit}>
                   Edit
                 </button>{" "}
-                <button style={{display:savebtn}} type="submit" class="btn btn-success" >
+                <button style={{display:savebtn}} type="submit" className="btn btn-success" >
                   Save
                 </button>{" "}
               </form>

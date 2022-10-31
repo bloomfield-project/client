@@ -1,4 +1,11 @@
-import React, { useState, useEffect, ChangeEvent, FormEvent,useRef } from "react";
+import React, {
+  useState,
+  useEffect,
+  ChangeEvent,
+  FormEvent,
+  useRef,
+} from "react";
+import MaterialTable from "material-table";
 import Header from "../../../component/header/Header";
 import Navbar from "../../../component/NavigationBar/Navbar";
 import Tables from "../../../component/Table/Table";
@@ -29,10 +36,9 @@ let compRes;
 
 var date = new Date();
 
-
-var currentDate=moment.utc(date).format("YYYY-MM-DD");
-
-
+var currentDate = moment.utc(date).format("YYYY-MM-DD");
+var currentTime = moment().format("HH:mm");
+var currentYear = moment.utc(date).format("YYYY");
 
 let validation;
 
@@ -99,7 +105,6 @@ function Membership() {
   const [GetUnpaid, setUnpaid] = useState(null);
 
   const [show, setShow] = useState(false);
-  
 
   // const [compRes, setRes] = React.useState("");
 
@@ -116,9 +121,9 @@ function Membership() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(event)
+    console.log(event);
     //alert("hahvjvjkbbnnn,nkjlk;kl;mlnkbhcfdxdzezezez")
-    console.log("Form was submitted! : " ,event.target[0].value);
+    console.log("Form was submitted! : ", event.target[0].value);
     let mdata = {
       nic: loginData.data.nic,
       password: event.target[0].value,
@@ -126,50 +131,44 @@ function Membership() {
 
     passCompare(mdata);
     console.log("succes ", compRes);
-
-    
   };
-
 
   function passCompare(mdata) {
     Axios.post("http://localhost:3001/api/manager/getPassword", mdata)
       .then((res) => {
         compRes = res.data.comp;
-        console.log(res.data.comp)
+        console.log(res.data.comp);
         if (compRes) {
-
           let data = {
+            time:currentTime,
+            year:currentYear,
             date: currentDate,
             total_amount: amount,
-            user_id:u_id,
-          }
-    
-          console.log("data : ",data)
+            user_id: u_id,
+          };
+
+          console.log("data : ", data);
           console.log("Passwords are mathched");
           Axios.post("http://localhost:3001/api/manager/addMembership", data)
-          .then((res) => {
-            // console.log(setRes(res.data));
-            handleClose()
-            window.history.back()
-    
-          })
-          .catch((err) => console.log("error is arized", err));
-      
-        }
-        else{
-          alert("Enter Correct Password !")
+            .then((res) => {
+              // console.log(setRes(res.data));
+              handleClose();
+              window.history.back();
+            })
+            .catch((err) => console.log("error is arized", err));
+        } else {
+          alert("Enter Correct Password !");
         }
       })
       .catch((err) => console.log("error is arized", err));
   }
 
-
-  const doPayment = (event) => {
-    event.preventDefault();
-    console.log(event)
-    u_id = event.target.attributes[1].nodeValue;
+  const doPayment = (id) => {
+    // event.preventDefault();
+    // console.log(event);
+    u_id = id;
     // if (name) {
-    console.log("name from button : " + event.target.attributes[1].nodeValue +" "+ u_id);
+    console.log("name from button : " + id);
     handleShow();
     // }
   };
@@ -187,29 +186,28 @@ function Membership() {
     );
   }, []);
 
-if(GetPaid){
-  GetPaid.map((item, i) => {
-    amount = item.total_amount;
-    paid[i] = {
-      img: <img className="row-image" src={item.image} alt=""></img>,
-      name: item.name.replace(/(^\w{1})|(\s+\w{1})/g, (letter) =>
-        letter.toUpperCase()
-      ),
-      ammount: item.total_amount,
-      date: item.date,
-    };
-  });
-}
- 
+  if (GetPaid) {
+    GetPaid.map((item, i) => {
+      amount = item.total_amount;
+      paid[i] = {
+        img: <img className="row-image" src={item.image} alt=""></img>,
+        name: item.name.replace(/(^\w{1})|(\s+\w{1})/g, (letter) =>
+          letter.toUpperCase()
+        ),
+        ammount: item.total_amount,
+        date: item.date,
+      };
+    });
+  }
 
   // console.log("Get unpaid : ", GetUnpaid);
 
   unpaid.length = 0;
 
-  if(GetUnpaid){
+  if (GetUnpaid) {
     GetUnpaid.map((items, i) => {
       user_role = items.role.toUpperCase();
-      console.log("img url :",items.image);
+      console.log("img url :", items.image);
       if (user_role === "PLAYER") {
         obj = {
           id: items.user_id,
@@ -218,25 +216,24 @@ if(GetPaid){
             letter.toUpperCase()
           ),
           ammount: amount,
-          btn: (
-            <Button
-              key={i}
-              type= "submit"
-              variant="secondary"
-              value={items.user_id}
-              onClick={doPayment}
-            >
-              Pay
-              {/* <input type="hidden" id="custId" name="custId" value="3487"></input> */}
-            </Button>
-          ),
+          // btn: (
+          //   <Button
+          //     key={i}
+          //     type= "submit"
+          //     variant="secondary"
+          //     value={items.user_id}
+          //     onClick={doPayment}
+          //   >
+          //     Pay
+          //     {/* <input type="hidden" id="custId" name="custId" value="3487"></input> */}
+          //   </Button>
+          // ),
         };
         unpaid.push(obj);
         // obj=null;
       }
     });
   }
- 
 
   console.log("unpaid : ", unpaid);
   const uniqueIds = [];
@@ -276,7 +273,7 @@ if(GetPaid){
           closeButton
           style={{ backgroundColor: "white", border: "none" }}
         >
-          <Modal.Title> Enter Password For Confirm </Modal.Title>
+          <Modal.Title> Enter Password For Payment </Modal.Title>
         </Modal.Header>
         <Modal.Body
           style={{
@@ -286,26 +283,26 @@ if(GetPaid){
           }}
         >
           {/* <h1>Render Count: {count.current}</h1> */}
-          <form className="form-group mb-3"  onSubmit={handleSubmit}>
+          <form className="form-group mb-3" onSubmit={handleSubmit}>
             <input
               type="password"
               placeholder="Enter password"
               className="form-control w-76 bg-white text-dark mx-auto"
               style={{ marginLeft: "5px", width: "90%" }}
-              />
+            />
             <div className="d-grid gap-2 d-md-flex justify-content-md-end p-3 mb-2">
               <button type="reset" className="btn btn-secondary">
                 Reset
               </button>
-              <button type="submit" className="btn btn-success" >
+              <button type="submit" className="btn btn-success">
                 Add
               </button>
             </div>
           </form>
         </Modal.Body>
-        <Modal.Footer style={{ backgroundColor: "white", border: "none" }}>
-
-        </Modal.Footer>
+        <Modal.Footer
+          style={{ backgroundColor: "white", border: "none" }}
+        ></Modal.Footer>
       </Modal>
       {/* Pop up modal for enter manager password for confirm payment */}
 
@@ -344,23 +341,40 @@ if(GetPaid){
             <hr></hr>
             <div className="table-box-1">
               <div className="tablee">
-                <SearchTable
-                  t_title={""}
-                  data={tabNumber === 1 ? paid : unique}
-                  columns={tabNumber === 1 ? columns : columns_1}
-                  searching={true}
-                  sort={false}
-                  filter={false}
-                  paging={true}
-                  headerC={"#4a4a4a"}
-                  headerH={"40px"}
-                  headerFC={"white"}
-                  headerFS={"1.2rem"}
-                  headerFW={"500"}
-                  // height: 40px
-                  //             font-size: 1.2rem;
-                  // font-weight: 500;
-                />
+                {tabNumber === 1 ? (
+                  <>
+                    <SearchTable
+                      t_title={""}
+                      data={paid}
+                      columns={columns}
+                      searching={true}
+                      sort={false}
+                      filter={false}
+                      paging={true}
+                      headerC={"#4a4a4a"}
+                      headerH={"40px"}
+                      headerFC={"white"}
+                      headerFS={"1.2rem"}
+                      headerFW={"500"}
+                    />
+                  </>
+                ) : (
+                  <>
+                    <MaterialTable
+                      title={""}
+                      columns={columns_1}
+                      data={unique}
+                      actions={[
+                        {
+                          icon: "edit",
+                          tooltip: "Pay",
+                          onClick: (event, rowData) => doPayment(rowData.id),
+                        },
+                      ]}
+                      options={{ actionsColumnIndex: -1 }}
+                    />
+                  </>
+                )}
               </div>
             </div>
 
