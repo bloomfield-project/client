@@ -126,10 +126,12 @@ function Session() {
     const [responseData, setResponseData] = useState([]);
     const [responseDataFuture, setResponseDataFuture] = useState([]);
     const [responseDataUnmarked, setResponseDataUnmarked] = useState([]);
+    const [responseDatamarked, setResponseDatamarked] = useState([]);
     
     const url = "player/coach/addTeamMatches";
     const future = "player/coach/future";
     const Unmarked = "player/coach/Unmarked";
+    const marked = "player/coach/marked";
     async function getData(url, Team = "") {
       const reqData = {
         team_id: 2,
@@ -144,6 +146,7 @@ function Session() {
           if(url==="player/coach/addTeamMatches"){setResponseData(response.data);}
           else if(url==="player/coach/future"){setResponseDataFuture(response.data);}
           else if(url==="player/coach/Unmarked"){setResponseDataUnmarked(response.data);}
+          else if(url==="player/coach/marked"){setResponseDataUnmarked(response.data);}
         })
         .catch(function (error) {
           console.log(error);
@@ -153,6 +156,7 @@ function Session() {
       getData(url);
       getData(future);
       getData(Unmarked);
+      getData(marked);
     }, []);
     const dataupcomming = responseData.data;
     console.log(dataupcomming);
@@ -161,8 +165,10 @@ function Session() {
     
     const dataFuture=responseDataFuture.data
     const dataUnmarked=responseDataUnmarked.data
+    const datamarked=responseDataUnmarked.data
     console.log(dataFuture);
     console.log(dataUnmarked);
+    console.log(datamarked);
   //''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
     return (
@@ -279,24 +285,33 @@ function Session() {
                         </TabPane>
                         <TabPane tab="Marked" key="4">
                           <div className="table-box-11">
-                            <div className="tablee">
-                              <div className="table-head">
-                                    <div className="col-51" style={{width: "25%"}}>Title</div>
-                                    <div className="col-51" style={{width: "25%"}}>Date</div>
-                                    <div className="col-51" style={{width: "25%"}}>Time</div>
-                                    <div className="col-51" style={{width: "25%"}}></div>
-                                    
+                          <div className="tablee">
+                                <div className="table-head">
+                                    <div className="col-51">Match ID</div>
+                                    <div className="col-51">Format</div>
+                                    <div className="col-51">Date</div>
+                                    <div className="col-51">Time</div>
+                                    <div className="col-51">Our Team</div>
+                                    <div className="col-51">Opposite Team</div>
+                                    <div className="col-51"></div>
                                 </div>
     
-                              
-                               <div className="table-row">
-                                    <div className="col-51">mmmmmmm</div>
-                                    <div className="col-51">mmmmm</div>
-                                    <div className="col-51">mmmmmmmm</div>
-                                    <div className="col-51"></div>
+                                {datamarked?datamarked?.map((item,i)=>
+                                <>
+                                <div key={i} className="table-row">
+                                    <div className="col-51">M-{item.match_id}</div>
+                                    <div className="col-51">{item.format}</div>
+                                    <div className="col-51">{item.date}</div>
+                                    <div className="col-51">{item.time}</div>
+                                    <div className="col-51">{item.name}</div>
+                                    <div className="col-51">{item.op_team_name}</div>
+                                    <div className="col-51"><a href={"/coach/matches4"}><button>View</button></a></div>
+                                    
                               
     
                                   </div><hr></hr>
+                                </>):""}
+    
                             </div>
                           </div>
                         </TabPane>

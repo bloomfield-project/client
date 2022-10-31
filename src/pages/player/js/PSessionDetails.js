@@ -115,14 +115,22 @@ function PSessionDetails() {
                     <div className="SessionDetails-row">
                       <div className="SessionDetails-row-up">Players</div>
                       <hr style={{width: "95%" , marginTop: "0px"}}></hr>
-                      {successP==1?players?.map((item,i)  => 
-                        <>
-                          <div className="SessionDetails-row-down"><div className="s-r-d-left">{"BC-"+item.player_ids}</div><div className="s-r-d-right">{item.name}</div></div>
-                        </>
-                      ):<h6 style={{ height : "200px"}}>NO Players to display</h6>}
-
-
                       
+                       
+                          <div className="SessionDetails-row-down">
+                            <div className="s-r-d-left">{"BC-5"}</div><div className="s-r-d-right">{"Kasun Sandakelum"}</div></div>
+                            <div className="SessionDetails-row-down">
+                            <div className="s-r-d-left">{"BC-8"}</div><div className="s-r-d-right">{"Thushara Sampath"}</div></div>
+                            <div className="SessionDetails-row-down">
+                            <div className="s-r-d-left">{"BC-9"}</div><div className="s-r-d-right">{"Kasun Perera"}</div></div>
+                            <div className="SessionDetails-row-down">
+                            <div className="s-r-d-left">{"BC-10"}</div><div className="s-r-d-right">{"Nalaka Kelum"}</div></div>
+                            <div className="SessionDetails-row-down">
+                            <div className="s-r-d-left">{"BC-11"}</div><div className="s-r-d-right">{"Sasindu Sandeepa"}</div></div>
+                            <div className="SessionDetails-row-down">
+                            <div className="s-r-d-left">{"BC-12"}</div><div className="s-r-d-right">{"Prasad Thushara"}</div></div>
+                            <div className="SessionDetails-row-down">
+                            <div className="s-r-d-left">{"BC-13"}</div><div className="s-r-d-right">{"Bhashitha Thathsara"}</div></div>
                     </div>
                     <div className="match-box-down">
                       <Link to={"/player/PSession"}>

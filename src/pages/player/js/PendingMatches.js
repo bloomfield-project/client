@@ -12,20 +12,22 @@ import {fetchData} from '../../AuthServer';
 
 function PendingMatches() {
 
-  const { id } = useParams();
+  const { id ,team } = useParams();
 
   console.log("type is : " + id);
   const [responseP,setResponseP]=useState([]);
   const [responseC,setResponseC]=useState([]);
+  const [match,setmatch]=useState([]);
   
   async function getData(){
     const reqData ={
       match_id:id,
-      statuss:"pending"
+      team:team,
+      statuss:0
     };
     const authRequest = {
     "method":"post",
-    "url":"player/matchPlayer",
+    "url":"player/matchPlayers",
     "data":reqData
     }
     fetchData(authRequest).then((response)=>{
@@ -52,10 +54,30 @@ function PendingMatches() {
     })
   }
 
+  async function getData3(){
+    const reqData ={
+      match_id:id,
+    };
+    const authRequest = {
+    "method":"post",
+    "url":"player/match",
+    "data":reqData
+    }
+    fetchData(authRequest).then((response)=>{
+      setmatch(response.data)
+      console.log(response.data);
+    }).catch(function(error){
+      console.log(error);
+    })
+  }
+
    
 
   useEffect(() => {
     getData2()
+  }, [])
+  useEffect(() => {
+    getData3()
   }, [])
   useEffect(() => {
     getData()
@@ -67,7 +89,9 @@ function PendingMatches() {
   const successC=responseC.success
   const players=responseP.data
   const coaches=responseC.data
+  const match_det=match.data
   console.log(players)
+  console.log(match_det)
   
   
   return (
@@ -83,7 +107,7 @@ function PendingMatches() {
           
 
               <div className="title">
-                <h1>Player Perfomance</h1>
+                <h1>Match</h1>
               </div>
             <div className="matches-container-outer-box" style={{width:"95%"}}>
             
@@ -91,22 +115,22 @@ function PendingMatches() {
                 
                         {players===undefined?<h1>hi</h1>:
                         <div className="matche-container-outer-box">
-                            <div className="match-box-up"><div className="go-out"><h4 style={{color:"#009270", fontSize:"2rem", fontWeight:"bolder"}}>Hero Cup</h4></div></div>
+                            {/* <div className="match-box-up"><div className="go-out"><h4 style={{color:"#009270", fontSize:"2rem", fontWeight:"bolder"}}>Hero Cup</h4></div></div> */}
                             <div className="match-box-mid">
                                 <div className="match-box-mid-left">
                                     <div className="box-mid-left-up"><h4 style={{color:"#a5a5a5"}}>BLOOMFIELD</h4></div>
                                     <div className="box-mid-left-mid"><img src={Team}></img></div>
-                                    <div className="box-mid-left-down"><h5 style={{color:"#a5a5a5"}}>Starts at {players.length>0?players[0].time:" "}</h5></div>
+                                    <div className="box-mid-left-down"><h5 style={{color:"#a5a5a5"}}>Starts at {match_det?.length>0?match_det[0].time:" "}</h5></div>
                                 </div>
                                 <div className="match-box-mid-mid">
-                                    <div className="box-mid-mid-up"><h5 style={{color:"#a5a5a5"}}>{players.length>0?players[0].match_format:""}</h5></div>
+                                    <div className="box-mid-mid-up"><h5 style={{color:"#a5a5a5"}}>{match_det?.length>0?match_det[0].match_format:""}</h5></div>
                                     <div className="box-mid-mid-mid">VS</div>
-                                    <div className="box-mid-mid-down"><h5 style={{color:"#a5a5a5"}}>{players.length>0?players[0].ground:""}</h5></div>
+                                    <div className="box-mid-mid-down"><h5 style={{color:"#a5a5a5"}}>{match_det?.length>0?match_det[0].ground:""}</h5></div>
                                 </div>
                                 <div className="match-box-mid-right">
-                                    <div className="box-mid-right-up"><h4 style={{color:"#a5a5a5"}}>{players.length>0?players[0].op_team:""}</h4></div>
+                                    <div className="box-mid-right-up"><h4 style={{color:"#a5a5a5"}}>{match_det?.length>0?match_det[0].op_team_name:""}</h4></div>
                                     <div className="box-mid-right-mid"><img src={opTeam}></img></div>
-                                    <div className="box-mid-right-down"><h5 style={{color:"#a5a5a5"}}>{players.length>0?players[0].date:""}</h5></div>
+                                    <div className="box-mid-right-down"><h5 style={{color:"#a5a5a5"}}>{match_det?.length>0?match_det[0].date:""}</h5></div>
                                 </div>
                             </div>
                             

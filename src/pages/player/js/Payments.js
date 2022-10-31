@@ -95,7 +95,7 @@ function Payments() {
                               
                               </div>
                               <hr></hr></>
-                            ):<h6 style={{ height : "200px"}}>NO sessions to display</h6>}
+                            ):<h6 style={{ height : "200px"}}>NO Data to display</h6>}
                             
                         </div>
 

@@ -3,8 +3,11 @@ import './Header.css';
 import logo from "./bf.png-removebg-preview.png";
 import player from "../../pages/player/player.jpg"
 import { BsBell } from "react-icons/bs";
+import {useDispatch,useSelector} from 'react-redux';
 
 function Header(){
+  const loginData= useSelector(state => state.auth.data)
+  console.log(loginData.data.name)
     return (
       <div className="container-1">
         <section className='header-left'>
@@ -20,7 +23,7 @@ function Header(){
             <BsBell className='bell'></BsBell>
           </div>
           <div className='username'>
-            <div>Gihan Weerasinghe</div>
+            <div>{loginData.data.name}</div>
           </div>
           <div className='profilePic'>
             <img src={player} style={{borderRadius : "50%"}} alt=""></img>

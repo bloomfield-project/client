@@ -5,7 +5,7 @@ import React ,{useState } from 'react'
 import {useDispatch,useSelector} from 'react-redux'
 import {logIn,logout} from "../../../redux/actions/authAction"
 import {useNavigate} from "react-router-dom"
-
+// import {useSelector} from 'react-redux'
 const axios = require('axios').default;
 
 
@@ -13,7 +13,7 @@ const axios = require('axios').default;
 
 function LoginN({ setLogin }){
     // redux
-
+    const loginData= useSelector(state => state.auth.data)
 
     const dispatch = useDispatch()
 
@@ -65,17 +65,22 @@ function LoginN({ setLogin }){
             setInvalid("err-G-active")//val
         }
         else{
-            console.log("hey john")
-            if(data.data.role=='manager'){
+
+            console.log(data.data.role)
+            if(data.data.role==='manager'){
+
                 history('/manager/MatchDetail',{state: data.data})
             }
-            else if(data.data.role=='player'){
-                history('/player/Dashboard',{state: data.data})
+            if(data.data.role==='player'){
+                history('/player/playerRanking',{state: data.data})
             }
-            else if(data.data.role=='couch'){
-                history('/coach/matches',{state: data.data})
+
+            if(data.data.role==='coach'){
+                console.log('jjjjjjj')
+                history('/coach/practiceSessions',{state: data.data})
             }
-            else if(data.data.role=='admin'){
+            if(data.data.role==='admin'){
+
                 history('/admin/Employees',{state: data.data})
             }
             // history('/player/playerRanking',{state: data.data})

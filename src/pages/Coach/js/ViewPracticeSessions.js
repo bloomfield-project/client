@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../../../component/header/Header";
 import { IoChevronBackCircleOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
@@ -11,9 +11,36 @@ import AddMultipleSelections from "../../../component/AddMultipleSelections/AddM
 import CheckBox from "../../../component/CheckBox/CheckBox";
 import Navbar from "../../../component/NavigationBar/Navbar";
 import Button from 'react-bootstrap/Button';
-
+import { useParams, useLocation } from "react-router-dom";
+import {fetchData} from '../../AuthServer' ;
 
 function ViewPracticeSessions() {
+    const { id } = useParams();
+    const [responseData,setResponseData]=useState([]);
+    const url= "manager/getOldSession"
+    async function getData(url,method){
+        
+        const reqData ={
+            id:id,
+        };
+        const authRequest = {
+        "method":method,
+        "url":url,
+        "data":reqData
+      }
+      fetchData(authRequest).then((response)=>{
+            setResponseData(response.data)
+        
+      }).catch(function(error){
+        console.log(error);
+      })
+    }
+    useEffect(() => {
+        getData(url,"get")
+    }, [])
+    const dataupcomming=responseData.data
+    console.log(dataupcomming)
+
 
     const array1 = [
 
