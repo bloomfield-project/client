@@ -11,7 +11,7 @@ import React, { useState, useEffect } from "react";
 import { fetchData } from "../../AuthServer";
 import { useDispatch, useSelector } from "react-redux";
 
-// const Axios = require("axios").default;
+const Axios = require("axios").default;
 
 // async function getData() {
 //   const axios = require("axios").default;
@@ -50,32 +50,32 @@ function Players() {
   let result;
 
   const [post, setPost] = useState("");
-  async function getData() {
-    // const reqData ={
-    //   // eventId:"eventId",
-    // };
-    const authRequest = {
-      method: "post",
-      url: "user/players",
-      data: "null",
-    };
-    fetchData(authRequest)
-      .then((response) => {
-        setPost(response.data);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }
-  useEffect(() => {
-    getData();
-  }, []);
-
-  // React.useEffect(() => {
-  //   Axios.get("http://localhost:3001/api/user/players").then((response) => {
-  //     setPost(response.data);
-  //   });
+  // async function getData() {
+  //   // const reqData ={
+  //   //   // eventId:"eventId",
+  //   // };
+  //   const authRequest = {
+  //     method: "post",
+  //     url: "user/players",
+  //     data: "",
+  //   };
+  //   fetchData(authRequest)
+  //     .then((response) => {
+  //       setPost(response.data);
+  //     })
+  //     .catch(function (error) {
+  //       console.log(error);
+  //     });
+  // }
+  // useEffect(() => {
+  //   getData();
   // }, []);
+
+  React.useEffect(() => {
+    Axios.post("http://localhost:3001/api/user/players").then((response) => {
+      setPost(response.data);
+    });
+  }, []);
   const dataa = post.data;
   console.log("post data function ", dataa);
   const dataArray =[]
@@ -99,7 +99,8 @@ function Players() {
     });
   }
 
-  console.log(dataArray)
+  console.log("data post :", post)
+  console.log("data array :", dataArray)
 
   // getData(result)
   // console.log("eliyen")
@@ -139,7 +140,7 @@ function Players() {
               <div className="tablee">
 
               <div className="table-head">
-                  <div className="col-51">Session Name</div>
+                  <div className="col-51">Name</div>
                   <div className="col-51">Mentor</div>
                   <div className="col-51">Date</div>
                   <div className="col-51">Time</div>
@@ -147,23 +148,27 @@ function Players() {
               </div>
 
             
-              {dataC?dataC?.map((item,i)  => 
-                <><div key={i} className="table-row">
-                  <div className="col-51">{item.id}</div>
-                  <div className="col-51">{item.name}</div>
-                  <div className="col-51">{item.contact}</div>
-                  <div className="col-51">{item.email}</div>
-                  <div className="col-51">{item.btn}</div>
-                  {/* <div className="col-51"><button value={item.session_id} onClick={e => viewSession(e.target.value)}>View</button></div> */}
-            
+              { console.log(" aaaaaaaaaaaaaa : ", post) }
 
-                </div><hr></hr></>
-              ):<h6 style={{ height : "200px"}}>NO sessions to display</h6>}
+              {dataArray != []
+                  ? dataArray?.map((item, i) => (
+                      <>
+                        <div className="table-row">
+                          <div className="coll-4-11">{item.id}</div>
+                          <div className="coll-4-11">{item.name}</div>
+                          <div className="coll-4-1">{item.contact}</div>
+                          <div className="coll-4-1">{item.email}</div>
+                          <div className="coll-4-1">{item.btn}</div>
+                        </div>
+                        <hr></hr>
+                      </>
+                    ))
+                  : <h6 style={{ height : "200px"}}>NO sessions to display</h6>}
 
               </div>
             </div>
 
-            {/* </div> */}
+            
           </div>
         </div>
       </div>

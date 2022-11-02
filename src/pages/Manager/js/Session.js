@@ -66,9 +66,7 @@ function Session() {
     Axios.get("http://localhost:3001/api/manager/getUpcommingSession").then((response) => {
       setUpSession(response.data);
     });
-  }, []);
-
-  React.useEffect(() => {
+ 
     Axios.get("http://localhost:3001/api/manager/getUpcommingEvent").then((response) => {
       setUpEvent(response.data);
     });
@@ -166,7 +164,8 @@ function Session() {
             <hr></hr>
             <div className="table-box-1">
               <div className="tablee">
-                <SearchTable
+
+                {(Upcomming_event?.length > 0 || Upcomming_session?.length > 0) ?<SearchTable
                   t_title={tabNumber === 2 ? "Upcomming Events" : "Upcomming Session"}
                   data={tabNumber === 2 ? Upcomming_event : Upcomming_session}
                   columns={tabNumber === 2 ? columns : columns_1}
@@ -182,7 +181,8 @@ function Session() {
                   // height: 40px
                   //             font-size: 1.2rem;
                   // font-weight: 500;
-                />
+                /> : <><p>No Data To Show</p></> }
+                
               </div>
             </div>
 
