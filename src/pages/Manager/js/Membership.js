@@ -31,7 +31,7 @@ let amount;
 var user_role;
 let obj;
 let u_id;
-let compRes;
+let compRes; 
 // console.log(data[0]);
 
 var date = new Date();
@@ -103,8 +103,10 @@ function Membership() {
   const [tabNumber, setTabNumber] = useState(1);
   const [GetPaid, setPost] = useState(null);
   const [GetUnpaid, setUnpaid] = useState(null);
-
+  const [LastRow, setLastRow] =useState(null);
   const [show, setShow] = useState(false);
+  const [amount, setAmount] = useState(null);
+  const [year ,setYear] = useState(null);
 
   // const [compRes, setRes] = React.useState("");
 
@@ -143,7 +145,7 @@ function Membership() {
             time:currentTime,
             year:currentYear,
             date: currentDate,
-            total_amount: amount,
+            total_amount: lastAmount,
             user_id: u_id,
           };
 
@@ -153,7 +155,8 @@ function Membership() {
             .then((res) => {
               // console.log(setRes(res.data));
               handleClose();
-              window.history.back();
+              alert("Payment Successfull!");
+              window.location.reload();
             })
             .catch((err) => console.log("error is arized", err));
         } else {
@@ -184,11 +187,16 @@ function Membership() {
         console.log(res.data.data);
       }
     );
+    Axios.get("http://localhost:3001/api/manager/getLastRow").then(
+      (res) => {
+        setLastRow(res.data.data);
+        console.log("Last row : ",res.data.data)
+      }
+    )
   }, []);
 
   if (GetPaid) {
-    GetPaid.map((item, i) => {
-      amount = item.total_amount;
+    GetPaid?.map((item, i) => {
       paid[i] = {
         img: <img className="row-image" src={item.image} alt=""></img>,
         name: item.name.replace(/(^\w{1})|(\s+\w{1})/g, (letter) =>
@@ -200,11 +208,24 @@ function Membership() {
     });
   }
 
-  // console.log("Get unpaid : ", GetUnpaid);
+
+  console.log("Get amount : ", LastRow);
+  var lastAmount;
+  var lastYear;
+
+  {
+    LastRow?.map((item, i)=>{
+      lastAmount = item.amount;
+      lastYear = item.year;
+    })
+  }
+
+  console.log("amount : ", lastAmount);
+  console.log("year : ",lastYear);
 
   unpaid.length = 0;
 
-  if (GetUnpaid) {
+  if (GetUnpaid && lastAmount) {
     GetUnpaid.map((items, i) => {
       user_role = items.role.toUpperCase();
       console.log("img url :", items.image);
@@ -215,19 +236,8 @@ function Membership() {
           name: items.name.replace(/(^\w{1})|(\s+\w{1})/g, (letter) =>
             letter.toUpperCase()
           ),
-          ammount: amount,
-          // btn: (
-          //   <Button
-          //     key={i}
-          //     type= "submit"
-          //     variant="secondary"
-          //     value={items.user_id}
-          //     onClick={doPayment}
-          //   >
-          //     Pay
-          //     {/* <input type="hidden" id="custId" name="custId" value="3487"></input> */}
-          //   </Button>
-          // ),
+          ammount: lastAmount,
+          
         };
         unpaid.push(obj);
         // obj=null;
@@ -343,20 +353,23 @@ function Membership() {
               <div className="tablee">
                 {tabNumber === 1 ? (
                   <>
-                    <SearchTable
-                      t_title={""}
-                      data={paid}
-                      columns={columns}
-                      searching={true}
-                      sort={false}
-                      filter={false}
-                      paging={true}
-                      headerC={"#4a4a4a"}
-                      headerH={"40px"}
-                      headerFC={"white"}
-                      headerFS={"1.2rem"}
-                      headerFW={"500"}
-                    />
+                  {(paid?.length > 0 ) ? 
+                  <SearchTable
+                  t_title={""}
+                  data={paid}
+                  columns={columns}
+                  searching={true}
+                  sort={false}
+                  filter={false}
+                  paging={true}
+                  headerC={"#4a4a4a"}
+                  headerH={"40px"}
+                  headerFC={"white"}
+                  headerFS={"1.2rem"}
+                  headerFW={"500"}
+                /> : <p>No Data to Show</p>
+                }
+                    
                   </>
                 ) : (
                   <>
