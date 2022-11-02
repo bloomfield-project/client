@@ -236,7 +236,7 @@ function App() {
           <Route path="/coach/PSessions" element={<PracticeSessions />} />
           <Route path="/coach/APS" element={<AddPracticeSession />} />
           <Route path="/coach/CB" element={<CheckBox />} />
-          <Route path="/coach/MPP" element={<MarkPlayerProgress />} />
+          <Route path="/coach/MPP/:id" element={<MarkPlayerProgress />} />
           <Route path="/coach/MC" element={<AddMultipleSelections />} />
           <Route path="/coach/VPS/:id" element={<ViewPracticeSessions />} />
           <Route path="/coach/PD1" element={<PlayerDetails_1 />} />
@@ -251,7 +251,7 @@ function App() {
           <Route path="/coach/matches3/:id" element={<Macthes_3 />} />
           <Route path="/coach/playerPerformance/:id/:player" element={<PlayerPerformance />} />
           <Route path="/coach/practiceSessions" element={<PracticeSessions />} />
-          <Route path="/coach/editPracticeSession" element={<EditPracticeSessions />} />
+          <Route path="/coach/editPracticeSession/:id" element={<EditPracticeSessions />} />
           <Route path="/coach/teams" element={<Teams />} />
           <Route path="/coach/viewTeams/:id" element={<ViewTeam />} />
           <Route path="/coach/achievement" element={<AchievementCV />} />

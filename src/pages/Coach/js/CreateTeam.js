@@ -4,49 +4,44 @@ import Navbar from "../../../component/NavigationBar/Navbar";
 import { IoChevronBackCircleOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import "../css/ViewTeam.css";
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import { Button, Table } from 'antd';
-import {useState,useEffect} from "react";
-import {fetchData} from '../../AuthServer' ;
-import {useDispatch,useSelector} from 'react-redux'
-
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import { Button, Table } from "antd";
+import { useState, useEffect } from "react";
+import { fetchData } from "../../AuthServer";
+import { useDispatch, useSelector } from "react-redux";
 
 function CreateTeam() {
+  const loginData = useSelector((state) => state.auth.data);
+  const [responseData, setResponseData] = useState([]);
+  const [responseDataP, setResponseDataP] = useState([]);
+  // const [responseDataF,setResponseDataF]=useState([]);
+  // const [responseDataI,setResponseDataI]=useState([]);
+  // const location = useLocation();
+  // console.log(location.state)
+  const urlBat = "player/coach/CreateTeam";
+  const urlBowl = "player/coach/getPlayers";
+  // const urlFld= "player/performanceFld"
+  // const urlIntro= "player/intro"
 
-
-
-    const loginData= useSelector(state => state.auth.data)
-    const [responseData,setResponseData]=useState([]);
-    const [responseDataP,setResponseDataP]=useState([]);
-    // const [responseDataF,setResponseDataF]=useState([]);
-    // const [responseDataI,setResponseDataI]=useState([]);
-    // const location = useLocation();
-    // console.log(location.state)
-    const urlBat= "player/coach/CreateTeam"
-    const urlBowl= "player/coach/getPlayers"
-    // const urlFld= "player/performanceFld"
-    // const urlIntro= "player/intro"
-
-    async function getData(url,Team=""){
-        
-        const reqData ={
-            date:"2022-10-26",
-            team:Team,
-            players:selectedRowKeys,
-        };
-        const authRequest = {
-        "method":"post",
-        "url":url,
-        "data":reqData
-      }
-      fetchData(authRequest).then((response)=>{
-        if(url==="player/coach/CreateTeam"){
-            // setResponseData(response.data)
-        }
-        else if(url==="player/coach/getPlayers"){  
-            setResponseDataP(response.data)
+  async function getData(url, Team = "") {
+    const reqData = {
+      date: "2022-10-26",
+      team: Team,
+      players: selectedRowKeys,
+    };
+    const authRequest = {
+      method: "post",
+      url: url,
+      data: reqData,
+    };
+    fetchData(authRequest)
+      .then((response) => {
+        if (url === "player/coach/CreateTeam") {
+          // setResponseData(response.data)
+        } else if (url === "player/coach/getPlayers") {
+          setResponseDataP(response.data);
         }
         // else if(url==="player/performanceFld"){
         //     setResponseDataF(response.data)
@@ -54,128 +49,123 @@ function CreateTeam() {
         // else if(url==="player/intro"){
         //     setResponseDataI(response.data)
         // }
-        
-      }).catch(function(error){
-        console.log(error);
       })
-    }
-    useEffect(() => {
-        // getData(urlIntro)
-        // getData(urlBat)
-        getData(urlBowl)
-        getData(urlBowl)
-    }, [])
-    // const dataupcomming=responseData.data
-    const dataupcommingP=responseDataP.data
-    // const dataupcommingF=responseDataF.data
-    // const dataupcommingI=responseDataI.data
-    // console.log(dataupcomming)
-    console.log(dataupcommingP)
-    // console.log(dataupcommingF)
-    // console.log(dataupcommingI)
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+  useEffect(() => {
+    // getData(urlIntro)
+    // getData(urlBat)
+    getData(urlBowl);
+    getData(urlBowl);
+  }, []);
+  // const dataupcomming=responseData.data
+  const dataupcommingP = responseDataP.data;
+  // const dataupcommingF=responseDataF.data
+  // const dataupcommingI=responseDataI.data
+  // console.log(dataupcomming)
+  console.log(dataupcommingP);
+  // console.log(dataupcommingF)
+  // console.log(dataupcommingI)
 
+  // '''''''''''''''''''''''''''''''''''''''''''''''''
+  const columns = [
+    {
+      title: "Player ID",
+      dataIndex: "playerid",
+    },
+    {
+      title: "Name",
+      dataIndex: "name",
+    },
+    {
+      title: "Role",
+      dataIndex: "role",
+    },
+  ];
+  const data = [];
+  for (let i = 0; i < dataupcommingP?.length; i++) {
+    data.push({
+      key: dataupcommingP ? dataupcommingP[i].user_id : "",
+      playerid: `BF- ${dataupcommingP ? dataupcommingP[i].user_id : ""}`,
+      name: dataupcommingP ? dataupcommingP[i].name : "",
+      role: dataupcommingP ? dataupcommingP[i].player_role : "",
+    });
+  }
 
+  // ''''''''''''''''''''''''''''''''''''''''''''''''''
+  const [selectedRowKeys, setSelectedRowKeys] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const start = () => {
+    setLoading(true);
+    // ajax request after empty completing
+    setTimeout(() => {
+      setSelectedRowKeys([]);
+      setLoading(false);
+    }, 1000);
+  };
+  const onSelectChange = (newSelectedRowKeys) => {
+    console.log("selectedRowKeys changed: ", newSelectedRowKeys);
+    setSelectedRowKeys(newSelectedRowKeys);
+  };
+  const rowSelection = {
+    selectedRowKeys,
+    onChange: onSelectChange,
+  };
+  const hasSelected = selectedRowKeys.length > 0;
 
-    // '''''''''''''''''''''''''''''''''''''''''''''''''
-    const columns = [
-        {
-            title: 'Player ID',
-            dataIndex: 'playerid',
-        },
-        {
-          title: 'Name',
-          dataIndex: 'name',
-        },
-        {
-          title: 'Role',
-          dataIndex: 'role',
-        },
-      ];
-      const data = [];
-      for (let i = 0; i < dataupcommingP?.length; i++) {
-        data.push({
-          key: dataupcommingP?dataupcommingP[i].user_id:"",
-          playerid: `BF- ${dataupcommingP?dataupcommingP[i].user_id:""}`,
-          name: dataupcommingP?dataupcommingP[i].name:"",
-          role: dataupcommingP?dataupcommingP[i].player_role:"",
-        });
-      }
+  // lllllllllllllllllllllllllllllllll
 
-    // ''''''''''''''''''''''''''''''''''''''''''''''''''
-    const [selectedRowKeys, setSelectedRowKeys] = useState([]);
-    const [loading, setLoading] = useState(false);
-    const start = () => {
-      setLoading(true);
-      // ajax request after empty completing
-      setTimeout(() => {
-        setSelectedRowKeys([]);
-        setLoading(false);
-      }, 1000);
-    };
-    const onSelectChange = (newSelectedRowKeys) => {
-      console.log('selectedRowKeys changed: ', newSelectedRowKeys);
-      setSelectedRowKeys(newSelectedRowKeys);
-      
-    };
-    const rowSelection = {
-      selectedRowKeys,
-      onChange: onSelectChange,
-      
-    };
-    const hasSelected = selectedRowKeys.length > 0;
+  const player = [
+    {
+      user_id: "1",
+      name: "Gihan Weerasinghe",
+      role: "Batting",
+    },
+    {
+      user_id: "2",
+      name: "Gihan Weerasinghe",
+      role: "Batting",
+    },
+  ];
 
-    // lllllllllllllllllllllllllllllllll
+  console.log(selectedRowKeys);
 
-    const player=[
-        {
-            user_id: "1",
-            name: "Gihan Weerasinghe",
-            role: "Batting",
-        }
-        ,{
-            user_id: "2",
-            name: "Gihan Weerasinghe",
-            role: "Batting",
-        }
-    ]
+  function postData(e) {
+    e.preventDefault();
+    console.log(e.target[0].value);
 
-    console.log(selectedRowKeys);
+    getData(urlBat, e.target[0].value);
+    window.history.back();
+  }
 
-    function postData(e){
-        e.preventDefault();
-        console.log(e.target[0].value)
-        
-        getData(urlBat,e.target[0].value)
-        window.history.back()
-    }
-   
+  return (
+    <>
+      <div className="page-container-1">
+        <div className="header-container">
+          <Header></Header>
+        </div>
 
-    return (
+        <div className="body-container-1">
+          <div className="navbar-container">
+            <Navbar></Navbar>
+          </div>
 
-        <>
-
-            <div className="page-container-1">
-
-                <div className="header-container">
-                    <Header></Header>
-                </div>
-
-                <div className="body-container-1">
-
-                    <div className="navbar-container">
-                        <Navbar></Navbar>
-                    </div>
-
-                    <div className="body-container-2">
-                        <div className="title">
-                            <h1>Create Team</h1>
-                        </div>
-                        <form className="Payments-table-box-1" style={{height:"fit-content"}} onSubmit={postData}>
-                            <div className="in-put-con-tainer">
-                                <label className="l-a-b-e-l">Team Name</label>
-                                <input/>
-                            </div>
-                            {/* <div className="double-box-out">
+          <div className="body-container-2">
+            <div className="title">
+              <h1>Create Team</h1>
+            </div>
+            <form
+              className="Payments-table-box-1"
+              style={{ height: "fit-content" }}
+              onSubmit={postData}
+            >
+              <div className="in-put-con-tainer">
+                <label className="l-a-b-e-l">Team Name</label>
+                <input />
+              </div>
+              {/* <div className="double-box-out">
                                 <div className="left-box-1-G">
                                     <h3>Players</h3>
                                     <div className="left-box-in-G">
@@ -205,45 +195,44 @@ function CreateTeam() {
                                     </div>
                                 </div>
                             </div> */}
-                            <div style={{
-                                width:"95%"
-                                }}>
-                            <div
-                                style={{
-                                marginBottom: 16,
-                                }}
-                            >
-                                {/* <Button type="primary" onClick={start} disabled={!hasSelected} loading={loading}>
-                                Reload
-                                </Button> */}
-                                <span
-                                style={{
-                                    marginLeft: 8,
-                                }}
-                                >
-                                {hasSelected ? `Selected ${selectedRowKeys.length} items` : ''}
-                                </span>
-                            </div>
-                            <Table rowSelection={rowSelection} columns={columns} dataSource={data} />
-                            </div>
-                            <div className="btn-2-2">
-                                <button className="cancelll">Cancel</button>
-                                <button type="submit" className="saveee">Save</button>
-                            </div>
-                        </form>
-                        
-                        
-
-                    </div>
-
+              <div
+                style={{
+                  width: "95%",
+                }}
+              >
+                <div
+                  style={{
+                    marginBottom: 16,
+                  }}
+                >
+                  <span
+                    style={{
+                      marginLeft: 8,
+                    }}
+                  >
+                    {hasSelected
+                      ? `Selected ${selectedRowKeys.length} items`
+                      : ""}
+                  </span>
                 </div>
-
-
-
-            </div>
-
-        </>
-    );
+                <Table
+                  rowSelection={rowSelection}
+                  columns={columns}
+                  dataSource={data}
+                />
+              </div>
+              <div className="btn-2-2">
+                <button className="cancelll">Cancel</button>
+                <button type="submit" className="saveee">
+                  Save
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </>
+  );
 }
 
 export default CreateTeam;

@@ -63,9 +63,10 @@ function LoginN({ setLogin }){
         console.log(data);
         if(data.data=="Invalid username or password"){
             setInvalid("err-G-active")//val
+            
         }
         else{
-
+            console.log('jjjjjjj')
             console.log(data.data.role)
             if(data.data.role==='manager'){
 
@@ -76,7 +77,7 @@ function LoginN({ setLogin }){
             }
 
             if(data.data.role==='coach'){
-                console.log('jjjjjjj')
+                
                 history('/coach/practiceSessions',{state: data.data})
             }
             if(data.data.role==='admin'){
