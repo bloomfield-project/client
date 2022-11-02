@@ -12,65 +12,6 @@ const Axios = require("axios").default;
 
 let data = [];
 
-const data_1 = [
-  {
-    main_title: "Lakmal maduranga",
-    title: "Won the hero cup ODI series",
-    img: <img className="card-detail-img" src={profpic} alt=""></img>,
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,  but also",
-    date: "2022-05-11",
-    time: "09:00 am",
-    // btn: (
-    //   <Link to={"#"}>
-    //     <Button variant="secondary">View</Button>
-    //   </Link>
-    // ),
-  },
-
-  {
-    main_title: "Shehan Lakmal",
-    title: "Won the Champion leage Test series",
-    img: <img className="card-detail-img" src={profpic} alt=""></img>,
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,  but also",
-    date: "2022-05-11",
-    time: "09:00 am",
-    // btn: (
-    //   <Link to={"#"}>
-    //     <Button variant="secondary">View</Button>
-    //   </Link>
-    // ),
-  },
-  {
-    main_title: "Shehan Lakmal",
-    title: "Won the hero cup ODI series",
-    img: <img className="card-detail-img" src={profpic} alt=""></img>,
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,  but also",
-    date: "2022-05-11",
-    time: "09:00 am",
-    // btn: (
-    //   <Link to={"#"}>
-    //     <Button variant="secondary">View</Button>
-    //   </Link>
-    // ),
-  },
-  {
-    main_title: "Shehan Lakmal",
-    title: "Won the hero cup ODI series",
-    img: <img className="card-detail-img" src={profpic} alt=""></img>,
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,  but also",
-    date: "2022-05-11",
-    time: "09:00 am",
-    // btn: (
-    //   <Link to={"#"}>
-    //     <Button variant="secondary">View</Button>
-    //   </Link>
-    // ),
-  },
-];
 
 function Achivement() {
   const [tabNumber, setTabNumber] = useState(1);

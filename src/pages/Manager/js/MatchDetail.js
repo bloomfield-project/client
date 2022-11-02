@@ -227,7 +227,12 @@ const loginData = useSelector((state) => state.auth.data);
           .then((res) => {
             // console.log(setRes(res.data));
             handleClose()
-            window.history.back()
+            // window.history.back()
+            window.location.reload();
+
+            //*********************************************************************
+            // use state ekakata daala hadann ooni .
+            // */
     
           })
           .catch((err) => console.log("error is arized", err));
@@ -321,11 +326,6 @@ const loginData = useSelector((state) => state.auth.data);
             <div className="tabs-contain-box">
               <Tabs defaultActiveKey="1" onChange={onChange}>
                 <TabPane tab="Pending" key="1">
-                  {/* <div className="filter-by-date-G">
-                        <label>Select month:</label>
-                        <input type="month" id="start" name="start" min={thisMonth}  value={Month} className="filter-by-date-month"  onChange={e => setThisMonth(e.target.value)}></input>
-                        <button className="Select-Button-G-G" onClick={getSessionForMonth}>Select</button>
-                      </div> */}
 
                   <div className="matches-container-outer-box">
                     {/* match card */}

@@ -94,7 +94,7 @@ function PlayerRegistration() {
       address: "",
       contact: "",
       nic: "",
-      user_role: "Bowler",
+      user_role: "",
       image: "",
     },
     validationSchema: employeeSchema,
@@ -102,6 +102,7 @@ function PlayerRegistration() {
   });
 
   console.log(errors);
+  console.log(values)
 
   return (
     <>
@@ -265,9 +266,16 @@ function PlayerRegistration() {
                     </label>
                     <Form.Select
                       aria-label="Default select example"
-                      name="player_role"
+                      name="user_role"
                       onChange={handleChange}
                     >
+                      <option
+                        className="text-dark"
+                        name="user_role"
+                        // onChange={handleChange}
+                      >
+                        
+                      </option>
                       <option
                         value="manager"
                         className="text-dark"
@@ -276,10 +284,13 @@ function PlayerRegistration() {
                       >
                         Manager
                       </option>
-                      <option value="coach" className="text-dark">
+                      <option value="coach" className="text-dark" name="user_role">
                         Coach
                       </option>
                     </Form.Select>
+                    {errors.user_role && touched.user_role && (
+                      <p className="error">{errors.user_role}</p>
+                    )}
                   </div>
 
                   <div className="form-group file-upload-wrapper ">
