@@ -37,7 +37,7 @@ function Navbar() {
     data = SidebarDataManager
 
   }
-  else if (user == "couch") {
+  else if (user == "coach") {
     data = SidebarDataCoach
     console.log('hjsad')
   }

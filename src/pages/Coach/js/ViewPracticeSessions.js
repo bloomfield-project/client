@@ -157,14 +157,14 @@ function ViewPracticeSessions() {
                                         <Col className="EPS-main-3-1">Asitha Muthumala</Col>
                                         <Col className="EPS-main-3-1">BF-002</Col>
                                         <Col className="Attendance-head-1"> <CheckBox /> </Col>
-                                        <Col><Link to="/coach/MPP"> <a href="#">Progress</a> </Link></Col>
+                                        <Col><Link to={"/coach/MPP/"+id}> <a href="#">Progress</a> </Link></Col>
                                     </Row>
 
                                     <Row>
                                         <Col className="EPS-main-3-1">Asitha Muthumala</Col>
                                         <Col className="EPS-main-3-1">BF-002</Col>
                                         <Col className="Attendance-head-1"> <CheckBox /> </Col>
-                                        <Col><Link to="/coach/MPP"> <a href="#">Progress</a> </Link></Col>
+                                        <Col><Link to={"/coach/MPP/"+id}> <a href="#">Progress</a> </Link></Col>
                                     </Row>
 
                                 </Container>
@@ -179,8 +179,10 @@ function ViewPracticeSessions() {
 
                             <div className="EPS-main-4">
 
-                                <Button variant="secondary">Cancel</Button>{' '}
-                                <Button variant="success">Save</Button>{' '}
+                                <Button variant="secondary" style={{visibility:"hidden"}}>Cancel</Button>{' '}
+                                <Link to={"/coach/practiceSessions"}>
+                                <Button variant="success" style={{marginRight:"30px"}}>Back</Button>{' '}
+                                </Link>
 
                             </div>
 

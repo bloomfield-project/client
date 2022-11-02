@@ -15,6 +15,7 @@ const Axios = require("axios").default;
 
 const dataArray = [];
 let user_id;
+let current_user_role;
 let compRes;
 
 // console.log(data[0]);
@@ -59,16 +60,24 @@ function Employees() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const [coachDeleteErrorMessage, setCoachDeleteErrorMessage] = useState(false);
+  const [employeeDeleteModelShow, setemployeeDeleteModelShow] = useState(false);
+  const [modelErrorMessage, setModelErrorMessage] = useState("");
   React.useEffect(() => {
+    getDataFromDatabase();
+  }, []);
+
+  function getDataFromDatabase() {
     Axios.get("http://localhost:3001/api/user/employees").then((response) => {
       setPost(response.data);
     });
-  }, []);
-
+  }
   const deleteEmployee = (event) => {
     event.preventDefault();
     console.log(event);
-    user_id = event.target.attributes[1].nodeValue;
+    let temp = event.target.attributes[1].nodeValue;
+    user_id = temp.split("/")[0];
+    current_user_role = temp.split("/")[1];
     // if (name) {
     console.log(
       "name from button : " +
@@ -95,28 +104,46 @@ function Employees() {
   };
 
   function passCompare(mdata) {
+    console.log("data : " + current_user_role + " -- " + user_id);
     Axios.post("http://localhost:3001/api/manager/getPassword", mdata)
       .then((res) => {
         compRes = res.data.comp;
         console.log(res.data.comp);
         if (compRes) {
-          let data = {
-            user_id: user_id,
-          };
+          doDelete();
 
           console.log("data : ", data);
+          console.log("data : ", current_user_role);
           console.log("Passwords are mathched");
-          Axios.post("http://localhost:3001/api/user/deleteEmployee", data)
-            .then((res) => {
-              // console.log(setRes(res.data));
-              alert("password match")
-              handleClose();
-              window.location.reload(); 
-            })
-            .catch((err) => console.log("error is arized", err));
         } else {
           alert("Enter Correct Password !");
         }
+      })
+      .catch((err) => console.log("error is arized", err));
+  }
+
+  function doDelete() {
+    let data = {
+      user_id: user_id,
+      user_role: current_user_role,
+    };
+    Axios.post("http://localhost:3001/api/user/deleteEmployee", data)
+      .then((res) => {
+        if (res.data.result.status == "Delete Fails!") {
+          setCoachDeleteErrorMessage(true);
+          setModelErrorMessage(res.data.result.message);
+        } else if (res.data.result.status == "Successfuly Deleted!") {
+          setemployeeDeleteModelShow(true);
+          getDataFromDatabase();
+        }
+        console.log(res.data.result);
+        console.log(res.data.result.status);
+        console.log(res.data.result.status == "Coach Delete Fails!");
+        console.log("res.data.status");
+        // console.log(res.data.result.status);
+        // alert("password match")
+        handleClose();
+        // window.location.reload();
       })
       .catch((err) => console.log("error is arized", err));
   }
@@ -158,7 +185,7 @@ function Employees() {
           <Button
             variant="secondary"
             className="btn btn-danger"
-            value={item.user_id}
+            value={item.user_id + "/" + item.role}
             onClick={deleteEmployee}
           >
             Delete
@@ -167,6 +194,14 @@ function Employees() {
       };
     });
   }
+
+  function closeModel2(e){
+    e.preventDefault()
+    setCoachDeleteErrorMessage(false)
+  }
+  
+
+
   return (
     <>
       <div className="page-container-1">
@@ -265,6 +300,7 @@ function Employees() {
               placeholder="Enter password"
               className="form-control w-76 bg-white text-dark mx-auto"
               style={{ marginLeft: "5px", width: "90%" }}
+              value="960210324v"
             />
             <div className="d-grid gap-2 d-md-flex justify-content-md-end p-3 mb-2">
               <button type="reset" className="btn btn-secondary">
@@ -275,6 +311,82 @@ function Employees() {
               </button>
             </div>
           </form>
+        </Modal.Body>
+        <Modal.Footer
+          style={{ backgroundColor: "white", border: "none" }}
+        ></Modal.Footer>
+      </Modal>
+      <Modal
+        show={coachDeleteErrorMessage}
+        onHide={handleClose}
+        backdrop="static"
+        keyboard={false}
+        centered
+      >
+        <Modal.Header
+          closeButton
+          style={{ backgroundColor: "white", border: "none" }}
+        >
+          <Modal.Title> Error </Modal.Title>
+        </Modal.Header>
+        <Modal.Body
+          style={{
+            backgroundColor: "white",
+            height: "fit-content",
+            padding: "0",
+          }}
+        >
+          <h5 style={{ paddingLeft: "20px" }}>
+            {" "}
+            {modelErrorMessage}
+          </h5>
+            <div className="d-grid gap-2 d-md-flex justify-content-md-end p-3 mb-2">
+              <button
+                type="reset"
+                className="btn btn-danger"
+                onClick={closeModel2}
+              >
+                cancel
+              </button>
+            </div>
+        </Modal.Body>
+        <Modal.Footer
+          style={{ backgroundColor: "white", border: "none" }}
+        ></Modal.Footer>
+      </Modal>
+      <Modal
+        show={employeeDeleteModelShow}
+        onHide={handleClose}
+        backdrop="static"
+        keyboard={false}
+        centered
+      >
+        <Modal.Header
+          closeButton
+          style={{ backgroundColor: "white", border: "none" }}
+        >
+          <Modal.Title> Success </Modal.Title>
+        </Modal.Header>
+        <Modal.Body
+          style={{
+            backgroundColor: "white",
+            height: "fit-content",
+            padding: "0",
+          }}
+        >
+          <h5 style={{ paddingLeft: "20px" }}>
+            {" "}
+            Employee Successfully Deleted!{" "}
+          </h5>
+          <div className="d-grid gap-2 d-md-flex justify-content-md-end p-3 mb-2">
+            <button
+              type="reset"
+              className="btn btn-danger"
+              onClick={() => setemployeeDeleteModelShow(false)}
+            >
+              Go Back
+            </button>
+          </div>
         </Modal.Body>
         <Modal.Footer
           style={{ backgroundColor: "white", border: "none" }}

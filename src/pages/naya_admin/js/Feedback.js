@@ -92,7 +92,7 @@ function Feedback() {
                 
               </div>
 
-              <div className="tabs-right">
+              <div className="tabs-right"> 
                 
               </div>
             </div>

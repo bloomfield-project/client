@@ -10,8 +10,10 @@ import Col from "react-bootstrap/Col";
 import AddMultipleSelections from "../../../component/AddMultipleSelections/AddMultipleSelections";
 import Button from "react-bootstrap/Button";
 import Navbar from "../../../component/NavigationBar/Navbar";
+import { useParams, useLocation } from "react-router-dom";
 
 function EditPracticeSessions() {
+  const { id } = useParams();
   const array1 = [
     {
       lable: "Session type",
