@@ -86,7 +86,7 @@ function AnnualMembership() {
   const [GetUnpaid, setUnpaid] = useState(null);
   const [LastRow, setLastRow] =useState(null);
   const [tabNumber, setTabNumber] = useState(1);
-
+  const [new_amount , setAmount]  = useState("")
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const loginData = useSelector((state) => state.auth.data);
@@ -94,6 +94,7 @@ function AnnualMembership() {
   var findPaid = null;
   var size = null;
   var last_year = null;
+  
   const year_data = {
     year: moment().year(),
   }
@@ -105,7 +106,7 @@ function AnnualMembership() {
     let mdata = {
       nic: loginData.data.nic,
       password: event.target[0].value,
-      
+      amount : new_amount,
     };
 
     passCompare(mdata);
@@ -120,17 +121,17 @@ function AnnualMembership() {
         if (compRes) {
           let data = {
             year: moment().year(),
-            // amount: event.target[0].value,
+            amount: mdata.amount,
           };
 
           console.log("data : ", data);
           console.log("Passwords are mathched");
-          Axios.post("http://localhost:3001/api/manager/addMembership", data)
+          Axios.post("http://localhost:3001/api/manager/editMembership", data)
             .then((res) => {
               // console.log(setRes(res.data));
               handleClose();
-              alert("Payment Successfull!");
-              window.location.reload();
+              alert("Edit Successfull!");
+              // window.location.reload();
             })
             .catch((err) => console.log("error is arized", err));
         } else {
@@ -153,7 +154,7 @@ function AnnualMembership() {
     Axios.get("http://localhost:3001/api/manager/payment/unpaid").then(
       (res) => {
         setUnpaid(res.data.data);
-        // console.log(res.data.data);
+        console.log(res.data.data);
       }
     );
     Axios.get("http://localhost:3001/api/manager/getMembership").then((res) => {
@@ -166,7 +167,7 @@ function AnnualMembership() {
       findPaid = res.data;
       console.log(findPaid.data)
       size = findPaid.data.length
-      alert("size : "+ size)
+      // alert("size : "+ size)
 
     })
     .catch((err) => console.log("error is arized", err));
@@ -200,13 +201,15 @@ function AnnualMembership() {
 
   const postData = (event) => {
     event.preventDefault();
-    alert("inside event");
+    // alert("inside event");
     console.log(event)
     const amount = event.target[0].value;
-    alert(amount);
-    alert("event : "+ event.target[1].value)
+    setAmount(event.target[0].value)
+    // alert(amount +" " + new_amount);
+    // alert("event : "+ event.target[1].value)
     last_year = event.target[1].value ;
-    alert("last year : "+ last_year);
+    // alert("last year : "+ last_year);
+    
     const postData = {
       year: moment().year(),
       amount: event.target[0].value,
@@ -228,7 +231,6 @@ function AnnualMembership() {
         }
       })
       .catch((err) => console.log("err : ", err));
-      handleShow();
     } else if(size = 0) {
       Axios.post("/api/manager/editMembership", postData)
       .then((results) => {
@@ -241,7 +243,7 @@ function AnnualMembership() {
           // alert(splitArr[1] + " is already used !");
           alert(splitArr[1] + " Already amount assigned!");
         } else {
-          alert("Amount add Succesful !");
+          alert("Amount edit Succesful !");
         }
       })
     }else{
@@ -297,6 +299,7 @@ function AnnualMembership() {
 
     return false;
   });
+  console.log("uniq : ",unique)
 
   const selectTab_1 = () => {
     setTabNumber(1);
@@ -533,7 +536,7 @@ function AnnualMembership() {
           closeButton
           style={{ backgroundColor: "white", border: "none" }}
         >
-          <Modal.Title> Enter Password For Payment </Modal.Title>
+          <Modal.Title> <p style={{color:"red", fontSize:"medium", margin:"0"}}>Some Players Paid for this year, Do you want to edit?</p>  <p style={{margin:"0"}}>Enter password </p> </Modal.Title>
         </Modal.Header>
         <Modal.Body
           style={{
@@ -555,7 +558,7 @@ function AnnualMembership() {
                 Reset
               </button>
               <button type="submit" className="btn btn-success">
-                Add
+                Edit
               </button>
             </div>
           </form>
