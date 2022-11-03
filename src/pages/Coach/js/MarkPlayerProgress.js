@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "../../../component/header/Header";
 import { IoChevronBackCircleOutline } from "react-icons/io5";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 // import "../css/Matches_3.css";
 import "../css/MarkPlayerProgress.css";
 import IntroTable from "../../../component/IntroTable/IntroTable";
@@ -18,6 +18,7 @@ import { fetchData } from "../../AuthServer";
 const { TextArea } = Input;
 
 function PlayerPerformance() {
+  const {id} = useParams();
   const [responseDataI, setResponseDataI] = useState([]);
   // const location = useLocation();
   // console.log(location.state)
@@ -73,7 +74,7 @@ function PlayerPerformance() {
           <form style={{width:"100%" ,display:"flex" , flexDirection:"column", alignItems:"center"}}>
             <div className="l-back-r-title">
               <div className="l-back-r-title-icon">
-                <Link to={"/coach/VPS"}>
+                <Link to={"/coach/VPS/"+id}>
                   <IoChevronBackCircleOutline
                     style={{ color: "rgba(0, 146, 112, 1)", fontSize: " 40px" }}
                   />

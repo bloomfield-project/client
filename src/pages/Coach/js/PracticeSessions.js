@@ -9,6 +9,9 @@ import { Tabs } from 'antd';
 import 'antd/dist/antd.css';
 
 import {fetchData} from '../../AuthServer' ;
+import {useDispatch,useSelector} from 'react-redux';
+
+
 
 
 const { TabPane } = Tabs;
@@ -62,6 +65,8 @@ const columns = [
 
 
 function Session() {
+    const loginData= useSelector(state => state.auth.data)
+    console.log(loginData.data.user_id)
 
   // const loginData = useSelector(state => state.auth.data);
   // console.log(loginData.data.user_id);
@@ -150,31 +155,41 @@ function Session() {
   //     time:todayS[i]["session_id"],
   //   }
   // }}
-
+    const id=loginData.data.user_id
+    console.log(id)
     const [responseData,setResponseData]=useState([]);
-    const url= "manager/getOldSession"
+    const [responseData2,setResponseData2]=useState([]);
+    const url= "coach/getOldSession"
+    const url_up= "coach/upCommingSessions"
     async function getData(url,method){
         
         const reqData ={
             date:"2022-10-26",
+            user_id:id, 
         };
         const authRequest = {
         "method":method,
         "url":url,
         "data":reqData
+        
       }
       fetchData(authRequest).then((response)=>{
-            setResponseData(response.data)
+            if(url==="coach/getOldSession"){setResponseData(response.data)}
+            else if(url==="coach/upCommingSessions"){setResponseData2(response.data)}
         
       }).catch(function(error){
         console.log(error);
       })
-    }
+    } 
+    
     useEffect(() => {
-        getData(url,"get")
+        getData(url,"post")
+        getData(url_up,"post")
     }, [])
-    const dataupcomming=responseData.data
-    console.log(dataupcomming)
+    const pastSessions=responseData.data
+    const upcommingSessions=responseData2.data
+    console.log(pastSessions)
+    console.log(upcommingSessions)
 
 
 
@@ -247,13 +262,13 @@ function Session() {
                             <div className="col-5-4">Time</div>
                             <div className="col-5-5"></div>
                         </div>
-                        {dataupcomming?dataupcomming.map((item,i)=><>
+                        {pastSessions?pastSessions.map((item,i)=><>
                         <div  className="table-row">
-                            <div className="col-5-1" >PS-{item.c_session_id}</div>
-                            <div className="col-5-2" style={{textAlign:"left", justifyContent:"left", paddingLeft:"40px"}}>{item.title}</div>
+                            <div className="col-5-1" >PS-{item.session_id}</div>
+                            <div className="col-5-2" style={{textAlign:"left", justifyContent:"left", paddingLeft:"40px"}}>{item.type}</div>
                             <div className="col-5-1">{item.date}</div>
                             <div className="col-5-1">{item.time}</div>
-                            <div className="col-5-1"><Link to={"/coach/VPS/"+item.c_session_id}><Button variant="secondary">View</Button></Link></div>
+                            <div className="col-5-1"><Link to={"/coach/VPS/"+item.session_id}><Button variant="secondary">View</Button></Link></div>
 
                         
                         
@@ -277,16 +292,18 @@ function Session() {
                             <div className="col-5-4">Time</div>
                             <div className="col-5-5"></div>
                         </div>
+                        {upcommingSessions?upcommingSessions.map((item,i)=><>
                         <div  className="table-row">
-                            <div className="col-5-1">PS-001</div>
-                            <div className="col-5-2">Batting</div>
-                            <div className="col-5-1">2022-01-01</div>
-                            <div className="col-5-1">09.00</div>
-                            <div className="col-5-1"><a href="/coach/editPracticeSession"><button>View</button></a></div>
+                            <div className="col-5-1" >PS-{item.session_id}</div>
+                            <div className="col-5-2" style={{textAlign:"left", justifyContent:"left", paddingLeft:"40px"}}>{item.type}</div>
+                            <div className="col-5-1">{item.date}</div>
+                            <div className="col-5-1">{item.time}</div>
+                            <div className="col-5-1"><Link to={"/coach/editPracticeSession/"+item.session_id}><Button variant="secondary">View</Button></Link></div>
 
                         
-                        <hr></hr>
+                        
                       </div>
+                      <hr></hr></> ):""}
                     
                   </div>
 
