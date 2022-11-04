@@ -69,10 +69,7 @@ const columns_1 = [
       color: "rgba(149, 41, 41, 1)",
     },
   },
-  {
-    title: "",
-    field: "btn",
-  },
+
 ];
 
 function AnnualMembership() {
@@ -220,12 +217,15 @@ function AnnualMembership() {
       .then((results) => {
         if (results) {
           console.log(results.data);
-          const splitArr = results.data.err.split("'");
+          // const splitArr = results.data.err.split("'");
 
-          console.log(splitArr);
+          // console.log(splitArr);
 
           // alert(splitArr[1] + " is already used !");
-          alert(splitArr[1] + " Already amount assigned!");
+          // alert(splitArr[1] + " Already amount assigned!");
+          alert("Amount add Succesful !");
+          window.location.reload();
+
         } else {
           alert("Amount add Succesful !");
         }
@@ -364,6 +364,7 @@ function AnnualMembership() {
                     <input
                       type="number"
                       defaultValue={lastAmount}
+                      min="0"
                       style={{
                         backgroundColor: { bgColour },
                         border: "none",
