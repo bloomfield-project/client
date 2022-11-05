@@ -12,29 +12,29 @@ const data = [
 
     {
         playerid: "BF-001",
-        img: <img className="row-image" src={profpic} alt=""></img>,
+        // img: <img className="row-image" src={profpic} alt=""></img>,
+        player: <Link to="/coach/PlayerD"><a href="#">Gihan Weerasinghe</a></Link>,
+        
+        btn: <Link to={"/coach/PPr1"}><Button variant="secondary">Progress</Button></Link>,
+    },
+    {
+        playerid: "BF-001",
+        // img: <img className="row-image" src={profpic} alt=""></img>,
         player: <Link to="/coach/PlayerD"><a href="#">Asitha Muthumala</a></Link>,
         
         btn: <Link to={"/coach/PPr1"}><Button variant="secondary">Progress</Button></Link>,
     },
     {
         playerid: "BF-001",
-        img: <img className="row-image" src={profpic} alt=""></img>,
-        player: <Link to="/coach/PlayerD"><a href="#">Asitha Muthumala</a></Link>,
+        // img: <img className="row-image" src={profpic} alt=""></img>,
+        player: <Link to="/coach/PlayerD"><a href="#">Bimsara Dilukshan</a></Link>,
         
         btn: <Link to={"/coach/PPr1"}><Button variant="secondary">Progress</Button></Link>,
     },
     {
         playerid: "BF-001",
-        img: <img className="row-image" src={profpic} alt=""></img>,
-        player: <Link to="/coach/PlayerD"><a href="#">Asitha Muthumala</a></Link>,
-        
-        btn: <Link to={"/coach/PPr1"}><Button variant="secondary">Progress</Button></Link>,
-    },
-    {
-        playerid: "BF-001",
-        img: <img className="row-image" src={profpic} alt=""></img>,
-        player: <Link to="/coach/PlayerD"><a href="#">Asitha Muthumala</a></Link>,
+        // img: <img className="row-image" src={profpic} alt=""></img>,
+        player: <Link to="/coach/PlayerD"><a href="#">Heshan Weerasinghe</a></Link>,
         
         btn: <Link to={"/coach/PPr1"}><Button variant="secondary">Progress</Button></Link>,
     },
@@ -47,10 +47,10 @@ const columns = [
         title: "Player ID",
         field: 'playerid',
     },
-    {
-        title: "",
-        field: 'img',
-    },
+    // {
+    //     title: "",
+    //     field: 'img',
+    // },
     {
         title: "Player",
         field: "player",

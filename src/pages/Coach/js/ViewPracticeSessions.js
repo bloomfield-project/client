@@ -17,7 +17,7 @@ import {fetchData} from '../../AuthServer' ;
 function ViewPracticeSessions() {
     const { id } = useParams();
     const [responseData,setResponseData]=useState([]);
-    const url= "manager/getOldSession"
+    const url= "player/coach/SpecSessionDetails"
     async function getData(url,method){
         
         const reqData ={
@@ -29,43 +29,24 @@ function ViewPracticeSessions() {
         "data":reqData
       }
       fetchData(authRequest).then((response)=>{
-            setResponseData(response.data)
+        console.log(response.data)
+        setResponseData(response.data)
         
       }).catch(function(error){
         console.log(error);
       })
     }
     useEffect(() => {
-        getData(url,"get")
+        getData(url,"post")
     }, [])
-    const dataupcomming=responseData.data
-    console.log(dataupcomming)
+    // const dataupcomming=responseData.data
+    const session =responseData.details
+    console.log(session)
+    const players =responseData.players
+    console.log(players)
 
 
-    const array1 = [
-
-        {
-            lable: "Session type",
-            data: "Batting",
-        },
-
-    ];
-
-    const array2 = [
-
-        {
-            lable: "Date",
-            data: "2022 Oct 16",
-        },
-
-    ];
-
-    const array3 = [
-        {
-            lable: "Time",
-            data: "9.30 AM",
-        },
-    ];
+   
 
 
     return (
@@ -102,29 +83,28 @@ function ViewPracticeSessions() {
                         <div className="EPS-main">
 
                             <div className="EPS-main-1">
-
-                                <EditRowDetailsWithButton arr={array1} btn={false} />
-                                <EditRowDetailsWithButton arr={array2} btn={false} />
-                                <EditRowDetailsWithButton arr={array3} btn={false} />
-
+                                <div style={{width:"100%"}}>
+                                    <label style={{width:"100%",marginLeft:"10px",fontWeight:"500"}}><h6>Session :</h6></label>
+                                    <label style={{width:"100%" ,marginLeft:"50px",fontWeight:"400",fontSize:"1.2rem"}}>{session?.length>0?session[0].type:"no data"}</label>
+                                </div>
+                                <div style={{width:"100%"}}>
+                                    <label style={{width:"100%",marginLeft:"10px",fontWeight:"500"}}><h6>Date :</h6></label>
+                                    <label style={{width:"100%",marginLeft:"50px",fontWeight:"400",fontSize:"1.2rem"}}>{session?.length>0?session[0].date:"no data"}</label>
+                                </div>
+                                <div style={{width:"100%"}}>
+                                    <label style={{width:"100%",marginLeft:"10px",fontWeight:"500"}}><h6>Time :</h6></label>
+                                    <label style={{width:"100%",marginLeft:"50px",fontWeight:"400",fontSize:"1.2rem"}}>{session?.length>0?session[0].time+" - "+session[0].end_time:"no data"}</label>
+                                </div>
                             </div>
 
                             <div className="EPS-main-2">
 
-                                <h6>Couches</h6>
+                                <h6>Coach</h6>
                                 <hr></hr>
 
                                 <Container>
-
                                     <Row>
-                                        <Col className="EPS-main-2-1">Asitha Muthumala</Col>
-                                        <Col></Col>
-                                        <Col></Col>
-                                        <Col> <a href="#"></a> </Col>
-                                    </Row>
-
-                                    <Row>
-                                        <Col className="EPS-main-2-1">Asitha Muthumala</Col>
+                                        <Col className="EPS-main-2-1" style={{fontSize:"1rem",fontWeight:"400"}}>{session?.length>0?session[0].name:"no data"}</Col>
                                         <Col></Col>
                                         <Col></Col>
                                         <Col> <a href="#"></a> </Col>
@@ -146,26 +126,20 @@ function ViewPracticeSessions() {
 
                                 <Container>
 
-                                    <Row>
-                                        <Col></Col>
-                                        <Col></Col>
-                                        <Col className="Attendance-head">Attendance</Col>
-                                        <Col></Col>
-                                    </Row>
+                                    
 
-                                    <Row>
-                                        <Col className="EPS-main-3-1">Asitha Muthumala</Col>
-                                        <Col className="EPS-main-3-1">BF-002</Col>
+                                    {players?.length>0?players?.map((item,i) => <Row>
+                                        <Col className="EPS-main-3-1" style={{fontSize:"1rem",fontWeight:"400"}}>{item.name}</Col>
+                                        <Col className="EPS-main-3-1" style={{fontSize:"1rem",fontWeight:"400"}}>{"BF-"+item.user_id}</Col>
+                                        <Col><Link to={"/coach/MPP/"+item.user_id+"/"+id}> <a href="#">Progress</a> </Link></Col>
+                                    </Row>):<p>No Players</p>}
+
+                                    {/* <Row>
+                                        <Col className="EPS-main-3-1" style={{fontSize:"1rem",fontWeight:"400"}}>Asitha Muthumala</Col>
+                                        <Col className="EPS-main-3-1" style={{fontSize:"1rem",fontWeight:"400"}}>BF-002</Col>
                                         <Col className="Attendance-head-1"> <CheckBox /> </Col>
                                         <Col><Link to={"/coach/MPP/"+id}> <a href="#">Progress</a> </Link></Col>
-                                    </Row>
-
-                                    <Row>
-                                        <Col className="EPS-main-3-1">Asitha Muthumala</Col>
-                                        <Col className="EPS-main-3-1">BF-002</Col>
-                                        <Col className="Attendance-head-1"> <CheckBox /> </Col>
-                                        <Col><Link to={"/coach/MPP/"+id}> <a href="#">Progress</a> </Link></Col>
-                                    </Row>
+                                    </Row> */}
 
                                 </Container>
 
