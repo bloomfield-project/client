@@ -50,26 +50,7 @@ function Players() {
   let result;
 
   const [post, setPost] = useState("");
-  // async function getData() {
-  //   // const reqData ={
-  //   //   // eventId:"eventId",
-  //   // };
-  //   const authRequest = {
-  //     method: "post",
-  //     url: "user/players",
-  //     data: "",
-  //   };
-  //   fetchData(authRequest)
-  //     .then((response) => {
-  //       setPost(response.data);
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error);
-  //     });
-  // }
-  // useEffect(() => {
-  //   getData();
-  // }, []);
+ 
 
   React.useEffect(() => {
     Axios.post("http://localhost:3001/api/user/players").then((response) => {
@@ -140,11 +121,11 @@ function Players() {
               <div className="tablee">
 
               <div className="table-head">
+                  <div className="col-51">User ID</div>
                   <div className="col-51">Name</div>
-                  <div className="col-51">Mentor</div>
-                  <div className="col-51">Date</div>
-                  <div className="col-51">Time</div>
-                  <div className="col-51">Place</div>
+                  <div className="col-51">Contact</div>
+                  <div className="col-51">Email</div>
+                  <div className="col-51"></div>
               </div>
 
             
