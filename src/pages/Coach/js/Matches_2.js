@@ -14,96 +14,11 @@ import {useDispatch,useSelector} from 'react-redux'
 
 
 const { TabPane } = Tabs;
-const data = [
 
-    {
-        match: "vs SCC",
-        space: " ",
-        title: "Practice Match",
-        date: '2022-05-11',
-        btn: <Link to={"/coach/matches3"}><Button variant="secondary">View</Button></Link>,
-    },
-    {
-        match: "vs SCC",
-        space: " ",
-        title: "Practice Match",
-        date: '2022-05-11',
-        btn: <Link to={"/coach/matches3"}><Button variant="secondary">View</Button></Link>,
-    },
-    {
-        match: "vs SCC",
-        space: " ",
-        title: "Practice Match",
-        date: '2022-05-11',
-        btn: <Link to={"coach/matches3"}><Button variant="secondary">View</Button></Link>,
-    },
-    {
-        match: "vs SCC",
-        space: " ",
-        title: "Practice Match",
-        date: '2022-05-11',
-        btn: <Link to={"coach/matches3"}><Button variant="secondary">View</Button></Link>,
-    },
 
-];
 
-const data_1 = [
 
-    {
-        match: "vs SCC",
-        space: " ",
-        title: "Practice Match",
-        date: '2022-05-11',
-        btn: <Link to={"/coach/matches4"}><Button variant="secondary">View</Button></Link>,
-    },
-    {
-        match: "vs SCC",
-        space: " ",
-        title: "Practice Match",
-        date: '2022-05-11',
-        btn: <Link to={"/coach/matches4"}><Button variant="secondary">View</Button></Link>,
-    },
-    {
-        match: "vs SCC",
-        space: " ",
-        title: "Practice Match",
-        date: '2022-05-11',
-        btn: <Link to={"/coach/matches4"}><Button variant="secondary">View</Button></Link>,
-    },
-    {
-        match: "vs SCC",
-        space: " ",
-        title: "Practice Match",
-        date: '2022-05-11',
-        btn: <Link to={"/coach/matches4"}><Button variant="secondary">View</Button></Link>,
-    },
 
-];
-
-const columns = [
-
-    {
-        title: "Match",
-        field: 'match',
-    },
-    {
-        title: "",
-        field: "space",
-    },
-    {
-        title: "Title",
-        field: "title",
-    },
-    {
-        title: "Date",
-        field: "date",
-    },
-    {
-        title: "",
-        field: "btn",
-    },
-    
-];
 
 function Session() {
     const onChange = (key) => {
@@ -146,7 +61,7 @@ function Session() {
           if(url==="player/coach/addTeamMatches"){setResponseData(response.data);}
           else if(url==="player/coach/future"){setResponseDataFuture(response.data);}
           else if(url==="player/coach/Unmarked"){setResponseDataUnmarked(response.data);}
-          else if(url==="player/coach/marked"){setResponseDataUnmarked(response.data);}
+          else if(url==="player/coach/marked"){setResponseDatamarked(response.data);}
         })
         .catch(function (error) {
           console.log(error);
@@ -165,7 +80,7 @@ function Session() {
     
     const dataFuture=responseDataFuture.data
     const dataUnmarked=responseDataUnmarked.data
-    const datamarked=responseDataUnmarked.data
+    const datamarked=responseDatamarked.data
     console.log(dataFuture);
     console.log(dataUnmarked);
     console.log(datamarked);
@@ -273,7 +188,7 @@ function Session() {
                                     <div className="col-51">{item.time}</div>
                                     <div className="col-51">{item.name}</div>
                                     <div className="col-51">{item.op_team_name}</div>
-                                    <div className="col-51"><a href={"/coach/matches3/"+item.match_id}><button>View</button></a></div>
+                                    <div className="col-51"><a href={"/coach/matches3/"+item.match_id+"/"+item.team_id}><button>View</button></a></div>
                                     
                               
     
@@ -305,7 +220,7 @@ function Session() {
                                     <div className="col-51">{item.time}</div>
                                     <div className="col-51">{item.name}</div>
                                     <div className="col-51">{item.op_team_name}</div>
-                                    <div className="col-51"><a href={"/coach/matches4"}><button>View</button></a></div>
+                                    <div className="col-51"><a href={"/coach/matches4/"+item.match_id}><button>View</button></a></div>
                                     
                               
     

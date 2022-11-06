@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Header from "../../../component/header/Header";
 import Navbar from "../../../component/NavigationBar/Navbar";
 import "../../Home.css";
-// import "../css/MatchDetails.css";
+import "../css/MatchDetails.css";
 import Team from "../Team.png";
 import opTeam from "../opTeam.jpg";
 import Button from "react-bootstrap/Button";

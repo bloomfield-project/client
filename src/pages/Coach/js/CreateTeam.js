@@ -11,6 +11,7 @@ import { Button, Table } from "antd";
 import { useState, useEffect } from "react";
 import { fetchData } from "../../AuthServer";
 import { useDispatch, useSelector } from "react-redux";
+import { margin } from "@mui/system";
 
 function CreateTeam() {
   const loginData = useSelector((state) => state.auth.data);
@@ -132,12 +133,25 @@ function CreateTeam() {
 
   console.log(selectedRowKeys);
 
+  const [checkBoxVal, setcheckBoxVal] = useState("none");
+  const [inputVal, setinputVal] = useState("none");
+
   function postData(e) {
     e.preventDefault();
     console.log(e.target[0].value);
+    if(e.target[0].value===""){
+      setinputVal("block")
+    }
+    if(selectedRowKeys?.length<15){
+      setcheckBoxVal("block")
+    }
 
-    getData(urlBat, e.target[0].value);
-    window.history.back();
+   if((e.target[0].value!="")&&(selectedRowKeys?.length>=15))
+   {getData(urlBat, e.target[0].value);
+    window.location.reload();}
+  }
+  function goBack(){
+    window.history.back()
   }
 
   return (
@@ -221,8 +235,10 @@ function CreateTeam() {
                   dataSource={data}
                 />
               </div>
+              <div style={{color:"red", margin:"20px",display:inputVal}}>Please Enter a name for team</div>
+              <div style={{color:"red", margin:"20px",display:checkBoxVal}}>Please Select at least 15 players</div>
               <div className="btn-2-2">
-                <button className="cancelll">Cancel</button>
+                <button type="reset" className="cancelll" onClick={goBack}>Cancel</button>
                 <button type="submit" className="saveee">
                   Save
                 </button>

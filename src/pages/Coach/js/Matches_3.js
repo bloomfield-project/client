@@ -16,16 +16,19 @@ import {useEffect , useState} from "react";
 import {fetchData} from '../../AuthServer' ;
 import {useParams} from "react-router-dom"
 function Macthes_3() {
-    const {id}=useParams();
+    const {id,Tid}=useParams();
     console.log(id)
     const [responseData,setResponseData]=useState([]);
     const [responseData_p,setResponseData_p]=useState([]);
+    const [responseData_p_marked,setResponseData_p_marked]=useState([]);
     const url= "player/coach/unmarked_data"
     const url_p= "player/coach/unmarked_players"
+    const url_p_marked= "player/coach/unmarked_players_marked"
     async function getData(url,Team=""){
         
         const reqData ={
             match_id:id,
+            team_id:Tid,
         };
         const authRequest = {
         "method":"post",
@@ -35,6 +38,7 @@ function Macthes_3() {
       fetchData(authRequest).then((response)=>{
             if(url==="player/coach/unmarked_data"){setResponseData(response.data)}
             if(url==="player/coach/unmarked_players"){setResponseData_p(response.data)}
+            if(url==="player/coach/unmarked_players_marked"){setResponseData_p_marked(response.data)}
         
       }).catch(function(error){
         console.log(error);
@@ -43,11 +47,18 @@ function Macthes_3() {
     useEffect(() => {
         getData(url)
         getData(url_p)
+        getData(url_p_marked)
     }, [])
     const dataupcomming=responseData.data
     const dataupcomming_p = responseData_p.data
+    const dataupcomming_p_marked = responseData_p_marked.data
     console.log(dataupcomming)
     console.log(dataupcomming_p)
+    console.log(dataupcomming_p_marked)
+
+    function backk(){
+      window.history.back()
+    }
 
   return (
     <>
@@ -64,11 +75,11 @@ function Macthes_3() {
           <div className="body-container-2">
             <div className="l-back-r-title">
               <div className="l-back-r-title-icon">
-                <Link to={"/coach/matches"}>
+                <button onClick={backk} style={{backgroundColor:"transparent",border:"none"}} to={"/coach/matches"}>
                   <IoChevronBackCircleOutline
                     style={{ color: "rgba(0, 146, 112, 1)", fontSize: " 40px" }}
                   />
-                </Link>
+                </button>
               </div>
 
               <h1>Matches</h1>
@@ -160,6 +171,8 @@ function Macthes_3() {
                   <hr></hr>
                     
                   <Container>
+                  <h4>Unmarked</h4>
+                          <hr></hr>
                   {dataupcomming_p?dataupcomming_p?.map((item,i) =>
                   <>
                     <Row className="M3-main-container-3-1-G">
@@ -171,9 +184,30 @@ function Macthes_3() {
                         {" "}
                         <h6>
                           {" "}
-                          <a href={"/coach/playerPerformance/"+id+"/"+item.user_id}>
-                            {item.player_name}
+                          <a href={"/coach/playerPerformance/"+id+"/"+item.user_id+"/"+Tid}>
+                            {item.name}
                           </a>{" "}
+                        </h6>{" "}
+                      </Col>
+                    </Row>
+                    <br></br></> ):""}
+                    {/* <hr></hr> */}
+                    <h4>Marked</h4>
+                          <hr></hr>
+                          {responseData_p_marked?responseData_p_marked?.map((item,i) =>
+                  <>
+                    <Row className="M3-main-container-3-1-G">
+                      <Col className="M3-G-1" sm={4}>
+                        {" "}
+                        <h6>BF-{item.user_id}</h6>{" "}
+                      </Col>
+                      <Col className="M3-G" sm={4}>
+                        {" "}
+                        <h6>
+                          {" "}
+                          <div>
+                            {item.name}
+                          </div>{" "}
                         </h6>{" "}
                       </Col>
                     </Row>

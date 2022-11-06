@@ -18,7 +18,7 @@ import { useLocation, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 function PlayerPerformance() {
-  const { id, player } = useParams();
+  const { id, player,team } = useParams();
 
   const [valuess, setValues] = useState([]);
   // const loginData= useSelector(state => state.auth.data)
@@ -27,6 +27,9 @@ function PlayerPerformance() {
   // console.log(location.state)
   const urlIntro = "player/intro";
   const url2 = "player/coach/updatescore";
+
+  
+
   async function getData(
     url,
     bat_runs,
@@ -89,14 +92,24 @@ function PlayerPerformance() {
   console.log(dataupcommingI);
   const [checked, setChecked] = useState(false);
   const [checked2, setChecked2] = useState(false);
+  const [checked3, setChecked3] = useState(false);
+
+  
 
   function played() {
     setChecked(!checked);
+    setChecked3(checked);
   }
   function played2() {
     setChecked2(!checked2);
   }
-  console.log(checked);
+  function played3() {
+    setChecked3(!checked3);
+    setChecked(checked3);
+
+  }
+  console.log(checked3);
+  
 
   function submitForm(e) {
     e.preventDefault();
@@ -127,8 +140,19 @@ function PlayerPerformance() {
     } else if (!checked2) {
       notOut = 0;
     }
+    if (checked3) {
+      playedd = 0;
+    } else if (!checked3) {
+      playedd = 1;
+    }
+    
+    
+
+    
+
+
     setValues(values);
-    console.log(values);
+    console.log(played2);
     getData(
       url2,
       bat_runs,
@@ -149,6 +173,48 @@ function PlayerPerformance() {
       notOut
     );
   }
+
+  async function getData2(player,playedd){
+    const reqData ={
+      user_id:player,
+      played:playedd,
+      match_id:id,
+      
+    };
+    const authRequest = {
+    "method":"post",
+    "url":"player/coach/updatescore_notP",
+    "data":reqData
+  }
+  fetchData(authRequest).then((response)=>{
+    // setResponseData(response.data)
+  }).catch(function(error){
+    console.log(error);
+  })
+}
+  function notPlayed(e){
+    e.preventDefault();
+    var playedd;
+    var notOut;
+    if (checked) {
+      playedd = 1;
+    } else if (!checked) {
+      playedd = 0;
+    }
+    if (checked2) {
+      notOut = 1;
+    } else if (!checked2) {
+      notOut = 0;
+    }
+    if (checked3) {
+      playedd = 0;
+    } else if (!checked3) {
+      playedd = 1;
+    }
+
+    alert(playedd);
+    getData2(player,playedd)
+  }
   console.log(valuess);
   return (
     <>
@@ -165,7 +231,7 @@ function PlayerPerformance() {
           <div className="body-container-2">
             <div className="l-back-r-title">
               <div className="l-back-r-title-icon">
-                <Link to={"/coach/matches3/" + id}>
+                <Link to={"/coach/matches3/" + id+"/"+team}>
                   <IoChevronBackCircleOutline
                     style={{ color: "rgba(0, 146, 112, 1)", fontSize: " 40px" }}
                   />
@@ -436,7 +502,7 @@ function PlayerPerformance() {
                           <div>
                             <div
                               className="ipm-1"
-                              style={{ marginBottom: " 5px" }}
+                              style={{ marginBottom: " 5px" ,marginRight:"10px"}}
                             >
                               Played
                             </div>
@@ -449,9 +515,34 @@ function PlayerPerformance() {
                               checked={checked}
                             />
                           </div>
+                          <div style={{marginLeft:"40px" }}>
+                            <div
+                              className="ipm-1"
+                              style={{ marginBottom: " 5px",width:"100px"}}
+                            >
+                              Not Played
+                            </div>
+                          </div>
+                          <form onSubmit={notPlayed} style={{ display:"flex", alignItems:"center" , justifyContent:"space-between",marginBottom:"25px" }}>
+                            <div>
+                              <input
+                                style={{ width: "25px", height: "25px",marginRight:"20px" }}
+                                type="checkbox"
+                                onChange={played3}
+                                checked={checked3}
+                              />
+                              
+                            </div>
+                            <div className="form-container-5">
+                              <button style={{display: checked3 ? "block" : "none"}} className="form-container-5-btn" type="submit">
+                                Submit
+                              </button>{" "}
+                            </div>
+                          </form>
                         </div>
                       </Col>
                     </Row>
+                    
                     {/* ................................................... */}
                   </div>
                 </div>
@@ -467,19 +558,26 @@ function PlayerPerformance() {
 
                     <Container>
                       <Row>
-                        <Col>
-                          {" "}
-                          <InputField
-                            value="0"
-                            type="number"
-                            label="Runs"
-                          />{" "}
+                      <Col className="APS-Form-2-2">
+                        <label style={{ width: "100px",fontSize:"1.2rem",color:"gray",fontWeight:"600" }}>Runs:</label>
+                        <input
+                          type="number"
+                          name="name"
+                          
+                          style={{
+                            width: "300px",
+                            border: "1px solid #ced4da",
+                            height: "38px",
+                            borderRadius: "5px",
+                            marginBottom: "20px",
+                          }}
+                        />{" "}
                         </Col>
                         <Col>
                           {" "}
                           <Row>
                             <Col>
-                              <div className="ipm-1">Not Out</div>
+                              <div className="ipm-1" style={{ fontSize:"1.2rem",color:"gray",fontWeight:"600" }}>Not Out</div>
                             </Col>
                             <Col>
                               <input
@@ -493,27 +591,56 @@ function PlayerPerformance() {
                         </Col>
                       </Row>
                       <Row>
-                        <Col>
-                          {" "}
-                          <InputField
-                            value="0"
-                            type="number"
-                            label="Balls"
-                          />{" "}
+                      <Col className="APS-Form-2-2">
+                        <label style={{ width: "100px",fontSize:"1.2rem",color:"gray",fontWeight:"600" }}>Balls:</label>
+                        <input
+                          type="number"
+                          name="name"
+                          
+                          style={{
+                            width: "300px",
+                            border: "1px solid #ced4da",
+                            height: "38px",
+                            borderRadius: "5px",
+                            marginBottom: "20px",
+                          }}
+                        />{" "}
                         </Col>
                         <Col></Col>
                       </Row>
                       <Row>
-                        <Col>
-                          {" "}
-                          <InputField value="0" type="number" label="6s" />{" "}
+                      <Col className="APS-Form-2-2">
+                        <label style={{ width: "100px",fontSize:"1.2rem",color:"gray",fontWeight:"600" }}>6s:</label>
+                        <input
+                          type="number"
+                          name="name"
+                          
+                          style={{
+                            width: "300px",
+                            border: "1px solid #ced4da",
+                            height: "38px",
+                            borderRadius: "5px",
+                            marginBottom: "20px",
+                          }}
+                        />{" "}
                         </Col>
                         <Col></Col>
                       </Row>
                       <Row>
-                        <Col>
-                          {" "}
-                          <InputField value="0" type="number" label="4s" />{" "}
+                      <Col className="APS-Form-2-2">
+                        <label style={{ width: "100px",fontSize:"1.2rem",color:"gray",fontWeight:"600" }}>4s:</label>
+                        <input
+                          type="number"
+                          name="name"
+                          
+                          style={{
+                            width: "300px",
+                            border: "1px solid #ced4da",
+                            height: "38px",
+                            borderRadius: "5px",
+                            marginBottom: "20px",
+                          }}
+                        />{" "}
                         </Col>
                         <Col></Col>
                       </Row>
@@ -527,75 +654,131 @@ function PlayerPerformance() {
 
                     <Container>
                       <Row>
-                        <Col>
-                          {" "}
-                          <InputField
-                            value="0"
-                            type="number"
-                            label="Overs"
-                          />{" "}
+                      <Col className="APS-Form-2-2">
+                        <label style={{ width: "100px",fontSize:"1.2rem",color:"gray",fontWeight:"600" }}>Overs:</label>
+                        <input
+                          type="number"
+                          name="name"
+                          
+                          style={{
+                            width: "300px",
+                            border: "1px solid #ced4da",
+                            height: "38px",
+                            borderRadius: "5px",
+                            marginBottom: "20px",
+                          }}
+                        />{" "}
                         </Col>
-                        <Col>
-                          {" "}
-                          <InputField
-                            value="0"
-                            type="number"
-                            label="Runs"
-                          />{" "}
-                        </Col>
-                      </Row>
-                      <Row>
-                        <Col>
-                          {" "}
-                          <InputField
-                            value="0"
-                            type="number"
-                            label="Balls"
-                          />{" "}
-                        </Col>
-                        <Col>
-                          {" "}
-                          <InputField
-                            value="0"
-                            type="number"
-                            label="Hat-Tricks"
-                          />{" "}
+                        <Col className="APS-Form-2-2">
+                        <label style={{ width: "100px",fontSize:"1.2rem",color:"gray",fontWeight:"600" }}>Runs:</label>
+                        <input
+                          type="number"
+                          name="name"
+                          
+                          style={{
+                            width: "300px",
+                            border: "1px solid #ced4da",
+                            height: "38px",
+                            borderRadius: "5px",
+                            marginBottom: "20px",
+                          }}
+                        />{" "}
                         </Col>
                       </Row>
                       <Row>
-                        <Col>
-                          {" "}
-                          <InputField
-                            value="0"
-                            type="number"
-                            label="Wkts"
-                          />{" "}
+                        <Col className="APS-Form-2-2">
+                        <label style={{ width: "100px",fontSize:"1.2rem",color:"gray",fontWeight:"600" }}>Balls:</label>
+                        <input
+                          type="number"
+                          name="name"
+                          
+                          style={{
+                            width: "300px",
+                            border: "1px solid #ced4da",
+                            height: "38px",
+                            borderRadius: "5px",
+                            marginBottom: "20px",
+                          }}
+                        />{" "}
                         </Col>
-                        <Col>
-                          {" "}
-                          <InputField
-                            value="0"
-                            type="number"
-                            label="No Balls"
-                          />{" "}
+                        <Col className="APS-Form-2-2">
+                        <label style={{ width: "100px",fontSize:"1.2rem",color:"gray",fontWeight:"600" }}>Hat-Tricks:</label>
+                        <input
+                          type="number"
+                          name="name"
+                          
+                          style={{
+                            width: "300px",
+                            border: "1px solid #ced4da",
+                            height: "38px",
+                            borderRadius: "5px",
+                            marginBottom: "20px",
+                          }}
+                        />{" "}
                         </Col>
                       </Row>
                       <Row>
-                        <Col>
-                          {" "}
-                          <InputField
-                            value="0"
-                            type="number"
-                            label="Maiden"
-                          />{" "}
+                      <Col className="APS-Form-2-2">
+                        <label style={{ width: "100px",fontSize:"1.2rem",color:"gray",fontWeight:"600" }}>Wkts:</label>
+                        <input
+                          type="number"
+                          name="name"
+                          
+                          style={{
+                            width: "300px",
+                            border: "1px solid #ced4da",
+                            height: "38px",
+                            borderRadius: "5px",
+                            marginBottom: "20px",
+                          }}
+                        />{" "}
                         </Col>
-                        <Col>
-                          {" "}
-                          <InputField
-                            value="0"
-                            type="number"
-                            label="Wide Balls"
-                          />{" "}
+                        <Col className="APS-Form-2-2">
+                        <label style={{ width: "100px",fontSize:"1.2rem",color:"gray",fontWeight:"600" }}>No Balls:</label>
+                        <input
+                          type="number"
+                          name="name"
+                          
+                          style={{
+                            width: "300px",
+                            border: "1px solid #ced4da",
+                            height: "38px",
+                            borderRadius: "5px",
+                            marginBottom: "20px",
+                          }}
+                        />{" "}
+                        </Col>
+                      </Row>
+                      <Row>
+                      <Col className="APS-Form-2-2">
+                        <label style={{ width: "100px",fontSize:"1.2rem",color:"gray",fontWeight:"600" }}>Maiden:</label>
+                        <input
+                          type="number"
+                          name="name"
+                          
+                          style={{
+                            width: "300px",
+                            border: "1px solid #ced4da",
+                            height: "38px",
+                            borderRadius: "5px",
+                            marginBottom: "20px",
+                          }}
+                        />{" "}
+                        </Col>
+                        <Col className="APS-Form-2-2">
+                        <label style={{ width: "100px",fontSize:"1.2rem",color:"gray",fontWeight:"600" }}>Wide Balls:</label>
+                        <input
+                          type="number"
+                          name="name"
+                          
+                          style={{
+                            width: "300px",
+                            border: "1px solid #ced4da",
+                            height: "38px",
+                            borderRadius: "5px",
+                            marginBottom: "20px",
+                          }}
+                        />{" "}
                         </Col>
                       </Row>
                     </Container>
@@ -608,24 +791,38 @@ function PlayerPerformance() {
 
                     <Container>
                       <Row>
-                        <Col>
-                          {" "}
-                          <InputField
-                            value="0"
-                            type="number"
-                            label="Run-Outs"
-                          />{" "}
+                      <Col className="APS-Form-2-2">
+                        <label style={{ width: "100px",fontSize:"1.2rem",color:"gray",fontWeight:"600" }}>Run Outs:</label>
+                        <input
+                          type="number"
+                          name="name"
+                          
+                          style={{
+                            width: "300px",
+                            border: "1px solid #ced4da",
+                            height: "38px",
+                            borderRadius: "5px",
+                            marginBottom: "20px",
+                          }}
+                        />{" "}
                         </Col>
                         <Col></Col>
                       </Row>
                       <Row>
-                        <Col>
-                          {" "}
-                          <InputField
-                            value="0"
-                            type="number"
-                            label="Catches"
-                          />{" "}
+                      <Col className="APS-Form-2-2">
+                        <label style={{ width: "100px",fontSize:"1.2rem",color:"gray",fontWeight:"600" }}>Catches:</label>
+                        <input
+                          type="number"
+                          name="name"
+                          
+                          style={{
+                            width: "300px",
+                            border: "1px solid #ced4da",
+                            height: "38px",
+                            borderRadius: "5px",
+                            marginBottom: "20px",
+                          }}
+                        />{" "}
                         </Col>
                         <Col></Col>
                       </Row>

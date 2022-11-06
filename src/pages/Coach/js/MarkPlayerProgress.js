@@ -18,7 +18,7 @@ import { fetchData } from "../../AuthServer";
 const { TextArea } = Input;
 
 function PlayerPerformance() {
-  const {id} = useParams();
+  const {id,match_id} = useParams();
   const [responseDataI, setResponseDataI] = useState([]);
   // const location = useLocation();
   // console.log(location.state)
@@ -26,7 +26,7 @@ function PlayerPerformance() {
 
   async function getData(url) {
     const reqData = {
-      user_id: 5,
+      user_id: id,
     };
     const authRequest = {
       method: "post",
@@ -74,7 +74,7 @@ function PlayerPerformance() {
           <form style={{width:"100%" ,display:"flex" , flexDirection:"column", alignItems:"center"}}>
             <div className="l-back-r-title">
               <div className="l-back-r-title-icon">
-                <Link to={"/coach/VPS/"+id}>
+                <Link to={"/coach/VPS/"+match_id}>
                   <IoChevronBackCircleOutline
                     style={{ color: "rgba(0, 146, 112, 1)", fontSize: " 40px" }}
                   />

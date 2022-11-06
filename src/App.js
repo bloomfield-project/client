@@ -236,20 +236,20 @@ function App() {
           <Route path="/coach/PSessions" element={<PracticeSessions />} />
           <Route path="/coach/APS" element={<AddPracticeSession />} />
           <Route path="/coach/CB" element={<CheckBox />} />
-          <Route path="/coach/MPP/:id" element={<MarkPlayerProgress />} />
+          <Route path="/coach/MPP/:id/:match_id" element={<MarkPlayerProgress />} />
           <Route path="/coach/MC" element={<AddMultipleSelections />} />
           <Route path="/coach/VPS/:id" element={<ViewPracticeSessions />} />
           <Route path="/coach/PD1" element={<PlayerDetails_1 />} />
           <Route path="/coach/PPr1" element={<PlayerProgress_1 />} />
           <Route path="/coach/PFeedback" element={<PlayerFeedback />} />
           <Route path="/coach/m_1" element={<Matches_1 />} />
-          <Route path="/coach/matches4" element={<Matches_4 />} />
+          <Route path="/coach/matches4/:id" element={<Matches_4 />} />
           <Route path="/coach/bloomfieldCricketRanking" element={<BloomFieldCricketRanking />} />
           <Route path="/coach/players" element={<Players1 />} />
           <Route path="/coach/appoinments" element={<Appoinments />} />
           <Route path="/coach/matches" element={<Matches_2 />} />
-          <Route path="/coach/matches3/:id" element={<Macthes_3 />} />
-          <Route path="/coach/playerPerformance/:id/:player" element={<PlayerPerformance />} />
+          <Route path="/coach/matches3/:id/:Tid" element={<Macthes_3 />} />
+          <Route path="/coach/playerPerformance/:id/:player/:team" element={<PlayerPerformance />} />
           <Route path="/coach/practiceSessions" element={<PracticeSessions />} />
           <Route path="/coach/editPracticeSession/:id" element={<EditPracticeSessions />} />
           <Route path="/coach/teams" element={<Teams />} />
