@@ -47,7 +47,9 @@ function PlayerPerformance() {
     runOut,
     catches,
     playedd,
-    notOut
+    notOut,
+    AT,
+    team
   ) {
     const reqData = {
       user_id: player,
@@ -68,6 +70,8 @@ function PlayerPerformance() {
       catches: catches,
       playedd: playedd,
       notOut: notOut,
+      AT:AT,
+      team:team,
     };
     const authRequest = {
       method: "post",
@@ -114,20 +118,21 @@ function PlayerPerformance() {
   function submitForm(e) {
     e.preventDefault();
     var values = [];
-    const bat_runs = e.target[0].value;
+    const bat_runs = e.target[5].value;
     const bat_balls = e.target[2].value;
     const six = e.target[3].value;
     const four = e.target[4].value;
-    const overs = e.target[5].value;
-    const runs = e.target[6].value;
-    const balls = e.target[7].value;
-    const ht = e.target[8].value;
-    const wkt = e.target[9].value;
-    const NB = e.target[10].value;
-    const maiden = e.target[11].value;
-    const WB = e.target[12].value;
-    const runOut = e.target[13].value;
-    const catches = e.target[14].value;
+    const AT = e.target[5].value;
+    const overs = e.target[6].value;
+    const runs = e.target[7].value;
+    const balls = e.target[8].value;
+    const ht = e.target[9].value;
+    const wkt = e.target[10].value;
+    const NB = e.target[11].value;
+    const maiden = e.target[12].value;
+    const WB = e.target[13].value;
+    const runOut = e.target[14].value;
+    const catches = e.target[15].value;
     var playedd;
     var notOut;
     if (checked) {
@@ -170,15 +175,19 @@ function PlayerPerformance() {
       runOut,
       catches,
       playedd,
-      notOut
+      notOut,
+      AT,
+      team
     );
+    window.history.back()
   }
 
-  async function getData2(player,playedd){
+  async function getData2(player,playedd,team){
     const reqData ={
       user_id:player,
       played:playedd,
       match_id:id,
+      team:team,
       
     };
     const authRequest = {
@@ -213,7 +222,8 @@ function PlayerPerformance() {
     }
 
     alert(playedd);
-    getData2(player,playedd)
+    getData2(player,playedd,team)
+    window.history.back()
   }
   console.log(valuess);
   return (
@@ -563,7 +573,7 @@ function PlayerPerformance() {
                         <input
                           type="number"
                           name="name"
-                          
+                          min={0}
                           style={{
                             width: "300px",
                             border: "1px solid #ced4da",
@@ -596,7 +606,7 @@ function PlayerPerformance() {
                         <input
                           type="number"
                           name="name"
-                          
+                          min={0}
                           style={{
                             width: "300px",
                             border: "1px solid #ced4da",
@@ -614,7 +624,7 @@ function PlayerPerformance() {
                         <input
                           type="number"
                           name="name"
-                          
+                          min={0}
                           style={{
                             width: "300px",
                             border: "1px solid #ced4da",
@@ -632,7 +642,7 @@ function PlayerPerformance() {
                         <input
                           type="number"
                           name="name"
-                          
+                          min={0}
                           style={{
                             width: "300px",
                             border: "1px solid #ced4da",
@@ -644,6 +654,25 @@ function PlayerPerformance() {
                         </Col>
                         <Col></Col>
                       </Row>
+                      <Row>
+                      <Col className="APS-Form-2-2">
+                        <label style={{ width: "100px",fontSize:"1.2rem",color:"gray",fontWeight:"600" }}>AT:</label>
+                        <input
+                          type="number"
+                          name="name"
+                          min={0}
+                          style={{
+                            width: "300px",
+                            border: "1px solid #ced4da",
+                            height: "38px",
+                            borderRadius: "5px",
+                            marginBottom: "20px",
+                          }}
+                        />{" "}
+                        </Col>
+                        <Col></Col>
+                      </Row>
+                      
                     </Container>
                   </div>
 
@@ -659,7 +688,7 @@ function PlayerPerformance() {
                         <input
                           type="number"
                           name="name"
-                          
+                          min={0}
                           style={{
                             width: "300px",
                             border: "1px solid #ced4da",
@@ -674,7 +703,7 @@ function PlayerPerformance() {
                         <input
                           type="number"
                           name="name"
-                          
+                          min={0}
                           style={{
                             width: "300px",
                             border: "1px solid #ced4da",
@@ -691,7 +720,7 @@ function PlayerPerformance() {
                         <input
                           type="number"
                           name="name"
-                          
+                          min={0}
                           style={{
                             width: "300px",
                             border: "1px solid #ced4da",
@@ -706,7 +735,7 @@ function PlayerPerformance() {
                         <input
                           type="number"
                           name="name"
-                          
+                          min={0}
                           style={{
                             width: "300px",
                             border: "1px solid #ced4da",
@@ -723,7 +752,7 @@ function PlayerPerformance() {
                         <input
                           type="number"
                           name="name"
-                          
+                          min={0}
                           style={{
                             width: "300px",
                             border: "1px solid #ced4da",
@@ -738,7 +767,7 @@ function PlayerPerformance() {
                         <input
                           type="number"
                           name="name"
-                          
+                          min={0}
                           style={{
                             width: "300px",
                             border: "1px solid #ced4da",
@@ -755,7 +784,7 @@ function PlayerPerformance() {
                         <input
                           type="number"
                           name="name"
-                          
+                          min={0}
                           style={{
                             width: "300px",
                             border: "1px solid #ced4da",
@@ -770,7 +799,7 @@ function PlayerPerformance() {
                         <input
                           type="number"
                           name="name"
-                          
+                          min={0}
                           style={{
                             width: "300px",
                             border: "1px solid #ced4da",
@@ -785,7 +814,7 @@ function PlayerPerformance() {
                   </div>
 
                   <div className="form-container-4">
-                    <h4>Batting Career Summary</h4>
+                    <h4>Fielding Career Summary</h4>
 
                     <hr></hr>
 
@@ -796,7 +825,7 @@ function PlayerPerformance() {
                         <input
                           type="number"
                           name="name"
-                          
+                          min={0}
                           style={{
                             width: "300px",
                             border: "1px solid #ced4da",
@@ -814,7 +843,7 @@ function PlayerPerformance() {
                         <input
                           type="number"
                           name="name"
-                          
+                          min={0}
                           style={{
                             width: "300px",
                             border: "1px solid #ced4da",
