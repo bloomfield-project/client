@@ -102,8 +102,8 @@ function AddTournamentMatch(props) {
       title: "T20",
     },
     {
-      value: "Test",
-      title: "Test",
+      value: "TEST",
+      title: "TEST",
     },
     {
       value: "ODI",
