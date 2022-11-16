@@ -131,7 +131,7 @@ function Players() {
             
               { console.log(" aaaaaaaaaaaaaa : ", post) }
 
-              {dataArray != []
+              {dataArray !== []
                   ? dataArray?.map((item, i) => (
                       <>
                         <div className="table-row">

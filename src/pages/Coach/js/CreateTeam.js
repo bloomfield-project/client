@@ -238,8 +238,8 @@ function CreateTeam() {
               <div style={{color:"red", margin:"20px",display:inputVal}}>Please Enter a name for team</div>
               <div style={{color:"red", margin:"20px",display:checkBoxVal}}>Please Select at least 15 players</div>
               <div className="btn-2-2">
-                <button type="reset" className="cancelll" onClick={goBack}>Cancel</button>
-                <button type="submit" className="saveee">
+                <button type="reset" className="btn btn-secondary" onClick={goBack}>Cancel</button>
+                <button type="submit" className="btn btn-success">
                   Save
                 </button>
               </div>

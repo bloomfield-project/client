@@ -7,25 +7,25 @@ import { Link } from "react-router-dom";
 import ResetSubmit from "../../../component/Form/ResetSubmit";
 import Navbar from "../../../component/NavigationBar/Navbar";
 import Modal from "react-bootstrap/Modal";
-import moment from 'moment';
-
+import moment from "moment";
 
 const axios = require("axios").default;
 
 function AddEvent() {
   const [errorMsg, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const [status, setStatus] = useState("");
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  var edate;
+  // var edate;
   var date = new Date();
   date.setDate(date.getDate() + 7);
-  
+
   var currentDate = moment(date).format("YYYY-MM-DD");
-  
+
   console.log("current date : ", currentDate);
 
   // String(currentDate)
@@ -88,14 +88,19 @@ function AddEvent() {
     axios
       .post("/api/manager/addevent", eventData)
       .then((results) => {
-        setError(results.data.message);
-        setSuccess(results.data.success);
-        console.log(errorMsg);
+        setError(results.data.result.message);
+        setSuccess(results.data.result.success);
+        setStatus(results.data.result.status);
+        console.log(results.data.result.message);
+        console.log(results);
 
-        if (errorMsg) {
-          edate = errorMsg.event_name;
-          alert(edate);
+        if (results.data.result.message) {
+          setError(results.data.result.message);
           handleShow();
+        } else {
+          setError(null);
+          alert("Submit Again!");
+          window.location.reload();
         }
       })
       .catch((err) => console.log("error : ", err));
@@ -114,7 +119,7 @@ function AddEvent() {
           closeButton
           style={{ backgroundColor: "white", border: "none" }}
         >
-          <Modal.Title> </Modal.Title>
+          <Modal.Title> {status} </Modal.Title>
         </Modal.Header>
         <Modal.Body
           style={{
@@ -154,7 +159,7 @@ function AddEvent() {
           {/* <h1>Render Count: {count.current}</h1> */}
         </Modal.Body>
         <Modal.Footer style={{ border: "none" }}>
-        <Link to={success === 1? "/manager/Session" : "#"}>
+          <Link to={success === 1 ? "/manager/Session" : "#"}>
             <button type="button" class="btn btn-success" onClick={handleClose}>
               OK
             </button>
@@ -163,9 +168,7 @@ function AddEvent() {
       </Modal>
 
       <div className="page-container-1">
-        <div className="header-container">
-          <Header></Header>
-        </div>
+        <div className="header-container"><Header></Header></div>
 
         <div className="body-container-1">
           <div className="navbar-container">

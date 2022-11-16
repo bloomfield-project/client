@@ -125,7 +125,7 @@ function Session() {
                                     <div className="col-51">{item.date}</div>
                                     <div className="col-51">{item.ground}</div>
                                     <div className="col-51">{item.op_team_name}</div>
-                                    <div className="col-51"><a href={"/coach/TeamToMatch/"+item.match_id}><button>View</button></a></div>
+                                    <div className="col-51"><a href={"/coach/TeamToMatch/"+item.match_id}><button className="btn btn-secondary">View</button></a></div>
                                     {/* <div className="col-51"><button value={item.session_id} onClick={e => viewSession(e.target.value)}>View</button></div> */}
                               
     
@@ -157,7 +157,7 @@ function Session() {
                                     <div className="col-51">{item.ground}</div>
                                     <div className="col-51">{item.name}</div>
                                     <div className="col-51">{item.op_team_name}</div>
-                                    <div className="col-51"><a href={"/coach/FutureTeams/"+item.match_id+"/"+item.name}><button>View</button></a></div>
+                                    <div className="col-51"><a href={"/coach/FutureTeams/"+item.match_id+"/"+item.name}><button className="btn btn-secondary">View</button></a></div>
                                     {/* <div className="col-51"><button value={item.session_id} onClick={e => viewSession(e.target.value)}>View</button></div> */}
                               
     
@@ -188,7 +188,7 @@ function Session() {
                                     <div className="col-51">{item.time}</div>
                                     <div className="col-51">{item.name}</div>
                                     <div className="col-51">{item.op_team_name}</div>
-                                    <div className="col-51"><a href={"/coach/matches3/"+item.match_id+"/"+item.team_id}><button>View</button></a></div>
+                                    <div className="col-51"><a href={"/coach/matches3/"+item.match_id+"/"+item.team_id}><button className="btn btn-secondary">View</button></a></div>
                                     
                               
     
@@ -220,7 +220,7 @@ function Session() {
                                     <div className="col-51">{item.time}</div>
                                     <div className="col-51">{item.name}</div>
                                     <div className="col-51">{item.op_team_name}</div>
-                                    <div className="col-51"><a href={"/coach/matches4/"+item.match_id}><button>View</button></a></div>
+                                    <div className="col-51"><a href={"/coach/matches4/"+item.match_id}><button className="btn btn-secondary">View</button></a></div>
                                     
                               
     

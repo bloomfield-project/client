@@ -353,7 +353,11 @@ function Employees() {
         <Modal.Footer
           style={{ backgroundColor: "white", border: "none" }}
         ></Modal.Footer>
+
       </Modal>
+
+
+      
       <Modal
         show={employeeDeleteModelShow}
         onHide={handleClose}

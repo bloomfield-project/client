@@ -13,7 +13,7 @@ import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { storage } from "../../../../src/firebase";
 import { v4 } from "uuid";
 import { employeeSchema } from "../../../component/Schema/employee";
-import { fetchData } from "../../AuthServer";
+// import { fetchData } from "../../AuthServer";
 
 const moment = require("moment");
 

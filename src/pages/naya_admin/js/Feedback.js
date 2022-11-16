@@ -4,70 +4,21 @@ import Navbar from "../../../component/NavigationBar/Navbar";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import "../../Home.css";
-import SampleCard1 from "../../../component/Card/SampleCard1";
-// import profpic from "../header/profpic.jfif";
-import profpic from "../../../component/header/profpic.jfif";
-
-const data = [
-  {
-    title: "Won the hero cup ODI series",
-    img: <img className="card-detail-img" src={profpic} alt=""></img>,
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,  but also",
-    date: "2022-05-11",
-    time: "09:00 am",
-    btn: (
-      <Link to={"#"}>
-        <Button variant="secondary">View</Button>
-      </Link>
-    ),
-  },
-
-  {
-    title: "Won the hero cup ODI series",
-    img: <img className="card-detail-img" src={profpic} alt=""></img>,
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,  but also",
-    date: "2022-05-11",
-    time: "09:00 am",
-    btn: (
-      <Link to={"#"}>
-        <Button variant="secondary">View</Button>
-      </Link>
-    ),
-  },
-  {
-    title: "Won the hero cup ODI series",
-    img: <img className="card-detail-img" src={profpic} alt=""></img>,
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,  but also",
-    date: "2022-05-11",
-    time: "09:00 am",
-    btn: (
-      <Link to={"#"}>
-        <Button variant="secondary">View</Button>
-      </Link>
-    ),
-  },
-  {
-    title: "Won the hero cup ODI series",
-    img: <img className="card-detail-img" src={profpic} alt=""></img>,
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,  but also",
-    date: "2022-05-11",
-    time: "09:00 am",
-    btn: (
-      <Link to={"#"}>
-        <Button variant="secondary">View</Button>
-      </Link>
-    ),
-  },
-];
-
-
+const Axios = require("axios").default;
 
 function Feedback() {
-    
+  const [feedback, setFeedback] = useState([]);
+
+  React.useEffect(() => {
+    Axios.get("http://localhost:3001/api/manager/getFeedback")
+      .then((response) => {
+        console.log(response.data);
+        setFeedback(response.data.data);
+      })
+      .catch((err) => console.log("error is arized", err));
+  }, []);
+
+  console.log("feed back : ", feedback);
   return (
     <>
       <div className="page-container-1">
@@ -84,25 +35,33 @@ function Feedback() {
             </div>
             <div className="tabs">
               <div className="tabs-left">
-                <h5 className={ "tab-active"}>
-                 
-                  
-                 
-                </h5>
-                
+                <h5 className={"tab-active"}></h5>
               </div>
 
-              <div className="tabs-right"> 
-                
-              </div>
+              <div className="tabs-right"></div>
             </div>
 
             <hr></hr>
             <div className="table-box-1">
               <div className="tablee">
-              
-                  <SampleCard1 arr={data} />
-                
+                {/* <SampleCard1 arr={data} /> */}
+                {feedback != [] ? feedback?.map((item, i) => (
+                  <>
+                    <div style={{ backgroungColor: "", border: "" }}>
+                      <div style={{ backgroundColor: "" }}>{item.feedback}</div>
+                      <div style={{ display: "flex" }}>
+                        <div style={{ color: "#5C686B", width: "50%", fontWeight:"bold" }}>
+                          {item.date}
+                        </div>
+                        <div style={{ color: "#5C686B", width: "50%" , fontWeight:"bold"}}>
+                          {item.name}
+                        </div>
+                      </div>
+                    </div>
+                    <hr></hr>
+                    <br></br>
+                  </>
+                )):<p>No Data To Show</p>}
               </div>
             </div>
           </div>

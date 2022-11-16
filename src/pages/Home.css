@@ -17,6 +17,12 @@
     
 }
 
+.btn-2-2{
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+}
+
 .body-container-2{
     width: calc(100vw - 250px);
     background-color: #E3E6E3;
