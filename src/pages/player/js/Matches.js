@@ -75,7 +75,7 @@ function Matches() {
     const msgP = responseDataPast.success
     const dataMP=responseDataPast.data
     console.log(msgP+"KJNKnnkjnknjkjjjjjjknnjjjjjjjjj")
-    console.log(Month)
+    console.log(dataMP)
     return (
       <div className="page-container-1">
         <div className="header-container">
@@ -137,7 +137,7 @@ function Matches() {
                        
                         
                         </>
-                         ):<h6 style={{ height : "200px"}}>NO sessions to display</h6>}
+                         ):<h6 style={{ height : "200px"}}>NO Matches to display</h6>}
                         
 
                     </div>           
@@ -156,7 +156,7 @@ function Matches() {
                                     <div className="match-box-mid-left">
                                         <div className="box-mid-left-up"><h4 style={{color:"#a5a5a5"}}>BLOOMFIELD</h4></div>
                                         <div className="box-mid-left-mid"><img src={Team}></img></div>
-                                        <div className="box-mid-left-down"><h5 >{item.our_score+"-"+item.our_wickets+" ("+item.our_overs+")"}</h5></div>
+                                        <div className="box-mid-left-down"><h5 >{item.total+"-"+item.wkts+" ("+(parseInt(item.balls/6,10)+(item.balls%6)/10)+")"}</h5></div>
                                     </div>
                                     <div className="match-box-mid-mid">
                                         <div className="box-mid-mid-up"><h5 style={{color:"#a5a5a5"}}>{item.format}</h5></div>

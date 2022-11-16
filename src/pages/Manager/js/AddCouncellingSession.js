@@ -14,6 +14,7 @@ import axios from "axios";
 function AddCouncellingSession() {
   const [errorMsg, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const [status, setStatus] = useState("");
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -97,16 +98,19 @@ function AddCouncellingSession() {
     axios
       .post("http://localhost:3001/api/manager/AddCouncellingSession", formData)
       .then((results) => {
-        setError(results.data.message);
-        setSuccess(results.data.success);
-        console.log(errorMsg);
-        handleShow();
-        window.history.back()
-
-        if (errorMsg) {
-          // edate = errorMsg.event_name;
-          //alert(edate);
+        setError(() =>{return results.data.result.message });
+        setSuccess(results.data.result.success);
+        setStatus(results.data.result.status);
+        console.log(results.data.result.message)
+        console.log(results);
+       
+        if ( results.data.result.message) {
+          setError( results.data.result.message)
           handleShow();
+        }else{
+          // setError(null)
+          alert("Session Add Successful!")
+          // window.location.reload();
         }
       })
       .catch((err) => console.log("error : ", err));
@@ -125,7 +129,7 @@ function AddCouncellingSession() {
           closeButton
           style={{ backgroundColor: "white", border: "none" }}
         >
-          <Modal.Title> </Modal.Title>
+          <Modal.Title> {status} </Modal.Title>
         </Modal.Header>
         <Modal.Body
           style={{

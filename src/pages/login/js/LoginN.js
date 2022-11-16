@@ -116,7 +116,7 @@ function LoginN({ setLogin }){
                         Log in
                     </div>
                     <div className={invalid}>
-                        Invalid login or password. Please try again.
+                        Invalid username or password. Please try again.
                     </div>
                         <span className="validate-msg">{emailError}</span>
                         <form className="form-g-g-G" onSubmit={submitForm}>

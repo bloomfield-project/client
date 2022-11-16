@@ -122,7 +122,7 @@ function AddPracticeSession() {
         } else if (url === "player/coach/getPlayers") {
           setResponseDataP(response.data);
         } else if (url === "player/coach/deleteNewses") {
-          alert(response.data);
+          // alert(response.data);
         }
         
       })
