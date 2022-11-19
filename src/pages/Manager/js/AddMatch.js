@@ -201,7 +201,7 @@ function AddMatch() {
                     <div className="tabs-right"></div>
                   </div>
                   <div className="tablee">
-                    {/* {tournment_data?<SearchTable
+                    <SearchTable
                       t_title={""}
                       data={tournment_data}
                       columns={columns}
@@ -214,20 +214,7 @@ function AddMatch() {
                       headerFC={"white"}
                       headerFS={"1.2rem"}
                       headerFW={"500"}
-                    />:""} */}
-                    <div className="table-head">
-                        <div className="coll-4-11">Title</div>
-                        <div className="coll-4-11"></div>
-                    </div>
-                    
-                    {tournment_data!=0?tournment_data?.map((item,i)  => 
-                      <><div className="table-row">
-                      <div className="coll-4-11">{item.title}</div>
-                      <div className="coll-4-11">{item.btn}</div>
-                      
-                      </div>
-                      <hr></hr></>
-                    ):<h6 style={{ height : "200px"}}>NO Data to display</h6>}
+                    />
                   </div>
                 </div>
                 {/* <SampleForm arr={array1} upload = {true} /> */}
