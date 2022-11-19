@@ -7,7 +7,7 @@ import {useDispatch,useSelector} from 'react-redux';
 
 function Header(){
   const loginData= useSelector(state => state.auth.data)
-  console.log(loginData.data.name)
+  console.log(loginData.data)
     return (
       <div className="container-1">
         <section className='header-left'>
@@ -26,7 +26,7 @@ function Header(){
             <div>{loginData.data.name}</div>
           </div>
           <div className='profilePic'>
-            <img src={player} style={{borderRadius : "50%"}} alt=""></img>
+            <img src={loginData.data.image!=""?loginData.data.image:player} style={{borderRadius : "50%"}} alt=""></img>
           </div>
         </section>
       </div>

@@ -42,7 +42,7 @@ export const SidebarDataManager = [
     {
         title:'Payments',
         path:'/manager/Membership',
-        icon:<BsFillCreditCardFill />,
+        icon:<BsFillCreditCardFill />, 
         cName:'nav-text'
     },
     {

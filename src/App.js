@@ -43,7 +43,7 @@ import SampleCard from "./component/Card/SampleCard";
 import AddTeamAchivement from "./pages/Manager/js/AddTeamAchivement";
 
 import MatchDetail from "./pages/Manager/js/MatchDetail";
-
+import Protected_route from "./Protected_route"
 
 
 import Players1 from "./pages/Coach/js/Players";
@@ -190,7 +190,9 @@ function App() {
           <Route path="/manager/Session"  element={<Session/>}/>
           <Route path="/manager/Membership"  element={<Membership/>}/>
           <Route path="/manager/SampleForm" element={<SampleForm />} />
-          <Route path="/player/playerRanking" element={<PlayerRanking />} />
+          {/* <Protected_route path="/player/playerRanking" component={PlayerRanking } /> */}
+          <Route path="/player/playerRanking" element={<Protected_route role="admin"> <PlayerRanking/> </Protected_route>}/>
+
           <Route path="/player/Progress" element={<Progress />} />
           <Route path="/player/PrivateProgress/:id" element={<PrivateProgress />} />
           <Route path="/player/Matches" element={<Matches />} />

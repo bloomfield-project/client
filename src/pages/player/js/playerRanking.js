@@ -24,6 +24,7 @@ import {useDispatch,useSelector} from 'react-redux'
 
 function PlayerRanking() {
     const loginData= useSelector(state => state.auth.data)
+    console.log(loginData)
     const [responseData,setResponseData]=useState([]);
     const [responseDataB,setResponseDataB]=useState([]);
     const [responseDataF,setResponseDataF]=useState([]);
@@ -98,7 +99,7 @@ function PlayerRanking() {
                 <h1>Player Perfomance</h1>
               </div>
               <div className="player-details-box">
-                <img className="playerImage" src={player} alt="Italian Trulli" />
+                <img className="playerImage" src={loginData.data.image!=""?loginData.data.image:player} alt="Italian Trulli" />
                 <div style={{display:"flex", flexDirection:"column",justifyContent:"space-between", height:"200px", width:"fit-content", borderRadius:"10px" , marginLeft:"50px"}}>
                     <div style={{width: "351px", height: "52px" , backgroundColor: "#006950" , display: "flex", justifyContent:"center", alignItems:"center" , paddingTop: "5px", borderTopRightRadius: "10px" ,borderTopLeftRadius: "10px"}}>
                         <h3 style={{color:"white"}}>{dataupcommingI?dataupcommingI[0].name:""}</h3>

@@ -6,6 +6,7 @@ import * as AiIcons from "react-icons/ai";
 import { SidebarDataPlayer } from "./SidebarData";
 import { SidebarDataAdmin } from "./SidebarData";
 import { SidebarDataCoach } from "./SidebarData";
+import { logout } from "../../redux/actions/authAction";
 
 
 
@@ -19,6 +20,7 @@ import { SidebarDataManager } from "./SidebarData";
 import "./Navbar.css";
 import { IconContext } from "react-icons";
 import { useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 
 
@@ -27,6 +29,7 @@ import { useLocation } from "react-router-dom";
 function Navbar() {
 
   const location = useLocation();
+  const dispatch = useDispatch()
   const user = location.pathname.split('/')[1]
 
 
@@ -44,8 +47,15 @@ function Navbar() {
   else if (user == "player") {
     data = SidebarDataPlayer
   }
-  else if (user == "admin") {
+  else if (user == "admin") { 
     data = SidebarDataAdmin
+  }
+
+  const handleLogout = (path) => {
+    if(path == '/'){
+      console.log("calling logout")
+      dispatch(logout())
+    }
   }
 
   // const showSidebar = () => setSidebar(!sidebar);
@@ -73,7 +83,7 @@ function Navbar() {
 
                   return (
                     <li key={index} className={page == item.path.split('/')[2] ? "new-g-g-g" : item.cName}>
-                      <Link to={item.path}>
+                      <Link onClick={() => handleLogout(item.path)} to={item.path}>
                         {item.icon}
                         <span>{item.title}</span>
                       </Link>

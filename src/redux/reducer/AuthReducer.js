@@ -11,7 +11,7 @@ const authReducer=(state=initialState,action)=>{
                 data:action.data
             })
 
-        case "logut":
+        case "logout":
             return({
                 loggedIn:false,
                 data:null
