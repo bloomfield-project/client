@@ -38,6 +38,8 @@ function AddPracticeSession() {
   const [sessionId, setSessionId] = useState(0);
   const [responseDataCheck, setResponseDataCheck] = useState([]);
   const [checkTBL,setCheckTBL] = useState("none");
+  const [DatePH,setDatePH] = useState("");
+  const [minendtime,setminendtime] = useState("");
 
   const [sessionAdded, setSessionAdded] = useState("");
   const players = "player/coach/getPlayers";
@@ -46,7 +48,11 @@ function AddPracticeSession() {
 
 
 
-
+  function setTime(e){
+    e.preventDefault()
+    console.log(e.target.value)
+    setminendtime(e.target.value)
+  }
 
 
 
@@ -65,6 +71,7 @@ function AddPracticeSession() {
         if (url === "player/coach/getPlayersToSessions") {
           console.log(response.data)
           setSessionAdded(response.data)
+          window.location.reload()
         }
       })
       .catch(function (error) {
@@ -105,6 +112,7 @@ function AddPracticeSession() {
             setMatchData([])
             setSessionId(response.data.new_session_id[0].new_session_id)
             console.log(response.data.new_session_id[0].new_session_id)
+            
 
           }
           else if(response.data.status==="sessions exist"){
@@ -209,10 +217,26 @@ function AddPracticeSession() {
   function checkAvailability(e){
     e.preventDefault();
     console.log(e.target[0].value)
-    console.log(e.target[1].value)
-    console.log(e.target[2].value)
-    console.log(e.target[4].value)
-    getData(checkAvailabilityForSession,"",e.target[0].value,e.target[1].value,e.target[2].value,e.target[4].value)
+    console.log(e.target[1].value)//date
+    console.log(e.target[2].value)//starting time
+    console.log(e.target[4].value)//ending time
+    if(e.target[0].value==""||e.target[1].value==""||e.target[2].value==""||e.target[4].value==""){
+        if(e.target[1].value==""){
+          setDatePH("Please fill all the input fields")
+          // alert("date")
+        }
+        if(e.target[2].value==""){
+          setDatePH("Please fill all the input fields")
+          // alert("st")
+        }
+        if(e.target[4].value==""){
+          setDatePH("Please fill all the input fields")
+          // alert("et")
+        }
+    }else{
+      getData(checkAvailabilityForSession,"",e.target[0].value,e.target[1].value,e.target[2].value,e.target[4].value)
+    }
+    
     // console.log(responseDataCheck?.status)
     // if(responseDataCheck?.status==="successfully added"){
     //   setCheckTBL("block")
@@ -293,13 +317,13 @@ function AddPracticeSession() {
 
                 <div className="APS-Form-2">
                   <Container>
+                    <div style={{color:"red" , marginBottom:"20px"}}>{DatePH}</div>
                     <Row>
                       <Col className="APS-Form-2-2">
                         <label style={{ width: "100px" }}>Date:</label>
                         <input
                           type="date"
                           name="name"
-                          
                           style={{
                             width: "300px",
                             border: "1px solid #ced4da",
@@ -310,11 +334,12 @@ function AddPracticeSession() {
                         />
                       </Col>
                       <Col className="APS-Form-2-2">
+                        
                         <label style={{ width: "100px" }}>Starting Time:</label>
                         <input
                           type="time"
                           name="name"
-                         
+                          onChange={setTime}
                           style={{
                             width: "300px",
                             border: "1px solid #ced4da",
@@ -344,6 +369,7 @@ function AddPracticeSession() {
                         <input
                           type="time"
                           name="name"
+                          min={"09:00"}
                           style={{
                             width: "300px",
                             border: "1px solid #ced4da",
