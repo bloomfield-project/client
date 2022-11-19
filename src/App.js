@@ -22,7 +22,7 @@ import PrivateProgress from "./pages/player/js/PrivateProgress"
 import Matches from "./pages/player/js/Matches";
 import MatchDetails from "./pages/player/js/MatchDetails";
 import MMatchDetails from "./pages/Manager/js/MMatchDetails";
-
+import PlayerRankingM from "./pages/Manager/js/PlayerRanking"
 import PSessionDetails from "./pages/player/js/PSessionDetails";
 import CSessionDetails from "./pages/player/js/CSessionDetails";
 import EventDetails from "./pages/player/js/EventDetails";
@@ -191,8 +191,8 @@ function App() {
           <Route path="/manager/Membership"  element={<Membership/>}/>
           <Route path="/manager/SampleForm" element={<SampleForm />} />
           {/* <Protected_route path="/player/playerRanking" component={PlayerRanking } /> */}
-          <Route path="/player/playerRanking" element={<Protected_route role="admin"> <PlayerRanking/> </Protected_route>}/>
-
+          <Route path="/player/playerRanking" element={<Protected_route role="player"> <PlayerRanking/> </Protected_route>}/>
+          <Route path="/manager/playerRanking/:id" element={<PlayerRankingM/>}></Route>
           <Route path="/player/Progress" element={<Progress />} />
           <Route path="/player/PrivateProgress/:id" element={<PrivateProgress />} />
           <Route path="/player/Matches" element={<Matches />} />
