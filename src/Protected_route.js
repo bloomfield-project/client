@@ -14,10 +14,10 @@ function Protected_route({children, role}) {
     // const loading = useSelector(state => state.auth.loading)
     const dispatch = useDispatch()
 
-    console.log("check logxx", loginData)
+    console.log("check logxx", data.data.role)
     console.log("check log", role)
     // && data.role == role 
-    if(loginData ){
+    if(loginData &&data.data.role===role){
         // return <div>Your in</div> 
         return children
 

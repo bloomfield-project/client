@@ -24,6 +24,7 @@ function Macthes_3() {
     const [responseData_p_marked,setResponseData_p_marked]=useState([]);
     const [check_op,setcheck_op]=useState("block");
     const [playerset,setplayerset]=useState("none");
+    const [Errmsg,setErrmsg]=useState("none");
 
 
     const url= "player/coach/unmarked_data"
@@ -33,7 +34,7 @@ function Macthes_3() {
     const score_update = "player/coach/score_update"
 
 
-    async function getData2(url,total_score,wickets,overs){
+  async function getData2(url,total_score,wickets,overs){
       console.log(total_score)
       console.log(wickets)
       console.log(overs)
@@ -109,7 +110,7 @@ function Macthes_3() {
     console.log(dataupcomming_p)
     console.log(dataupcomming_p_marked)
     // console.log(datacheck_op)
-
+  
     function backk(){
       window.history.back()
     }
@@ -119,9 +120,22 @@ function Macthes_3() {
       const total_score=e.target[0].value
       const wickets=e.target[1].value
       const overs=e.target[2].value
-      getData2(score_update,total_score,wickets,overs)
-      getData(check_op_score)
+      if(total_score==""&&wickets==""&&overs==""){
+        setErrmsg("block")
+      }
+      else{
+        getData2(score_update,total_score,wickets,overs)
+        getData(check_op_score)
+      }
     }
+
+    // var format_overs=200
+    // if(dataupcomming[0].format=="T20"){
+    //   format_overs=20
+    // }
+    // else if(dataupcomming[0].format=="ODI"){
+    //   format_overs=50
+    // }
 
   return (
     <>
@@ -232,7 +246,6 @@ function Macthes_3() {
                     <input
                       type="number"
                       name="name"
-                      min={"09:00"}
                       style={{
                         width: "300px",
                         border: "1px solid #ced4da",
@@ -247,7 +260,7 @@ function Macthes_3() {
                     <input
                       type="number"
                       name="name"
-                      min={"09:00"}
+                      max="10"
                       style={{
                         width: "300px",
                         border: "1px solid #ced4da",
@@ -262,7 +275,7 @@ function Macthes_3() {
                     <input
                       type="number"
                       name="name"
-                      min={"09:00"}
+                      max={dataupcomming?dataupcomming[0].format=="T20"?20:dataupcomming[0].format=="50"?50:200:""}
                       style={{
                         width: "300px",
                         border: "1px solid #ced4da",
@@ -271,7 +284,7 @@ function Macthes_3() {
                       }}
                     />
                   </Col>
-                  <div className="gap-3"></div>
+                  <div className="gap-3" style={{marginTop:"10px"}}><p style={{display:Errmsg, color:"red"}}>Input fields must not be empty</p></div>
                   <div className="btn-2-2">
                     <button  type="reset" className="btn btn-secondary" style={{visibility:"hidden"}}>Cancel</button>
                     <button type="submit" className="btn btn-success">
