@@ -1,5 +1,3 @@
-
-
 import Header from "../../../component/header/Header";
 import Navbar from "../../../component/NavigationBar/Navbar";
 import "../../Home.css";
@@ -238,7 +236,7 @@ const loginData = useSelector((state) => state.auth.data);
                                   </h4>
                                 </div>
                                 <div className="box-mid-right-mid">
-                                  <img src={opTeam}></img>
+                                  <img src={item.team_icon ? item.team_icon : opTeam}></img>
                                 </div>
                                 <div className="box-mid-right-down">
                                   <h5 style={{ color: "#a5a5a5" }}>

@@ -236,7 +236,7 @@ function Session() {
                         data={Upcomming_event}
                         actions={[
                           {
-                            icon: "delete",
+                            icon: "edit",
                             tooltip: "Pay",
                             onClick: (event, rowData) =>
                               deleteEvent(rowData.id),
@@ -257,7 +257,7 @@ function Session() {
                         data={Upcomming_session}
                         actions={[
                           {
-                            icon: "delete",
+                            icon: "edit",
                             tooltip: "Pay",
                             onClick: (event, rowData) =>
                               deleteSession(rowData.id),
