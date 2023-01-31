@@ -16,9 +16,11 @@ import {
 } from "firebase/storage";
 import { storage } from "../../../../src/firebase";
 import { v4 } from "uuid";
+import PlayerEditForm from "../../Manager/js/PlayerEditForm";
 
 const axios = require("axios").default;
-
+const lankaNic2019 = require("lanka-nic-2019")
+const moment = require("moment");
 let error_msg = null;
 let error_field = null;
 let success = null;
@@ -95,63 +97,50 @@ function EditEmployee() {
   console.log(post1);
   // const name = post[0].name;
 
-  const array = [
-    {
-      lable: "E-mail",
-      data: post[0].email,
-      btn: "true",
-      type: "email",
-    },
-    {
-      lable: "Contact",
-      data: post[0].contact,
-      btn: "true",
-    },
-    {
-      lable: "Address",
-      data: post[0].address,
-      btn: "true",
-      type: "text",
-    },
-  ];
+
 
   const createUser = (event) => {
     event.preventDefault();
     console.log("eevent : : ", event);
-
+    
+    const d = new Date(lankaNic2019.infoNic(event.target[2].value).birthday);
+    // console.log("date : ", d);
+    
     let userData = {
       user_id: id,
-      e_mail: event.target[0].value,
-      contact: event.target[1].value,
-      address: event.target[2].value,
+      address: event.target[0].value,
+      email: event.target[1].value,
+      nic: event.target[2].value,
+      contact: event.target[3].value,
       image: imgurl ? imgurl : post[0].image,
+      gender:  lankaNic2019.infoNic(event.target[2].value).gender,
+      dob : moment(d).format('YYYY-MM-DD')
       // date:currentDate,
     };
     // const isValid = await userSchema.isValid(userData);
 
     console.log("before post request ", userData);
 
-    // let res =  axios.post('/api/user/', userData);
-    
-      axios
-        .post("/api/user/updateEmployee", userData)
-        .then((results) => {
-          console.log("user data ", userData);
-          console.log("results ", results);
+    let res =  axios.post('/api/user/', userData);
+    axios
+      .post("/api/user/updateEmployee", userData)
+      .then((results) => {
+        console.log("user data ", userData);
+        console.log("results ", results);
+      
+        if (results.data.result.success == 0) {
+        
+          success = null;
+          alert(results.data.result.message);
+        } else if (results.data.result.success == 1) {
+          // error_msg = null;
+          // success = " Successfully Updated !";
+          alert(results.data.result.message)
+        }
 
-          if (results.data.err) {
-            error_field = results.data.err.split(" ");
-            error_msg = ` ${error_field[2]} Has Allready Used `;
-            success = null;
-          } else if (!results.data.err) {
-            error_msg = null;
-            success = " Successfully Updated !";
-          }
-
-          handleShow();
-        })
-        .catch((err) => console.log("error is arized", err));
-    
+        // handleShow();
+      })
+      .catch((err) => console.log("error is arized", err));
 
     console.log("after post request ");
   };
@@ -193,10 +182,18 @@ function EditEmployee() {
                     {post[0].name}
                   </p>
                 </div>
-                <form onSubmit={createUser}>
-                  <EditDetails arr={array} backLink={"/manager/Players"} />
-
-                  <div
+                <form  onSubmit={createUser}
+                  className={
+                    "w-100 p-3 border border-secondary rounded  w-100 p-3 "
+                  }>
+         
+                  <PlayerEditForm
+                    NIC={post[0].nic}
+                    email={post[0].email}
+                    address={post[0].address}
+                    contact={post[0].contact}
+                  ></PlayerEditForm>
+                  {/* <div
                     className="form-group file-upload-wrapper w-100 p-3 mb-2"
                     style={{ margin: "0px", width: "85%" }}
                   >
@@ -230,7 +227,7 @@ function EditEmployee() {
                     <button type="submit" className="btn btn-success">
                       Edit
                     </button>
-                  </div>
+                  </div> */}
                 </form>
               </div>
             </div>

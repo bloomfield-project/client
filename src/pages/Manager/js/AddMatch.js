@@ -1,7 +1,8 @@
+/* eslint-disable no-const-assign */
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 // import SampleForm from "../../../component/Form/SampleForm";
-
+import { MdOutlineDelete } from 'react-icons/md';
 import Header from "../../../component/header/Header";
 import moment from "moment";
 import "../../Home.css";
@@ -14,31 +15,9 @@ import ResetSubmit from "../../../component/Form/ResetSubmit";
 const Axios = require("axios").default;
 
 var CurrentDate = new Date();
-const AddMatchTitle = (event) => {
-  event.preventDefault();
 
-  console.log(event);
 
-  let formData = {
-    title: event.target[0].value.replace(/(^\w{1})|(\s+\w{1})/g, (letter) =>
-      letter.toUpperCase()
-    ),
-    date: moment.utc(CurrentDate).format("YYYY-MM-DD"),
-  };
-
-  // alert("title is : " + event.target[0].value);
-
-  Axios.post("/api/manager/addMatchTitle", formData)
-    .then((results) => {
-      console.log("results.data.message :", results.data.message);
-      alert("Title Add Success : " + event.target[0].value);
-
-      window.location.reload();
-    })
-    .catch((err) => console.log("error : ", err));
-};
-
-const tournment_data = [];
+// const tournment_data = [];
 
 // console.log(data[0]);
 const columns = [
@@ -53,46 +32,100 @@ const columns = [
     title: "",
     field: "btn",
   },
+  {
+    title: "",
+    field: "del",
+  },
 ];
+
+
 
 function AddMatch() {
   const [tabNumber, setTabNumber] = useState(1);
-  const [matchTitle, setTitle] = useState("");
+  const [change, setChange] = useState(true);
+  const [tournment_data, setTournament] = useState([]);
 
+  const AddMatchTitle = (event) => {
+    event.preventDefault();
+  
+    // console.log(event);
+  
+    let formData = {
+      title: event.target[0].value.replace(/(^\w{1})|(\s+\w{1})/g, (letter) =>
+        letter.toUpperCase()
+      ),
+      date: moment.utc(CurrentDate).format("YYYY-MM-DD"),
+    };
+  
+    // alert("title is : " + event.target[0].value);
+  
+    Axios.post("/api/manager/addMatchTitle", formData)
+      .then((results) => {
+        console.log("results.data.message :", results.data.message);
+        alert("Title Add Success : " + event.target[0].value);
+        setChange(!change)
+        // window.location.reload();
+      })
+      .catch((err) => console.log("error : ", err));
+  };
+
+  const handleDelete = (title)=>{
+    // alert(title)
+    const data = {
+      match_title:title
+    }
+    Axios.post("/api/manager/deleteMatchTitle", data)
+      .then((results) => {
+        alert("Delete Successfull")
+        console.log("results.data.message :", results.data.message);
+        setChange(!change)
+        // window.location.reload();
+      })
+      .catch((err) => console.log("error : ", err));
+  };
+
+  
   React.useEffect(() => {
     // console.log("inside useEffect")
     Axios.get("http://localhost:3001/api/manager/getMatchTitle")
       .then((response) => {
         console.log(response);
-        setTitle(response.data);
+        // setTitle(response.data);
+        var tournment = [];
+        if (response.data) {
+          response.data.data.forEach((element) => {
+            var obj = {
+              title: element.title,
+              btn: (
+                <Link
+                  to={{
+                    pathname: "/manager/AddTournamentMatch/" + element.title,
+                    state: { stateParam: true },
+                  }}
+                >
+                  <BiChevronRightCircle
+                    style={{ color: "rgba(0, 146, 112, 1)", fontSize: " 35px" }}
+                  />
+                </Link>
+              ),
+              del: (
+                // <BiChevronRightCircle
+                //   style={{ color: "rgba(0, 146, 112, 1)", fontSize: " 35px" }}
+                // />
+                <MdOutlineDelete style={{fontSize:"30px" , cursor:"pointer"}} onClick={()=>handleDelete(element.title)} />
+              ),
+            };
+
+            tournment.push(obj);
+          });
+          setTournament(tournment);
+          console.log(tournment);
+          console.log(tournment_data);
+        }
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [change]);
 
-  if (matchTitle) {
-    // alert("Match titles ok ");
-
-    {
-      matchTitle.data.map((item, i) => {
-        tournment_data[i] = {
-          key: i,
-          title: item.title,
-          btn: (
-            <Link
-              to={{
-                pathname: "/manager/AddTournamentMatch/" + item.title,
-                state: { stateParam: true },
-              }}
-            >
-              <BiChevronRightCircle
-                style={{ color: "rgba(0, 146, 112, 1)", fontSize: " 35px" }}
-              />
-            </Link>
-          ),
-        };
-      });
-    }
-  }
   const selectTab_1 = () => {
     setTabNumber(1);
     // console.log(tabNumber + "selectTab 1");
@@ -201,33 +234,24 @@ function AddMatch() {
                     <div className="tabs-right"></div>
                   </div>
                   <div className="tablee">
-                    {/* {tournment_data?<SearchTable
-                      t_title={""}
-                      data={tournment_data}
-                      columns={columns}
-                      searching={true}
-                      sort={false}
-                      filter={false}
-                      paging={true}
-                      headerC={"#4a4a4a"}
-                      headerH={"40px"}
-                      headerFC={"white"}
-                      headerFS={"1.2rem"}
-                      headerFW={"500"}
-                    />:""} */}
-                    <div className="table-head">
-                        <div className="coll-4-11">Title</div>
-                        <div className="coll-4-11"></div>
-                    </div>
-                    
-                    {tournment_data!=0?tournment_data?.map((item,i)  => 
-                      <><div className="table-row">
-                      <div className="coll-4-11">{item.title}</div>
-                      <div className="coll-4-11">{item.btn}</div>
-                      
-                      </div>
-                      <hr></hr></>
-                    ):<h6 style={{ height : "200px"}}>NO Data to display</h6>}
+                    {tournment_data ? (
+                      <SearchTable
+                        t_title={""}
+                        data={tournment_data ? tournment_data : "no data"}
+                        columns={columns}
+                        searching={true}
+                        sort={false}
+                        filter={false}
+                        paging={true}
+                        headerC={"#4a4a4a"}
+                        headerH={"40px"}
+                        headerFC={"white"}
+                        headerFS={"1.2rem"}
+                        headerFW={"500"}
+                      />
+                    ) : (
+                      "No Before added tiles"
+                    )}
                   </div>
                 </div>
                 {/* <SampleForm arr={array1} upload = {true} /> */}

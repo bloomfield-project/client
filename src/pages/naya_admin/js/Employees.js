@@ -18,38 +18,12 @@ let user_id;
 let current_user_role;
 let compRes;
 
-// console.log(data[0]);
-const columns = [
-  {
-    title: "Employee ID",
-    field: "id",
-  },
-  {
-    title: "Employee",
-    field: "img",
-  },
-  {
-    title: "",
-    field: "name",
-  },
-  {
-    title: "Role",
-    field: "role",
-  },
-  {
-    title: "",
-    field: "edit",
-  },
-  {
-    title: "",
-    field: "delete",
-  },
-];
 
 function Employees() {
+  const [employee_data, setEmployeeData] = useState([]);
   const [post, setPost] = React.useState(null);
   const loginData = useSelector((state) => state.auth.data);
-
+  const [search, setSearch] = useState("");
   const [show, setShow] = useState(false);
 
   // const [compRes, setRes] = React.useState("");
@@ -63,6 +37,9 @@ function Employees() {
   const [coachDeleteErrorMessage, setCoachDeleteErrorMessage] = useState(false);
   const [employeeDeleteModelShow, setemployeeDeleteModelShow] = useState(false);
   const [modelErrorMessage, setModelErrorMessage] = useState("");
+  let role;
+  let id_prefix;
+
   React.useEffect(() => {
     getDataFromDatabase();
   }, []);
@@ -70,6 +47,52 @@ function Employees() {
   function getDataFromDatabase() {
     Axios.get("http://localhost:3001/api/user/employees").then((response) => {
       setPost(response.data);
+      var tournment = [];
+      if (response.data) {
+        response.data.data.forEach((element) => {
+          role = element.role.replace(/(^\w{1})|(\s+\w{1})/g, (letter) =>
+            letter.toUpperCase()
+          );
+
+          if (role === "Coach") {
+            id_prefix = "BC-";
+          } else if (role === "Manager") {
+            id_prefix = "BM-";
+          }
+          var obj = {
+            id: id_prefix + role.user_id,
+            name: element.name.replace(/(^\w{1})|(\s+\w{1})/g, (letter) =>
+              letter.toUpperCase()
+            ),
+            img: <img className="row-image" src={profpic} alt=""></img>,
+            contact: element.contact,
+            email: element.email,
+            role: element.role.replace(/(^\w{1})|(\s+\w{1})/g, (letter) =>
+              letter.toUpperCase()
+            ),
+            edit: (
+              <Link to={"/admin/EditEmployee/" + element.user_id}>
+                <Button variant="secondary">Edit</Button>{" "}
+              </Link>
+            ),
+            delete: (
+              <Button
+                variant="secondary"
+                className="btn btn-danger"
+                value={element.user_id + "/" + element.role}
+                onClick={deleteEmployee}
+              >
+                Delete
+              </Button>
+            ),
+          };
+
+          tournment.push(obj);
+        });
+        setEmployeeData(tournment);
+        console.log(tournment);
+        console.log(employee_data);
+      }
     });
   }
   const deleteEmployee = (event) => {
@@ -152,55 +175,11 @@ function Employees() {
   const data = post ? post.data : "";
   if (!post) return null;
 
-  let role;
-  let id_prefix;
-  {
-    post.data.map((item, i) => {
-      role = item.role.replace(/(^\w{1})|(\s+\w{1})/g, (letter) =>
-        letter.toUpperCase()
-      );
 
-      if (role == "Coach") {
-        id_prefix = "BC-";
-      } else if (role == "Manager") {
-        id_prefix = "BM-";
-      }
-      dataArray[i] = {
-        id: id_prefix + item.user_id,
-        name: item.name.replace(/(^\w{1})|(\s+\w{1})/g, (letter) =>
-          letter.toUpperCase()
-        ),
-        img: <img className="row-image" src={profpic} alt=""></img>,
-        contact: item.contact,
-        email: item.email,
-        role: item.role.replace(/(^\w{1})|(\s+\w{1})/g, (letter) =>
-          letter.toUpperCase()
-        ),
-        edit: (
-          <Link to={"/admin/EditEmployee/" + item.user_id}>
-            <Button variant="secondary">Edit</Button>{" "}
-          </Link>
-        ),
-        delete: (
-          <Button
-            variant="secondary"
-            className="btn btn-danger"
-            value={item.user_id + "/" + item.role}
-            onClick={deleteEmployee}
-          >
-            Delete
-          </Button>
-        ),
-      };
-    });
+  function closeModel2(e) {
+    e.preventDefault();
+    setCoachDeleteErrorMessage(false);
   }
-
-  function closeModel2(e){
-    e.preventDefault()
-    setCoachDeleteErrorMessage(false)
-  }
-  
-
 
   return (
     <>
@@ -230,27 +209,55 @@ function Employees() {
             <hr></hr>
             <div className="table-box-1">
               <div className="tablee">
+                <input
+                  placeholder="Search"
+                  onChange={(e) => {
+                    setSearch(e.target.value);
+                  }}
+                  style={{width:'100%',marginBottom:"10px",border:'none', borderBottom:'1px solid black'}}
+                />
                 <div className="table-head">
-                  <div className="coll-4-11">Employee ID</div>
                   <div className="coll-4-11">Employee Name</div>
+                  <div className="coll-4-11">Emil</div>
+
                   <div className="coll-4-1">Job Role</div>
                   <div className="coll-4-1"></div>
                   <div className="coll-4-1"></div>
                 </div>
-                {dataArray != []
-                  ? dataArray?.map((item, i) => (
-                      <>
-                        <div className="table-row">
-                          <div className="coll-4-11">{item.id}</div>
-                          <div className="coll-4-11">{item.name}</div>
-                          <div className="coll-4-1">{item.role}</div>
-                          <div className="coll-4-1">{item.edit}</div>
-                          <div className="coll-4-1">{item.delete}</div>
-                        </div>
-                        <hr></hr>
-                      </>
-                    ))
-                  : "gg"}
+
+                {employee_data !== []
+                  ? employee_data
+                      ?.filter((item) => {
+                        return search.toLowerCase() === ""
+                          ? item
+                          : item.name?.toLowerCase().includes(search) ||
+                              item.email?.includes(search) ||
+                              item.role?.toLowerCase().includes(search);
+                      })
+                      .map((item, i) => (
+                        <>
+                          <div className="table-row">
+                            <div
+                              className="coll-4-11"
+                              style={{ oveflow: "hidden" }}
+                            >
+                              {item.name}
+                            </div>
+                            <div
+                              className="coll-4-11"
+                              style={{ oveflow: "hidden" }}
+                            >
+                              {item.email}
+                            </div>
+
+                            <div className="coll-4-1">{item.role}</div>
+                            <div className="coll-4-1">{item.edit}</div>
+                            <div className="coll-4-1">{item.delete}</div>
+                          </div>
+                          <hr></hr>
+                        </>
+                      ))
+                  : "No data to show"}
               </div>
             </div>
 
@@ -300,7 +307,7 @@ function Employees() {
               placeholder="Enter password"
               className="form-control w-76 bg-white text-dark mx-auto"
               style={{ marginLeft: "5px", width: "90%" }}
-              value="960210324v"
+              // value="960210324v"
             />
             <div className="d-grid gap-2 d-md-flex justify-content-md-end p-3 mb-2">
               <button type="reset" className="btn btn-secondary">
@@ -336,28 +343,21 @@ function Employees() {
             padding: "0",
           }}
         >
-          <h5 style={{ paddingLeft: "20px" }}>
-            {" "}
-            {modelErrorMessage}
-          </h5>
-            <div className="d-grid gap-2 d-md-flex justify-content-md-end p-3 mb-2">
-              <button
-                type="reset"
-                className="btn btn-danger"
-                onClick={closeModel2}
-              >
-                cancel
-              </button>
-            </div>
+          <h5 style={{ paddingLeft: "20px" }}> {modelErrorMessage}</h5>
+          <div className="d-grid gap-2 d-md-flex justify-content-md-end p-3 mb-2">
+            <button
+              type="reset"
+              className="btn btn-danger"
+              onClick={closeModel2}
+            >
+              cancel
+            </button>
+          </div>
         </Modal.Body>
         <Modal.Footer
           style={{ backgroundColor: "white", border: "none" }}
         ></Modal.Footer>
-
       </Modal>
-
-
-      
       <Modal
         show={employeeDeleteModelShow}
         onHide={handleClose}

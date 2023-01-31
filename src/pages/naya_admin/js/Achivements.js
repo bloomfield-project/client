@@ -6,58 +6,58 @@ import Button from "react-bootstrap/Button";
 import "../../Home.css";
 import SampleCard from "../../../component/Card/SampleCard";
 // import profpic from "../header/profpic.jfif";
-import profpic from "../../../component/header/profpic.jfif";
+// import profpic from "../../../component/header/profpic.jfif";
 import moment from "moment";
 const Axios = require("axios").default;
 
 const data = [];
 
-const data_1 = [
-  {
-    main_title: "Shehan Lakmal",
-    title: "Won the hero cup ODI series",
-    img: <img className="card-detail-img" src={profpic} alt=""></img>,
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,  but also",
-    date: "2022-05-11",
-    time: "09:00 am",
+// const data_1 = [
+//   {
+//     main_title: "Shehan Lakmal",
+//     title: "Won the hero cup ODI series",
+//     img: <img className="card-detail-img" src={profpic} alt=""></img>,
+//     description:
+//       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,  but also",
+//     date: "2022-05-11",
+//     time: "09:00 am",
     
-  },
+//   },
 
-  {
-    main_title: "Shehan Lakmal",
-    title: "Won the hero cup ODI series",
-    img: <img className="card-detail-img" src={profpic} alt=""></img>,
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,  but also",
-    date: "2022-05-11",
-    time: "09:00 am",
+//   {
+//     main_title: "Shehan Lakmal",
+//     title: "Won the hero cup ODI series",
+//     img: <img className="card-detail-img" src={profpic} alt=""></img>,
+//     description:
+//       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,  but also",
+//     date: "2022-05-11",
+//     time: "09:00 am",
     
-  },
-  {
-    main_title: "Shehan Lakmal",
-    title: "Won the hero cup ODI series",
-    img: <img className="card-detail-img" src={profpic} alt=""></img>,
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,  but also",
-    date: "2022-05-11",
-    time: "09:00 am",
+//   },
+//   {
+//     main_title: "Shehan Lakmal",
+//     title: "Won the hero cup ODI series",
+//     img: <img className="card-detail-img" src={profpic} alt=""></img>,
+//     description:
+//       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,  but also",
+//     date: "2022-05-11",
+//     time: "09:00 am",
     
-  },
-  {
-    main_title: "Shehan Lakmal",
-    title: "Won the hero cup ODI series",
-    img: <img className="card-detail-img" src={profpic} alt=""></img>,
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,  but also",
-    date: "2022-05-11",
-    time: "09:00 am",
+//   },
+//   {
+//     main_title: "Shehan Lakmal",
+//     title: "Won the hero cup ODI series",
+//     img: <img className="card-detail-img" src={profpic} alt=""></img>,
+//     description:
+//       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,  but also",
+//     date: "2022-05-11",
+//     time: "09:00 am",
     
-  },
-];
+//   },
+// ];
 
 function Achivementss() {
-  const [tabNumber, setTabNumber] = useState(1);
+  // const [tabNumber, setTabNumber] = useState(1);
   const [tachi, settach] = React.useState();
 
   React.useEffect(() => {
@@ -84,14 +84,14 @@ function Achivementss() {
     });
   }
 
-  const selectTab_1 = () => {
-    setTabNumber(1);
-    // console.log(tabNumber + "selectTab 1");
-  };
-  const selectTab_2 = () => {
-    setTabNumber(2);
-    // console.log(tabNumber + "selectTab 2");
-  };
+  // const selectTab_1 = () => {
+  //   setTabNumber(1);
+  //   // console.log(tabNumber + "selectTab 1");
+  // };
+  // const selectTab_2 = () => {
+  //   setTabNumber(2);
+  //   // console.log(tabNumber + "selectTab 2");
+  // };
 
   return (
     <>
@@ -118,8 +118,10 @@ function Achivementss() {
 
             <hr></hr>
             <div className="table-box-1">
+
               <div className="tablee">
-                <SampleCard arr={data} />
+              
+                <SampleCard arr={data}/>
               </div>
             </div>
           </div>

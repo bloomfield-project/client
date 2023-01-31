@@ -5,6 +5,7 @@ import Header from "../../../component/header/Header";
 import Navbar from "../../../component/NavigationBar/Navbar";
 import SampleForm from "../../../component/Form/SampleForm";
 import { IoChevronBackCircleOutline } from "react-icons/io5";
+import Modal from "react-bootstrap/Modal";
 
 import "antd/dist/antd.css";
 
@@ -38,44 +39,17 @@ console.log("current date : ", currentDate);
 
 var imgurl;
 
-const AddTournament = (event) => {
-  event.preventDefault();
-
-  console.log(event);
-
-  let formData = {
-    title: event.target[0].value,
-    date: event.target[1].value,
-    time: event.target[2].value,
-    ground: event.target[3].value,
-    match_format: event.target[4].value,
-    op_team_name: event.target[5].value,
-    image: imgurl,
-  };
-
-  console.log("POST img url : ",imgurl);
-  
-  Axios.post("http://localhost:3001/api/manager/AddTournamentMatch", formData)
-    .then((res) => {
-      // console.log("res", res);
-
-      if (res.data.validation != null) {
-        alert(res.data.validation);
-      } else {
-        alert("Match Add Successfully");
-        window.history.back()
-      }
-
-      // setPost(res);
-    })
-    .catch((err) => console.log("error is arized", err));
-};
-
 function AddTournamentMatch(props) {
- 
-
+  const [errorMsg, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const [status, setStatus] = useState("");
+  const [show, setShow] = useState(false);
   const [imageUpload, setImageUpload] = useState(null);
   const [imageUrl, setImageUrls] = useState(null);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+
   const { type } = useParams();
 
   const imagesListRef = ref(storage, "images/");
@@ -84,14 +58,12 @@ function AddTournamentMatch(props) {
     if (imageUpload == null) return;
     const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
     uploadBytes(imageRef, imageUpload).then((snapshot) => {
-
-      alert("image uploaded")
+      alert("image uploaded");
       getDownloadURL(snapshot.ref).then((url) => {
         setImageUrls(url);
         imgurl = url;
-        console.log("imgurl : ",imgurl);
+        console.log("imgurl : ", imgurl);
       });
-
     });
   };
 
@@ -153,12 +125,107 @@ function AddTournamentMatch(props) {
   console.log("post data function ");
   // if (post) return null;
 
+  const AddTournament = (event) => {
+    event.preventDefault();
+
+    console.log(event);
+
+    let formData = {
+      title: event.target[0].value,
+      date: event.target[1].value,
+      time: event.target[2].value,
+      ground: event.target[3].value,
+      match_format: event.target[4].value,
+      op_team_name: event.target[5].value,
+      team_icon: imgurl,
+    };
+
+    console.log("POST img url : ", imgurl);
+
+    Axios.post("http://localhost:3001/api/manager/addPracticeMatch", formData)
+      .then((results) => {
+        console.log("res", results);
+        setError(results.data.data.message);
+        setSuccess(results.data.data.success);
+        setStatus(results.data.data.status);
+        console.log(results.data.data.message);
+        console.log(results);
+        if (results.data.data.message) {
+          setError(results.data.data.message);
+          handleShow();
+        } else {
+          setError(null);
+          alert("Submit Again!");
+          window.location.reload();
+        }
+
+        // setPost(res);
+      })
+      .catch((err) => console.log("error is arized", err));
+  };
+
   return (
     <>
+      <Modal
+        show={show}
+        onHide={handleClose}
+        backdrop="static"
+        keyboard={false}
+        centered
+      >
+        <Modal.Header
+          closeButton
+          style={{ backgroundColor: "white", border: "none" }}
+        >
+          <Modal.Title> {status} </Modal.Title>
+        </Modal.Header>
+        <Modal.Body
+          style={{
+            backgroundColor: "white",
+            height: "fit-content",
+            padding: "0",
+          }}
+        >
+          {success === 0 ? (
+            <p
+              style={{
+                color: "#f0677b",
+                textAlign: "center",
+                fontSize: "large",
+                backgroundColor: "white",
+                margin: "0",
+              }}
+            >
+              {errorMsg}
+              {/* {edate} */}
+            </p>
+          ) : (
+            <p
+              style={{
+                color: "#626d80",
+                textAlign: "center",
+                fontSize: "large",
+                backgroundColor: "white",
+                margin: "0",
+              }}
+            >
+              {errorMsg}
+              {/* {edate} */}
+            </p>
+          )}
+
+          {/* <h1>Render Count: {count.current}</h1> */}
+        </Modal.Body>
+        <Modal.Footer style={{ border: "none" }}>
+          <Link >
+            <button type="button" class="btn btn-success" onClick={handleClose}>
+              OK
+            </button>
+          </Link>
+        </Modal.Footer>
+      </Modal>
       <div className="page-container-1">
-        <div className="header-container">
-          <Header></Header>
-        </div>
+        <div className="header-container"><Header></Header></div>
 
         <div className="body-container-1">
           <div className="navbar-container">
@@ -232,19 +299,20 @@ function AddTournamentMatch(props) {
                                 className="form-control"
                               />
                               <br></br>
-                              <button onClick={uploadFile} className="btn btn-primary" style={{float:"right"}}>
+                              <button
+                                onClick={uploadFile}
+                                className="btn btn-primary"
+                                style={{ float: "right" }}
+                              >
                                 {" "}
                                 Upload Image
                               </button>
                               <br></br>
-                                <img src={imageUrl} style={{width:"150px"}}/>
-                              
-
+                              <img src={imageUrl} style={{ width: "150px" }} />
                             </div>
-                            
+
                             <ResetSubmit />
                           </form>
-
                         </div>
                       </div>
                     </div>

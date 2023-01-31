@@ -1,5 +1,3 @@
-
-
 import Header from "../../../component/header/Header";
 import Navbar from "../../../component/NavigationBar/Navbar";
 import "../../Home.css";
@@ -14,6 +12,7 @@ import { fetchData } from "../../AuthServer";
 import Modal from "react-bootstrap/Modal";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Search from "antd/lib/transfer/search";
 // import userController from "../../../../../server-1/api/user/user.controller";
 const Axios = require("axios").default;
 
@@ -26,35 +25,40 @@ const onChange = (key) => {
 };
 
 function MatchDetail() {
-const loginData = useSelector((state) => state.auth.data);
+  const loginData = useSelector((state) => state.auth.data);
 
   const [show, setShow] = useState(false);
 
   // const [compRes, setRes] = React.useState("");
 
-
   const [responseData, setResponseData] = useState([]);
   const [responseDataPast, setPastResponseData] = useState([]);
 
-  
+  const [search, setSearch] = useState("");
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   const deleteMatch = (event) => {
     event.preventDefault();
-    console.log(event)
+    console.log(event);
     match_id = event.target.attributes[1].nodeValue;
     // if (name) {
-    console.log("name from button : " + event.target.attributes[1].nodeValue +" "+ match_id);
+    console.log(
+      "name from button : " +
+        event.target.attributes[1].nodeValue +
+        " " +
+        match_id
+    );
     handleShow();
     // }
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(event)
+    console.log(event);
     //alert("hahvjvjkbbnnn,nkjlk;kl;mlnkbhcfdxdzezezez")
-    console.log("Form was submitted! : " ,event.target[0].value);
+    console.log("Form was submitted! : ", event.target[0].value);
     let mdata = {
       nic: loginData.data.nic,
       password: event.target[0].value,
@@ -62,45 +66,38 @@ const loginData = useSelector((state) => state.auth.data);
 
     passCompare(mdata);
     console.log("succes ", compRes);
-
-    
   };
 
   function passCompare(mdata) {
     Axios.post("http://localhost:3001/api/manager/getPassword", mdata)
       .then((res) => {
         compRes = res.data.comp;
-        console.log(res.data.comp)
+        console.log(res.data.comp);
         if (compRes) {
-
           let data = {
-            match_id:match_id,
-          }
-    
-          console.log("data : ",data)
+            match_id: match_id,
+          };
+
+          console.log("data : ", data);
           console.log("Passwords are mathched");
           Axios.post("http://localhost:3001/api/manager/deleteMatch", data)
-          .then((res) => {
-            // console.log(setRes(res.data));
-            handleClose()
-            // window.history.back()
-            window.location.reload();
+            .then((res) => {
+              // console.log(setRes(res.data));
+              handleClose();
+              // window.history.back()
+              window.location.reload();
 
-            //*********************************************************************
-            // use state ekakata daala hadann ooni .
-            // */
-    
-          })
-          .catch((err) => console.log("error is arized", err));
-      
-        }
-        else{
-          alert("Enter Correct Password !")
+              //*********************************************************************
+              // use state ekakata daala hadann ooni .
+              // */
+            })
+            .catch((err) => console.log("error is arized", err));
+        } else {
+          alert("Enter Correct Password !");
         }
       })
       .catch((err) => console.log("error is arized", err));
   }
-
 
   var today = new Date();
   var dd = String(today.getDate()).padStart(2, "0");
@@ -180,13 +177,36 @@ const loginData = useSelector((state) => state.auth.data);
             </div>
             <hr></hr>
             <div className="tabs-contain-box">
+              <input
+                type="text"
+                placeholder="Search"
+                onChange={(e) => {
+                  setSearch(e.target.value);
+                  console.log(typeof search + search);
+                }}
+                style={{
+                  width: "100%",
+                  marginBottom: "20px",
+                  padding:'5px',
+                  border: "none",
+                  borderBottom: "1px solid black",
+                  borderRadius:'5px',
+                }}
+              />
               <Tabs defaultActiveKey="1" onChange={onChange}>
                 <TabPane tab="Pending" key="1">
-
                   <div className="matches-container-outer-box">
                     {/* match card */}
                     {msg != 0 ? (
-                      dataM?.map((item, i) => (
+                      dataM?.filter((item) => {
+                        return search.toLowerCase() === ""
+                          ? item
+                          : item.title?.toLowerCase().includes(search) ||
+                          item.match_format?.toLowerCase().includes(search) ||
+                          item.ground?.toLowerCase().includes(search) ||
+                          item.op_team_name?.toLowerCase().includes(search) ||
+                          item.date?.includes(search);
+                      }).map((item, i) => (
                         <>
                           <div className="matche-container-outer-box">
                             <div className="match-box-up">
@@ -238,7 +258,11 @@ const loginData = useSelector((state) => state.auth.data);
                                   </h4>
                                 </div>
                                 <div className="box-mid-right-mid">
-                                  <img src={opTeam}></img>
+                                  <img
+                                    src={
+                                      item.team_icon ? item.team_icon : opTeam
+                                    }
+                                  ></img>
                                 </div>
                                 <div className="box-mid-right-down">
                                   <h5 style={{ color: "#a5a5a5" }}>
@@ -253,7 +277,6 @@ const loginData = useSelector((state) => state.auth.data);
                                 className="btn btn-danger"
                                 value={item.match_id}
                                 onClick={deleteMatch}
-                               
                               >
                                 Delete
                               </Button>
@@ -273,117 +296,123 @@ const loginData = useSelector((state) => state.auth.data);
                         </>
                       ))
                     ) : (
-                      <h6 style={{ height: "200px" }}>
-                        NO sessions to display
-                      </h6>
+                      <h6 style={{ height: "200px" }}>No data to display</h6>
                     )}
                   </div>
                 </TabPane>
                 <TabPane tab="Past" key="2">
                   <div className="matches-container-outer-box">
                     {/* match card */}
-                    {msgP != 0 ? (
-                      dataMP?.map((item, i) => (
-                        <>
-                          <div className="matche-container-outer-box">
-                            <div className="match-box-up">
-                              <div className="go-out">
-                                <h4
-                                  style={{
-                                    color: "#009270",
-                                    fontSize: "2rem",
-                                    fontWeight: "bolder",
-                                  }}
+                    {msgP !== 0 ? (
+                      dataMP
+                        ?.filter((item) => {
+                          return search.toLowerCase() === ""
+                            ? item
+                            : item.title?.toLowerCase().includes(search) ||
+                            item.format?.toLowerCase().includes(search) ||
+                            item.ground?.toLowerCase().includes(search) ||
+                            item.op_team_name?.toLowerCase().includes(search) ||
+                            item.date?.includes(search);
+                        })
+                        .map((item, i) => (
+                          <>
+                            <div className="matche-container-outer-box">
+                              <div className="match-box-up">
+                                <div className="go-out">
+                                  <h4
+                                    style={{
+                                      color: "#009270",
+                                      fontSize: "2rem",
+                                      fontWeight: "bolder",
+                                    }}
+                                  >
+                                    {item.title}
+                                  </h4>
+                                </div>
+                              </div>
+                              <div className="match-box-mid">
+                                <div className="match-box-mid-left">
+                                  <div className="box-mid-left-up">
+                                    <h4 style={{ color: "#a5a5a5" }}>
+                                      BLOOMFIELD
+                                    </h4>
+                                  </div>
+                                  <div className="box-mid-left-mid">
+                                    <img src={Team}></img>
+                                  </div>
+                                  <div className="box-mid-left-down">
+                                    <h5>
+                                      {item.our_score +
+                                        "-" +
+                                        item.our_wickets +
+                                        " (" +
+                                        item.our_overs +
+                                        ")"}
+                                    </h5>
+                                  </div>
+                                </div>
+                                <div className="match-box-mid-mid">
+                                  <div className="box-mid-mid-up">
+                                    <h5 style={{ color: "#a5a5a5" }}>
+                                      {item.format}
+                                    </h5>
+                                  </div>
+                                  <div className="box-mid-mid-mid">VS</div>
+                                  <div className="box-mid-mid-down">
+                                    <h5 style={{ color: "#a5a5a5" }}>
+                                      {item.ground}
+                                    </h5>
+                                  </div>
+                                </div>
+                                <div className="match-box-mid-right">
+                                  <div className="box-mid-right-up">
+                                    <h4 style={{ color: "#a5a5a5" }}>
+                                      {item.op_team_name}
+                                    </h4>
+                                  </div>
+                                  <div className="box-mid-right-mid">
+                                    <img src={opTeam}></img>
+                                  </div>
+                                  <div className="box-mid-right-down">
+                                    <h5>
+                                      {item.op_score +
+                                        "-" +
+                                        item.op_wickets +
+                                        " (" +
+                                        item.op_overs +
+                                        ")"}
+                                    </h5>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="match-box-down-1">
+                                <div className="match-box-down-1-left">
+                                  <h5 style={{ color: "#009270" }}>
+                                    {item.our_score > item.op_score
+                                      ? "BLOOMFIELD won"
+                                      : item.op_team + " won"}
+                                  </h5>
+                                </div>
+                                <div className="match-box-down-1-right">
+                                  <h5 style={{ color: "#a5a5a5" }}>
+                                    {item.date}
+                                  </h5>
+                                </div>
+                              </div>
+                              <div className="match-box-down">
+                                <Link
+                                  to={"/manager/MMatchDetails/" + item.match_id}
                                 >
-                                  {item.title}
-                                </h4>
+                                  <Button variant="secondary">View</Button>
+                                </Link>
                               </div>
                             </div>
-                            <div className="match-box-mid">
-                              <div className="match-box-mid-left">
-                                <div className="box-mid-left-up">
-                                  <h4 style={{ color: "#a5a5a5" }}>
-                                    BLOOMFIELD
-                                  </h4>
-                                </div>
-                                <div className="box-mid-left-mid">
-                                  <img src={Team}></img>
-                                </div>
-                                <div className="box-mid-left-down">
-                                  <h5>
-                                    {item.our_score +
-                                      "-" +
-                                      item.our_wickets +
-                                      " (" +
-                                      item.our_overs +
-                                      ")"}
-                                  </h5>
-                                </div>
-                              </div>
-                              <div className="match-box-mid-mid">
-                                <div className="box-mid-mid-up">
-                                  <h5 style={{ color: "#a5a5a5" }}>
-                                    {item.format}
-                                  </h5>
-                                </div>
-                                <div className="box-mid-mid-mid">VS</div>
-                                <div className="box-mid-mid-down">
-                                  <h5 style={{ color: "#a5a5a5" }}>
-                                    {item.ground}
-                                  </h5>
-                                </div>
-                              </div>
-                              <div className="match-box-mid-right">
-                                <div className="box-mid-right-up">
-                                  <h4 style={{ color: "#a5a5a5" }}>
-                                    {item.op_team_name}
-                                  </h4>
-                                </div>
-                                <div className="box-mid-right-mid">
-                                  <img src={opTeam}></img>
-                                </div>
-                                <div className="box-mid-right-down">
-                                  <h5>
-                                    {item.op_score +
-                                      "-" +
-                                      item.op_wickets +
-                                      " (" +
-                                      item.op_overs +
-                                      ")"}
-                                  </h5>
-                                </div>
-                              </div>
-                            </div>
-                            <div className="match-box-down-1">
-                              <div className="match-box-down-1-left">
-                                <h5 style={{ color: "#009270" }}>
-                                  {item.our_score > item.op_score
-                                    ? "BLOOMFIELD won"
-                                    : item.op_team + " won"}
-                                </h5>
-                              </div>
-                              <div className="match-box-down-1-right">
-                                <h5 style={{ color: "#a5a5a5" }}>
-                                  {item.date}
-                                </h5>
-                              </div>
-                            </div>
-                            <div className="match-box-down">
-                              <Link
-                                to={"/manager/MMatchDetails/" + item.match_id}
-                              >
-                                <Button variant="secondary">View</Button>
-                              </Link>
-                            </div>
-                          </div>
-                          {/* match card */}
-                          <div className="gap-3"></div>
-                        </>
-                      ))
+                            {/* match card */}
+                            <div className="gap-3"></div>
+                          </>
+                        ))
                     ) : (
-                      <h6 style={{ height: "200px" }}>
-                        NO sessions to display
-                      </h6>
+                      <h6 style={{ height: "200px" }}>No data to display</h6>
                     )}
                   </div>
                 </TabPane>
@@ -415,7 +444,7 @@ const loginData = useSelector((state) => state.auth.data);
           }}
         >
           {/* <h1>Render Count: {count.current}</h1> */}
-          <form className="form-group mb-3" onSubmit={handleSubmit} >
+          <form className="form-group mb-3" onSubmit={handleSubmit}>
             <input
               type="password"
               placeholder="Enter password"

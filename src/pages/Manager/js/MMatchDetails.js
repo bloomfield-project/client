@@ -193,10 +193,10 @@ function MMatchDetails() {
                             <a href="#">{item.name}</a>
                           </div>
                           <div className="col-MD-2"></div>
-                          <div className="col-MD-3">{item.name}</div>
-                          <div className="col-MD-4">{item.name}</div>
-                          <div className="col-MD-5">{item.name}</div>
-                          <div className="col-MD-6">{item.name}</div>
+                          <div className="col-MD-3">{item.runs}</div>
+                          <div className="col-MD-4">{item.no_of_balls_faced}</div>
+                          <div className="col-MD-5">{item.sixes}</div>
+                          <div className="col-MD-6">{item.fours}</div>
                           <div className="col-MD-7">{item.name}</div>
                         </div>
                         <hr></hr>
@@ -255,7 +255,7 @@ function MMatchDetails() {
                           <div className="col-MD-1">
                             <a href="#">{item.name}</a>
                           </div>
-                          <div className="col-MD-3">{item.name}</div>
+                          <div className="col-MD-3">{item.runs}</div>
                           <div className="col-MD-3">{item.name}</div>
                           <div className="col-MD-4">{item.name}</div>
                           <div className="col-MD-5">{item.name}</div>

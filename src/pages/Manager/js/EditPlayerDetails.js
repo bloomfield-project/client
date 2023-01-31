@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Header from "../../../component/header/Header";
 // import "../css/PlayerRegistration.css";
+import PlayerEditForm from "./PlayerEditForm";
 import { IoChevronBackCircleOutline } from "react-icons/io5";
 import Modal from "react-bootstrap/Modal";
 import EditDetails from "../../../component/EditDetail/EditDetails";
@@ -16,6 +17,8 @@ import {
 } from "firebase/storage";
 import { storage } from "../../../../src/firebase";
 import { v4 } from "uuid";
+const lankaNic2019 = require("lanka-nic-2019")
+const moment = require("moment");
 
 const axios = require("axios").default;
 
@@ -116,36 +119,43 @@ function EditPlayerDetails() {
   const createUser = (event) => {
     event.preventDefault();
     console.log("eevent : : ", event);
-
+    
+    const d = new Date(lankaNic2019.infoNic(event.target[2].value).birthday);
+    // console.log("date : ", d);
+    
     let userData = {
-      user_id:id,
-      e_mail: event.target[0].value,
-      contact: event.target[1].value,
-      address: event.target[2].value,
+      user_id: id,
+      address: event.target[0].value,
+      email: event.target[1].value,
+      nic: event.target[2].value,
+      contact: event.target[3].value,
       image: imgurl ? imgurl : post[0].image,
+      gender:  lankaNic2019.infoNic(event.target[2].value).gender,
+      dob : moment(d).format('YYYY-MM-DD')
       // date:currentDate,
     };
     // const isValid = await userSchema.isValid(userData);
 
-    console.log("before post request ",userData);
+    console.log("before post request ", userData);
 
-    // let res =  axios.post('/api/user/', userData);
+    let res =  axios.post('/api/user/', userData);
     axios
       .post("/api/user/updateEmployee", userData)
       .then((results) => {
         console.log("user data ", userData);
         console.log("results ", results);
-
-        if (results.data.err) {
-          error_field = results.data.err.split(" ");
-          error_msg = ` ${error_field[2]} Has Allready Used `;
+      
+        if (results.data.result.success == 0) {
+        
           success = null;
-        } else if (!results.data.err) {
-          error_msg = null;
-          success = " Successfully Updated !";
+          alert(results.data.result.message);
+        } else if (results.data.result.success == 1) {
+          // error_msg = null;
+          // success = " Successfully Updated !";
+          alert(results.data.result.message)
         }
 
-        handleShow();
+        // handleShow();
       })
       .catch((err) => console.log("error is arized", err));
 
@@ -189,10 +199,16 @@ function EditPlayerDetails() {
                     {post[0].name}
                   </p>
                 </div>
-                <form onSubmit={createUser}>
-                  <EditDetails arr={array} backLink={"/manager/Players"} />
-
-                  <div className="form-group file-upload-wrapper w-100 p-3 mb-2" style={{ margin: "0px", width:"85%"}}>
+                <form
+                  onSubmit={createUser}
+                  className={
+                    "w-100 p-3 border border-secondary rounded  w-100 p-3 "
+                  }
+                >
+                  {/* <div
+                    className="form-group file-upload-wrapper w-100 p-3 mb-2"
+                    style={{ margin: "0px", width: "85%" }}
+                  >
                     <input
                       type="file"
                       onChange={(event) => {
@@ -202,7 +218,7 @@ function EditPlayerDetails() {
                     />
                     <br></br>
                     <button
-                    type="button"
+                      type="button"
                       onClick={uploadFile}
                       className="btn btn-primary"
                       style={{ float: "right" }}
@@ -211,16 +227,26 @@ function EditPlayerDetails() {
                       Upload Image
                     </button>
                     <br></br>
-                    <img src={imageUrl? imageUrl: post[0].image} style={{ width: "150px" }} />
-                  </div>
-                  <div className="d-grid gap-2 d-md-flex justify-content-md-end p-3 mb-2">
+                    <img
+                      src={imageUrl ? imageUrl : post[0].image}
+                      style={{ width: "150px" }}
+                    />
+                  </div> */}
+                  <PlayerEditForm
+                    NIC={post[0].nic}
+                    email={post[0].email}
+                    address={post[0].address}
+                    contact={post[0].contact}
+                  ></PlayerEditForm>
+                  
+                  {/* <div className="d-grid gap-2 d-md-flex justify-content-md-end p-3 mb-2">
                     <button type="reset" className="btn btn-secondary">
                       Reset
                     </button>
                     <button type="submit" className="btn btn-success">
                       Edit
                     </button>
-                  </div>
+                  </div> */}
                 </form>
               </div>
             </div>
