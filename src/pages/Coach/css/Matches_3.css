@@ -54,6 +54,12 @@ form-container-3-1 h6 {
     justify-content: flex-start;
 }
 
+.ppppp{
+    justify-content: flex-start;
+    color: red;
+    padding-left: 120px;
+}
+
 .M3-main-container-3-1 h6 {
     color: blue;
     font-weight: bold;

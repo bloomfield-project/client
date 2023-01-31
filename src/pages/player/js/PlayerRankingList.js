@@ -4,6 +4,7 @@ import "../../Home.css";
 import "../../Manager/css/CricketRanking.css"
 import "../../Manager/css/table.css"
 import profpic from "../../../component/header/profpic.jfif"
+import player from "../player.jpg"
 import { Tabs } from 'antd';
 import React from 'react';
 import {useState,useEffect} from "react";
@@ -131,7 +132,7 @@ function PlayerRankingList() {
                             {dataupcomming!=[]?dataupcomming?.sort((a, b) => a.rating > b.rating ? -1 : 1).map((item,i)  => 
                               <><div key={i} className="table-row">
                                 <div className="col-5-1">{i+1}</div>
-                                <div className="col-5-2"><img className="row-image" src={item.image!=""?item.image:profpic} alt=""></img><div style={{width: "80%", textAlign: "left", paddingTop:"10px"}}>{item.name}</div></div>
+                                <div className="col-5-2"><img className="row-image" src={item.image!=""?item.image:player} alt=""></img><div style={{width: "80%", textAlign: "left", paddingTop:"10px"}}>{item.name}</div></div>
                                 <div className="col-5-1">{item.avg}</div>
                                 <div className="col-5-1">{item.sr}</div>
                                 <div className="col-5-1">{item.rating}</div>
@@ -172,7 +173,7 @@ function PlayerRankingList() {
                             {dataupcomming!=[]?dataupcomming?.sort((a, b) => a.B_rating > b.B_rating ? -1 : 1).map((item,i)  => 
                               <><div key={i} className="table-row">
                                 <div className="col-5-1">{i+1}</div>
-                                <div className="col-5-2"><img className="row-image" src={item.image!=""?item.image:profpic} alt=""></img><div style={{width: "80%", textAlign: "left", paddingTop:"10px"}}>{item.name}</div></div>
+                                <div className="col-5-2"><img className="row-image" src={item.image!=""?item.image:player} alt=""></img><div style={{width: "80%", textAlign: "left", paddingTop:"10px"}}>{item.name}</div></div>
                                 <div className="col-5-1">{item.econ}</div>
                                 <div className="col-5-1">{item.b_wkts}</div>
                                 <div className="col-5-1">{item.B_rating}</div>
@@ -234,7 +235,7 @@ function PlayerRankingList() {
                             {dataupcomming!=[]?dataupcomming?.sort((a, b) => a.A_rating > b.A_rating ? -1 : 1).map((item,i)  => 
                               <><div key={i} className="table-row">
                                 <div className="col-7-1">{i+1}</div>
-                                <div className="col-5-2"><img className="row-image" src={item.image!=""?item.image:profpic} alt=""></img><div  style={{width: "80%", textAlign: "left", paddingTop:"10px"}}>{item.name}</div></div>
+                                <div className="col-5-2"><img className="row-image" src={item.image!=""?item.image:player} alt=""></img><div  style={{width: "80%", textAlign: "left", paddingTop:"10px"}}>{item.name}</div></div>
                                 <div className="col-7-3">{item.avg}</div>
                                 <div className="col-7-4">{item.sr}</div>
                                 <div className="col-7-5">{item.econ}</div>

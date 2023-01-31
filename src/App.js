@@ -52,6 +52,7 @@ import AddMatch from "./pages/Manager/js/AddMatch";
 import Matches_1 from "./pages/Coach/js/Matches_1";
 import Matches_2 from "./pages/Coach/js/Matches_2";
 import Macthes_3 from "./pages/Coach/js/Matches_3";
+import EditPlayerPerformance from "./pages/Coach/js/EditPlayerPerformance"
 
 import Psession from "./pages/player/js/Psessions";
 import PEvents from "./pages/player/js/PEvents";
@@ -252,6 +253,7 @@ function App() {
           <Route path="/coach/matches" element={<Protected_route role="coach"><Matches_2 /></Protected_route>} />
           <Route path="/coach/matches3/:id/:Tid" element={<Protected_route role="coach"><Macthes_3 /></Protected_route>} />
           <Route path="/coach/playerPerformance/:id/:player/:team" element={<Protected_route role="coach"><PlayerPerformance /></Protected_route>} />
+          <Route path="/coach/editPlayerPerformance/:id/:player/:team" element={<Protected_route role="coach"><EditPlayerPerformance /></Protected_route>} />
           <Route path="/coach/practiceSessions" element={<Protected_route role="coach"><PracticeSessions /></Protected_route>} />
           <Route path="/coach/editPracticeSession/:id" element={<Protected_route role="coach"><EditPracticeSessions /></Protected_route>} />
           <Route path="/coach/teams" element={<Protected_route role="coach"><Teams /></Protected_route>} />
