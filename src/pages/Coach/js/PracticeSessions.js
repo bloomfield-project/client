@@ -162,9 +162,17 @@ function Session() {
     const url= "coach/getOldSession"
     const url_up= "coach/upCommingSessions"
     async function getData(url,method){
+
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+
+        today = yyyy + '-' + mm + '-' + dd;
+        console.log(today)
         
         const reqData ={
-            date:"2022-10-26",
+            date:today,
             user_id:id, 
         };
         const authRequest = {

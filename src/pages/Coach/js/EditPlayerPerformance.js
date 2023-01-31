@@ -19,13 +19,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { green } from "@material-ui/core/colors";
 import { display } from "@mui/system";
 
-function PlayerPerformance() {
+function EditPlayerPerformance() {
   const { id, player,team } = useParams();
 
   const [valuess, setValues] = useState([]);
   // const loginData= useSelector(state => state.auth.data)
   const [responseDataI, setResponseDataI] = useState([]);
   const [dataforValidation, setDataforValidation] = useState([]);
+  const [emptyError, setEmptyError]= useState("");
   // const location = useLocation();
   // console.log(location.state)
   const urlIntro = "player/intro";
@@ -121,8 +122,7 @@ function PlayerPerformance() {
   function submitForm(e) {
     e.preventDefault();
     var values = [];
-    console.log(e.target[0].value)
-    const bat_runs = e.target[0].value;
+    const bat_runs = e.target[5].value;
     const bat_balls = e.target[2].value;
     const six = e.target[3].value;
     const four = e.target[4].value;
@@ -154,36 +154,44 @@ function PlayerPerformance() {
     } else if (!checked3) {
       playedd = 1;
     }
-    
-    
-
-    
-
-
+    var flag=0
     setValues(values);
     console.log(bat_runs);
-    getData(
-      url2,
-      bat_runs,
-      bat_balls,
-      six,
-      four,
-      overs,
-      runs,
-      balls,
-      ht,
-      wkt,
-      NB,
-      maiden,
-      WB,
-      runOut,
-      catches,
-      playedd,
-      notOut,
-      AT,
-      team
-    );
-    // window.history.back()
+    if(bat_runs==""||bat_balls==""||six==""||four==""||overs==""||runs==""||ht==""||wkt==""||NB==""||WB==""){
+      setEmptyError("Please fill all the fields, (If nothing to fill put a 0) ")
+    }
+    else{
+      getData(
+        url2,
+        bat_runs,
+        bat_balls,
+        six,
+        four,
+        overs,
+        runs,
+        balls,
+        ht,
+        wkt,
+        NB,
+        maiden,
+        WB,
+        runOut,
+        catches,
+        playedd,
+        notOut,
+        AT,
+        team
+      );
+      window.history.back()
+    }
+    
+    
+
+    
+
+
+    
+    
   }
 
   async function getData2(player,playedd,team){
@@ -205,7 +213,7 @@ function PlayerPerformance() {
     console.log(error);
   })
 }
-  function notPlayed(e){
+  function notPlayedEdit(e){
     e.preventDefault();
     var playedd;
     var notOut;
@@ -566,7 +574,7 @@ function PlayerPerformance() {
                               Not Played
                             </div>
                           </div>
-                          <form onSubmit={notPlayed} style={{ display:"flex", alignItems:"center" , justifyContent:"space-between",marginBottom:"25px" }}>
+                          <form onSubmit={notPlayedEdit} style={{ display:"flex", alignItems:"center" , justifyContent:"space-between",marginBottom:"25px" }}>
                             <div>
                               <input
                                 style={{ width: "25px", height: "25px",marginRight:"20px" }}
@@ -868,7 +876,7 @@ function PlayerPerformance() {
                           name="name"
                           min={0}
                           max={10}
-                          // value={0}
+                          value={0}
                           style={{
                             paddingLeft: "10px",
                             width: "300px",
@@ -889,7 +897,7 @@ function PlayerPerformance() {
                           name="name"
                           min={0}
                           max={10}
-                          // value={0}
+                          value={0}
                           style={{
                             paddingLeft: "10px",
                             width: "300px",
@@ -904,7 +912,7 @@ function PlayerPerformance() {
                       </Row>
                     </Container>
                   </div>
-
+                  <div style={{color:"red"}}>{emptyError}</div>
                   <div className="form-container-5">
                     <button className="form-container-5-btn" type="submit">
                       Save
@@ -920,4 +928,4 @@ function PlayerPerformance() {
   );
 }
 
-export default PlayerPerformance;
+export default EditPlayerPerformance;

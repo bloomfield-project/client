@@ -121,8 +121,7 @@ function PlayerPerformance() {
   function submitForm(e) {
     e.preventDefault();
     var values = [];
-    console.log(e.target[0].value)
-    const bat_runs = e.target[0].value;
+    const bat_runs = e.target[5].value;
     const bat_balls = e.target[2].value;
     const six = e.target[3].value;
     const four = e.target[4].value;
@@ -868,7 +867,7 @@ function PlayerPerformance() {
                           name="name"
                           min={0}
                           max={10}
-                          // value={0}
+                          value={0}
                           style={{
                             paddingLeft: "10px",
                             width: "300px",
@@ -889,7 +888,7 @@ function PlayerPerformance() {
                           name="name"
                           min={0}
                           max={10}
-                          // value={0}
+                          value={0}
                           style={{
                             paddingLeft: "10px",
                             width: "300px",

@@ -27,8 +27,17 @@ function CreateTeam() {
   // const urlIntro= "player/intro"
 
   async function getData(url, Team = "") {
-    const reqData = {
-      date: "2022-10-26",
+
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+
+    today = yyyy + '-' + mm + '-' + dd;
+    console.log(today)
+
+    const reqData = { 
+      date: today,
       team: Team,
       players: selectedRowKeys,
     };

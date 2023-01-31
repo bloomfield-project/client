@@ -217,7 +217,7 @@ function AddTournamentMatch(props) {
           {/* <h1>Render Count: {count.current}</h1> */}
         </Modal.Body>
         <Modal.Footer style={{ border: "none" }}>
-          <Link >
+          <Link to={success === 1 ? "/manager/Session" : "#"}>
             <button type="button" class="btn btn-success" onClick={handleClose}>
               OK
             </button>

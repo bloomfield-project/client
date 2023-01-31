@@ -52,6 +52,7 @@ import AddMatch from "./pages/Manager/js/AddMatch";
 import Matches_1 from "./pages/Coach/js/Matches_1";
 import Matches_2 from "./pages/Coach/js/Matches_2";
 import Macthes_3 from "./pages/Coach/js/Matches_3";
+import EditPlayerPerformance from "./pages/Coach/js/EditPlayerPerformance"
 
 import Psession from "./pages/player/js/Psessions";
 import PEvents from "./pages/player/js/PEvents";
@@ -184,122 +185,123 @@ function App() {
           <Route path="/client" element={<Home/>} />
           <Route path="/Navbar" element={<Navbar user={sidebar}/>} />
           <Route path="/Table" element={<Tables list={List} colNames={colNames} />} />
-          <Route path="/manager/Players" element={<Players />} />
-          <Route path="/manager/FormData" element={<FormData />} />
-          <Route path="/manager/CricketRanking"  element={<CricketRanking/>}/>
-          <Route path="/manager/Session"  element={<Session/>}/>
-          <Route path="/manager/Membership"  element={<Membership/>}/>
-          <Route path="/manager/SampleForm" element={<SampleForm />} />
+          <Route path="/manager/Players" element={<Protected_route role="manager"><Players /></Protected_route>} />
+          <Route path="/manager/FormData" element={<Protected_route role="manager"><FormData /></Protected_route>} />
+          <Route path="/manager/CricketRanking"  element={<Protected_route role="manager"><CricketRanking/></Protected_route>}/>
+          <Route path="/manager/Session"  element={<Protected_route role="manager"><Session/></Protected_route>}/>
+          <Route path="/manager/Membership"  element={<Protected_route role="manager"><Membership/></Protected_route>}/>
+          <Route path="/manager/SampleForm" element={<Protected_route role="manager"><SampleForm /></Protected_route>} />
           {/* <Protected_route path="/player/playerRanking" component={PlayerRanking } /> */}
           <Route path="/player/playerRanking" element={<Protected_route role="player"> <PlayerRanking/> </Protected_route>}/>
-          <Route path="/manager/playerRanking/:id" element={<PlayerRankingM/>}></Route>
-          <Route path="/player/Progress" element={<Progress />} />
-          <Route path="/player/PrivateProgress/:id" element={<PrivateProgress />} />
-          <Route path="/player/Matches" element={<Matches />} />
+          <Route path="/manager/playerRanking/:id" element={<Protected_route role="manager"><PlayerRankingM/></Protected_route>}></Route>
+          <Route path="/player/Progress" element={<Protected_route role="player"><Progress /></Protected_route>} />
+          <Route path="/player/PrivateProgress/:id" element={<Protected_route role="player"><PrivateProgress /></Protected_route>} />
+          <Route path="/player/Matches" element={<Protected_route role="player"><Matches /></Protected_route>} />
 
 
-          <Route path="/player/MatchDetails/:id" element={<MatchDetails />} />
-          <Route path="/manager/MMatchDetails/:id" element={<MMatchDetails />} />
+          <Route path="/player/MatchDetails/:id" element={<Protected_route role="player"><MatchDetails /></Protected_route>} />
+          <Route path="/manager/MMatchDetails/:id" element={<Protected_route role="manager"><MMatchDetails /></Protected_route>} />
           {/* add new router here */}
 
 
-          <Route path="/player/Psession/PSessionDetails" element={<PSessionDetails />} />
-          <Route path="/player/CSessionDetails" element={<CSessionDetails />} />
-          <Route path="/player/EventDetails" element={<EventDetails />} />
-          <Route path="/player/EventDetails" element={<EventDetails />} />
-          <Route path="/player/Achivements" element={<Achivementss />} />
+          <Route path="/player/Psession/PSessionDetails" element={<Protected_route role="player"><PSessionDetails /></Protected_route>} />
+          <Route path="/player/CSessionDetails" element={<Protected_route role="player"><CSessionDetails /></Protected_route>} />
+          <Route path="/player/EventDetails" element={<Protected_route role="player"><EventDetails /></Protected_route>} />
+          <Route path="/player/EventDetails" element={<Protected_route role="player"><EventDetails /></Protected_route>} />
+          <Route path="/player/Achivements" element={<Protected_route role="player"><Achivementss /></Protected_route>} />
           {/* <Route path="/admin/AProgress" element={<AProgress />} /> */}
           {/* <Route path="/admin/APrivateProgress" element={<APrivateProgress />} /> */}
 
           <Route path="/test" element={<Test />} />
-          <Route path="/manager/PlayerRegistration" element={<PlayerRegistration />} />
-          <Route path="/manager/EditPlayerDetails/:id" element={<EditPlayerDetails />} />/
-          <Route path="/manager/AddCouncellingSession" element={<AddCouncellingSession />} />
-          <Route path="/manager/EditCouncellingSession/:id" element={<EditCouncellingSession />} />
-          <Route path="/manager/AddEvent" element={<AddEvent />} />
-          <Route path="/manager/EditEvent/:id" element={<EditEvent />} />
-          <Route path="/manager/Achivement" element = {<Achivement/>} />
+          <Route path="/manager/PlayerRegistration" element={<Protected_route role="manager"><PlayerRegistration /></Protected_route>} />
+          <Route path="/manager/EditPlayerDetails/:id" element={<Protected_route role="manager"><EditPlayerDetails /></Protected_route>} />/
+          <Route path="/manager/AddCouncellingSession" element={<Protected_route role="manager"><AddCouncellingSession /></Protected_route>} />
+          <Route path="/manager/EditCouncellingSession/:id" element={<Protected_route role="manager"><EditCouncellingSession /></Protected_route>} />
+          <Route path="/manager/AddEvent" element={<Protected_route role="manager"><AddEvent /></Protected_route>} />
+          <Route path="/manager/EditEvent/:id" element={<Protected_route role="manager"><EditEvent /></Protected_route>} />
+          <Route path="/manager/Achivement" element = {<Protected_route role="manager"><Achivement/></Protected_route>} />
           <Route path="/card" element = {<SampleCard/>} />
-          <Route path="/manager/AddTeamAchivement" element={<AddTeamAchivement/>}  />
-          <Route path="/player/I" element={<IntroTable />} />
+          <Route path="/manager/AddTeamAchivement" element={<Protected_route role="manager"><AddTeamAchivement/></Protected_route>}  />
+          <Route path="/player/I" element={<Protected_route role="player"><IntroTable /></Protected_route>} />
           <Route path="/C" element={<Calander />} />
-          <Route path="/manager/MatchDetail" element={<MatchDetail />} />
-          <Route path="/manager/AddMatch" element={<AddMatch />} />
-          <Route path="/manager/AddTournamentMatch/:type" element={<AddTournamentMatch />} />
-          <Route path="/manager/AddPracticeMatch" element={< AddPracticeMatch/>} />
+          <Route path="/manager/MatchDetail" element={<Protected_route role="manager"><MatchDetail /></Protected_route>} />
+          <Route path="/manager/AddMatch" element={<Protected_route role="manager"><AddMatch /></Protected_route>} />
+          <Route path="/manager/AddTournamentMatch/:type" element={<Protected_route role="manager"><AddTournamentMatch /></Protected_route>} />
+          <Route path="/manager/AddPracticeMatch" element={<Protected_route role="manager">< AddPracticeMatch/></Protected_route>} />
 
           
-          <Route path="/coach/CreateTeam" element={<CreateTeam/>} />
-          <Route path="/coach/Ap" element={<ViewAppoinments/>} />
-          <Route path="/coach/PlayerD" element={<PlayerDetails />} />
-          <Route path="/coach/M1" element={<Matches_1 />} />
-          <Route path="/coach/M" element={<MatchesTeams />} />
-          <Route path="/coach/CD" element={<CalanderDetails />} />
-          <Route path="/coach/PSessions" element={<PracticeSessions />} />
-          <Route path="/coach/APS" element={<AddPracticeSession />} />
-          <Route path="/coach/CB" element={<CheckBox />} />
-          <Route path="/coach/MPP/:id/:match_id" element={<MarkPlayerProgress />} />
-          <Route path="/coach/MC" element={<AddMultipleSelections />} />
-          <Route path="/coach/VPS/:id" element={<ViewPracticeSessions />} />
-          <Route path="/coach/PD1" element={<PlayerDetails_1 />} />
-          <Route path="/coach/PPr1" element={<PlayerProgress_1 />} />
-          <Route path="/coach/PFeedback" element={<PlayerFeedback />} />
-          <Route path="/coach/m_1" element={<Matches_1 />} />
-          <Route path="/coach/matches4/:id" element={<Matches_4 />} />
-          <Route path="/coach/bloomfieldCricketRanking" element={<BloomFieldCricketRanking />} />
-          <Route path="/coach/players" element={<Players1 />} />
-          <Route path="/coach/appoinments" element={<Appoinments />} />
-          <Route path="/coach/matches" element={<Matches_2 />} />
-          <Route path="/coach/matches3/:id/:Tid" element={<Macthes_3 />} />
-          <Route path="/coach/playerPerformance/:id/:player/:team" element={<PlayerPerformance />} />
-          <Route path="/coach/practiceSessions" element={<PracticeSessions />} />
-          <Route path="/coach/editPracticeSession/:id" element={<EditPracticeSessions />} />
-          <Route path="/coach/teams" element={<Teams />} />
-          <Route path="/coach/viewTeams/:id" element={<ViewTeam />} />
-          <Route path="/coach/achievement" element={<AchievementCV />} />
-          <Route path="/coach/profile" element={<Profile />} />
-          <Route path="/coach/TeamToMatch/:id" element={<TeamToMatch />} />
-          <Route path="/coach/FutureTeams/:id/:name" element={<FutureTeams />} />
+          <Route path="/coach/CreateTeam" element={<Protected_route role="coach"><CreateTeam/></Protected_route>} />
+          <Route path="/coach/Ap" element={<Protected_route role="coach"><ViewAppoinments/></Protected_route>} />
+          <Route path="/coach/PlayerD" element={<Protected_route role="coach"><PlayerDetails /></Protected_route>} />
+          <Route path="/coach/M1" element={<Protected_route role="coach"><Matches_1 /></Protected_route>} />
+          <Route path="/coach/M" element={<Protected_route role="coach"><MatchesTeams /></Protected_route>} />
+          <Route path="/coach/CD" element={<Protected_route role="coach"><CalanderDetails /></Protected_route>} />
+          <Route path="/coach/PSessions" element={<Protected_route role="coach"><PracticeSessions /></Protected_route>} />
+          <Route path="/coach/APS" element={<Protected_route role="coach"><AddPracticeSession /></Protected_route>} />
+          <Route path="/coach/CB" element={<Protected_route role="coach"><CheckBox /></Protected_route>} />
+          <Route path="/coach/MPP/:id/:match_id" element={<Protected_route role="coach"><MarkPlayerProgress /></Protected_route>} />
+          <Route path="/coach/MC" element={<Protected_route role="coach"><AddMultipleSelections /></Protected_route>} />
+          <Route path="/coach/VPS/:id" element={<Protected_route role="coach"><ViewPracticeSessions /></Protected_route>} />
+          <Route path="/coach/PD1" element={<Protected_route role="coach"><PlayerDetails_1 /></Protected_route>} />
+          <Route path="/coach/PPr1" element={<Protected_route role="coach"><PlayerProgress_1 /></Protected_route>} />
+          <Route path="/coach/PFeedback" element={<Protected_route role="coach"><PlayerFeedback /></Protected_route>} />
+          <Route path="/coach/m_1" element={<Protected_route role="coach"><Matches_1 /></Protected_route>} />
+          <Route path="/coach/matches4/:id" element={<Protected_route role="coach"><Matches_4 /></Protected_route>} />
+          <Route path="/coach/bloomfieldCricketRanking" element={<Protected_route role="coach"><BloomFieldCricketRanking /></Protected_route>} />
+          <Route path="/coach/players" element={<Protected_route role="coach"><Players1 /></Protected_route>} />
+          <Route path="/coach/appoinments" element={<Protected_route role="coach"><Appoinments /></Protected_route>} />
+          <Route path="/coach/matches" element={<Protected_route role="coach"><Matches_2 /></Protected_route>} />
+          <Route path="/coach/matches3/:id/:Tid" element={<Protected_route role="coach"><Macthes_3 /></Protected_route>} />
+          <Route path="/coach/playerPerformance/:id/:player/:team" element={<Protected_route role="coach"><PlayerPerformance /></Protected_route>} />
+          <Route path="/coach/editPlayerPerformance/:id/:player/:team" element={<Protected_route role="coach"><EditPlayerPerformance /></Protected_route>} />
+          <Route path="/coach/practiceSessions" element={<Protected_route role="coach"><PracticeSessions /></Protected_route>} />
+          <Route path="/coach/editPracticeSession/:id" element={<Protected_route role="coach"><EditPracticeSessions /></Protected_route>} />
+          <Route path="/coach/teams" element={<Protected_route role="coach"><Teams /></Protected_route>} />
+          <Route path="/coach/viewTeams/:id" element={<Protected_route role="coach"><ViewTeam /></Protected_route>} />
+          <Route path="/coach/achievement" element={<Protected_route role="coach"><AchievementCV /></Protected_route>} />
+          <Route path="/coach/profile" element={<Protected_route role="coach"><Profile /></Protected_route>} />
+          <Route path="/coach/TeamToMatch/:id" element={<Protected_route role="coach"><TeamToMatch /></Protected_route>} />
+          <Route path="/coach/FutureTeams/:id/:name" element={<Protected_route role="coach"><FutureTeams /></Protected_route>} />
 
 
 
-          <Route path="/player/Psession" element={<Psession />} />
-          <Route path="/player/PEvents" element={<PEvents />} />
-          <Route path="/player/PlayerRankingList" element={<PlayerRankingList />} />
-          <Route path="/player/Payments" element={<Payments />} />
-          <Route path="/player/Appointments" element={<Appointments />} />
+          <Route path="/player/Psession" element={<Protected_route role="player"><Psession /></Protected_route>} />
+          <Route path="/player/PEvents" element={<Protected_route role="player"><PEvents /></Protected_route>} />
+          <Route path="/player/PlayerRankingList" element={<Protected_route role="player"><PlayerRankingList /></Protected_route>} />
+          <Route path="/player/Payments" element={<Protected_route role="player"><Payments /></Protected_route>} />
+          <Route path="/player/Appointments" element={<Protected_route role="player"><Appointments /></Protected_route>} />
     
           
           
 
-          <Route path="/manager/AddTournamentDetail" element={<AddTournamentDetail />} />
-          <Route path="/admin/Membershipfee" element={<Membershipfee/>}  />
-          <Route path="/admin/Employees" element={<Employees/>}  />
-          <Route path="/admin/AddEmployee" element={<AddEmployee/>}  />
-          <Route path="/admin/EditEmployee/:id" element={<EditEmployee />}  />
-          <Route path="/admin/UserView" element={< UpdateDeleteUser/>} />
-          <Route path="/admin/Achivements" element={< Achivements />} />
-          <Route path="/admin/Accounts" element={< Accounts />} />
-          <Route path="/admin/PlayerDetail" element={<PlayerDetail />} />
+          <Route path="/manager/AddTournamentDetail" element={<Protected_route role="manager"><AddTournamentDetail /></Protected_route>} />
+          <Route path="/admin/Membershipfee" element={<Protected_route role="admin"><Membershipfee/></Protected_route>}  />
+          <Route path="/admin/Employees" element={<Protected_route role="admin"><Employees/></Protected_route>}  />
+          <Route path="/admin/AddEmployee" element={<Protected_route role="admin"><AddEmployee/></Protected_route>}  />
+          <Route path="/admin/EditEmployee/:id" element={<Protected_route role="admin"><EditEmployee /></Protected_route>}  />
+          <Route path="/admin/UserView" element={<Protected_route role="admin">< UpdateDeleteUser/></Protected_route>} />
+          <Route path="/admin/Achivements" element={<Protected_route role="admin">< Achivements /></Protected_route>} />
+          <Route path="/admin/Accounts" element={<Protected_route role="admin">< Accounts /></Protected_route>} />
+          <Route path="/admin/PlayerDetail" element={<Protected_route role="admin"><PlayerDetail /></Protected_route>} />
 
 
 
-          <Route path="/admin/AnnualMembership" element={<AnnualMembership />} />
-          <Route path="/admin/Feedback" element={<Feedback />} />
+          <Route path="/admin/AnnualMembership" element={<Protected_route role="admin"><AnnualMembership /></Protected_route>} />
+          <Route path="/admin/Feedback" element={<Protected_route role="admin"><Feedback /></Protected_route>} />
 
 
-          <Route path="/admin/Raking" element={<Ranking />} />
-          <Route path="/admin/PlayerRanking/:id" element={<PlayerRankings />} />
+          <Route path="/admin/Raking" element={<Protected_route role="admin"><Ranking /></Protected_route>} />
+          <Route path="/admin/PlayerRanking/:id" element={<Protected_route role="admin"><PlayerRankings /></Protected_route>} />
           {/* <Route path="/manager/profile" element={<Profile />} /> */}
-          <Route path="/admin/profile" element={<Profile />} />
+          <Route path="/admin/profile" element={<Protected_route role="admin"><Profile /></Protected_route>} />
 
           {/* <Route path="/couch/profile" element={<Profile />} /> */}
-          <Route path="/player/Dashboard" element={<DashboardP />} />
+          <Route path="/player/Dashboard" element={<Protected_route role="player"><DashboardP /></Protected_route>} />
 
           {/* <Route path="/player/profile" element={<Profile />} /> */}
 
-          <Route path="/player/Matches/PendingMatches/:id/:team" element={<PendingMatches />} />
-          <Route path="/manager/Matches/PendingMatches/:id" element={<MPendingMatches />} />
+          <Route path="/player/Matches/PendingMatches/:id/:team" element={<Protected_route role="player"><PendingMatches /></Protected_route>} />
+          <Route path="/manager/Matches/PendingMatches/:id" element={<Protected_route role="manager"><MPendingMatches /></Protected_route>} />
 
 
 
