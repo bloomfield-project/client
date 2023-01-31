@@ -25,6 +25,7 @@ function Macthes_3() {
     const [check_op,setcheck_op]=useState("block");
     const [playerset,setplayerset]=useState("none");
     const [Errmsg,setErrmsg]=useState("none");
+    const [format,setFormat]=useState(0)
 
 
     const url= "player/coach/unmarked_data"
@@ -110,7 +111,10 @@ function Macthes_3() {
     console.log(dataupcomming_p)
     console.log(dataupcomming_p_marked)
     // console.log(datacheck_op)
-  
+    // if(responseData.data[0].format=="Test"){
+    //   console.log("jjjjjjjjjjjjjj")
+    // }
+     
     function backk(){
       window.history.back()
     }
@@ -120,8 +124,8 @@ function Macthes_3() {
       const total_score=e.target[0].value
       const wickets=e.target[1].value
       const overs=e.target[2].value
-      if(total_score==""&&wickets==""&&overs==""){
-        setErrmsg("block")
+      if(total_score==""||wickets==""||overs==""){
+        setErrmsg("flex")
       }
       else{
         getData2(score_update,total_score,wickets,overs)
@@ -241,11 +245,13 @@ function Macthes_3() {
                 {/* <div className="gap-3"></div> */}
                 <form onSubmit={update_op_marks} className="M3-main-container-2" style={{display:check_op}}>
                   <h4>Scores of opposite team</h4>
+                  {/* <div className="ppppp" style={{display:Errmsg}}>Total score can't be empty</div> */}
                   <Col className="APS-Form-2-2">
                     <label style={{ width: "100px" }}>Total score:</label>
                     <input
                       type="number"
                       name="name"
+                      min="0"
                       style={{
                         width: "300px",
                         border: "1px solid #ced4da",
@@ -255,11 +261,13 @@ function Macthes_3() {
                     />
                   </Col>
                   <div className="gap-3"></div>
+                  {/* <div className="ppppp" style={{display:Errmsg}}>Wickets can't be empty</div> */}
                   <Col className="APS-Form-2-2">
                     <label style={{ width: "100px" }}>Wickets:</label>
                     <input
                       type="number"
                       name="name"
+                      min="0"
                       max="10"
                       style={{
                         width: "300px",
@@ -270,11 +278,13 @@ function Macthes_3() {
                     />
                   </Col>
                   <div className="gap-3"></div>
+                  {/* <div className="ppppp" style={{display:Errmsg}}>Overs can't be empty</div> */}
                   <Col className="APS-Form-2-2">
                     <label style={{ width: "100px" }}>Overs:</label>
                     <input
                       type="number"
                       name="name"
+                      min="0"
                       max={dataupcomming?dataupcomming[0].format=="T20"?20:dataupcomming[0].format=="50"?50:200:""}
                       style={{
                         width: "300px",
@@ -284,7 +294,7 @@ function Macthes_3() {
                       }}
                     />
                   </Col>
-                  <div className="gap-3" style={{marginTop:"10px"}}><p style={{display:Errmsg, color:"red"}}>Input fields must not be empty</p></div>
+                  <div className="gap-3" style={{marginTop:"10px"}}><p className="ppppp" style={{display:Errmsg, color:"red"}}>Input fields must not be empty</p></div>
                   <div className="btn-2-2">
                     <button  type="reset" className="btn btn-secondary" style={{visibility:"hidden"}}>Cancel</button>
                     <button type="submit" className="btn btn-success">
@@ -328,12 +338,12 @@ function Macthes_3() {
                               <hr></hr>
                               {responseData_p_marked?responseData_p_marked?.map((item,i) =>
                       <>
-                        <Row className="M3-main-container-3-1-G">
-                          <Col className="M3-G-1" sm={4}>
+                        <Row >
+                          <Col xl={1}>
                             {" "}
                             <h6>BF-{item.user_id}</h6>{" "}
                           </Col>
-                          <Col className="M3-G" sm={4}>
+                          <Col xl={3}>
                             {" "}
                             <h6>
                               {" "}
@@ -342,6 +352,7 @@ function Macthes_3() {
                               </div>{" "}
                             </h6>{" "}
                           </Col>
+                          <Col xl={1}><Link to={"/coach/editPlayerPerformance/"+id+"/"+item.user_id+"/"+Tid}><Button >Edit</Button></Link></Col>
                         </Row>
                         <br></br></> ):""}
                       </Container>
