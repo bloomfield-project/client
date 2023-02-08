@@ -8,6 +8,7 @@ import "../../Home.css";
 import moment from "moment";
 import MaterialTable from "material-table";
 import Modal from "react-bootstrap/Modal";
+import EventHistory from "./EventHistory";
 
 const Axios = require("axios").default;
 
@@ -57,6 +58,7 @@ function Session() {
   const [show, setShow] = useState(false);
   const [event, setEventId] = useState("");
   const [session, setSessionId] = useState("");
+  const [hist, setHist] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -66,7 +68,7 @@ function Session() {
     setSessionId(null);
     console.log("name from button event : " + id + " " + event);
 
-    // alert(event + " " + id)
+    setHist(false)
     handleShow();
   };
 
@@ -76,6 +78,7 @@ function Session() {
     console.log("name from button event : " + id + " " + event);
 
     // alert(event + " " + id)
+    setHist(false)
     handleShow();
 
     // }
@@ -164,6 +167,11 @@ function Session() {
       .catch((err) => console.log("error : ", err));
   };
 
+  const history = () => {
+    setHist(true);
+    handleShow();
+  };
+
   const DeleteSession = (event) => {
     event.preventDefault();
     console.log("inside createEvent");
@@ -187,7 +195,9 @@ function Session() {
   return (
     <>
       <div className="page-container-1">
-        <div className="header-container"><Header></Header></div>
+        <div className="header-container">
+          <Header></Header>
+        </div>
         <div className="body-container-1">
           <div className="navbar-container">
             <Navbar></Navbar>
@@ -202,16 +212,34 @@ function Session() {
               <div className="tabs-left">
                 <h5 className={tabNumber === 1 ? "tab-active" : "tab"}>
                   {" "}
-                  <a onClick={() => selectTab_1(1)}>Couceling</a>{" "}
+                  <a
+                    onClick={() => {
+                      selectTab_1(1);
+                      setHist(false);
+                    }}
+                  >
+                    Couceling
+                  </a>{" "}
                   {tabNumber === 1 ? <hr></hr> : ""}
                 </h5>
                 <h5 className={tabNumber === 2 ? "tab-active" : "tab"}>
-                  <a onClick={() => selectTab_2(2)}> Events</a>{" "}
+                  <a
+                    onClick={() => {
+                      selectTab_2(2);
+                      setHist(false);
+                    }}
+                  >
+                    {" "}
+                    Events
+                  </a>{" "}
                   {tabNumber === 2 ? <hr></hr> : ""}
                 </h5>
               </div>
 
               <div className="tabs-right">
+                <Button variant="primary" className="mx-3" onClick={history}>
+                  History
+                </Button>
                 <Link
                   to={
                     tabNumber === 1
@@ -236,7 +264,7 @@ function Session() {
                         data={Upcomming_event}
                         actions={[
                           {
-                            icon: "edit",
+                            icon: "delete",
                             tooltip: "Pay",
                             onClick: (event, rowData) =>
                               deleteEvent(rowData.id),
@@ -257,7 +285,7 @@ function Session() {
                         data={Upcomming_session}
                         actions={[
                           {
-                            icon: "edit",
+                            icon: "delete",
                             tooltip: "Pay",
                             onClick: (event, rowData) =>
                               deleteSession(rowData.id),
@@ -277,13 +305,17 @@ function Session() {
           </div>
         </div>
       </div>
+      {/* <EventHistory /> */}
 
       <Modal
         show={show}
         onHide={handleClose}
         backdrop="static"
-        keyboard={false}
-        centered
+        // keyboard={false}
+        // centered
+        size={hist ? "lg" : "md"}
+        // fullscreen={'xxl-down'}
+        // aria-labelledby="example-custom-modal-styling-title"
       >
         <Modal.Header
           closeButton
@@ -291,109 +323,129 @@ function Session() {
         >
           <Modal.Title>
             {" "}
-            {event != null ? "Event Details" : "Session Details"}{" "}
+            {hist
+              ? "History"
+              : !hist && event != null
+              ? "Event Details"
+              : "Session Details"}{" "}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body
           style={{
+            // width:'auto',
+            maxWidth: "800px",
             backgroundColor: "white",
             height: "fit-content",
             padding: "0",
           }}
         >
-          {Upcomming_event.map((item) => {
-            return (
-              <>
-                {item.id === event ? (
-                  <div
-                    className="d-flex flex-column"
-                    style={{ width: "80%", margin: "auto", fontSize: "medium" }}
+          {hist && <EventHistory />}
+          {!hist && (
+            <>
+              {" "}
+              {Upcomming_event.map((item) => {
+                return (
+                  <>
+                    {item.id === event ? (
+                      <div
+                        className="d-flex flex-column"
+                        style={{
+                          width: "80%",
+                          margin: "auto",
+                          fontSize: "medium",
+                        }}
+                      >
+                        <div>
+                          <label>Event Name :</label>
+                          <label>{item.event}</label>
+                        </div>
+                        <hr></hr>
+
+                        <div>
+                          <label>Date :</label>
+                          <label>{item.date}</label>
+                        </div>
+                        <hr></hr>
+
+                        <div>
+                          <label>Time :</label>
+                          <label>{item.time}</label>
+                        </div>
+                        <hr></hr>
+
+                        <div>
+                          <label>Description :</label>
+                          <label>{item.description}</label>
+                        </div>
+                      </div>
+                    ) : null}
+                  </>
+                );
+              })}
+              {Upcomming_session.map((item) => {
+                return (
+                  <>
+                    {item.id === session ? (
+                      <div
+                        className="d-flex flex-column"
+                        style={{
+                          width: "80%",
+                          margin: "auto",
+                          fontSize: "medium",
+                        }}
+                      >
+                        <div>
+                          <label>Sessionn Name </label>
+                          <label>{item.title}</label>
+                        </div>
+                        <hr></hr>
+                        <div>
+                          <label>Date </label>
+                          <label>{item.date}</label>
+                        </div>
+                        <hr></hr>
+
+                        <div>
+                          <label>Time </label>
+                          <label>{item.time}</label>
+                        </div>
+                        <hr></hr>
+
+                        <div>
+                          <label>Mentor </label>
+                          <label>{item.mentor}</label>
+                        </div>
+                        <hr></hr>
+
+                        <div>
+                          <label>Mentor Detais </label>
+                          <label>{item.mentor_details}</label>
+                        </div>
+                      </div>
+                    ) : null}
+                  </>
+                );
+              })}
+              <form onSubmit={event != null ? DeleteEvent : DeleteSession}>
+                <div className="d-grid gap-2 d-md-flex justify-content-md-end p-3 mb-2">
+                  <input
+                    type={"hidden"}
+                    value={event != null ? event : session}
+                  ></input>
+                  <button
+                    type="reset"
+                    className="btn btn-secondary"
+                    onClick={handleClose}
                   >
-                    <div>
-                      <label>Event Name :</label>
-                      <label>{item.event}</label>
-                    </div>
-                    <hr></hr>
-
-                    <div>
-                      <label>Date :</label>
-                      <label>{item.date}</label>
-                    </div>
-                    <hr></hr>
-
-                    <div>
-                      <label>Time :</label>
-                      <label>{item.time}</label>
-                    </div>
-                    <hr></hr>
-
-                    <div>
-                      <label>Description :</label>
-                      <label>{item.description}</label>
-                    </div>
-                  </div>
-                ) : null}
-              </>
-            );
-          })}
-          {Upcomming_session.map((item) => {
-            return (
-              <>
-                {item.id === session ? (
-                  <div
-                    className="d-flex flex-column"
-                    style={{ width: "80%", margin: "auto", fontSize: "medium" }}
-                  >
-                    <div>
-                      <label>Sessionn Name </label>
-                      <label>{item.title}</label>
-                    </div>
-                    <hr></hr>
-                    <div>
-                      <label>Date </label>
-                      <label>{item.date}</label>
-                    </div>
-                    <hr></hr>
-
-                    <div>
-                      <label>Time </label>
-                      <label>{item.time}</label>
-                    </div>
-                    <hr></hr>
-
-                    <div>
-                      <label>Mentor </label>
-                      <label>{item.mentor}</label>
-                    </div>
-                    <hr></hr>
-
-                    <div>
-                      <label>Mentor Detais </label>
-                      <label>{item.mentor_details}</label>
-                    </div>
-                  </div>
-                ) : null}
-              </>
-            );
-          })}
-          <form onSubmit={event != null ? DeleteEvent : DeleteSession}>
-            <div className="d-grid gap-2 d-md-flex justify-content-md-end p-3 mb-2">
-              <input
-                type={"hidden"}
-                value={event != null ? event : session}
-              ></input>
-              <button
-                type="reset"
-                className="btn btn-secondary"
-                onClick={handleClose}
-              >
-                Cancel
-              </button>
-              <button type="submit" className="btn btn-btn btn-danger">
-                Delete
-              </button>
-            </div>
-          </form>
+                    Cancel
+                  </button>
+                  <button type="submit" className="btn btn-btn btn-danger">
+                    Delete
+                  </button>
+                </div>
+              </form>
+            </>
+          )}
         </Modal.Body>
         <Modal.Footer
           style={{ backgroundColor: "white", border: "none" }}

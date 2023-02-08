@@ -15,8 +15,9 @@ let data = [];
 
 function Achivement() {
   const [tabNumber, setTabNumber] = useState(1);
-  const [tachi, settach] = React.useState();
+  const [tachi, settach] = useState();
 
+  const [change, setChange] = useState(true)
   React.useEffect(() => {
     async function fetchData() {
       const reqtachi = await Axios.get(
@@ -27,12 +28,17 @@ function Achivement() {
       return reqtachi;
     }
     fetchData();
-  }, []);
+  }, [change]);
+
+  const childClick = ()=>{
+    setChange(!change)
+  }
 
   console.log(tachi);
   if (tachi) {
     tachi.map((item, i) => {
       data[i] = {
+        id : item.a_id,
         title: item.title,
         img: <img className="card-detail-img" src={item.image} alt=""></img>,
         description: item.description,
@@ -76,7 +82,7 @@ function Achivement() {
             <hr></hr>
             <div className="table-box-1">
               <div className="tablee">
-                <SampleCard arr={data} />
+                <SampleCard arr={data} changeFunk = {childClick}/>
               </div>
             </div>
           </div>
