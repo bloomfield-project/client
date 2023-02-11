@@ -20,6 +20,10 @@ const columns = [
     field: "date",
   },
   {
+    title: "Description",
+    field: "description",
+  },
+  {
     title: "Time",
     field: "time",
   },
@@ -34,6 +38,10 @@ const columns_1 = [
   {
     title: "Mentor",
     field: "mentor",
+  },
+  {
+    title: "Mentor Details",
+    field: "mentor_details",
   },
   {
     title: "Date",

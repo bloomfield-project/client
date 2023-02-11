@@ -199,7 +199,7 @@ function AddPracticeMatch() {
           {/* <h1>Render Count: {count.current}</h1> */}
         </Modal.Body>
         <Modal.Footer style={{ border: "none" }}>
-          <Link to={success === 1 ? "/manager/Session" : "#"}>
+          <Link to={success === 1 ? "/manager/MatchDetail" : "#"}>
             <button type="button" class="btn btn-success" onClick={handleClose}>
               OK
             </button>
