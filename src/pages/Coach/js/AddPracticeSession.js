@@ -234,7 +234,13 @@ function AddPracticeSession() {
           // alert("et")
         }
     }else{
-      getData(checkAvailabilityForSession,"",e.target[0].value,e.target[1].value,e.target[2].value,e.target[4].value)
+      if(e.target[2].value<e.target[4].value){
+        getData(checkAvailabilityForSession,"",e.target[0].value,e.target[1].value,e.target[2].value,e.target[4].value)
+      }
+      else{
+        setDatePH("Invalid ending time")
+      }
+      
     }
     
     // console.log(responseDataCheck?.status)
