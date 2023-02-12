@@ -2,6 +2,8 @@ import Header from "../../../component/header/Header";
 import Navbar from "../../../component/NavigationBar/Navbar";
 import "../../Home.css";
 import React from "react";
+
+import Button from "react-bootstrap/Button";
 // import Header from "../../../component/header/Header";
 // import "../css/PlayerRegistration.css";
 import { IoChevronBackCircleOutline } from "react-icons/io5";
@@ -24,7 +26,7 @@ function TeamToMatch() {
   const [responseDataUnmarked, setResponseDataUnmarked] = useState([]);
   const url = "player/coach/getTeam";
   const Deleteurl = "player/coach/addTeamMatchesDet";
-  const urlADD = "player/coach/addTeam";
+  const urlADD = "player/coach/addTeamToMatch";
   const future = "player/coach/future";
   const Unmarked = "player/coach/Unmarked";
   async function getData(url, Team = "") {
@@ -67,7 +69,7 @@ function TeamToMatch() {
     console.log(e.target.value)
     getData(urlADD,e.target.value);
     alert("Successfully added team to match")
-    window.history.back()
+    // window.history.back()
   }
   return (
     <div className="page-container-1">
@@ -108,12 +110,14 @@ function TeamToMatch() {
                 </div>
                 <div className="o-u">
                   <div className="top-i">Team :</div>
-                  <select onChange={selectedTeam} className="an-s-w" ons>
+                  <select  className="an-s-w" ons>
                     <option>--Select--</option>
                     {dataupcomming?dataupcomming?.map((item,i)=> <>
                       <option  value={item.team_id}>{item.name}</option>
                     </>):""}
+                    
                   </select>
+                  <Button onClick={selectedTeam} className="APS-Form-5-2" style={{marginLeft:"20px"}}>Save</Button>
                 </div>
 
               </div>

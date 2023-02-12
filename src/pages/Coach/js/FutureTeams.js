@@ -24,7 +24,7 @@ function FutureTeams() {
   const [responseDataUnmarked, setResponseDataUnmarked] = useState([]);
   const url = "player/coach/getTeam";
   const Deleteurl = "player/coach/addTeamMatchesDet";
-  const urlADD = "player/coach/addTeam";
+  const urlADD = "player/coach/addTeamToMatch";
   const future = "player/coach/future";
   const Unmarked = "player/coach/Unmarked";
   const update = "player/coach/update";
