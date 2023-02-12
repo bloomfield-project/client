@@ -57,7 +57,6 @@ function MatchDetail() {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(event);
-    //alert("hahvjvjkbbnnn,nkjlk;kl;mlnkbhcfdxdzezezez")
     console.log("Form was submitted! : ", event.target[0].value);
     let mdata = {
       nic: loginData.data.nic,
@@ -82,14 +81,9 @@ function MatchDetail() {
           console.log("Passwords are mathched");
           Axios.post("http://localhost:3001/api/manager/deleteMatch", data)
             .then((res) => {
-              // console.log(setRes(res.data));
               handleClose();
-              // window.history.back()
               window.location.reload();
 
-              //*********************************************************************
-              // use state ekakata daala hadann ooni .
-              // */
             })
             .catch((err) => console.log("error is arized", err));
         } else {
@@ -118,8 +112,8 @@ function MatchDetail() {
     };
     fetchData(authRequest)
       .then((response) => {
-        if (num == 1) setResponseData(response.data);
-        else if (num == 2) setPastResponseData(response.data);
+        if (num === 1) setResponseData(response.data);
+        else if (num === 2) setPastResponseData(response.data);
       })
       .catch(function (error) {
         console.log(error);
@@ -133,22 +127,11 @@ function MatchDetail() {
     getData("match/pastMatches", 2);
   }, []);
 
-  function setThisMonth(e) {
-    console.log(3);
-    setMonth(e);
-  }
-
-  function getSessionForMonth() {
-    getData("match/matches", 1);
-  }
-
-  console.log(responseData);
   const msg = responseData.success;
   const dataM = responseData.data;
   const msgP = responseDataPast.success;
   const dataMP = responseDataPast.data;
-  console.log(msgP + "KJNKnnkjnknjkjjjjjjknnjjjjjjjjj");
-  console.log(Month);
+  console.dir(dataMP );
 
   return (
     <>
@@ -254,7 +237,7 @@ function MatchDetail() {
                               <div className="match-box-mid-right">
                                 <div className="box-mid-right-up">
                                   <h4 style={{ color: "#a5a5a5" }}>
-                                    {item.op_team_name}
+                                    {item.op_team_name.toUpperCase() }
                                   </h4>
                                 </div>
                                 <div className="box-mid-right-mid">

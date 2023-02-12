@@ -205,48 +205,14 @@ function EditPlayerDetails() {
                     "w-100 p-3 border border-secondary rounded  w-100 p-3 "
                   }
                 >
-                  {/* <div
-                    className="form-group file-upload-wrapper w-100 p-3 mb-2"
-                    style={{ margin: "0px", width: "85%" }}
-                  >
-                    <input
-                      type="file"
-                      onChange={(event) => {
-                        setImageUpload(event.target.files[0]);
-                      }}
-                      className="form-control"
-                    />
-                    <br></br>
-                    <button
-                      type="button"
-                      onClick={uploadFile}
-                      className="btn btn-primary"
-                      style={{ float: "right" }}
-                    >
-                      {" "}
-                      Upload Image
-                    </button>
-                    <br></br>
-                    <img
-                      src={imageUrl ? imageUrl : post[0].image}
-                      style={{ width: "150px" }}
-                    />
-                  </div> */}
+                 
                   <PlayerEditForm
                     NIC={post[0].nic}
                     email={post[0].email}
                     address={post[0].address}
                     contact={post[0].contact}
                   ></PlayerEditForm>
-                  
-                  {/* <div className="d-grid gap-2 d-md-flex justify-content-md-end p-3 mb-2">
-                    <button type="reset" className="btn btn-secondary">
-                      Reset
-                    </button>
-                    <button type="submit" className="btn btn-success">
-                      Edit
-                    </button>
-                  </div> */}
+
                 </form>
               </div>
             </div>

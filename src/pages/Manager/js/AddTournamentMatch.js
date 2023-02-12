@@ -135,8 +135,8 @@ function AddTournamentMatch(props) {
       date: event.target[1].value,
       time: event.target[2].value,
       ground: event.target[3].value,
-      match_format: event.target[4].value,
-      op_team_name: event.target[5].value,
+      match_format: event.target[5].value,
+      op_team_name: event.target[4].value,
       team_icon: imgurl,
     };
 
@@ -217,7 +217,7 @@ function AddTournamentMatch(props) {
           {/* <h1>Render Count: {count.current}</h1> */}
         </Modal.Body>
         <Modal.Footer style={{ border: "none" }}>
-          <Link to={success === 1 ? "/manager/Session" : "#"}>
+          <Link to={success === 1 ? "/manager/MatchDetail" : "#"}>
             <button type="button" class="btn btn-success" onClick={handleClose}>
               OK
             </button>

@@ -8,7 +8,7 @@ function PlayerEditForm(props) {
 
   const NicRule = /^([1-9][0-9]{8}[x|X|v|V]|([1-9][0-9]{11}))$/;
   const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-const contactRule = /^([0][1-9]{9})$/;
+  const contactRule = /^([0][1-9]{9})$/;
 
   const handleNic = (event) => {
     // console.log(event.target)
