@@ -119,6 +119,8 @@ import ViewTeam from "./pages/Coach/js/ViewTeam";
 import CreateTeam from "./pages/Coach/js/CreateTeam";
 import DashboardP from "./pages/player/js/DashboardP";
 
+import ForgotPassword from "./pages/login/js/ForgotPassword";
+
 
 //redux store
 
@@ -127,8 +129,8 @@ import {Provider} from 'react-redux';
 import {PersistGate } from 'redux-persist/integration/react'
 import TeamToMatch from "./pages/Coach/js/TeamToMatch";
 import FutureTeams from "./pages/Coach/js/FutureTeams";
-
-
+import ResetPassword from "./pages/login/js/ResetPassword";
+import GiveFeedback from "./pages/player/js/GiveFeedback";
 
 
 
@@ -179,6 +181,11 @@ function App() {
           <PersistGate persistor={persistor}>
 
         <Routes>
+
+          <Route path="/forgotPassword" element={<ForgotPassword />} />
+          <Route path='/:user_id/:token' element={<ResetPassword />} />
+
+
           <Route path="/ResetPassword" element={<ResetPassForm />} />
           <Route path="/FogotPassword" element={<FogotPassForm/>} />
           <Route path="/" element={<LoginN/>} />
@@ -209,6 +216,7 @@ function App() {
           <Route path="/player/EventDetails" element={<Protected_route role="player"><EventDetails /></Protected_route>} />
           <Route path="/player/EventDetails" element={<Protected_route role="player"><EventDetails /></Protected_route>} />
           <Route path="/player/Achivements" element={<Protected_route role="player"><Achivementss /></Protected_route>} />
+          <Route path="/player/giveFeedback" element={<Protected_route role="player"><GiveFeedback /></Protected_route>} />
           {/* <Route path="/admin/AProgress" element={<AProgress />} /> */}
           {/* <Route path="/admin/APrivateProgress" element={<APrivateProgress />} /> */}
 
@@ -239,7 +247,7 @@ function App() {
           <Route path="/coach/PSessions" element={<Protected_route role="coach"><PracticeSessions /></Protected_route>} />
           <Route path="/coach/APS" element={<Protected_route role="coach"><AddPracticeSession /></Protected_route>} />
           <Route path="/coach/CB" element={<Protected_route role="coach"><CheckBox /></Protected_route>} />
-          <Route path="/coach/MPP/:id/:match_id" element={<Protected_route role="coach"><MarkPlayerProgress /></Protected_route>} />
+          <Route path="/coach/MPP/:id/:match_id/:type" element={<Protected_route role="coach"><MarkPlayerProgress /></Protected_route>} />
           <Route path="/coach/MC" element={<Protected_route role="coach"><AddMultipleSelections /></Protected_route>} />
           <Route path="/coach/VPS/:id" element={<Protected_route role="coach"><ViewPracticeSessions /></Protected_route>} />
           <Route path="/coach/PD1" element={<Protected_route role="coach"><PlayerDetails_1 /></Protected_route>} />
