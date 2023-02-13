@@ -7,7 +7,7 @@ import {useDispatch,useSelector} from 'react-redux';
 
 function Header(){
   const loginData= useSelector(state => state.auth.data)
-  console.log(loginData.data)
+  // console.log(loginData.data)
     return (
       <div className="container-1">
         <section className='header-left'>

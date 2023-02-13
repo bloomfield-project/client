@@ -167,18 +167,27 @@ function AddPracticeSession() {
     console.log(e.target[1].value)//date
     console.log(e.target[2].value)//starting time
     console.log(e.target[4].value)//ending time
-    if (e.target[0].value == "" || e.target[1].value == "" || e.target[2].value == "" || e.target[4].value == "") {
-      if (e.target[1].value == "") {
-        setDatePH("Please fill all the input fields")
+    if(e.target[0].value==""||e.target[1].value==""||e.target[2].value==""||e.target[4].value==""){
+        if(e.target[1].value==""){
+          setDatePH("Please fill all the input fields")
+          // alert("date")
+        }
+        if(e.target[2].value==""){
+          setDatePH("Please fill all the input fields")
+          // alert("st")
+        }
+        if(e.target[4].value==""){
+          setDatePH("Please fill all the input fields")
+          // alert("et")
+        }
+    }else{
+      if(e.target[2].value<e.target[4].value){
+        getData(checkAvailabilityForSession,"",e.target[0].value,e.target[1].value,e.target[2].value,e.target[4].value)
       }
-      if (e.target[2].value == "") {
-        setDatePH("Please fill all the input fields")
+      else{
+        setDatePH("Invalid ending time")
       }
-      if (e.target[4].value == "") {
-        setDatePH("Please fill all the input fields")
-      }
-    } else {
-      getData(checkAvailabilityForSession, "", e.target[0].value, e.target[1].value, e.target[2].value, e.target[4].value)
+      
     }
   }
 

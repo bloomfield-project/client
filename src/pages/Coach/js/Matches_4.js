@@ -294,7 +294,7 @@ function Matches_4() {
             {/*end*/}
 
             <div className="match-box-down">
-              <Link to={"/player/Matches"}>
+              <Link to={"/coach/Matches"}>
                 <Button variant="secondary">Back</Button>
               </Link>
             </div>

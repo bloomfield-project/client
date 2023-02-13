@@ -129,7 +129,7 @@ function BloomFieldCricketRanking() {
                                 <div className="col-5-4">SR</div>
                                 <div className="col-5-5">Rating</div>
                             </div>
-                            {dataupcomming!=[]?dataupcomming?.sort((a, b) => a.rating > b.rating ? -1 : 1).map((item,i)  => 
+                            {dataupcomming!=[]?dataupcomming?.sort((a, b) => a.rating > b.rating ? -1 : 1).filter(item => item.rating>0 && item.rating).map((item,i)  => 
                               <><div key={i} className="table-row">
                                 <div className="col-5-1">{i+1}</div>
                                 <div className="col-5-2"><img className="row-image" src={item.image!=""?item.image: player} alt=""></img><a href="/player/playerRanking" style={{width: "80%", textAlign: "left", paddingTop:"10px"}}>{item.name}</a></div>
@@ -170,7 +170,7 @@ function BloomFieldCricketRanking() {
                                 <div className="col-5-4">Wkts</div>
                                 <div className="col-5-5">Rating</div>
                             </div>
-                            {dataupcomming!=[]?dataupcomming?.sort((a, b) => a.B_rating > b.B_rating ? -1 : 1).map((item,i)  => 
+                            {dataupcomming!=[]?dataupcomming?.filter(item => item.B_rating>0 && item.B_rating).sort((a, b) => a.B_rating > b.B_rating ? -1 : 1).map((item,i)  => 
                               <><div key={i} className="table-row">
                                 <div className="col-5-1">{i+1}</div>
                                 <div className="col-5-2"><img className="row-image" src={item.image!=""?item.image:player} alt=""></img><a href="/player/playerRanking" style={{width: "80%", textAlign: "left", paddingTop:"10px"}}>{item.name}</a></div>
@@ -232,7 +232,7 @@ function BloomFieldCricketRanking() {
                                 <div className="col-7-6">Wkts</div>
                                 <div className="col-7-7">Rating</div>
                             </div>
-                            {dataupcomming!=[]?dataupcomming?.sort((a, b) => a.A_rating > b.A_rating ? -1 : 1).map((item,i)  => 
+                            {dataupcomming!=[]?dataupcomming?.sort((a, b) => a.A_rating > b.A_rating ? -1 : 1).filter(item => item.A_rating>0 && item.A_rating).map((item,i)  => 
                               <><div key={i} className="table-row">
                                 <div className="col-7-1">{i+1}</div>
                                 <div className="col-5-2"><img className="row-image" src={item.image!=""?item.image:player} alt=""></img><a href="/player/playerRanking" style={{width: "80%", textAlign: "left", paddingTop:"10px"}}>{item.name}</a></div>
