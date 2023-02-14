@@ -170,7 +170,7 @@ function EditEmployee() {
                   </Link>
                 </div>
 
-                <h1>Player Details</h1>
+                <h1>Employee Details</h1>
               </div>
 
               <div className="form-container">
