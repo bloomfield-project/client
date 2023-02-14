@@ -41,6 +41,7 @@ import EditEvent from "./pages/Manager/js/EditEvent";
 import Achivement from "./pages/Manager/js/Achivement";
 import SampleCard from "./component/Card/SampleCard";
 import AddTeamAchivement from "./pages/Manager/js/AddTeamAchivement";
+import AddTeamAchivements from "./pages/naya_admin/js/AddTeamAchivement";
 
 import MatchDetail from "./pages/Manager/js/MatchDetail";
 import Protected_route from "./Protected_route"
@@ -284,6 +285,7 @@ function App() {
           <Route path="/admin/Accounts" element={<Protected_route role="admin">< Accounts /></Protected_route>} />
           <Route path="/admin/PlayerDetail" element={<Protected_route role="admin"><PlayerDetail /></Protected_route>} />
 
+          <Route path="/admin/AddTeamAchivement" element={<Protected_route role="admin"><AddTeamAchivements /></Protected_route>} />
 
 
           <Route path="/admin/AnnualMembership" element={<Protected_route role="admin"><AnnualMembership /></Protected_route>} />

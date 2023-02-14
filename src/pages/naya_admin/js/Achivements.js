@@ -110,7 +110,7 @@ function Achivementss() {
             <div className="tabs">
               <div className="tabs-left"></div>
               <div className="tabs-right">
-                <Link to={"/manager/AddTeamAchivement"}>
+                <Link to={"/admin/AddTeamAchivement"}>
                   <Button variant="outline-success">+ Add</Button>
                 </Link>
               </div>
