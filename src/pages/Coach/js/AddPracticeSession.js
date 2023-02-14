@@ -314,9 +314,9 @@ function AddPracticeSession() {
                     <h5>Session type</h5>
 
                     <Form.Select aria-label="Default select example">
-                      <option value="Fielding">Fielding</option>
-                      <option value="Batting">Batting</option>
-                      <option value="Bowling">Bowling</option>
+                      <option value="Fielding">Fielding Practice</option>
+                      <option value="Batting">Batting Practice</option>
+                      <option value="Bowling">Bowling Practice</option>
                     </Form.Select>
                   </div>
                 </div>

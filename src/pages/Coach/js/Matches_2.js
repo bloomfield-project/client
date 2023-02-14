@@ -133,9 +133,8 @@ function Session() {
     
                             </div>
                           </div>
-                            
                         </TabPane>
-                        <TabPane tab="Future" key="2">
+                        <TabPane tab="Upcoming" key="2">
                           <div className="table-box-11">
                           <div className="tablee">
                             <div className="table-head">

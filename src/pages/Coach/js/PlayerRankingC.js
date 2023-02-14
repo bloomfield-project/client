@@ -2,29 +2,30 @@ import Header from "../../../component/header/Header"
 import Navbar from "../../../component/NavigationBar/Navbar";
 import React from "react";
 import "../../Home.css"
-import "../css/playerRanking.css"
-import player from "../player.jpg"
+import "../../player/css/playerRanking.css"
+import player from "../../player/player.jpg"
 import { Tabs } from 'antd';
 import 'antd/dist/antd.css';
 import Tablee from "../../../component/ScoreTable/ScoreTable";
 import IntroTable from "../../../component/IntroTable/IntroTable"
 import {useState,useEffect} from "react";
 import {fetchData} from '../../AuthServer' 
-import { useLocation } from "react-router-dom";
+import { useLocation,useParams } from "react-router-dom";
 import {useDispatch,useSelector} from 'react-redux'
 
 
 
 
+ 
 
 
 
 
 
-
-function PlayerRanking() {
+function PlayerRankingC() {
     const loginData= useSelector(state => state.auth.data)
     console.log(loginData)
+    const {id}=useParams();
     const [responseData,setResponseData]=useState([]);
     const [responseDataB,setResponseDataB]=useState([]);
     const [responseDataF,setResponseDataF]=useState([]);
@@ -39,7 +40,7 @@ function PlayerRanking() {
     async function getData(url){
         
         const reqData ={
-            user_id:loginData.data.user_id,
+            user_id:id,
         };
         const authRequest = {
         "method":"post",
@@ -99,7 +100,7 @@ function PlayerRanking() {
                 <h1>Player Perfomance</h1>
               </div>
               <div className="player-details-box">
-                <img className="playerImage" src={loginData.data.image!=""?loginData.data.image:player} alt="Italian Trulli" />
+                <img className="playerImage" src={dataupcommingI?dataupcommingI[0].image:player} alt="Italian Trulli" />
                 <div style={{display:"flex", flexDirection:"column",justifyContent:"space-between", height:"200px", width:"fit-content", borderRadius:"10px" , marginLeft:"50px"}}>
                     <div style={{width: "351px", height: "52px" , backgroundColor: "#006950" , display: "flex", justifyContent:"center", alignItems:"center" , paddingTop: "5px", borderTopRightRadius: "10px" ,borderTopLeftRadius: "10px"}}>
                         <h3 style={{color:"white"}}>{dataupcommingI?dataupcommingI[0].name:""}</h3>
@@ -238,4 +239,4 @@ function PlayerRanking() {
   );
   }
   
-  export default PlayerRanking;
+  export default PlayerRankingC;

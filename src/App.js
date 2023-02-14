@@ -45,7 +45,7 @@ import AddTeamAchivement from "./pages/Manager/js/AddTeamAchivement";
 import MatchDetail from "./pages/Manager/js/MatchDetail";
 import Protected_route from "./Protected_route"
 
-
+import PlayerRankingC from "./pages/Coach/js/PlayerRankingC";
 import Players1 from "./pages/Coach/js/Players";
 import PlayerDetails from "./pages/Coach/js/PlayerDetails";
 import AddMatch from "./pages/Manager/js/AddMatch";
@@ -229,7 +229,7 @@ function App() {
           <Route path="/manager/AddTournamentMatch/:type" element={<Protected_route role="manager"><AddTournamentMatch /></Protected_route>} />
           <Route path="/manager/AddPracticeMatch" element={<Protected_route role="manager">< AddPracticeMatch/></Protected_route>} />
 
-          
+          <Route path="/coach/PlayerRanking/:id" element={<Protected_route role="coach"><PlayerRankingC/></Protected_route>} />
           <Route path="/coach/CreateTeam" element={<Protected_route role="coach"><CreateTeam/></Protected_route>} />
           <Route path="/coach/Ap" element={<Protected_route role="coach"><ViewAppoinments/></Protected_route>} />
           <Route path="/coach/PlayerD" element={<Protected_route role="coach"><PlayerDetails /></Protected_route>} />

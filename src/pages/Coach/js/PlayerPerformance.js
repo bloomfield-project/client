@@ -18,6 +18,7 @@ import { useLocation, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { green } from "@material-ui/core/colors";
 import { display } from "@mui/system";
+import Modal from "react-bootstrap/Modal";
 
 function PlayerPerformance() {
   const { id, player,team } = useParams();
@@ -26,6 +27,9 @@ function PlayerPerformance() {
   // const loginData= useSelector(state => state.auth.data)
   const [responseDataI, setResponseDataI] = useState([]);
   const [dataforValidation, setDataforValidation] = useState([]);
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   // const location = useLocation();
   // console.log(location.state)
   const urlIntro = "player/intro";
@@ -184,6 +188,7 @@ function PlayerPerformance() {
       team
     );
     // window.history.back()
+    handleShow()
   }
 
   async function getData2(player,playedd,team){
@@ -225,9 +230,10 @@ function PlayerPerformance() {
       playedd = 1;
     }
 
-    alert(playedd);
+    // alert(playedd);
     getData2(player,playedd,team)
-    window.history.back()
+    handleShow()
+    // window.history.back()
   }
   console.log(valuess);
 
@@ -577,7 +583,7 @@ function PlayerPerformance() {
                               
                             </div>
                             <div className="form-container-5">
-                              <button style={{display: checked3 ? "block" : "none"}} className="form-container-5-btn" type="submit">
+                              <button className="btn btn-success" style={{display: checked3 ? "block" : "none"}}  type="submit">
                                 Submit
                               </button>{" "}
                             </div>
@@ -906,7 +912,7 @@ function PlayerPerformance() {
                   </div>
 
                   <div className="form-container-5">
-                    <button className="form-container-5-btn" type="submit">
+                    <button className="btn btn-success" type="submit">
                       Save
                     </button>{" "}
                   </div>
@@ -916,6 +922,53 @@ function PlayerPerformance() {
           </div>
         </div>
       </div>
+      <Modal
+    show={show}
+    onHide={handleClose}
+    backdrop="static"
+    keyboard={false}
+    centered
+  >
+    <Modal.Header
+      // closeButton
+      // style={{ backgroundColor: "white", border: "none" }}
+    >
+      <Modal.Title>  </Modal.Title>
+    </Modal.Header>
+    <Modal.Body
+      style={{
+        backgroundColor: "white",
+        height: "fit-content",
+        padding: "0",
+      }}
+    >
+      
+        <p
+          style={{
+            color: "#626d80",
+            textAlign: "center",
+            fontSize: "large",
+            backgroundColor: "white",
+            margin: "0",
+          }}
+        >
+          {"Record has been added successfully"}
+          {/* {edate} */}
+        </p>
+    
+        
+          
+
+      {/* <h1>Render Count: {count.current}</h1> */}
+    </Modal.Body>
+    <Modal.Footer style={{ border: "none" }}>
+          <Link to={"/coach/matches3/" + id+"/"+team}>
+            <button type="button" class="btn btn-success" onClick={()=>handleClose()}>
+              OK
+            </button>
+          </Link>
+    </Modal.Footer>
+    </Modal>
     </>
   );
 }

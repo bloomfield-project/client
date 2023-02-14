@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 import {useState,useEffect} from "react";
 import {fetchData} from '../../AuthServer' ;
 import {useDispatch,useSelector} from 'react-redux'
-
+import Modal from "react-bootstrap/Modal";
 import {useParams} from "react-router-dom"
 
 
@@ -22,6 +22,10 @@ function FutureTeams() {
   const [responseDatap, setResponseDatap] = useState([]);
   const [responseDataFuture, setResponseDataFuture] = useState([]);
   const [responseDataUnmarked, setResponseDataUnmarked] = useState([]);
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   const url = "player/coach/getTeam";
   const Deleteurl = "player/coach/addTeamMatchesDet";
   const urlADD = "player/coach/addTeamToMatch";
@@ -86,13 +90,19 @@ function FutureTeams() {
      e.preventDefault()
      console.log(e.target[0].value)
      getData(update, e.target[0].value)
-     alert("Team has been changed successfully")
-     window.history.back()
+     handleShow()
+    //  alert("Team has been changed successfully")
+    //  window.history.back()
+  }
+
+  function reload(){
+    window.location.reload()
   }
     
  
   return (
-    <div className="page-container-1">
+    <>
+      <div className="page-container-1">
       <div className="header-container">
         <Header></Header>
       </div>
@@ -130,16 +140,16 @@ function FutureTeams() {
                 </div>
                 <div className="o-u-t">
                   <div className="top-ic">Team :</div>
-                  <div className="an-s-wer">{name}</div>
+                  <div className="an-s-wer">{dataupcommingp?dataupcommingp[0].name:""}</div>
                 </div>
                 <form className="o-u" onSubmit={clickSave}>
-                  <div className="top-i" style={{display:display}}>Team :</div>
+                  {/* <div className="top-i" style={{display:display}}>Team :</div> */}
                   <select  className="an-s-w" style={{display:display}}>
                     {dataupcomming?dataupcomming?.map((item,i)=> <>
                       <option  value={item.team_id}>{item.name}</option>
                     </>):""}
                   </select>
-                  <div className="b-t-n"><button onClick={clickEdit} style={{display:display2}}>Edit</button><button type="submit" style={{display:display}}>Save</button><button onClick={clickCancel} style={{display:display}}>Cancel</button></div>
+                  <div className="b-t-n" style={{width:"100%",display:"flex",justifyContent:"right"}}><button className="btn btn-secondary" onClick={clickEdit} style={{display:display2 ,marginLeft:"80%"}}>Edit</button><button type="submit" className="btn btn-success" style={{display:display,marginRight:"20px"}}>Save</button><button onClick={clickCancel} className="btn btn-secondary" style={{display:display}}>Cancel</button></div>
                 </form>
 
               </div>
@@ -150,6 +160,52 @@ function FutureTeams() {
         </div>
       </div>
     </div>
+    <Modal
+    show={show}
+    onHide={handleClose}
+    backdrop="static"
+    keyboard={false}
+    centered
+  >
+    <Modal.Header
+      // closeButton
+      // style={{ backgroundColor: "white", border: "none" }}
+    >
+      <Modal.Title>  </Modal.Title>
+    </Modal.Header>
+    <Modal.Body
+      style={{
+        backgroundColor: "white",
+        height: "fit-content",
+        padding: "0",
+      }}
+    >
+      
+        <p
+          style={{
+            color: "#626d80",
+            textAlign: "center",
+            fontSize: "large",
+            backgroundColor: "white",
+            margin: "0",
+          }}
+        >
+          {"Team has been changed successfully"}
+          {/* {edate} */}
+        </p>
+    
+        
+          
+
+      {/* <h1>Render Count: {count.current}</h1> */}
+    </Modal.Body>
+    <Modal.Footer style={{ border: "none" }}>
+        <button type="button" class="btn btn-success" onClick={()=>reload()}>
+          OK
+        </button>
+    </Modal.Footer>
+    </Modal>
+    </>
   );
 }
 
