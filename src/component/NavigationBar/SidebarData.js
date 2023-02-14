@@ -6,6 +6,7 @@ import { BsFillTrophyFill,BsFillDiagram3Fill,BsPersonLinesFill ,BsFillCreditCard
 import { MdSportsCricket , MdEventAvailable} from "react-icons/md";
 import { GiTrophyCup , GiAchievement} from "react-icons/gi";
 import { BsDistributeVertical } from "react-icons/bs";
+import { FiEdit } from "react-icons/fi";
 
 export const SidebarDataManager = [
     // {
@@ -103,6 +104,12 @@ export const SidebarDataPlayer = [
         title:'Attendance',
         path:'/player/Progress',
         icon:<BsDistributeVertical />,
+        cName:'nav-text'
+    },
+    {
+        title:'Feedback',
+        path:'/player/giveFeedback',
+        icon:<FiEdit />,
         cName:'nav-text'
     },
     // {

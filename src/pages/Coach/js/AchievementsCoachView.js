@@ -6,7 +6,6 @@ import "../../Home.css";
 import profpic from "../../../component/header/profpic.jfif";
 
 const data_1 = [
-
     {
         title: "Won the hero cup ODI series",
         img: <img className="card-detail-img" src={profpic} alt=""></img>,
@@ -39,11 +38,9 @@ const data_1 = [
         date: "2022-05-11",
         time: "09:00 am",
     },
-
 ];
 
 const data_2 = [
-
     {
         main_title: "Shehan Lakmal",
         title: "Won the hero cup ODI series",
@@ -80,7 +77,6 @@ const data_2 = [
         date: "2022-05-11",
         time: "09:00 am",
     },
-
 ];
 
 function AchivementCoachView() {
@@ -120,7 +116,6 @@ function AchivementCoachView() {
                         <div className="tabs">
 
                             <div className="tabs-left">
-
                                 <h5 className={tabNumber === 1 ? "tab-active" : "tab"}>
                                     <a onClick={() => selectTab_1(1)}>Team </a>
                                     {tabNumber === 1 ? <hr></hr> : ""}
@@ -130,20 +125,7 @@ function AchivementCoachView() {
                                     <a onClick={() => selectTab_2(2)}> Players</a>
                                     {tabNumber === 2 ? <hr></hr> : ""}
                                 </h5>
-
                             </div>
-
-                            {/* <div className="tabs-right">
-                                <Link
-                                    to={
-                                        tabNumber === 1
-                                        ? "/manager/AddAchivement"
-                                        : "#"
-                                    }
-                                   >
-                                    <Button variant="outline-success">+ Add</Button>
-                                </Link>
-                            </div> */}
 
                         </div>
 

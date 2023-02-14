@@ -53,18 +53,19 @@
     justify-content: flex-start;
 }
 
+.icon-style {
+    margin-left: 20px;
+}
+
 .EPS-main-3-2 {
     margin-top: 2vh;
     display: flex;
     justify-content: flex-end;
 }
 
-/*check box styling start*/
-
 .Attendance-head {
     font-weight: bold;
     margin-left: 5vw;
-    
     visibility: hidden;
 }
 
@@ -72,8 +73,6 @@
     margin-left: 18vw;
     visibility: hidden;
 }
-
-/*check box styling end*/
 
 .EPS-main-4 {
     width: 100%;

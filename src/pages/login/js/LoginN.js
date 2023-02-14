@@ -135,7 +135,7 @@ function LoginN({ setLogin }){
                         
                         <div className="log-btn-G">
                             <div className="forgot-G">
-                                <a href="#">Forgot your password?</a>
+                                <a href="/forgotPassword">Forgot your password?</a>
                             </div>
                             <div className="log-G">
                                 <button type="submit" className="log-G-btn-G" >Log In</button>
