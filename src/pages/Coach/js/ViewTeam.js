@@ -13,7 +13,6 @@ import { useEffect, useState } from "react";
 import { fetchData } from "../../AuthServer";
 import Modal from "react-bootstrap/Modal";
 
-
 function ViewTeam() {
   const { id } = useParams();
   console.log(id);
@@ -21,8 +20,12 @@ function ViewTeam() {
   const [responseDatap, setResponseDatap] = useState([]);
   const [modelShow, setModelShow] = useState(false);
   const [modelShow2, setModelShow2] = useState(false);
+  const [show, setShow] = useState(false);
   const url = "player/coach/getTeamDetails";
   const Deleteurl = "player/coach/deleteTeam";
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   async function getData(url, Team = "") {
     const reqData = {
       team_id: id,
@@ -34,14 +37,14 @@ function ViewTeam() {
     };
     fetchData(authRequest)
       .then((response) => {
-        if(url==="player/coach/getTeamDetails"){setResponseData(response.data);}
-        else if(url==="player/coach/deleteTeam"){
+        if (url === "player/coach/getTeamDetails") {
+          setResponseData(response.data);
+        } else if (url === "player/coach/deleteTeam") {
           setResponseDatap(response.data);
-          if(response.data.data.message=="you cant delete this"){
-            setModelShow2(true)
-          }
-          else if(response.data.data.message=="deleted successfully"){
-            window.history.back()
+          if (response.data.data.message == "you cant delete this") {
+            setModelShow2(true);
+          } else if (response.data.data.message == "deleted successfully") {
+            window.history.back();
           }
         }
       })
@@ -57,27 +60,28 @@ function ViewTeam() {
   console.log(dataupcomming);
   console.log(dataupcommingp);
 
-  function goBack(){
-    window.history.back()
+  function goBack() {
+    window.history.back();
   }
 
-  function deleteTeam(e){
+  function deleteTeam(e) {
     e.preventDefault();
-    setModelShow(true)
+    setModelShow(true);
     // getData(Deleteurl)
     // window.history.back()
   }
 
-  function deleteTeam2(e){
+  function deleteTeam2(e) {
     e.preventDefault();
-    setModelShow(false)
-    getData(Deleteurl)
+    setModelShow(false);
+    getData(Deleteurl);
+    handleShow();
   }
 
-  function cancel2(e){
+  function cancel2(e) {
     e.preventDefault();
-    setModelShow(false)
-    setModelShow2(false)
+    setModelShow(false);
+    setModelShow2(false);
   }
 
   return (
@@ -128,38 +132,49 @@ function ViewTeam() {
                 </h3>
                 <hr></hr>
               </div>
-              <Container style={{marginLeft:"25px"}}>
+              <Container style={{ marginLeft: "25px" }}>
                 {dataupcomming
                   ? dataupcomming.map((item, i) => (
-                      <Row >
-                        <Col className="EPS-main-3-1" style={{fontSize:"1rem",fontWeight:"400"}}>{item.username}</Col>
-                        <Col className="EPS-main-3-1" style={{fontSize:"1rem",fontWeight:"400"}}>BF-{item.user_id}</Col>
+                      <Row>
+                        <Col
+                          className="EPS-main-3-1"
+                          style={{ fontSize: "1rem", fontWeight: "400" }}
+                        >
+                          {item.username}
+                        </Col>
+                        <Col
+                          className="EPS-main-3-1"
+                          style={{ fontSize: "1rem", fontWeight: "400" }}
+                        >
+                          BF-{item.user_id}
+                        </Col>
                         <Col className="Attendance-head-1"></Col>
                         <Col> {/* <a href="#">Remove</a>{" "} */}</Col>
                       </Row>
                     ))
                   : ""}
               </Container>
-              
-              <div className="btn-2-2" style={{marginTop:"30px"}}>
-                <button type="reset" className="btn btn-secondary" onClick={goBack}>Cancel</button>
-                <button style={{marginLeft:"80%"}} className="btn btn-danger" onClick={deleteTeam}>Delete</button>
+
+              <div className="btn-2-2" style={{ marginTop: "30px" }}>
+                <button
+                  type="reset"
+                  className="btn btn-secondary"
+                  onClick={goBack}
+                >
+                  Cancel
+                </button>
+                <button
+                  style={{ marginLeft: "80%" }}
+                  className="btn btn-danger"
+                  onClick={deleteTeam}
+                >
+                  Delete
+                </button>
               </div>
             </div>
           </div>
         </div>
       </div>
-
-
-
-
-
-
-
-
-
-
-
       <Modal
         show={modelShow}
         onHide={true}
@@ -167,9 +182,7 @@ function ViewTeam() {
         keyboard={false}
         centered
       >
-        <Modal.Header
-          style={{ backgroundColor: "white", border: "none" }}
-        >
+        <Modal.Header style={{ backgroundColor: "white", border: "none" }}>
           <Modal.Title> Are you sure to delete this team? </Modal.Title>
         </Modal.Header>
         <Modal.Body
@@ -180,33 +193,66 @@ function ViewTeam() {
           }}
         >
           {/* <h1>Render Count: {count.current}</h1> */}
-          <form className="form-group mb-3" >
-            
+          <form className="form-group mb-3">
             <div className="d-grid gap-2 d-md-flex justify-content-md-end p-3 mb-2">
               <button onClick={cancel2} className="btn btn-secondary">
                 Cancel
               </button>
-              <button onClick={deleteTeam2}  className="btn btn-danger">
+              <button onClick={deleteTeam2} className="btn btn-danger">
                 Delete
               </button>
             </div>
           </form>
         </Modal.Body>
         <Modal.Footer
-          style={{ backgroundColor: "white", border: "none" ,height:0 }}
+          style={{ backgroundColor: "white", border: "none", height: 0 }}
         ></Modal.Footer>
       </Modal>
       <Modal
-        show={modelShow2}
-        onHide={true}
+        show={show}
+        onHide={handleClose}
         backdrop="static"
         keyboard={false}
         centered
       >
         <Modal.Header
+          closeButton
           style={{ backgroundColor: "white", border: "none" }}
         >
-          <Modal.Title> You can't delete this team, This team has been assigned to matches </Modal.Title>
+          <Modal.Title>
+            {" "}
+            <p style={{ color: "red", fontSize: "medium", margin: "0" }}>
+              Unable to Delete <br />
+              Team already assign to a match
+            </p>{" "}
+            <p style={{ margin: "0" }}>Enter password </p>{" "}
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body
+          style={{
+            backgroundColor: "white",
+            height: "fit-content",
+            padding: "0",
+          }}
+        ></Modal.Body>
+        <Modal.Footer
+          style={{ backgroundColor: "white", border: "none" }}
+        ></Modal.Footer>
+      </Modal>{" "}
+      <Modal
+        show={show}
+        onHide={handleClose}
+        backdrop="static"
+        keyboard={false}
+        centered
+      >
+        <Modal.Header
+          closeButton
+          style={{ backgroundColor: "white", border: "none" }}
+        >
+          <Modal.Title>
+           
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body
           style={{
@@ -215,22 +261,16 @@ function ViewTeam() {
             padding: "0",
           }}
         >
-          {/* <h1>Render Count: {count.current}</h1> */}
-          <form className="form-group mb-3" >
-            
-            <div className="d-grid gap-2 d-md-flex justify-content-md-end p-3 mb-2">
-              <button onClick={cancel2} className="btn btn-secondary">
-                ok
-              </button>
-              
-            </div>
-          </form>
+          <h4 style={{ color: "red", marginLeft:'15px' }}>
+            Unable To Delete <br />
+            Team Already Assigned To a Match
+          </h4>{" "}
+        
         </Modal.Body>
         <Modal.Footer
-          style={{ backgroundColor: "white", border: "none" ,height:0 }}
+          style={{ backgroundColor: "white", border: "none" }}
         ></Modal.Footer>
       </Modal>
-      
     </>
   );
 }
