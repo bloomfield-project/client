@@ -12,6 +12,7 @@ import Button from "react-bootstrap/Button";
 import { fetchData } from "../../AuthServer";
 import { useSelector } from 'react-redux';
 import { Table } from "antd";
+import Modal from "react-bootstrap/Modal";
 
 
 function AddPracticeSession() {
@@ -29,6 +30,9 @@ function AddPracticeSession() {
   const [DatePH, setDatePH] = useState("");
   const [minendtime, setminendtime] = useState("");
   const [sessionAdded, setSessionAdded] = useState("");
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const players = "player/coach/getPlayers";
   const checkAvailabilityForSession = "player/coach/checkAvailabilityForSession";
@@ -55,7 +59,8 @@ function AddPracticeSession() {
         if (url === "player/coach/getPlayersToSessions") {
           console.log(response.data)
           setSessionAdded(response.data)
-          window.location.reload()
+          handleShow()
+          // window.location.reload()
         }
       })
       .catch(function (error) {
@@ -404,6 +409,53 @@ function AddPracticeSession() {
           </div>
         </div>
       </div>
+      <Modal
+        show={show}
+        onHide={handleClose}
+        backdrop="static"
+        keyboard={false}
+        centered
+      >
+        <Modal.Header
+          // closeButton
+          // style={{ backgroundColor: "white", border: "none" }}
+        >
+          <Modal.Title>  </Modal.Title>
+        </Modal.Header>
+        <Modal.Body
+          style={{
+            backgroundColor: "white",
+            height: "fit-content",
+            padding: "0",
+          }}
+        >
+          
+            <p
+              style={{
+                color: "#626d80",
+                textAlign: "center",
+                fontSize: "large",
+                backgroundColor: "white",
+                margin: "0",
+              }}
+            >
+              {"Session has been added successfully"}
+              {/* {edate} */}
+            </p>
+        
+            
+              
+
+          {/* <h1>Render Count: {count.current}</h1> */}
+        </Modal.Body>
+        <Modal.Footer style={{ border: "none" }}>
+          <Link to={ "/coach/practiceSessions" }>
+            <button type="button" class="btn btn-success" onClick={()=>handleClose()}>
+              OK
+            </button>
+          </Link>
+        </Modal.Footer>
+      </Modal>
     </>
   );
 }

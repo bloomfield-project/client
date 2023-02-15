@@ -123,6 +123,7 @@ function PlayerPerformance() {
   
 
   function submitForm(e) {
+    // alert("hii")
     e.preventDefault();
     var values = [];
     console.log(e.target[0].value)
@@ -165,6 +166,7 @@ function PlayerPerformance() {
 
 
     setValues(values);
+
     console.log(bat_runs);
     getData(
       url2,
