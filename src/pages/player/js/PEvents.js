@@ -26,7 +26,6 @@ function PEvents() {
   const [tabNumber, setTabNumber] = useState(1);
 
   function viewSession(num){
-    alert(num)
       dispatch(getAEvent(num))
       history('/player/EventDetails')
     }
@@ -163,7 +162,7 @@ const dataC=responseDataC.data
                                 <div className="col-51" style={{textAlign:"left", justifyContent:"left", paddingLeft:"40px"}}>{item.event_name}</div>
                                 <div className="col-51">{item.date}</div>
                                 <div className="col-51">{item.time}</div>
-                                <div className="col-51"><button value={item.event_id} onClick={e => viewSession(e.target.value)}>View</button></div>
+                                <div className="col-51"><button className="Select-Button-G-G" value={item.event_id} onClick={e => viewSession(e.target.value)}>View</button></div>
                           
 
                               </div><hr></hr></>

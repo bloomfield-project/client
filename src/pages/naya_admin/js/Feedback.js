@@ -161,7 +161,7 @@ function Feedback() {
           style={{ backgroundColor: "white", border: "none" }}
         >
           <Modal.Title>
-            <h2>Old Feedbacks</h2>
+            <h2>Checked List</h2>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body

@@ -68,7 +68,7 @@ function EditPracticeSessions() {
               </div>
 
               <div className="EPS-main-2">
-                <h6>Couches</h6>
+                <h6>Coaches</h6>
                 <hr></hr>
 
                 <Container>

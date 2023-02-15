@@ -99,14 +99,14 @@ function PSessionDetails() {
                     
 
                     <div className="SessionDetails-row">
-                      <div className="SessionDetails-row-up">Caoches</div>
+                      <div className="SessionDetails-row-up">Coaches</div>
                       <hr style={{width: "95%" , marginTop: "0px"}}></hr>
 
                       {successC==1?coaches?.map((item,i)  => 
                         <>
                           <div className="SessionDetails-row-down">{item.name}</div>
                         </>
-                      ):<h6 style={{ height : "200px"}}>NO Caoches to display</h6>}
+                      ):<h6 style={{ height : "200px"}}>No coaches to display</h6>}
                       
                     </div>
 

@@ -78,7 +78,6 @@ function Session() {
 
 
   function viewSession(num){
-  alert(num)
     dispatch(getASession(num))
     history('/player/Psession/PSessionDetails')
   }
@@ -131,7 +130,7 @@ function Session() {
                                 <div className="col-51">{item.date}</div>
                                 <div className="col-51">{item.time}</div>
                                 <div className="col-51">{item.name}</div>
-                                <div className="col-51"><button value={item.session_id} onClick={e => viewSession(e.target.value)}>View</button></div>
+                                <div className="col-51"><button className="Select-Button-G-G" value={item.session_id} onClick={e => viewSession(e.target.value)}>View</button></div>
                           
 
                               </div><hr></hr></>

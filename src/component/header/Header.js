@@ -19,9 +19,9 @@ function Header(){
           </div>
         </section>
         <section className='header-right'>
-          <div className='notify'>
+          {/* <div className='notify'>
             <BsBell className='bell'></BsBell>
-          </div>
+          </div> */}
           <div className='username'>
             <div>{loginData.data.name}</div>
           </div>

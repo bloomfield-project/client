@@ -59,6 +59,7 @@ function Session() {
   const [event, setEventId] = useState("");
   const [session, setSessionId] = useState("");
   const [hist, setHist] = useState(false);
+const [change, setChange] = useState(true)
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -96,7 +97,7 @@ function Session() {
         setUpEvent(response.data);
       }
     );
-  }, []);
+  }, [change]);
 
   if (UpSession) {
     // eslint-disable-next-line array-callback-return
@@ -162,6 +163,7 @@ function Session() {
     Axios.post("/api/manager/deleteEvent", eventData)
       .then((results) => {
         alert("Delete Successful!");
+        setChange(!change)
         window.location.reload();
       })
       .catch((err) => console.log("error : ", err));
@@ -187,6 +189,7 @@ function Session() {
     Axios.post("/api/manager/deleteSession", sessionData)
       .then((results) => {
         alert("Delete Successful!");
+        setChange(!change)
         window.location.reload();
       })
       .catch((err) => console.log("error : ", err));
@@ -204,7 +207,7 @@ function Session() {
           </div>
           <div className="body-container-2">
             <div className="title">
-              <h1>{tabNumber === 1 ? "Counseling Sessions" : "Events"}</h1>
+              <h1>{tabNumber === 1 ? "Counselling Sessions" : "Events"}</h1>
             </div>
             <div className="tabs">
               {/* <h5 className="tab-active">Couceling<hr></hr></h5>
@@ -218,7 +221,7 @@ function Session() {
                       setHist(false);
                     }}
                   >
-                    Couceling
+                    Counselling
                   </a>{" "}
                   {tabNumber === 1 ? <hr></hr> : ""}
                 </h5>

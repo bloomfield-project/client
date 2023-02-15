@@ -85,7 +85,7 @@ function Matches_4() {
           <div className="matchesD-container-outer-box">
             {/* match card */}
             {players === undefined ? (
-              <h1>hi</h1>
+              <h1>Player does not exist</h1>
             ) : (
               <div className="matche-container-outer-box">
                 <div className="match-box-up">

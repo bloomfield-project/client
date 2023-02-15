@@ -9,7 +9,7 @@ import Navbar from "../../../component/NavigationBar/Navbar";
 import { useFormik } from "formik";
 import { Link, useParams, useLocation } from "react-router-dom";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
-
+import Modal from "react-bootstrap/Modal";
 import { storage } from "../../../../src/firebase";
 import { v4 } from "uuid";
 import { playerSchema } from "../../../component/Schema/player";
@@ -17,53 +17,53 @@ import { fetchData } from "../../AuthServer";
 
 const moment = require("moment");
 const Axios = require("axios").default;
-const lankaNic2019 = require("lanka-nic-2019")
+const lankaNic2019 = require("lanka-nic-2019");
 
 var imgurl;
-
-const onSubmit = async (values, actions) => {
-  // console.log("value from event :",val);
-  values.gender = lankaNic2019.infoNic(values.nic).gender;
-  const d = new Date(lankaNic2019.infoNic(values.nic).birthday);
-  // console.log("date : ", d);
-  values.dob = moment(d).format('YYYY-MM-DD')
-  values.image = imgurl? imgurl : "";
-  console.log("values : ", values);
-  console.log( lankaNic2019.infoNic(values.nic ) )
-  console.log("actions : ".actions);
-
-  if(lankaNic2019.validateNic(values.nic)){
-    alert("validation done");
-    Axios.post("/api/user/playerRegistration",values)
-
-    .then((results)=>{
-      if (results.data.err) {
-        const splitArr = results.data.err.split("'");
-
-        console.log(splitArr);
-
-        alert(splitArr[1] + " is already used !");
-      } else {
-        alert("Registration succesful");
-        actions.resetForm();
-      }
-    })
-    .catch((err) => console.log("error : ", err));
-    
-
-  }else{
-    alert("nic is incorrect")
-  }
-
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-  // actions.resetForm();
-};
 
 function PlayerRegistration() {
   const [show, setShow] = useState(false);
   const [imageUpload, setImageUpload] = useState(null);
   const [imageUrl, setImageUrls] = useState(null);
   const { type } = useParams();
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const onSubmit = async (values, actions) => {
+
+    values.gender = lankaNic2019.infoNic(values.nic).gender;
+    const d = new Date(lankaNic2019.infoNic(values.nic).birthday);
+ 
+    values.dob = moment(d).format("YYYY-MM-DD");
+    values.image = imgurl ? imgurl : "";
+    console.log("values : ", values);
+    console.log(lankaNic2019.infoNic(values.nic));
+    console.log("actions : ".actions);
+
+    if (lankaNic2019.validateNic(values.nic)) {
+      Axios.post("/api/user/playerRegistration", values)
+
+        .then((results) => {
+          if (results.data.err) {
+            const splitArr = results.data.err.split("'");
+
+            console.log(splitArr);
+
+            alert(splitArr[1] + " is already used !");
+          } else {
+            handleShow();
+            // actions.resetForm();
+          }
+        })
+        .catch((err) => console.log("error : ", err));
+    } else {
+      alert("nic is incorrect");
+    }
+
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    // actions.resetForm();
+  };
 
   const imagesListRef = ref(storage, "images/");
 
@@ -98,7 +98,7 @@ function PlayerRegistration() {
       user_role: "",
       batting_style: "",
       bowling_style: "",
-      image:"",
+      image: "",
     },
     validationSchema: playerSchema,
     onSubmit,
@@ -271,14 +271,12 @@ function PlayerRegistration() {
                       name="user_role"
                       onChange={handleChange}
                     >
-                       <option
+                      <option
                         value=""
                         className="text-dark"
                         name="user_role"
                         // onChange={handleChange}
-                      >
-                        
-                      </option>
+                      ></option>
                       <option
                         value="bowler"
                         className="text-dark"
@@ -287,7 +285,11 @@ function PlayerRegistration() {
                       >
                         Bowler
                       </option>
-                      <option value="batsman" className="text-dark" name="user_role" >
+                      <option
+                        value="batsman"
+                        className="text-dark"
+                        name="user_role"
+                      >
                         Batsman
                       </option>
                       <option
@@ -297,7 +299,6 @@ function PlayerRegistration() {
                       >
                         All-Rounder
                       </option>
-                      
                     </Form.Select>
                     {errors.user_role && touched.user_role && (
                       <p className="error">{errors.user_role}</p>
@@ -441,6 +442,48 @@ function PlayerRegistration() {
           </div>
         </div>
       </div>
+      <Modal
+        show={show}
+        onHide={handleClose}
+        backdrop="static"
+        keyboard={false}
+        centered
+      >
+        <Modal.Header
+          closeButton
+          style={{ backgroundColor: "white", border: "none" }}
+        >
+          <Modal.Title> </Modal.Title>
+        </Modal.Header>
+        <Modal.Body
+          style={{
+            backgroundColor: "white",
+            height: "fit-content",
+            padding: "0",
+          }}
+        >
+          <p
+            style={{
+              color: "#626d80",
+              textAlign: "center",
+              fontSize: "large",
+              backgroundColor: "white",
+              margin: "0",
+            }}
+          >
+            Player Registration Successful
+          </p>
+
+          {/* <h1>Render Count: {count.current}</h1> */}
+        </Modal.Body>
+        <Modal.Footer style={{ border: "none" }}>
+          <Link to={"/manager/Session"}>
+            <button type="button" class="btn btn-success" onClick={handleClose}>
+              OK
+            </button>
+          </Link>
+        </Modal.Footer>
+      </Modal>{" "}
     </>
   );
 }
