@@ -2,7 +2,7 @@ import Header from "../../../component/header/Header";
 import Navbar from "../../../component/NavigationBar/Navbar";
 import "../../Home.css";
 import React from "react";
-
+import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 // import Header from "../../../component/header/Header";
 // import "../css/PlayerRegistration.css";
@@ -21,9 +21,13 @@ function TeamToMatch() {
   console.log(id)
   
   const [responseData, setResponseData] = useState([]);
+  const [teamChanged, setTeamChanged] = useState([]);
   const [responseDatap, setResponseDatap] = useState([]);
   const [responseDataFuture, setResponseDataFuture] = useState([]);
   const [responseDataUnmarked, setResponseDataUnmarked] = useState([]);
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   const url = "player/coach/getTeam";
   const Deleteurl = "player/coach/addTeamMatchesDet";
   const urlADD = "player/coach/addTeamToMatch";
@@ -64,15 +68,23 @@ function TeamToMatch() {
   console.log(dataFuture);
   console.log(dataUnmarked);
 
-  function selectedTeam(e){
-    e.preventDefault()
-    console.log(e.target.value)
-    getData(urlADD,e.target.value);
-    alert("Successfully added team to match")
-    // window.history.back()
+  function selectedTeam(){
+    console.log(teamChanged)
+    getData(urlADD,teamChanged);
+    // alert("Successfully added team to match")
+    handleShow()
+    // window.history.back() 
   }
+  function changeTeam(e){
+    e.preventDefault() 
+    console.log(e.target.value)
+    setTeamChanged(e.target.value)
+  }
+  console.log(teamChanged)
+  
   return (
-    <div className="page-container-1">
+    <>
+      <div className="page-container-1">
       <div className="header-container">
         <Header></Header>
       </div>
@@ -110,7 +122,7 @@ function TeamToMatch() {
                 </div>
                 <div className="o-u">
                   <div className="top-i">Team :</div>
-                  <select  className="an-s-w" ons>
+                  <select onChange={changeTeam}  className="an-s-w" ons>
                     <option>--Select--</option>
                     {dataupcomming?dataupcomming?.map((item,i)=> <>
                       <option  value={item.team_id}>{item.name}</option>
@@ -128,6 +140,56 @@ function TeamToMatch() {
         </div>
       </div>
     </div>
+
+      <Modal
+        show={show}
+        onHide={handleClose}
+        backdrop="static"
+        keyboard={false}
+        centered
+      >
+        <Modal.Header
+          // closeButton
+          // style={{ backgroundColor: "white", border: "none" }}
+        >
+          <Modal.Title>  </Modal.Title>
+        </Modal.Header>
+        <Modal.Body
+          style={{
+            backgroundColor: "white",
+            height: "fit-content",
+            padding: "0",
+          }}
+        >
+          
+            <p
+              style={{
+                color: "#626d80",
+                textAlign: "center",
+                fontSize: "large",
+                backgroundColor: "white",
+                margin: "0",
+              }}
+            >
+              {"Successfully added team to match"}
+              {/* {edate} */}
+            </p>
+        
+            
+              
+
+          {/* <h1>Render Count: {count.current}</h1> */}
+        </Modal.Body>
+        <Modal.Footer style={{ border: "none" }}>
+          <Link to={ "/coach/matches" }>
+            <button type="button" class="btn btn-success" onClick={()=>handleClose()}>
+              OK
+            </button>
+          </Link>
+        </Modal.Footer>
+      </Modal>
+    </>
+    
   );
 }
 

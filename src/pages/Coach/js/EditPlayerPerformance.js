@@ -23,6 +23,7 @@ function EditPlayerPerformance() {
   const { id, player,team } = useParams();
 
   const [valuess, setValues] = useState([]);
+  const [score, setScores] = useState([]);
   // const loginData= useSelector(state => state.auth.data)
   const [responseDataI, setResponseDataI] = useState([]);
   const [dataforValidation, setDataforValidation] = useState([]);
@@ -213,6 +214,23 @@ function EditPlayerPerformance() {
     console.log(error);
   })
 }
+async function getData10(id,player){
+  const reqData ={
+    user_id:player,
+    match_id:id,
+    
+  };
+  const authRequest = {
+  "method":"post",
+  "url":"player/coach/getPlayerScoreInd",
+  "data":reqData
+}
+fetchData(authRequest).then((response)=>{
+  setScores(response.data)
+}).catch(function(error){
+  console.log(error);
+})
+}
   function notPlayedEdit(e){
     e.preventDefault();
     var playedd;
@@ -262,10 +280,12 @@ function EditPlayerPerformance() {
   }
 
   useEffect(() => {
+    getData10(id,player)
     getDataforValidation() 
   }, [])
   
   console.log(dataforValidation);
+  console.log(score[0])
 
   return (
     <>
@@ -615,6 +635,7 @@ function EditPlayerPerformance() {
                           type="number"
                           name="name"
                           min={0}
+                          value={score?score[0]?.runs:0}
                           style={{
                             width: "300px",
                             border: "1px solid #ced4da",
@@ -650,6 +671,7 @@ function EditPlayerPerformance() {
                           name="name"
                           min={0}
                           max={dataforValidation?dataforValidation[0]?.format=="T20"?(120-dataforValidation[0]?.balls_faced):dataforValidation[0]?.format=="ODI"?(300-dataforValidation[0]?.balls_faced):200:200}
+                          value={score?score[0]?.no_of_balls_faced:0}
                           style={{
                             width: "300px",
                             border: "1px solid #ced4da",
@@ -668,6 +690,7 @@ function EditPlayerPerformance() {
                           type="number"
                           name="name"
                           min={0}
+                          value={score?score[0]?.sixes:0}
                           style={{
                             width: "300px",
                             border: "1px solid #ced4da",
@@ -686,6 +709,7 @@ function EditPlayerPerformance() {
                           type="number"
                           name="name"
                           min={0}
+                          value={score?score[0]?.fours:0}
                           style={{
                             width: "300px",
                             border: "1px solid #ced4da",
@@ -704,6 +728,7 @@ function EditPlayerPerformance() {
                           type="number"
                           name="name"
                           min={0}
+                          value={score?score[0]?.batting_nummber:0}
                           style={{
                             width: "300px",
                             border: "1px solid #ced4da",
@@ -733,6 +758,7 @@ function EditPlayerPerformance() {
                           type="number"
                           name="name"
                           min={0}
+                          value={score?score[0]?.b_no_of_overs:0}
                           max={dataforValidation?dataforValidation[0]?.format=="T20"?(20-dataforValidation[0]?.b_overs):dataforValidation[0]?.format=="ODI"?(50-dataforValidation[0]?.b_overs):200:200}
                           style={{
                             width: "300px",
@@ -749,6 +775,7 @@ function EditPlayerPerformance() {
                           type="number"
                           name="name"
                           min={0}
+                          value={score?score[0]?.b_runs:0}
                           style={{
                             width: "300px",
                             border: "1px solid #ced4da",
@@ -765,7 +792,7 @@ function EditPlayerPerformance() {
                         <input
                           type="number"
                           name="name"
-                          value={0}
+                          value={score?score[0]?.b_no_of_overs:0}
                           min={0}
                           style={{
                             width: "300px",
@@ -783,6 +810,7 @@ function EditPlayerPerformance() {
                           name="name"
                           min={0}
                           max={3}
+                          value={score?score[0]?.b_htricks:0}
                           style={{
                             width: "300px",
                             border: "1px solid #ced4da",
@@ -801,6 +829,7 @@ function EditPlayerPerformance() {
                           type="number"
                           name="name"
                           min={0}
+                          value={score?score[0]?.b_wkts:0}
                           max={dataforValidation?(10-dataforValidation[0]?.wkts):10}
                           style={{
                             width: "300px",
@@ -817,6 +846,7 @@ function EditPlayerPerformance() {
                           type="number"
                           name="name"
                           min={0}
+                          value={score?score[0]?.b_no_balls:0}
                           style={{
                             width: "300px",
                             border: "1px solid #ced4da",
@@ -834,6 +864,7 @@ function EditPlayerPerformance() {
                           type="number"
                           name="name"
                           min={0}
+                          value={score?score[0]?.b_maiden_overs:0}
                           style={{
                             width: "300px",
                             border: "1px solid #ced4da",
@@ -849,6 +880,7 @@ function EditPlayerPerformance() {
                           type="number"
                           name="name"
                           min={0}
+                          value={score?score[0]?.b_wide_balls:0}
                           style={{
                             width: "300px",
                             border: "1px solid #ced4da",
@@ -876,7 +908,7 @@ function EditPlayerPerformance() {
                           name="name"
                           min={0}
                           max={10}
-                          value={0}
+                          value={score?score[0]?.field_runout:0}
                           style={{
                             paddingLeft: "10px",
                             width: "300px",
@@ -897,7 +929,8 @@ function EditPlayerPerformance() {
                           name="name"
                           min={0}
                           max={10}
-                          value={0}
+                          value={score?score[0]?.no_of_catches
+                            :0}
                           style={{
                             paddingLeft: "10px",
                             width: "300px",

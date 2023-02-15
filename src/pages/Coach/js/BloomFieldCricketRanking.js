@@ -13,6 +13,7 @@ import {useDispatch,useSelector} from 'react-redux'
 
 
 
+
 const { TabPane } = Tabs;
 
 function BloomFieldCricketRanking() {
@@ -23,6 +24,7 @@ function BloomFieldCricketRanking() {
     const [Test,setTest]=useState("table-tab")
     const [catgry,setCatgry]=useState(1)
     const [Format,setFormat]=useState("ODI")
+    const [search, setSearch] = useState("");
     const onChange = (key) => {
         setODI("table-tab-active")
         setT20("table-tab")
@@ -103,13 +105,33 @@ function BloomFieldCricketRanking() {
                 <div className="PplayerPreformanceBody">
                 
                 <Tabs defaultActiveKey="1" onChange={onChange}>
+                    
                     <TabPane tab="Batting" key="1">
+                    
                     <div className="table-box-11">
+                        
                         <div className="table-tabs">
                             <button onClick={getODI} className={ODI}>ODI</button>
                             <button onClick={getT20} className={T20}>T20</button>
                             <button onClick={getTest} className={Test}>TEST</button>
+                            <input
+                              type="text"
+                              placeholder="Search"
+                              onChange={(e) => {
+                                setSearch(e.target.value);
+                                // console.log(typeof search + search);
+                              }}
+                              style={{
+                                width: "50%",
+                                margin: "auto",
+                                border: "none",
+                                marginBottom: "0px",
+                                borderBottom: "1px solid black",
+                                // backgroundColor:'blue',
+                              }}
+                            />
                         </div>
+                        
                         <div className="tablee">
                         {/* {dataupcomming!=[]?dataupcomming?.filter(user => user.user_id===5).sort((a, b) => a.rating > b.rating ? -1 : 1).map((item,i)  => 
                               <><div key={i} className="my-table-row-g">
@@ -129,10 +151,15 @@ function BloomFieldCricketRanking() {
                                 <div className="col-5-4">SR</div>
                                 <div className="col-5-5">Rating</div>
                             </div>
-                            {dataupcomming!=[]?dataupcomming?.sort((a, b) => a.rating > b.rating ? -1 : 1).filter(item => item.rating>0 && item.rating).map((item,i)  => 
+                            {dataupcomming!=[]?dataupcomming?.sort((a, b) => a.rating > b.rating ? -1 : 1).filter(item => item.rating>0 && item.rating).filter((item) => {
+                                return search.toLowerCase() === ""
+                                ? item
+                                : item.name?.toLowerCase().includes(search) ||
+                                item.econ?.includes(search);
+                                }).map((item,i)  => 
                               <><div key={i} className="table-row">
                                 <div className="col-5-1">{i+1}</div>
-                                <div className="col-5-2"><img className="row-image" src={item.image!=""?item.image: player} alt=""></img><a href="/player/playerRanking" style={{width: "80%", textAlign: "left", paddingTop:"10px"}}>{item.name}</a></div>
+                                <div className="col-5-2"><img className="row-image" src={item.image!=""?item.image: player} alt=""></img><a href={"/coach/playerRanking/"+item.user_id} style={{width: "80%", textAlign: "left", paddingTop:"10px"}}>{item.name}</a></div>
                                 <div className="col-5-1">{item.avg}</div>
                                 <div className="col-5-1">{item.sr}</div>
                                 <div className="col-5-1">{item.rating}</div>
@@ -150,6 +177,22 @@ function BloomFieldCricketRanking() {
                             <button onClick={getODI} className={ODI}>ODI</button>
                             <button onClick={getT20} className={T20}>T20</button>
                             <button onClick={getTest} className={Test}>TEST</button>
+                            <input
+                              type="text"
+                              placeholder="Search"
+                              onChange={(e) => {
+                                setSearch(e.target.value);
+                                // console.log(typeof search + search);
+                              }}
+                              style={{
+                                width: "50%",
+                                margin: "auto",
+                                border: "none",
+                                marginBottom: "0px",
+                                borderBottom: "1px solid black",
+                                // backgroundColor:'blue',
+                              }}
+                            />
                         </div>
                         <div className="tablee">
                             {/* {dataupcomming!=[]?dataupcomming?.filter(user => user.user_id===5).sort((a, b) => a.B_rating > b.B_rating ? -1 : 1).map((item,i)  => 
@@ -170,10 +213,15 @@ function BloomFieldCricketRanking() {
                                 <div className="col-5-4">Wkts</div>
                                 <div className="col-5-5">Rating</div>
                             </div>
-                            {dataupcomming!=[]?dataupcomming?.filter(item => item.B_rating>0 && item.B_rating).sort((a, b) => a.B_rating > b.B_rating ? -1 : 1).map((item,i)  => 
+                            {dataupcomming!=[]?dataupcomming?.filter(item => item.B_rating>0 && item.B_rating).filter((item) => {
+                                return search.toLowerCase() === ""
+                                ? item
+                                : item.name?.toLowerCase().includes(search) ||
+                                item.econ?.includes(search);
+                                }).sort((a, b) => a.B_rating > b.B_rating ? -1 : 1).map((item,i)  => 
                               <><div key={i} className="table-row">
                                 <div className="col-5-1">{i+1}</div>
-                                <div className="col-5-2"><img className="row-image" src={item.image!=""?item.image:player} alt=""></img><a href="/player/playerRanking" style={{width: "80%", textAlign: "left", paddingTop:"10px"}}>{item.name}</a></div>
+                                <div className="col-5-2"><img className="row-image" src={item.image!=""?item.image:player} alt=""></img><a href={"/coach/playerRanking/"+item.user_id} style={{width: "80%", textAlign: "left", paddingTop:"10px"}}>{item.name}</a></div>
                                 <div className="col-5-1">{item.econ}</div>
                                 <div className="col-5-1">{item.b_wkts}</div>
                                 <div className="col-5-1">{item.B_rating}</div>
@@ -209,6 +257,22 @@ function BloomFieldCricketRanking() {
                             <button onClick={getODI} className={ODI}>ODI</button>
                             <button onClick={getT20} className={T20}>T20</button>
                             <button onClick={getTest} className={Test}>TEST</button>
+                            <input
+                              type="text"
+                              placeholder="Search"
+                              onChange={(e) => {
+                                setSearch(e.target.value);
+                                // console.log(typeof search + search);
+                              }}
+                              style={{
+                                width: "50%",
+                                margin: "auto",
+                                border: "none",
+                                marginBottom: "0px",
+                                borderBottom: "1px solid black",
+                                // backgroundColor:'blue',
+                              }}
+                            />
                         </div>
                         <div className="tablee">
                             {/* {dataupcomming!=[]?dataupcomming?.filter(user => user.user_id===5).sort((a, b) => a.A_rating > b.A_rating ? -1 : 1).map((item,i)  => 
@@ -232,10 +296,15 @@ function BloomFieldCricketRanking() {
                                 <div className="col-7-6">Wkts</div>
                                 <div className="col-7-7">Rating</div>
                             </div>
-                            {dataupcomming!=[]?dataupcomming?.sort((a, b) => a.A_rating > b.A_rating ? -1 : 1).filter(item => item.A_rating>0 && item.A_rating).map((item,i)  => 
+                            {dataupcomming!=[]?dataupcomming?.sort((a, b) => a.A_rating > b.A_rating ? -1 : 1).filter(item => item.A_rating>0 && item.A_rating).filter((item) => {
+                                return search.toLowerCase() === ""
+                                ? item
+                                : item.name?.toLowerCase().includes(search) ||
+                                item.econ?.includes(search);
+                                }).map((item,i)  => 
                               <><div key={i} className="table-row">
                                 <div className="col-7-1">{i+1}</div>
-                                <div className="col-5-2"><img className="row-image" src={item.image!=""?item.image:player} alt=""></img><a href="/player/playerRanking" style={{width: "80%", textAlign: "left", paddingTop:"10px"}}>{item.name}</a></div>
+                                <div className="col-5-2"><img className="row-image" src={item.image!=""?item.image:player} alt=""></img><a href={"/coach/playerRanking/"+item.user_id} style={{width: "80%", textAlign: "left", paddingTop:"10px"}}>{item.name}</a></div>
                                 <div className="col-7-3">{item.avg}</div>
                                 <div className="col-7-4">{item.sr}</div>
                                 <div className="col-7-5">{item.econ}</div>
