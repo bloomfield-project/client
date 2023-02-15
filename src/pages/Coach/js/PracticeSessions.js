@@ -157,7 +157,7 @@ function Session() {
                   </div>
                 </TabPane>
 
-                <TabPane tab="UPcomming" key="3">
+                <TabPane tab="Upcoming" key="3">
                   <div className="matches-container-outer-box">
 
                     <div className="tablee" style={{ width: "100%" }}>

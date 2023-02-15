@@ -29,7 +29,7 @@ function TeamToMatch() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const url = "player/coach/getTeam";
-  const Deleteurl = "player/coach/addTeamMatchesDet";
+  const Deleteurl = "player/coach/detailsForBeforeTeamAdd";
   const urlADD = "player/coach/addTeamToMatch";
   const future = "player/coach/future";
   const Unmarked = "player/coach/Unmarked";
@@ -45,8 +45,9 @@ function TeamToMatch() {
     };
     fetchData(authRequest)
       .then((response) => {
+        console.log(response)
         if(url==="player/coach/getTeam"){setResponseData(response.data);}
-        else if(url==="player/coach/addTeamMatchesDet"){setResponseDatap(response.data);}
+        else if(url==="player/coach/detailsForBeforeTeamAdd"){setResponseDatap(response.data);}
         else if(url==="player/coach/future"){setResponseDataFuture(response.data);}
         else if(url==="player/coach/Unmarked"){setResponseDataUnmarked(response.data);}
       })
@@ -102,23 +103,23 @@ function TeamToMatch() {
               <div style={{width:"100%" , display:"flex" , flexDirection:"column" , alignItems:"center"}}>
                 <div className="o-u-t">
                   <div className="top-ic">Match ID :</div>
-                  <div className="an-s-wer">M-{dataupcommingp?dataupcommingp[0].match_id:""}</div>
+                  <div className="an-s-wer">M-{dataupcommingp?dataupcommingp[0]?.match_id:""}</div>
                 </div>
                 <div className="o-u-t">
                   <div className="top-ic">Format :</div>
-                  <div className="an-s-wer">{dataupcommingp?dataupcommingp[0].match_format:""}</div>
+                  <div className="an-s-wer">{dataupcommingp?dataupcommingp[0]?.match_format:""}</div>
                 </div>
                 <div className="o-u-t">
                   <div className="top-ic">Opposite Team :</div>
-                  <div className="an-s-wer">{dataupcommingp?dataupcommingp[0].op_team_name:""}</div>
+                  <div className="an-s-wer">{dataupcommingp?dataupcommingp[0]?.op_team_name:""}</div>
                 </div>
                 <div className="o-u-t">
                   <div className="top-ic">Date :</div>
-                  <div className="an-s-wer">{dataupcommingp?dataupcommingp[0].date:""}</div>
+                  <div className="an-s-wer">{dataupcommingp?dataupcommingp[0]?.date:""}</div>
                 </div>
                 <div className="o-u-t">
                   <div className="top-ic">Ground :</div>
-                  <div className="an-s-wer">{dataupcommingp?dataupcommingp[0].ground:""}</div>
+                  <div className="an-s-wer">{dataupcommingp?dataupcommingp[0]?.ground:""}</div>
                 </div>
                 <div className="o-u">
                   <div className="top-i">Team :</div>
