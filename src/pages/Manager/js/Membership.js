@@ -12,7 +12,6 @@ import Tables from "../../../component/Table/Table";
 import Button from "react-bootstrap/Button";
 import "../../Home.css";
 import SearchTable from "../../../component/Search/SearchTable";
-import profpic from "../../../component/header/profpic.jfif";
 import Modal from "react-bootstrap/Modal";
 import SampleForm from "../../../component/Form/SampleForm";
 import ResetSubmit from "../../../component/Form/ResetSubmit";
@@ -260,7 +259,6 @@ function Membership() {
     return false;
   });
 
-  // console.log("uniq : ", unique);
 
   const selectTab_1 = () => {
     setTabNumber(1);
